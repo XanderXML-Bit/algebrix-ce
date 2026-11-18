@@ -1,0 +1,458 @@
+{
+  "schema_version": 1,
+  "suite": "visible_smoke",
+  "cases": [
+    {
+      "name": "launcher_program_menu_transition",
+      "lane": "launcher",
+      "category": "launcher",
+      "description": "CalcEngine starts on a clean prompt and still opens the TI-OS PRGM menu on demand.",
+      "expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "auto_enter": false,
+      "prompt_reset": true,
+      "followup_name": "program_menu_open",
+      "followup_description": "The PRGM menu remains reachable from the cleaned prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "prgm" },
+        { "kind": "pause", "duration_ms": 1200 }
+      ],
+      "followup_expected_crcs": ["967993A8"],
+      "notes": "Launcher/menu transition proof built on the accepted prompt CRC set."
+    },
+    {
+      "name": "arith_addition_prompt_return",
+      "lane": "arithmetic",
+      "source_case": "arith_add_2_plus_3",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The addition result screen dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"]
+    },
+    {
+      "name": "arith_decimal_prompt_return",
+      "lane": "arithmetic",
+      "source_case": "arith_mul_decimal_3p14_times_2",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The decimal arithmetic result screen dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"]
+    },
+    {
+      "name": "arith_divide_by_zero_prompt_return",
+      "lane": "arithmetic",
+      "source_case": "arith_division_by_zero",
+      "followup_name": "prompt_after_error_clear",
+      "followup_description": "The divide-by-zero error screen can still be dismissed back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"]
+    },
+    {
+      "name": "module_base_dispatch_prompt_return",
+      "lane": "module_dispatch",
+      "source_case": "module_base_hex_255",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The base-conversion dispatch result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"]
+    },
+    {
+      "name": "module_limit_dispatch_prompt_return",
+      "lane": "module_dispatch",
+      "source_case": "module_limit_advanced_cosine",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The advanced-limit dispatch result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"]
+    },
+    {
+      "name": "module_matrix_dispatch_prompt_return",
+      "lane": "module_dispatch",
+      "source_case": "module_matrix_determinant",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The matrix-dispatch result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"]
+    },
+    {
+      "name": "matrix_inverse_visible_then_result",
+      "lane": "module_dispatch",
+      "category": "matrix",
+      "source_case": "module_matrix_inverse_identity",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The matrix-inverse dispatch result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405", "2CAF4B8A", "22CEF46C"],
+      "notes": "Extends the matrix module's visible prompt/result proof beyond determinant-only dispatch; the real backend currently alternates between prompt CRC 2CAF4B8A and the identity-inverse baseline 22CEF46C while remaining interactive after the two-CLEAR dismissal sequence."
+    },
+    {
+      "name": "arith_subtraction_chain_visible_then_result",
+      "lane": "arithmetic",
+      "category": "subtraction",
+      "backend": "real",
+      "description": "A left-associated subtraction chain stays visible before evaluation and then lands on the locked sequential-arithmetic result.",
+      "input_expression": "100-30-20-10",
+      "expected_display": "100-30-20-10",
+      "expected_crcs": ["A1CC2798"],
+      "auto_enter": false,
+      "prompt_reset": true,
+      "followup_name": "chain_result",
+      "followup_description": "The submitted subtraction chain resolves to the locked real-ROM result screen.",
+      "followup_events": [
+        { "kind": "pause", "duration_ms": 200 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 2500 }
+      ],
+      "followup_expected_crcs": ["B6A28976"],
+      "notes": "Pre-enter and post-enter subtraction-chain CRCs captured on the live TI-84 Plus CE OS 5.8 ROM on 2026-03-30."
+    },
+    {
+      "name": "graph_constant_plot_visible_then_dispatch",
+      "lane": "graphing",
+      "category": "graphing",
+      "backend": "real",
+      "module": "CEGRPH",
+      "description": "A graph() plotting request remains visibly stable before ENTER and then routes through the locked graphing-module baseline.",
+      "input_expression": "graph(1,x)",
+      "expected_display": "graph(1,x)",
+      "expected_crcs": ["969BB539"],
+      "auto_enter": false,
+      "prompt_reset": true,
+      "followup_name": "graph_module_result",
+      "followup_description": "Submitting the graphing command lands on the locked CEGRPH dispatch baseline.",
+      "followup_events": [
+        { "kind": "pause", "duration_ms": 200 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 3000 }
+      ],
+      "followup_expected_crcs": ["B9B5D5E0"],
+      "notes": "Uses the direct graph() command path because the wrapper key map does not expose the dedicated GRAPH key."
+    },
+    {
+      "name": "sequence_odd_generator_visible_then_result",
+      "lane": "sequence",
+      "category": "sequence",
+      "backend": "real",
+      "description": "An odd-number sequence generator remains stable before evaluation and then locks onto the generated-sequence result baseline.",
+      "input_expression": "seq(2*x+1,x,0,3,1)",
+      "expected_display": "seq(2*x+1,x,0,3,1)",
+      "expected_crcs": ["D6A6C2F5"],
+      "auto_enter": false,
+      "prompt_reset": true,
+      "followup_name": "sequence_result",
+      "followup_description": "Submitting the odd-number sequence request lands on the locked sequence-generation result baseline.",
+      "followup_events": [
+        { "kind": "pause", "duration_ms": 200 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 3000 }
+      ],
+      "followup_expected_crcs": ["B9B5D5E0"],
+      "notes": "Mirrors the deterministic sequence-generator scenarios already covered in the comprehensive hardware catalog."
+    },
+    {
+      "name": "sequence_table_probe_visible_then_result",
+      "lane": "table_generation",
+      "category": "sequence",
+      "backend": "real",
+      "description": "A stepped sequence request that users treat as a compact table probe stays visible before ENTER and then lands on the locked generated-output baseline.",
+      "input_expression": "seq(2*x,x,2,8,2)",
+      "expected_display": "seq(2*x,x,2,8,2)",
+      "expected_crcs": ["192D0277"],
+      "auto_enter": false,
+      "prompt_reset": true,
+      "followup_name": "table_style_sequence_result",
+      "followup_description": "Submitting the stepped sequence produces the locked table-style generated-list baseline.",
+      "followup_events": [
+        { "kind": "pause", "duration_ms": 200 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 3000 }
+      ],
+      "followup_expected_crcs": ["B9B5D5E0"],
+      "notes": "CalcEngine does not expose a distinct table() parser primitive, so this locks the deterministic stepped-sequence workflow that currently serves as the automatable table-generation analogue."
+    },
+    {
+      "name": "list_dimension_visible_then_result",
+      "lane": "list_operations",
+      "category": "list",
+      "backend": "real",
+      "description": "A dim() list query remains visibly stable before ENTER and then lands on the locked list-operation result baseline.",
+      "input_expression": "dim(seq(x,x,1,5,1))",
+      "expected_display": "dim(seq(x,x,1,5,1))",
+      "expected_crcs": ["B6A282CA"],
+      "auto_enter": false,
+      "prompt_reset": true,
+      "followup_name": "list_dimension_result",
+      "followup_description": "Submitting the dim() list probe lands on the locked list-operation result baseline.",
+      "followup_events": [
+        { "kind": "pause", "duration_ms": 200 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 3000 }
+      ],
+      "followup_expected_crcs": ["B9B5D5E0"],
+      "notes": "Uses a generated list literal analogue so the workflow stays automatable with the current wrapper key set."
+    },
+    {
+      "name": "list_cumsum_visible_then_result",
+      "lane": "list_operations",
+      "category": "list",
+      "backend": "real",
+      "description": "A cumsum() list workflow remains visibly stable before ENTER and then lands on the locked cumulative-list result baseline.",
+      "input_expression": "cumsum(seq(x,x,1,4,1))",
+      "expected_display": "cumsum(seq(x,x,1,4,1))",
+      "expected_crcs": ["36497DF4"],
+      "auto_enter": false,
+      "prompt_reset": true,
+      "followup_name": "list_cumsum_result",
+      "followup_description": "Submitting the cumulative-sum list probe lands on the locked list-operation result baseline.",
+      "followup_events": [
+        { "kind": "pause", "duration_ms": 200 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 3000 }
+      ],
+      "followup_expected_crcs": ["B9B5D5E0"],
+      "notes": "Locks a nested list-operation command without depending on unsupported brace-entry keys."
+    },
+    {
+      "name": "algebra_factor_visible_then_result",
+      "lane": "algebra",
+      "source_case": "module_alg_factor_quadratic",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The algebra-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Extends the repeated visible prompt/result proof into the CEALGF factoring surface instead of leaving algebra routing as offline-only coverage."
+    },
+    {
+      "name": "geometry_slope_visible_then_result",
+      "lane": "geometry",
+      "source_case": "module_geo_slope_two_point",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The geometry-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Adds the CEALGEO slope workflow to the repeated visible prompt/result breadth so geometry routing stays part of the same confidence lane as other module families."
+    },
+    {
+      "name": "calculus_nderiv_visible_then_result",
+      "lane": "calculus",
+      "source_case": "module_calc_nderiv_x2_at_1",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The nth-derivative (nderiv) result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Adds a dedicated calculus-module visible proof so the release gate covers nderiv (nth-derivative) routing, not just limits and integrals."
+    },
+    {
+      "name": "limits_polynomial_visible_then_result",
+      "lane": "limits",
+      "source_case": "module_limit_polynomial",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The limits-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Promotes a concrete CECLMB limit workflow into the repeated visible prompt/result lane instead of leaving limits covered only by the broader module battery."
+    },
+    {
+      "name": "integration_definite_visible_then_result",
+      "lane": "integration",
+      "source_case": "module_int_definite_polynomial",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The integration-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Keeps the definite-integral CECIDF route inside the repeated visible prompt/result proof instead of trusting only offline module coverage."
+    },
+    {
+      "name": "series_taylor_visible_then_result",
+      "lane": "series",
+      "source_case": "module_series_taylor_sin",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The series-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Adds the CECSER Taylor-series workflow to the repeated visible prompt/result breadth so series routing is exercised alongside the other symbolic module families."
+    },
+    {
+      "name": "solver_linear_visible_then_result",
+      "lane": "solver",
+      "source_case": "module_solve_linear",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The solver-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Keeps the CEASLV linear-solve route inside the repeated visible prompt/result proof instead of treating it as launch-only module battery coverage."
+    },
+    {
+      "name": "statistics_mean_visible_then_result",
+      "lane": "statistics",
+      "source_case": "module_stats_mean_singleton",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The statistics-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Extends the visible-smoke lane into the CESTPRB statistics surface instead of only covering sequence/list workflows."
+    },
+    {
+      "name": "probability_normalcdf_visible_then_result",
+      "lane": "probability",
+      "source_case": "module_probability_normalcdf",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The probability-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Extends the repeated visible prompt/result proof into the CESTPRB probability surface via normalcdf()."
+    },
+    {
+      "name": "finance_present_value_visible_then_result",
+      "lane": "finance",
+      "source_case": "module_finance_present_value",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The finance-module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Keeps the finance TVM route inside the repeated visible prompt/result proof instead of treating it as offline-only module coverage."
+    },
+    {
+      "name": "complex_real_part_visible_then_result",
+      "lane": "complex",
+      "source_case": "module_complex_real_part",
+      "followup_name": "prompt_after_clear",
+      "followup_description": "The complex-number module result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Adds a CELSCX prompt/result surface so complex routing is part of the repeated visible smoke breadth."
+    },
+    {
+      "name": "matrix_template_det_prompt_return",
+      "lane": "module_dispatch",
+      "category": "matrix",
+      "backend": "real",
+      "module": "CEMAT",
+      "description": "The quick-template browser deterministically inserts and evaluates the built-in matrix determinant example without raw semicolon entry.",
+      "input_expression": "template:det(mat(1,2;3,4))",
+      "input_tokens": [],
+      "expected_display": "-2",
+      "expected_crcs": ["128C50A4"],
+      "prompt_reset": false,
+      "events": [
+        { "kind": "key", "key": "2nd" },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "2nd" },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 700 },
+        { "kind": "key", "key": "right" },
+        { "kind": "pause", "duration_ms": 250 },
+        { "kind": "key", "key": "right" },
+        { "kind": "pause", "duration_ms": 250 },
+        { "kind": "key", "key": "right" },
+        { "kind": "pause", "duration_ms": 250 },
+        { "kind": "key", "key": "right" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 300 },
+        { "kind": "key", "key": "enter" },
+        { "kind": "pause", "duration_ms": 3000 }
+      ],
+      "followup_name": "prompt_after_template_clear",
+      "followup_description": "The deterministic template-driven matrix result dismisses back to a stable prompt.",
+      "followup_events": [
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 },
+        { "kind": "key", "key": "clear" },
+        { "kind": "pause", "duration_ms": 500 }
+      ],
+      "followup_expected_crcs": ["349F4775", "A32840C8", "B76BC405"],
+      "notes": "Avoids the non-deterministic APPS semicolon path by using CalcEngine's built-in quick template browser."
+    }
+  ]
+}

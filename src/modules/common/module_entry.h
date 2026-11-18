@@ -1,0 +1,6 @@
+#ifndef MODULES_COMMON_MODULE_ENTRY_H
+#define MODULES_COMMON_MODULE_ENTRY_H
+
+int ce_module_entry(void);
+
+#endif /* MODULES_COMMON_MODULE_ENTRY_H */

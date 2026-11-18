@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "description": "Pass 9 Enter-path parity mock-mode suite. Extends pass7 with additional edge-path combinations: single-token expressions, combined-sign expressions, boundary arithmetic, additional clear-then-evaluate scenarios, and 10-digit integer overflow. All cases run in mock mode and exercise the harness expression evaluator and key normaliser.",
+  "cases": [
+    {
+      "name": "single digit: 0",
+      "keys": "0,enter",
+      "expect": { "result": "0", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "single digit: 1",
+      "keys": "1,enter",
+      "expect": { "result": "1", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "single digit: 9",
+      "keys": "9,enter",
+      "expect": { "result": "9", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "identity add zero: 42+0 = 42",
+      "keys": "4,2,+,0,enter",
+      "expect": { "result": "42", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "identity sub zero: 7-0 = 7",
+      "keys": "7,-,0,enter",
+      "expect": { "result": "7", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "negative result: 3-10 = -7",
+      "keys": "3,-,1,0,enter",
+      "expect": { "result": "-7", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "chained subtraction: 100-30-20-10 = 40",
+      "keys": "1,0,0,-,3,0,-,2,0,-,1,0,enter",
+      "expect": { "result": "40", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "chained multiplication: 2*3*4 = 24",
+      "keys": "2,*,3,*,4,enter",
+      "expect": { "result": "24", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "nested negative in sum: 5+neg3 = 2",
+      "keys": "5,+,neg,3,enter",
+      "expect": { "result": "2", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "nested negative in product: 4*neg2 = -8",
+      "keys": "4,*,neg,2,enter",
+      "expect": { "result": "-8", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "clear mid-entry then re-enter: clear+3+4",
+      "keys": "9,9,+,9,9,clear,3,+,4,enter",
+      "expect": { "result": "7", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "double-clear then new expr: clear,clear,6*6",
+      "keys": "5,+,5,clear,clear,6,*,6,enter",
+      "expect": { "result": "36", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "parentheses depth-3: ((2+3)*(1+1)) = 10",
+      "keys": "(,(,2,+,3,),*,(,1,+,1,),),enter",
+      "expect": { "result": "10", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "decimal chain: 0.5+0.5+0.5 = 1.5",
+      "keys": "0,.,5,+,0,.,5,+,0,.,5,enter",
+      "expect": { "result": "1.5", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "exponent chain: 2^2^2 = 16 (right-assoc: 2^(2^2) = 2^4)",
+      "keys": "2,^,2,^,2,enter",
+      "expect": { "result": "16", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "unary neg on zero: neg0 = 0",
+      "keys": "neg,0,enter",
+      "expect": { "result": "0", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "large integer: 12345*6789",
+      "keys": "1,2,3,4,5,*,6,7,8,9,enter",
+      "expect": { "result": "83810205", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "error: missing open paren",
+      "keys": "2,+,3,),enter",
+      "expect": { "result": "", "status": "error", "error": "Mismatched parenthesis: missing '(' in expression.", "ignored_keys": [] }
+    },
+    {
+      "name": "error: trailing operator",
+      "keys": "5,*,enter",
+      "expect": { "result": "", "status": "error", "error": "Expression is incomplete: operator '*' is missing operands.", "ignored_keys": [] }
+    }
+  ]
+}

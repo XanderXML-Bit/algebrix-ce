@@ -1,0 +1,518 @@
+{
+  "rom": "__ROM_PATH_SET_BY_SCRIPT__",
+  "transfer_files": [
+    "__PROGRAM_PATH_SET_BY_SCRIPT__"
+  ],
+  "target": {
+    "name": "CALCENG",
+    "isASM": true
+  },
+  "delay_after_key": 225,
+  "delay_after_step": 600,
+  "sequence": [
+    "action|launch",
+    "delay|4000",
+    "key|enter",
+    "delay|400",
+    "hash|lf00_startup_prompt_clean",
+    "key|2",
+    "key|+",
+    "key|3",
+    "key|*",
+    "key|4",
+    "delay|300",
+    "hash|lf01_expression_mid_typing",
+    "key|clear",
+    "delay|400",
+    "key|1",
+    "key|2",
+    "key|3",
+    "key|4",
+    "key|5",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|300",
+    "hash|lf02_cursor_left_in_expression",
+    "key|right",
+    "delay|300",
+    "hash|lf03_cursor_right_in_expression",
+    "key|clear",
+    "delay|400",
+    "key|2",
+    "key|+",
+    "key|3",
+    "key|*",
+    "key|4",
+    "delay|200",
+    "key|enter",
+    "delay|2000",
+    "hash|lf04_result_multiline_14",
+    "key|clear",
+    "delay|400",
+    "hash|lf05_prompt_after_result_clear",
+    "key|clear",
+    "delay|400",
+    "hash|lf06_clean_prompt_after_result",
+    "key|9",
+    "key|9",
+    "key|9",
+    "key|9",
+    "key|9",
+    "key|9",
+    "key|*",
+    "key|9",
+    "key|9",
+    "key|9",
+    "key|9",
+    "key|9",
+    "key|9",
+    "delay|300",
+    "hash|lf07_large_expression_input",
+    "key|enter",
+    "delay|2000",
+    "hash|lf08_large_result_right_aligned",
+    "key|clear",
+    "delay|400",
+    "hash|lf09_prompt_after_large_result",
+    "key|clear",
+    "delay|400",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "key|+",
+    "key|1",
+    "delay|300",
+    "hash|lf10_long_expression_wrap",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|300",
+    "hash|lf10_long_cursor_left",
+    "key|right",
+    "delay|200",
+    "key|right",
+    "delay|200",
+    "key|right",
+    "delay|300",
+    "hash|lf10_long_cursor_right",
+    "key|clear",
+    "delay|400",
+    "key|math",
+    "delay|1200",
+    "hash|lf11_math_menu_open",
+    "key|down",
+    "delay|400",
+    "hash|lf12_math_menu_browse",
+    "key|clear",
+    "delay|400",
+    "hash|lf13_prompt_after_math_menu",
+    "key|1",
+    "key|/",
+    "key|0",
+    "delay|200",
+    "key|enter",
+    "delay|2000",
+    "hash|lf14_error_dialog_divide_by_zero",
+    "key|clear",
+    "delay|400",
+    "hash|lf15_post_error_prompt",
+    "key|mode",
+    "delay|1200",
+    "hash|lf16_mode_screen_open",
+    "key|clear",
+    "delay|400",
+    "hash|lf17_prompt_after_mode_screen",
+    "key|2nd",
+    "key|0",
+    "delay|1200",
+    "hash|lf18_catalog_menu_open",
+    "key|down",
+    "delay|400",
+    "hash|lf19_catalog_menu_browse",
+    "key|clear",
+    "delay|400",
+    "hash|lf20_prompt_after_catalog_menu",
+    "key|clear",
+    "delay|400",
+    "key|2nd",
+    "key|^2",
+    "key|9",
+    "key|)",
+    "key|+",
+    "key|1",
+    "key|/",
+    "key|2",
+    "delay|300",
+    "hash|lf21_mathprint_expression_input",
+    "key|enter",
+    "delay|2000",
+    "hash|lf22_mathprint_result_layout",
+    "key|clear",
+    "delay|400",
+    "hash|lf23_prompt_after_mathprint_result",
+    "key|clear",
+    "delay|400",
+    "key|yequ",
+    "delay|400",
+    "hash|lf24_graph_entry_screen",
+    "key|alpha",
+    "key|sto",
+    "key|^2",
+    "delay|300",
+    "hash|lf25_graph_equation_x_squared",
+    "key|graph",
+    "delay|3000",
+    "hash|lf26_graph_screen_pixels",
+    "key|window",
+    "delay|400",
+    "hash|lf27_window_editor_screen",
+    "key|clear",
+    "delay|400",
+    "key|zoom",
+    "delay|400",
+    "hash|lf28_zoom_menu_screen",
+    "key|clear",
+    "delay|400",
+    "key|trace",
+    "delay|400",
+    "hash|lf29_trace_screen",
+    "key|yequ",
+    "delay|400",
+    "hash|lf30_prompt_after_graph_exit"
+  ],
+  "hashes": {
+    "lf00_startup_prompt_clean": {
+      "description": "LF00: clean startup prompt after launch and ENTER",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf01_expression_mid_typing": {
+      "description": "LF01: 2+3*4 is visible during typing before submission",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf02_cursor_left_in_expression": {
+      "description": "LF02: cursor moves left into the middle of 12345 after two LEFT presses",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf03_cursor_right_in_expression": {
+      "description": "LF03: cursor moves right back across 12345 after the prior left movement",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf04_result_multiline_14": {
+      "description": "LF04: 2+3*4 renders the expression on line 1 and the result on line 2",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 8000
+    },
+    "lf05_prompt_after_result_clear": {
+      "description": "LF05: first CLEAR after a result returns to the prompt family",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf06_clean_prompt_after_result": {
+      "description": "LF06: second CLEAR after a result returns to a clean prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf07_large_expression_input": {
+      "description": "LF07: large multiplication input is visible before submission",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf08_large_result_right_aligned": {
+      "description": "LF08: large multiplication result exercises result positioning and right-alignment",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 8000
+    },
+    "lf09_prompt_after_large_result": {
+      "description": "LF09: CLEAR returns from the large-result screen to the prompt family",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf10_long_expression_wrap": {
+      "description": "LF10: a long expression wraps across the homescreen input area without corrupting layout",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf10_long_cursor_left": {
+      "description": "LF10: repeated LEFT presses move the cursor into the wrapped long expression",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf10_long_cursor_right": {
+      "description": "LF10: repeated RIGHT presses move the cursor back across the wrapped long expression",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf11_math_menu_open": {
+      "description": "LF11: MATH menu rendering is visible from the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf12_math_menu_browse": {
+      "description": "LF12: MATH menu browse state remains visually stable after DOWN",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf13_prompt_after_math_menu": {
+      "description": "LF13: CLEAR exits the MATH menu back to the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf14_error_dialog_divide_by_zero": {
+      "description": "LF14: divide-by-zero renders the expected error dialog layout",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 8000
+    },
+    "lf15_post_error_prompt": {
+      "description": "LF15: CLEAR from the error dialog returns to a prompt-ready state",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf16_mode_screen_open": {
+      "description": "LF16: MODE renders the settings screen with the expected menu chrome",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf17_prompt_after_mode_screen": {
+      "description": "LF17: CLEAR from MODE returns to the prompt family",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf18_catalog_menu_open": {
+      "description": "LF18: the physical CATALOG combo (2nd then 0) renders the function catalog/menu",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf19_catalog_menu_browse": {
+      "description": "LF19: the catalog/menu browse state remains visually stable after DOWN",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf20_prompt_after_catalog_menu": {
+      "description": "LF20: CLEAR exits the catalog/menu opened by 2nd+0 back to the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf21_mathprint_expression_input": {
+      "description": "LF21: sqrt(9)+1/2 is visible as a MathPrint-heavy input expression before ENTER",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf22_mathprint_result_layout": {
+      "description": "LF22: the MathPrint-heavy expression result preserves multi-line 2D layout after ENTER",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 8000
+    },
+    "lf23_prompt_after_mathprint_result": {
+      "description": "LF23: CLEAR returns from the MathPrint result screen to the prompt family",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf24_graph_entry_screen": {
+      "description": "LF24: Y= renders the graph-equation entry state on the homescreen side",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf25_graph_equation_x_squared": {
+      "description": "LF25: x^2 is visibly present as the current graph equation before drawing",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf26_graph_screen_pixels": {
+      "description": "LF26: GRAPH renders the plotted graph screen with graph-region pixel fidelity",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 8000
+    },
+    "lf27_window_editor_screen": {
+      "description": "LF27: WINDOW renders the graph viewport editor with correct screen boundaries",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf28_zoom_menu_screen": {
+      "description": "LF28: ZOOM renders the zoom-preset menu with stable menu layout",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf29_trace_screen": {
+      "description": "LF29: TRACE toggles the graph trace presentation without corrupting the graph screen",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "lf30_prompt_after_graph_exit": {
+      "description": "LF30: Y= returns from the graph view to equation-entry editing after graph interactions",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    }
+  }
+}

@@ -1,0 +1,59 @@
+NAME = CECISM
+DESCRIPTION = "CalcEngine Integral Base Worker"
+BINDIR = bin/calc_int_simple
+
+# The finished antiderivative is folded by src/fold_lite.c
+# (CE_INTEG_USE_FOLD_LITE=1): without a simplifier the CE showed raw rule
+# output such as ((X^(2+1))/(2+1)), and simplify.c (about 11 KB) does not fit
+# under the 51,200 B module ceiling here.  tests/cemu/test_module_flag_parity.py
+# runs this module's code on the desktop with these exact flags.
+# FOLD_LITE_SIGN_RULES=0 drops the cosmetic a+(-b) -> a-b rewrites (about
+# 170 B): with on-target steps this module is within a few hundred bytes of
+# the ceiling.
+# Retain canonical result text: the display printer exceeds this worker's
+# 51,200 B ceiling. Internal steps and computation are unchanged.
+PROGRAM_CFLAGS = -DHW_BUILD_SPLIT \
+    -DCE_AST_DISPLAY_PRINT=0 \
+    -DCE_EVAL_RECORD_STEPS=0 -DCE_EVAL_ENABLE_NUMERIC_INT=0 \
+    -DCE_AST_ENABLE_STAT_NAMES=0 \
+    -DCE_PROC_ALG=0 -DCE_PROC_ALG_BASIC=0 -DCE_PROC_ALG_EXPFAC=0 -DCE_PROC_ALG_SOLVE=0 -DCE_PROC_ALG_POLYDIV=0 \
+    -DCE_PROC_ALG_ADV=0 -DCE_PROC_ALG_ADV_SYM=0 -DCE_PROC_ALG_ADV_GEO=0 \
+    -DCE_PROC_CALC=0 -DCE_PROC_CALC_BASE=0 -DCE_PROC_CALC_DERIV=0 -DCE_PROC_CALC_TANGENT=0 -DCE_PROC_CALC_LIMIT=0 \
+    -DCE_PROC_CALC_INT=1 -DCE_PROC_CALC_INT_SYMBOLIC=1 -DCE_PROC_CALC_INT_DEFINITE=0 -DCE_PROC_CALC_INT_POLAR=0 \
+    -DCE_PROC_CALC_SERIES=0 -DCE_PROC_CALC_SERIES_TF=0 -DCE_PROC_CALC_SERIES_SEQ=0 \
+    -DCE_PROC_STAT=0 -DCE_PROC_FIN=0 -DCE_PROC_MATRIX=0 -DCE_PROC_CMPLX=0 -DCE_PROC_GRAPH=0 \
+    -DCE_PROC_GENERIC=0 -DCE_PROC_USE_CLASSIFY=0 -DCE_PROC_PARSE_INPUT=0 \
+    -DCE_PROC_CALC_INT_ROUTE_ADV=1 \
+    -DCE_INTEG_USE_SIMPLIFY=0 -DCE_INTEG_USE_FOLD_LITE=1 -DFOLD_LITE_SIGN_RULES=0 \
+    -DCE_INTEG_ENABLE_STRATEGY_API=0 \
+    -DCE_INTEG_ENABLE_STRATEGY_REPORT=0 \
+    -DCE_INTEG_ENABLE_ODE=0 \
+    -DCE_INTEG_ENABLE_DEFINITE=0 \
+    -DCE_INTEG_ENABLE_NONLINEAR_USUB=0 \
+    -DCE_INTEG_ENABLE_TRIG_SUB=0 \
+    -DCE_INTEG_ENABLE_PARTIAL_FRAC=0 \
+    -DCE_INTEG_ENABLE_CYCLIC_PARTS=0 \
+    -DCE_INTEG_ENABLE_PARTS=0 \
+    -DCE_DERIV_USE_SIMPLIFY=0 -DCE_DERIV_USE_EVAL=0 \
+    -DCE_EVAL_ENABLE_NODE_STAT=0 \
+    -DCE_EVAL_ENABLE_NODE_LIST=0 \
+    -DCE_EVAL_ENABLE_ADV_POLAR=0 \
+    -DCE_EVAL_ENABLE_POLYDIV=0
+
+PROGRAM_SOURCES = \
+    src/modules/calc_int/simple_main.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/split/processor.c \
+    src/memory.c \
+    src/ast.c \
+    src/steps.c \
+    src/eval.c \
+    src/integrate.c \
+    src/deriv.c \
+    src/fold_lite.c
+
+PROGRAM_RUNTIME_SOURCES = src/split/module_forward.c
+
+include split/program.mk

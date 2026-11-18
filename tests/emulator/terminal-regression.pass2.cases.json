@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "description": "Canonical terminal regression cases for emulator lane pass 2.",
+  "cases": [
+    {
+      "name": "basic addition",
+      "keys": "2,+,3,enter",
+      "expect": {
+        "result": "5",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": []
+      }
+    },
+    {
+      "name": "clear then multiply",
+      "keys": "2,+,3,clear,6,*,7,enter",
+      "expect": {
+        "result": "42",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": []
+      }
+    },
+    {
+      "name": "divide by zero error",
+      "keys": "1,/,0,enter",
+      "expect": {
+        "result": "",
+        "status": "error",
+        "error": "Division by zero in expression.",
+        "ignored_keys": []
+      }
+    },
+    {
+      "name": "ignored mode key",
+      "keys": "2,mode,+,3,enter",
+      "expect": {
+        "result": "5",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [
+          "KEY_MODE"
+        ]
+      }
+    },
+    {
+      "name": "pending without enter",
+      "keys": "9,*,9",
+      "expect": {
+        "result": "",
+        "status": "pending",
+        "error": "",
+        "ignored_keys": []
+      }
+    }
+  ]
+}

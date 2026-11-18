@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "suite": "cemu_module_battery",
+  "cases": [
+    {
+      "name": "module_base_hex_255",
+      "suite": "module_battery",
+      "category": "base",
+      "backend": "real",
+      "module": "CEBASE",
+      "description": "The base-conversion module converts 255 to hex.",
+      "expected_display": "= 0xFF",
+      "expected_crcs": [
+        "55204AED"
+      ],
+      "input_expression": "hex(255)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEBASE; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_alg_factor_quadratic",
+      "suite": "module_battery",
+      "category": "algebra",
+      "backend": "real",
+      "module": "CEALGF",
+      "description": "Quadratic factoring routes through the factor module.",
+      "expected_display": "= (X-3)*(X-2)",
+      "expected_crcs": [
+        "4E461E4F"
+      ],
+      "input_expression": "factor(x^2-5*x+6)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEALGF; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_alg_expand_binomial",
+      "suite": "module_battery",
+      "category": "algebra",
+      "backend": "real",
+      "module": "CEALGF",
+      "description": "Binomial expansion routes through the algebra factor/expand lane.",
+      "expected_display": "= X^2+2X+1",
+      "expected_crcs": [
+        "131EBF9F"
+      ],
+      "input_expression": "expand((x+1)^2)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEALGF; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_alg_complete_square",
+      "suite": "module_battery",
+      "category": "algebra_system",
+      "backend": "real",
+      "module": "CEALGSY",
+      "description": "Complete-the-square routing remains on the current baseline.",
+      "expected_display": "(X + 3)^2 + -7",
+      "expected_crcs": [
+        "A3762C6A"
+      ],
+      "input_expression": "csquare(x^2+6*x+2,x)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEALGSY; pixels inspected (CALCENG result screen). Mathematically correct; '+ -7' is cosmetic."
+    },
+    {
+      "name": "module_geo_slope_two_point",
+      "suite": "module_battery",
+      "category": "geometry",
+      "backend": "real",
+      "module": "CEALGEO",
+      "description": "The geometry slope helper remains dispatchable.",
+      "expected_display": "Slope = 2",
+      "expected_crcs": [
+        "69C93935"
+      ],
+      "input_expression": "slope(1,2,3,6)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEALGEO; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_alg_polydiv_cubic",
+      "suite": "module_battery",
+      "category": "polynomial_division",
+      "backend": "real",
+      "module": "CEAPDV",
+      "description": "Polynomial long division remains routable through the dedicated module.",
+      "expected_display": "Q = X^2+X+1 (R = 0 on line 2)",
+      "expected_crcs": [
+        "F6ADF178"
+      ],
+      "input_expression": "polydiv(x^3-1,x-1,x)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEAPDV; pixels inspected (home row shows Q = X^2+X+1 / \"UP=full result (2 ln)\"; the UP viewer shows Q = X^2+X+1, R = 0). Fixed and recaptured in an internal review."
+    },
+    {
+      "name": "module_solve_linear",
+      "suite": "module_battery",
+      "category": "solver",
+      "backend": "real",
+      "module": "CEASLV",
+      "description": "The standard solve module still handles a linear solve request.",
+      "expected_display": "X = -2",
+      "expected_crcs": [
+        "E1912BB6"
+      ],
+      "input_expression": "solve(x+2,x)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEASLV; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_solve_cubic_advanced",
+      "suite": "module_battery",
+      "category": "solver",
+      "backend": "real",
+      "module": "CEASLA",
+      "description": "The advanced solve route finds all three roots of a cubic.",
+      "expected_display": "X = 1 or X = 3 or X = 2",
+      "expected_crcs": [
+        "95BA2359"
+      ],
+      "input_expression": "solve(x^3-6*x^2+11*x-6,x)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEASLA; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_calc_nderiv_x2_at_1",
+      "suite": "module_battery",
+      "category": "calculus",
+      "backend": "real",
+      "module": "CECALC",
+      "description": "nderiv(f,x,n) is the nth derivative (docs/USER-MANUAL.md), so n=1 gives d/dX = 2X.",
+      "expected_display": "d/dX = 2X",
+      "expected_crcs": [
+        "700DC6BD"
+      ],
+      "input_expression": "nderiv(x^2,x,1)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CECALC; pixels inspected (CALCENG result screen). nderiv is the nth derivative in Algebrix, not TI numeric differentiation."
+    },
+    {
+      "name": "module_limit_polynomial",
+      "suite": "module_battery",
+      "category": "limits",
+      "backend": "real",
+      "module": "CECLMB",
+      "description": "The basic limit module still accepts a polynomial limit request.",
+      "expected_display": "= 4",
+      "expected_crcs": [
+        "70E566DB"
+      ],
+      "input_expression": "lim(x^2,x,2)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CECLMB; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_limit_advanced_cosine",
+      "suite": "module_battery",
+      "category": "limits",
+      "backend": "real",
+      "module": "CECLIA",
+      "description": "The advanced limit module still routes a trigonometric limit expression.",
+      "expected_display": "= 0.5",
+      "expected_crcs": [
+        "4F9FFC64"
+      ],
+      "input_expression": "lim((1-cos(x))/x^2,x,0)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CECLIA; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_limit_continuity_discontinuity",
+      "suite": "module_battery",
+      "category": "limits",
+      "backend": "real",
+      "module": "CECLIC",
+      "description": "Continuity analysis remains routable through the continuity module.",
+      "expected_display": "Infinite discontinuity",
+      "expected_crcs": [
+        "226249C6"
+      ],
+      "input_expression": "continuity(1/x,x,0)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CECLIC; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_limit_related_rates",
+      "suite": "module_battery",
+      "category": "limits",
+      "backend": "real",
+      "module": "CECLIR",
+      "description": "Related-rates routing remains on the locked baseline.",
+      "expected_display": "2*X*dX/dt+2*Y*dY/dt",
+      "expected_crcs": [],
+      "input_expression": "relrate(x^2+y^2)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Known failure on the real-ROM lane (internal review); no CRC is baselined until the screen is correct.",
+      "known_failure": {
+        "card": "an internal review",
+        "observed_display": "No variables found",
+        "reason": "x and y are present",
+        "observed_crc": "7379CFC0"
+      }
+    },
+    {
+      "name": "module_int_indefinite_polynomial",
+      "suite": "module_battery",
+      "category": "integrals",
+      "backend": "real",
+      "module": "CECISM",
+      "description": "The simple integral module returns a complete indefinite integral.",
+      "expected_display": "int = ((X^3)/3) + C",
+      "expected_crcs": [
+        "74A7371E"
+      ],
+      "input_expression": "int(x^2,x)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CECISM; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_int_definite_polynomial",
+      "suite": "module_battery",
+      "category": "integrals",
+      "backend": "real",
+      "module": "CECIDF",
+      "description": "CECIDF evaluates the definite integral exactly.",
+      "expected_display": "= 9",
+      "expected_crcs": [
+        "6CFBCA86"
+      ],
+      "input_expression": "int(x^2,x,0,3)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CECIDF; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_int_by_parts",
+      "suite": "module_battery",
+      "category": "integrals",
+      "backend": "real",
+      "module": "CEIPRT",
+      "description": "Integration by parts returns the complete antiderivative.",
+      "expected_display": "int = X*exp(X)-exp(X) + C",
+      "expected_crcs": [
+        "38F7C870"
+      ],
+      "input_expression": "intparts(x*exp(x),x)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEIPRT; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_int_usub",
+      "suite": "module_battery",
+      "category": "integrals",
+      "backend": "real",
+      "module": "CEIUSB",
+      "description": "The u-substitution helper solves the textbook u = x^2 case.",
+      "expected_display": "int = sin(X^2) + C",
+      "expected_crcs": [
+        "87972971"
+      ],
+      "input_expression": "usub(2*x*cos(x^2),x,x^2)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEIUSB; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_int_strategy_report",
+      "suite": "module_battery",
+      "category": "integrals",
+      "backend": "real",
+      "module": "CEISTR",
+      "description": "The integral strategy/report module remains routable.",
+      "expected_display": "Best: integration by parts",
+      "expected_crcs": [
+        "C28B380F"
+      ],
+      "input_expression": "intstrategy(x*sin(x),x)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEISTR; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_series_taylor_sin",
+      "suite": "module_battery",
+      "category": "series",
+      "backend": "real",
+      "module": "CECSER",
+      "description": "Taylor-series routing remains on the locked baseline.",
+      "expected_display": "X-X^3/6+X^5/120 (complete visible result)",
+      "expected_crcs": [],
+      "input_expression": "taylor(sin(x),x,0,5)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Known failure on the real-ROM lane (internal review); no CRC is baselined until the screen is correct.",
+      "known_failure": {
+        "card": "an internal review",
+        "observed_display": "T_5 = X+(-0.166667X^3)+0.00833334X^5",
+        "reason": "x^5 coefficient shows 0.00833334; 1/120 = 0.00833333 to 6 significant digits",
+        "observed_crc": "CBC1C708"
+      }
+    },
+    {
+      "name": "module_sequence_sum_n_1_10",
+      "suite": "module_battery",
+      "category": "sequence",
+      "backend": "real",
+      "module": "CECSEQ",
+      "description": "A finite sum is evaluated, not treated as a series.",
+      "expected_display": "= 55",
+      "expected_crcs": [
+        "AA5886E4"
+      ],
+      "input_expression": "sum(n,n,1,10)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CECSEQ; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_stats_mean_singleton",
+      "suite": "module_battery",
+      "category": "statistics",
+      "backend": "real",
+      "module": "CESTPRB",
+      "description": "The statistics/probability module still handles mean on a singleton input.",
+      "expected_display": "mean = 5",
+      "expected_crcs": [
+        "64349E0B"
+      ],
+      "input_expression": "mean(5)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CESTPRB; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_stats_stdev_singleton",
+      "suite": "module_battery",
+      "category": "statistics",
+      "backend": "real",
+      "module": "CESTPRB",
+      "description": "Standard deviation on a singleton input remains stable.",
+      "expected_display": "Stat: Sample stdev needs 2+ values",
+      "expected_crcs": [
+        "2EF1943A"
+      ],
+      "input_expression": "stdev(5)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CESTPRB; pixels inspected. Sample SD of one value is undefined, so it is refused (was \"stdev = 0\"). Fixed and recaptured in an internal review."
+    },
+    {
+      "name": "module_probability_normalcdf",
+      "suite": "module_battery",
+      "category": "probability",
+      "backend": "real",
+      "module": "CESTPRB",
+      "description": "Probability routing remains stable through normalcdf.",
+      "expected_display": "normalcdf = 0.682689",
+      "expected_crcs": [
+        "77CE0310"
+      ],
+      "input_expression": "normalcdf(-1,1,0,1)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CESTPRB; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_finance_present_value",
+      "suite": "module_battery",
+      "category": "finance",
+      "backend": "real",
+      "module": "CEFIN",
+      "description": "The finance module remains dispatchable via present-value computation.",
+      "expected_display": "pv = 1161.89",
+      "expected_crcs": [
+        "F2116888"
+      ],
+      "input_expression": "pv(12,0.005,-100,0)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEFIN; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_matrix_determinant",
+      "suite": "module_battery",
+      "category": "matrix",
+      "backend": "real",
+      "module": "CEMAT",
+      "description": "Determinant routing remains stable for a 2x2 matrix literal.",
+      "expected_display": "det = -2",
+      "expected_crcs": [
+        "D81D78CC"
+      ],
+      "input_expression": "det(mat(1,2;3,4))",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEMAT; pixels inspected. Typed with APPS as the \";\" row separator (launcher key added in an internal review)."
+    },
+    {
+      "name": "module_matrix_inverse_identity",
+      "suite": "module_battery",
+      "category": "matrix",
+      "backend": "real",
+      "module": "CEMAT",
+      "description": "Matrix inversion remains routable for the identity matrix.",
+      "expected_display": "[1 0] (row 2 [0 1] in the UP viewer)",
+      "expected_crcs": [
+        "E4591F40"
+      ],
+      "input_expression": "inv(mat(1,0;0,1))",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CEMAT; pixels inspected (home row [1 0] / \"UP=full result (2 ln)\"; UP viewer shows [1 0] and [0 1]). Typed with APPS as \";\" (internal review)."
+    },
+    {
+      "name": "module_complex_real_part",
+      "suite": "module_battery",
+      "category": "complex",
+      "backend": "real",
+      "module": "CELSCX",
+      "description": "The complex-number module still handles real-part extraction.",
+      "expected_display": "= 3",
+      "expected_crcs": [
+        "F07680C0"
+      ],
+      "input_expression": "real(3)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CELSCX; pixels inspected (CALCENG result screen)."
+    },
+    {
+      "name": "module_complex_imag_part",
+      "suite": "module_battery",
+      "category": "complex",
+      "backend": "real",
+      "module": "CELSCX",
+      "description": "Imaginary-part extraction remains stable through the complex module.",
+      "expected_display": "= 0",
+      "expected_crcs": [
+        "4689A990"
+      ],
+      "input_expression": "imag(3)",
+      "timeout_ms": 30000,
+      "result_delay_ms": 7000,
+      "notes": "Real-ROM baseline for CELSCX; pixels inspected (CALCENG result screen)."
+    }
+  ],
+  "capture": {
+    "lane": "tools/emulator/linux-realrom (realrom.py deploy + battery)",
+    "launch": "arTIfiCE 2.1 -> CALCENG, launcher alpha key map",
+    "emulator": "upstream CEmu cemu-headless 430510c + cemu-headless-debug.patch",
+    "rom": "owned TI-84 Plus CE OS 5.8.0.0022 (never committed)",
+    "source_commit": "c9e0279c5f19cdb9cb2e2a05e804a37386e69c3f",
+    "crc": "CRC-32C of vram_start/vram_16_size, identical to the CEmu autotester hash step",
+    "captured": "2026-11-13",
+    "pixel_inspected": true,
+    "hardware_verified": false,
+    "note": "Earlier CRCs (B9B5D5E0 'Module baseline' etc.) came from the autotester-wrapper lane, which on OS 5.5+ never launches CALCENG and hashed the TI-OS home screen (internal review). They were retired. Cases with known_failure keep expected_crcs empty: a wrong screen is never baselined.",
+    "recaptured": {
+      "cases": [
+        "module_alg_polydiv_cubic",
+        "module_stats_stdev_singleton",
+        "module_matrix_determinant",
+        "module_matrix_inverse_identity"
+      ],
+      "source": "main c289c29 + an internal review fix (polydiv in CEAPDV, sample stdev/variance n<2 refusal, launcher APPS -> \";\")",
+      "captured": "2026-11-13",
+      "note": "All 22 earlier baselines reproduced byte-identical on the same build."
+    }
+  }
+}

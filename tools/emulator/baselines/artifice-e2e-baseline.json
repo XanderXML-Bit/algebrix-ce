@@ -1,0 +1,37 @@
+{
+    "capturedAt":  "2026-03-22T17:20:16.6407430-07:00",
+    "cemu_version":  "unknown",
+    "rom_hash":  "AE5D87F96A01CB124B41ADF5D4F5D88CC3E6FF22149A97EC79024B736D1C5014",
+    "screens":  [
+                    {
+                        "step":  "artifice_shell_loaded",
+                        "description":  "arTIfiCE v2 shell screen immediately after launching prgmA",
+                        "hash":  "EAC3FDAC"
+                    },
+                    {
+                        "step":  "artifice_quit_transition",
+                        "description":  "Screen state after the verified CLEAR -\u003e MODE shell-exit choreography, before reopening PRGM",
+                        "hash":  "28B88B56"
+                    },
+                    {
+                        "step":  "ti_os_program_menu_open",
+                        "description":  "TI-OS program menu after the verified CLEAR -\u003e MODE -\u003e PRGM arTIfiCE exit sequence",
+                        "hash":  "C84EC5D0"
+                    },
+                    {
+                        "step":  "calcengine_launch_menu",
+                        "description":  "CalcEngine landing screen after exiting arTIfiCE and launching CALCENG",
+                        "hash":  "28B88B56"
+                    },
+                    {
+                        "step":  "calcengine_result_2plus3",
+                        "description":  "CalcEngine result screen after evaluating 2+3",
+                        "hash":  "ED152D3E"
+                    },
+                    {
+                        "step":  "calcengine_menu_open",
+                        "description":  "CalcEngine menu opened from the post-result state",
+                        "hash":  "D12593CE"
+                    }
+                ]
+}

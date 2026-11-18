@@ -1,0 +1,358 @@
+{
+    "rom":  "C:\\Users\\user\\src\\algebrix-ce\\rom\\Rom.rom",
+    "transfer_files":  [
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CALCENG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGEO.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGF.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGSY.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEAPDV.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEASLA.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEASLV.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEBASE.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECALC.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECIAD.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECIDF.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECINT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECISM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIA.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIC.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLMB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECODE.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECPNM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECPOL.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECSEQ.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECSER.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEFIN.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEGRPH.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIPFR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIPRT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEISTR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEITRG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIUSB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CELIMS.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CELSCX.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEMAT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CESTPRB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\fileioc.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\graphx.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\keypadc.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\libload.8xv"
+                       ],
+    "target":  {
+                   "name":  "CALCENG",
+                   "isASM":  true
+               },
+    "delay_after_key":  225,
+    "delay_after_step":  600,
+    "sequence":  [
+                     "action|launch",
+                     "delay|4000",
+                     "key|enter",
+                     "delay|400",
+                     "hash|lf00_startup_prompt_clean",
+                     "key|2",
+                     "key|+",
+                     "key|3",
+                     "key|*",
+                     "key|4",
+                     "delay|300",
+                     "hash|lf01_expression_mid_typing",
+                     "key|clear",
+                     "delay|400",
+                     "key|1",
+                     "key|2",
+                     "key|3",
+                     "key|4",
+                     "key|5",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|300",
+                     "hash|lf02_cursor_left_in_expression",
+                     "key|right",
+                     "delay|300",
+                     "hash|lf03_cursor_right_in_expression",
+                     "key|clear",
+                     "delay|400",
+                     "key|2",
+                     "key|+",
+                     "key|3",
+                     "key|*",
+                     "key|4",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|lf04_result_multiline_14",
+                     "key|clear",
+                     "delay|400",
+                     "hash|lf05_prompt_after_result_clear",
+                     "key|clear",
+                     "delay|400",
+                     "hash|lf06_clean_prompt_after_result",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|*",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "delay|300",
+                     "hash|lf07_large_expression_input",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|lf08_large_result_right_aligned",
+                     "key|clear",
+                     "delay|400",
+                     "hash|lf09_prompt_after_large_result",
+                     "key|clear",
+                     "delay|400",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "delay|300",
+                     "hash|lf10_long_expression_wrap",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|300",
+                     "hash|lf10_long_cursor_left",
+                     "key|right",
+                     "delay|200",
+                     "key|right",
+                     "delay|200",
+                     "key|right",
+                     "delay|300",
+                     "hash|lf10_long_cursor_right",
+                     "key|clear",
+                     "delay|400",
+                     "key|math",
+                     "delay|1200",
+                     "hash|lf11_math_menu_open",
+                     "key|down",
+                     "delay|400",
+                     "hash|lf12_math_menu_browse",
+                     "key|clear",
+                     "delay|400",
+                     "hash|lf13_prompt_after_math_menu",
+                     "key|1",
+                     "key|/",
+                     "key|0",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|lf14_error_dialog_divide_by_zero",
+                     "key|clear",
+                     "delay|400",
+                     "hash|lf15_post_error_prompt"
+                 ],
+    "hashes":  {
+                   "lf00_startup_prompt_clean":  {
+                                                     "description":  "LF00: clean startup prompt after launch and ENTER",
+                                                     "start":  "vram_start",
+                                                     "size":  "vram_16_size",
+                                                     "expected_CRCs":  [
+                                                                           "B76BC405"
+                                                                       ],
+                                                     "timeout":  5000
+                                                 },
+                   "lf01_expression_mid_typing":  {
+                                                      "description":  "LF01: 2+3*4 is visible during typing before submission",
+                                                      "start":  "vram_start",
+                                                      "size":  "vram_16_size",
+                                                      "expected_CRCs":  [
+                                                                            "ED086E35"
+                                                                        ],
+                                                      "timeout":  5000
+                                                  },
+                   "lf02_cursor_left_in_expression":  {
+                                                          "description":  "LF02: cursor moves left into the middle of 12345 after two LEFT presses",
+                                                          "start":  "vram_start",
+                                                          "size":  "vram_16_size",
+                                                          "expected_CRCs":  [
+                                                                                "0F5653E2"
+                                                                            ],
+                                                          "timeout":  5000
+                                                      },
+                   "lf03_cursor_right_in_expression":  {
+                                                           "description":  "LF03: cursor moves right back across 12345 after the prior left movement",
+                                                           "start":  "vram_start",
+                                                           "size":  "vram_16_size",
+                                                           "expected_CRCs":  [
+                                                                                 "0F5653E2"
+                                                                             ],
+                                                           "timeout":  5000
+                                                       },
+                   "lf04_result_multiline_14":  {
+                                                    "description":  "LF04: 2+3*4 renders the expression on line 1 and the result on line 2",
+                                                    "start":  "vram_start",
+                                                    "size":  "vram_16_size",
+                                                    "expected_CRCs":  [
+                                                                          "6D2A3D67"
+                                                                      ],
+                                                    "timeout":  8000
+                                                },
+                   "lf05_prompt_after_result_clear":  {
+                                                          "description":  "LF05: first CLEAR after a result returns to the prompt family",
+                                                          "start":  "vram_start",
+                                                          "size":  "vram_16_size",
+                                                          "expected_CRCs":  [
+                                                                                "A32840C8"
+                                                                            ],
+                                                          "timeout":  5000
+                                                      },
+                   "lf06_clean_prompt_after_result":  {
+                                                          "description":  "LF06: second CLEAR after a result returns to a clean prompt",
+                                                          "start":  "vram_start",
+                                                          "size":  "vram_16_size",
+                                                          "expected_CRCs":  [
+                                                                                "A32840C8"
+                                                                            ],
+                                                          "timeout":  5000
+                                                      },
+                   "lf07_large_expression_input":  {
+                                                       "description":  "LF07: large multiplication input is visible before submission",
+                                                       "start":  "vram_start",
+                                                       "size":  "vram_16_size",
+                                                       "expected_CRCs":  [
+                                                                             "17D3F931"
+                                                                         ],
+                                                       "timeout":  5000
+                                                   },
+                   "lf08_large_result_right_aligned":  {
+                                                           "description":  "LF08: large multiplication result exercises result positioning and right-alignment",
+                                                           "start":  "vram_start",
+                                                           "size":  "vram_16_size",
+                                                           "expected_CRCs":  [
+                                                                                 "AAB42ABA"
+                                                                             ],
+                                                           "timeout":  8000
+                                                       },
+                   "lf09_prompt_after_large_result":  {
+                                                          "description":  "LF09: CLEAR returns from the large-result screen to the prompt family",
+                                                          "start":  "vram_start",
+                                                          "size":  "vram_16_size",
+                                                          "expected_CRCs":  [
+                                                                                "A32840C8"
+                                                                            ],
+                                                          "timeout":  5000
+                                                      },
+                   "lf10_long_expression_wrap":  {
+                                                     "description":  "LF10: a long expression wraps across the homescreen input area without corrupting layout",
+                                                     "start":  "vram_start",
+                                                     "size":  "vram_16_size",
+                                                     "expected_CRCs":  [
+                                                                           "B30E2D84"
+                                                                       ],
+                                                     "timeout":  5000
+                                                 },
+                   "lf10_long_cursor_left":  {
+                                                 "description":  "LF10: repeated LEFT presses move the cursor into the wrapped long expression",
+                                                 "start":  "vram_start",
+                                                 "size":  "vram_16_size",
+                                                 "expected_CRCs":  [
+                                                                       "B30E2D84"
+                                                                   ],
+                                                 "timeout":  5000
+                                             },
+                   "lf10_long_cursor_right":  {
+                                                  "description":  "LF10: repeated RIGHT presses move the cursor back across the wrapped long expression",
+                                                  "start":  "vram_start",
+                                                  "size":  "vram_16_size",
+                                                  "expected_CRCs":  [
+                                                                        "B30E2D84"
+                                                                    ],
+                                                  "timeout":  5000
+                                              },
+                   "lf11_math_menu_open":  {
+                                               "description":  "LF11: MATH menu rendering is visible from the prompt",
+                                               "start":  "vram_start",
+                                               "size":  "vram_16_size",
+                                               "expected_CRCs":  [
+                                                                     "8C3C5304"
+                                                                 ],
+                                               "timeout":  5000
+                                           },
+                   "lf12_math_menu_browse":  {
+                                                 "description":  "LF12: MATH menu browse state remains visually stable after DOWN",
+                                                 "start":  "vram_start",
+                                                 "size":  "vram_16_size",
+                                                 "expected_CRCs":  [
+                                                                       "58715C0B"
+                                                                   ],
+                                                 "timeout":  5000
+                                             },
+                   "lf13_prompt_after_math_menu":  {
+                                                       "description":  "LF13: CLEAR exits the MATH menu back to the prompt",
+                                                       "start":  "vram_start",
+                                                       "size":  "vram_16_size",
+                                                       "expected_CRCs":  [
+                                                                             "A32840C8"
+                                                                         ],
+                                                       "timeout":  5000
+                                                   },
+                   "lf14_error_dialog_divide_by_zero":  {
+                                                            "description":  "LF14: divide-by-zero renders the expected error dialog layout",
+                                                            "start":  "vram_start",
+                                                            "size":  "vram_16_size",
+                                                            "expected_CRCs":  [
+                                                                                  "32BFD188"
+                                                                              ],
+                                                            "timeout":  8000
+                                                        },
+                   "lf15_post_error_prompt":  {
+                                                  "description":  "LF15: CLEAR from the error dialog returns to a prompt-ready state",
+                                                  "start":  "vram_start",
+                                                  "size":  "vram_16_size",
+                                                  "expected_CRCs":  [
+                                                                        "DAE8FE30"
+                                                                    ],
+                                                  "timeout":  5000
+                                              }
+               }
+}

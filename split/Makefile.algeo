@@ -1,0 +1,29 @@
+NAME = CEALGEO
+DESCRIPTION = "CalcEngine Algebra Geometry Module"
+BINDIR = bin/algeo
+
+PROGRAM_CFLAGS = -DHW_BUILD_SPLIT \
+    -DCE_AST_ENABLE_STAT_NAMES=0 \
+    -DCE_PROC_ALG=1 -DCE_PROC_ALG_BASIC=0 -DCE_PROC_ALG_EXPFAC=0 -DCE_PROC_ALG_SOLVE=0 \
+    -DCE_PROC_ALG_ADV=1 -DCE_PROC_ALG_ADV_SYM=0 -DCE_PROC_ALG_ADV_GEO=1 \
+    -DCE_PROC_CALC=0 -DCE_PROC_CALC_BASE=0 -DCE_PROC_CALC_INT=0 -DCE_PROC_CALC_SERIES=0 \
+    -DCE_PROC_STAT=0 -DCE_PROC_FIN=0 -DCE_PROC_MATRIX=0 -DCE_PROC_CMPLX=0 -DCE_PROC_GRAPH=0 -DCE_PROC_GENERIC=0 -DCE_PROC_USE_CLASSIFY=0 -DCE_PROC_PARSE_INPUT=0 \
+    -DCE_ALG_USE_SIMPLIFY=0 \
+    -DCE_EVAL_ENABLE_NODE_STAT=0 \
+    -DCE_EVAL_ENABLE_NODE_LIST=0 \
+    -DCE_EVAL_ENABLE_ADV_POLAR=0 \
+    -DCE_EVAL_ENABLE_POLYDIV=0
+
+PROGRAM_SOURCES = \
+    src/split/module_main.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/split/processor.c \
+    src/memory.c \
+    src/ast.c \
+    src/steps.c \
+    src/eval.c \
+    src/algebra.c
+
+include split/program.mk

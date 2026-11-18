@@ -1,0 +1,361 @@
+{
+    "rom":  "C:\\Users\\user\\src\\algebrix-ce\\rom\\Rom.rom",
+    "transfer_files":  [
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CALCENG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGEO.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGF.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGSY.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEAPDV.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEASLA.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEASLV.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEBASE.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECALC.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECIAD.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECIDF.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECINT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECISM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIA.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIC.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLMB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECODE.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECPNM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECPOL.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECSEQ.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECSER.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEFIN.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEGRPH.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIPFR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIPRT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEISTR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEITRG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIUSB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CELIMS.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CELSCX.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEMAT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CESTPRB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\fileioc.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\graphx.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\keypadc.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\libload.8xv"
+                       ],
+    "target":  {
+                   "name":  "CALCENG",
+                   "isASM":  true
+               },
+    "delay_after_key":  225,
+    "delay_after_step":  600,
+    "sequence":  [
+                     "action|launch",
+                     "delay|3000",
+                     "key|clear",
+                     "delay|500",
+                     "hash|ep00_boot_prompt",
+                     "key|enter",
+                     "delay|600",
+                     "hash|ep01_empty_enter_stays_on_prompt",
+                     "key|2",
+                     "key|+",
+                     "key|3",
+                     "delay|200",
+                     "key|enter",
+                     "delay|1200",
+                     "hash|ep02_add_result_5",
+                     "key|enter",
+                     "delay|400",
+                     "hash|ep03_result_enter_returns_prompt",
+                     "key|6",
+                     "key|*",
+                     "key|7",
+                     "delay|200",
+                     "key|enter",
+                     "delay|1200",
+                     "hash|ep04_mul_result_42_after_result_enter",
+                     "key|enter",
+                     "delay|100",
+                     "key|enter",
+                     "delay|100",
+                     "key|enter",
+                     "delay|100",
+                     "key|enter",
+                     "delay|100",
+                     "key|enter",
+                     "delay|600",
+                     "hash|ep05_rapid_enter_burst_stays_in_app",
+                     "key|1",
+                     "key|/",
+                     "key|0",
+                     "delay|200",
+                     "key|enter",
+                     "delay|1200",
+                     "hash|ep06_div_zero_error_after_rapid_enter",
+                     "key|clear",
+                     "delay|300",
+                     "hash|ep07_prompt_after_error_clear",
+                     "key|9",
+                     "key|+",
+                     "key|1",
+                     "delay|200",
+                     "key|enter",
+                     "delay|1200",
+                     "hash|ep08_error_recovery_10",
+                     "key|enter",
+                     "delay|400",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "key|+",
+                     "key|1",
+                     "delay|300",
+                     "hash|ep09_long_expr_input",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|ep10_long_expr_result_16",
+                     "key|enter",
+                     "delay|400",
+                     "hash|ep11_post_long_expr_enter_prompt",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|*",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "key|9",
+                     "delay|300",
+                     "hash|ep12_large_mul_input",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|ep13_large_mul_result",
+                     "key|enter",
+                     "delay|400",
+                     "hash|ep14_post_large_mul_enter_prompt",
+                     "key|8",
+                     "key|-",
+                     "key|3",
+                     "delay|200",
+                     "key|enter",
+                     "delay|1200",
+                     "hash|ep15_third_chain_result_5",
+                     "key|enter",
+                     "delay|400",
+                     "hash|ep16_post_third_chain_enter_prompt",
+                     "key|1",
+                     "key|/",
+                     "key|0",
+                     "delay|200",
+                     "key|enter",
+                     "delay|1200",
+                     "hash|ep17_error_screen_before_quit",
+                     "key|2nd",
+                     "key|mode",
+                     "delay|1200",
+                     "hash|ep18_error_quit_to_tios_home"
+                 ],
+    "hashes":  {
+                   "ep00_boot_prompt":  {
+                                            "description":  "Enter proof: launcher prompt is visible after boot and initial clear",
+                                            "start":  "vram_start",
+                                            "size":  "vram_16_size",
+                                            "expected_CRCs":  [
+                                                                  "B76BC405"
+                                                              ],
+                                            "timeout":  8000
+                                        },
+                   "ep01_empty_enter_stays_on_prompt":  {
+                                                            "description":  "Enter proof: pressing Enter on an empty prompt does not exit CalcEngine or crash the session",
+                                                            "start":  "vram_start",
+                                                            "size":  "vram_16_size",
+                                                            "expected_CRCs":  [
+                                                                                  "9F1FC020"
+                                                                              ],
+                                                            "timeout":  8000
+                                                        },
+                   "ep02_add_result_5":  {
+                                             "description":  "Enter proof: 2+3 submitted through the canonical Enter path renders the result screen",
+                                             "start":  "vram_start",
+                                             "size":  "vram_16_size",
+                                             "expected_CRCs":  [
+                                                                   "B9B5D5E0"
+                                                               ],
+                                             "timeout":  8000
+                                         },
+                   "ep03_result_enter_returns_prompt":  {
+                                                            "description":  "Enter proof: pressing Enter on a result screen returns to an in-app prompt state instead of exiting",
+                                                            "start":  "vram_start",
+                                                            "size":  "vram_16_size",
+                                                            "expected_CRCs":  [
+                                                                                  "93BEC16E"
+                                                                              ],
+                                                            "timeout":  8000
+                                                        },
+                   "ep04_mul_result_42_after_result_enter":  {
+                                                                 "description":  "Enter proof: a second expression evaluates successfully after returning from the prior result with Enter",
+                                                                 "start":  "vram_start",
+                                                                 "size":  "vram_16_size",
+                                                                 "expected_CRCs":  [
+                                                                                       "BFE0B809"
+                                                                                   ],
+                                                                 "timeout":  8000
+                                                             },
+                   "ep05_rapid_enter_burst_stays_in_app":  {
+                                                               "description":  "Enter proof: a rapid burst of Enter presses after a result leaves CalcEngine alive and on-screen",
+                                                               "start":  "vram_start",
+                                                               "size":  "vram_16_size",
+                                                               "expected_CRCs":  [
+                                                                                     "0B324DDD"
+                                                                                 ],
+                                                               "timeout":  8000
+                                                           },
+                   "ep06_div_zero_error_after_rapid_enter":  {
+                                                                 "description":  "Enter proof: the app still routes through the normal error screen after the rapid Enter burst",
+                                                                 "start":  "vram_start",
+                                                                 "size":  "vram_16_size",
+                                                                 "expected_CRCs":  [
+                                                                                       "32BFD188"
+                                                                                   ],
+                                                                 "timeout":  8000
+                                                             },
+                   "ep07_prompt_after_error_clear":  {
+                                                         "description":  "Enter proof: CLEAR recovers from the error screen back to the prompt without leaving CalcEngine",
+                                                         "start":  "vram_start",
+                                                         "size":  "vram_16_size",
+                                                         "expected_CRCs":  [
+                                                                               "284B7FFE"
+                                                                           ],
+                                                         "timeout":  8000
+                                                     },
+                   "ep08_error_recovery_10":  {
+                                                  "description":  "Enter proof: a valid expression still evaluates after an error recovery cycle",
+                                                  "start":  "vram_start",
+                                                  "size":  "vram_16_size",
+                                                  "expected_CRCs":  [
+                                                                        "05439989"
+                                                                    ],
+                                                  "timeout":  8000
+                                              },
+                   "ep09_long_expr_input":  {
+                                                "description":  "Enter proof: a long expression remains intact on the input line before submission",
+                                                "start":  "vram_start",
+                                                "size":  "vram_16_size",
+                                                "expected_CRCs":  [
+                                                                      "A7F92410"
+                                                                  ],
+                                                "timeout":  8000
+                                            },
+                   "ep10_long_expr_result_16":  {
+                                                    "description":  "Enter proof: the long expression still evaluates correctly through the Enter path",
+                                                    "start":  "vram_start",
+                                                    "size":  "vram_16_size",
+                                                    "expected_CRCs":  [
+                                                                          "392DF11A"
+                                                                      ],
+                                                    "timeout":  8000
+                                                },
+                   "ep11_post_long_expr_enter_prompt":  {
+                                                            "description":  "Enter proof: pressing Enter after the long-expression result returns to a prompt-ready in-app state",
+                                                            "start":  "vram_start",
+                                                            "size":  "vram_16_size",
+                                                            "expected_CRCs":  [
+                                                                                  "02A80E3E"
+                                                                              ],
+                                                            "timeout":  8000
+                                                        },
+                   "ep12_large_mul_input":  {
+                                                "description":  "Enter proof: a very large multiplication input survives entry intact before submission",
+                                                "start":  "vram_start",
+                                                "size":  "vram_16_size",
+                                                "expected_CRCs":  [
+                                                                      "CBAE5596"
+                                                                  ],
+                                                "timeout":  8000
+                                            },
+                   "ep13_large_mul_result":  {
+                                                 "description":  "Enter proof: a very large multiplication still renders a deterministic result screen",
+                                                 "start":  "vram_start",
+                                                 "size":  "vram_16_size",
+                                                 "expected_CRCs":  [
+                                                                       "A479ADEF"
+                                                                   ],
+                                                 "timeout":  8000
+                                             },
+                   "ep14_post_large_mul_enter_prompt":  {
+                                                            "description":  "Enter proof: pressing Enter after the large-number result returns to an in-app prompt state",
+                                                            "start":  "vram_start",
+                                                            "size":  "vram_16_size",
+                                                            "expected_CRCs":  [
+                                                                                  "102C5FDB"
+                                                                              ],
+                                                            "timeout":  8000
+                                                        },
+                   "ep15_third_chain_result_5":  {
+                                                     "description":  "Enter proof: a third chained solve still succeeds after multiple result-enter cycles",
+                                                     "start":  "vram_start",
+                                                     "size":  "vram_16_size",
+                                                     "expected_CRCs":  [
+                                                                           "1EEF38D7"
+                                                                       ],
+                                                     "timeout":  8000
+                                                 },
+                   "ep16_post_third_chain_enter_prompt":  {
+                                                              "description":  "Enter proof: the prompt remains stable after a third chained result-enter cycle",
+                                                              "start":  "vram_start",
+                                                              "size":  "vram_16_size",
+                                                              "expected_CRCs":  [
+                                                                                    "22919447"
+                                                                                ],
+                                                              "timeout":  8000
+                                                          },
+                   "ep17_error_screen_before_quit":  {
+                                                         "description":  "Enter proof: divide-by-zero still lands on the TI-OS error dialog after multiple chained Enter cycles",
+                                                         "start":  "vram_start",
+                                                         "size":  "vram_16_size",
+                                                         "expected_CRCs":  [
+                                                                               "32BFD188"
+                                                                           ],
+                                                         "timeout":  8000
+                                                     },
+                   "ep18_error_quit_to_tios_home":  {
+                                                        "description":  "Enter proof: quitting the TI-OS error dialog with 2nd+MODE returns cleanly to the TI-OS homescreen",
+                                                        "start":  "vram_start",
+                                                        "size":  "vram_16_size",
+                                                        "expected_CRCs":  [
+                                                                              "0ED201DD"
+                                                                          ],
+                                                        "timeout":  8000
+                                                    }
+               }
+}

@@ -1,0 +1,673 @@
+{
+  "schema": "lcd_text_emulator_baseline_v1",
+  "note": "CRC baselines for the 59 expression hardware-path checks. Each 'expected_crcs' list is populated by tests/emulator/capture_lcd_text_baseline.py against a fresh CalcEngine .8xp bundle on Windows. Until populated, matching tests pytest.skip with a clear message rather than falsely pass.",
+  "description": "Hardware-equivalent port of tests/test_lcd_text.py (which drives the DESKTOP calcengine.exe --solve binary). Each expression is typed into CalcEngine running inside the headless CEmu fork (tools/emulator/cemu-headless/), stepped until idle, and the result screen's CRC is compared to one of the captured baselines.",
+  "generated_utc": "2026-04-14T04:56:42+00:00",
+  "headless_binary_sha256": "b1495083ffd5caeddc444cef71f8de38a1dfb4d5bdb369bd04c54b9354c65645",
+  "rom_sha256": "ae5d87f96a01cb124b41adf5d4f5d88cc3e6ff22149a97ec79024b736d1c5014",
+  "bundle_sha256": "26caca3243bfc7399ca7b65922950fd2dac9171fe1fb497e505e60a5eb39cd14",
+  "expressions": [
+    {
+      "id": "basic_arith_01_add",
+      "label": "2+2 = 4",
+      "expr": "2+2",
+      "expected_text_substrings": [
+        "4"
+      ],
+      "expected_crcs": [
+        "3CEB1E41"
+      ]
+    },
+    {
+      "id": "basic_arith_02_div",
+      "label": "10/4 = 2.5",
+      "expr": "10/4",
+      "expected_text_substrings": [
+        "2.5"
+      ],
+      "expected_crcs": [
+        "12FAF761"
+      ]
+    },
+    {
+      "id": "basic_arith_03_pow",
+      "label": "3^2 = 9",
+      "expr": "3^2",
+      "expected_text_substrings": [
+        "9"
+      ],
+      "expected_crcs": [
+        "1B5791DC"
+      ]
+    },
+    {
+      "id": "basic_arith_04_sqrt",
+      "label": "sqrt(16) = 4",
+      "expr": "sqrt(16)",
+      "expected_text_substrings": [
+        "4"
+      ],
+      "expected_crcs": [
+        "B3DE81ED"
+      ]
+    },
+    {
+      "id": "basic_arith_05_sin_zero",
+      "label": "sin(0) = 0",
+      "expr": "sin(0)",
+      "expected_text_substrings": [
+        "0"
+      ],
+      "expected_crcs": [
+        "6EA631A0"
+      ]
+    },
+    {
+      "id": "basic_arith_06_cos_zero",
+      "label": "cos(0) = 1",
+      "expr": "cos(0)",
+      "expected_text_substrings": [
+        "1"
+      ],
+      "expected_crcs": [
+        "5914FE2C"
+      ]
+    },
+    {
+      "id": "basic_arith_07_ln_one",
+      "label": "ln(1) = 0",
+      "expr": "ln(1)",
+      "expected_text_substrings": [
+        "0"
+      ],
+      "expected_crcs": [
+        "DEA8A064"
+      ]
+    },
+    {
+      "id": "basic_arith_08_abs_neg",
+      "label": "abs(-7) = 7",
+      "expr": "abs(-7)",
+      "expected_text_substrings": [
+        "7"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "basic_arith_09_mixed",
+      "label": "2*3+1 = 7",
+      "expr": "2*3+1",
+      "expected_text_substrings": [
+        "7"
+      ],
+      "expected_crcs": [
+        "4AD4F47A"
+      ]
+    },
+    {
+      "id": "basic_arith_10_parens",
+      "label": "(1+2)*3 = 9",
+      "expr": "(1+2)*3",
+      "expected_text_substrings": [
+        "9"
+      ],
+      "expected_crcs": [
+        "46EB48D1"
+      ]
+    },
+    {
+      "id": "deriv_01_poly",
+      "label": "d/dx(x^3) = 3x^2",
+      "expr": "d/dx(x^3)",
+      "expected_text_substrings": [
+        "3",
+        "x^2"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "deriv_02_sin",
+      "label": "d/dx(sin(x)) = cos",
+      "expr": "d/dx(sin(x))",
+      "expected_text_substrings": [
+        "cos"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "deriv_03_product_rule",
+      "label": "product rule: x*sin",
+      "expr": "d/dx(x*sin(x))",
+      "expected_text_substrings": [
+        "sin(x)",
+        "cos(x)"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "deriv_04_chain_rule",
+      "label": "chain rule: sin(x^2)",
+      "expr": "d/dx(sin(x^2))",
+      "expected_text_substrings": [
+        "cos",
+        "2"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "deriv_05_ln",
+      "label": "d/dx(ln(x)) = 1/x",
+      "expr": "d/dx(ln(x))",
+      "expected_text_substrings": [
+        "1",
+        "x"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "integ_01_definite",
+      "label": "int(x^2,0,1) = 1/3",
+      "expr": "int(x^2,x,0,1)",
+      "expected_text_substrings": [
+        "0.333"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "integ_02_exp",
+      "label": "int(e^x,x)",
+      "expr": "int(e^x,x)",
+      "expected_text_substrings": [
+        "e^x"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "integ_03_sin",
+      "label": "int(sin(x),x)",
+      "expr": "int(sin(x),x)",
+      "expected_text_substrings": [
+        "cos"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "integ_04_reciprocal",
+      "label": "int(1/x,x) = ln",
+      "expr": "int(1/x,x)",
+      "expected_text_substrings": [
+        "ln"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "integ_05_xsq",
+      "label": "int(x^2,x) = x^3/3",
+      "expr": "int(x^2,x)",
+      "expected_text_substrings": [
+        "x^3"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "improp_01_converge_xsq",
+      "label": "int(1/x^2,1,inf)=1",
+      "expr": "int(1/x^2,x,1,inf)",
+      "expected_text_substrings": [
+        "converges"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "improp_02_converge_exp",
+      "label": "int(e^-x,0,inf)=1",
+      "expr": "int(e^(-x),x,0,inf)",
+      "expected_text_substrings": [
+        "converges",
+        "1"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "improp_03_diverge",
+      "label": "int(1/x,1,inf)=div",
+      "expr": "int(1/x,x,1,inf)",
+      "expected_text_substrings": [
+        "DIVERGES"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "limit_01_sin_over_x",
+      "label": "lim(sin(x)/x,x,0)=1",
+      "expr": "lim(sin(x)/x,x,0)",
+      "expected_text_substrings": [
+        "1"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "limit_02_one_over_x_right",
+      "label": "lim(1/x,x,0+)=+inf",
+      "expr": "lim(1/x,x,0,+)",
+      "expected_text_substrings": [
+        "+inf"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "limit_03_poly",
+      "label": "lim(x^2,x,2)=4",
+      "expr": "lim(x^2,x,2)",
+      "expected_text_substrings": [
+        "4"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "limit_04_one_over_xsq_right",
+      "label": "lim(1/x^2,0+)=+inf",
+      "expr": "lim(1/x^2,x,0,+)",
+      "expected_text_substrings": [
+        "+inf"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "limit_05_one_minus_cos",
+      "label": "lim((1-cos)/x^2,0)",
+      "expr": "lim((1-cos(x))/x^2,x,0)",
+      "expected_text_substrings": [
+        "0.5"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "ode_01_separable",
+      "label": "dsolve sep: dy/y=dx",
+      "expr": "dsolve(y,y,x)",
+      "expected_text_substrings": [
+        "ln",
+        "x"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "ode_02_two_real_roots",
+      "label": "dsolve2: 2 real roots",
+      "expr": "dsolve2(1,-5,6,0,x)",
+      "expected_text_substrings": [
+        "e^(3*x)",
+        "e^(2*x)"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "ode_03_complex_roots",
+      "label": "dsolve2: complex roots",
+      "expr": "dsolve2(1,0,1,0,x)",
+      "expected_text_substrings": [
+        "cos",
+        "sin"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "eigen_01_diag",
+      "label": "eigenval diag(1,2)",
+      "expr": "eigenval(mat(1,0;0,2))",
+      "expected_text_substrings": [
+        "2",
+        "1"
+      ],
+      "expected_crcs": [
+        "518AA847"
+      ]
+    },
+    {
+      "id": "eigen_02_symmetric",
+      "label": "eigenval sym(2,1;1,2)",
+      "expr": "eigenval(mat(2,1;1,2))",
+      "expected_text_substrings": [
+        "3",
+        "1"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "vec_01_dot",
+      "label": "dot [1,2,3].[4,5,6]=32",
+      "expr": "dot(1,2,3,4,5,6)",
+      "expected_text_substrings": [
+        "32"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "vec_02_cross_ixj",
+      "label": "cross i*j = k",
+      "expr": "cross(1,0,0,0,1,0)",
+      "expected_text_substrings": [
+        "1"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "vec_03_grad",
+      "label": "grad(x^2+y^2)",
+      "expr": "grad(x^2+y^2,x,y)",
+      "expected_text_substrings": [
+        "2*x",
+        "2*y"
+      ],
+      "expected_crcs": [
+        "91725CC9"
+      ]
+    },
+    {
+      "id": "polar_01_area",
+      "label": "polararea(r=1,0..pi)=pi/2",
+      "expr": "polararea(1,t,0,pi)",
+      "expected_text_substrings": [
+        "1.5708"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "polar_02_arclen",
+      "label": "polararclen(r=1,0..2pi)=2pi",
+      "expr": "polararclen(1,t,0,2*pi)",
+      "expected_text_substrings": [
+        "6.28"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "laplace_01_unit",
+      "label": "L{1} = 1/s",
+      "expr": "laplace(1,t,s)",
+      "expected_text_substrings": [
+        "1/s"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "laplace_02_t",
+      "label": "L{t} = 1/s^2",
+      "expr": "laplace(t,t,s)",
+      "expected_text_substrings": [
+        "1/s^2"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "alg_01_solve_quadratic",
+      "label": "solve x^2=4",
+      "expr": "solve(x^2=4,x)",
+      "expected_text_substrings": [
+        "2",
+        "-2"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "alg_02_factor",
+      "label": "factor x^2-1",
+      "expr": "factor(x^2-1,x)",
+      "expected_text_substrings": [
+        "x-1",
+        "x+1"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "alg_03_expand",
+      "label": "expand (x+1)^3",
+      "expr": "expand((x+1)^3,x)",
+      "expected_text_substrings": [
+        "x^3"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "alg_04_tangent",
+      "label": "tangent x^2 at x=2",
+      "expr": "tangent(x^2,x,2)",
+      "expected_text_substrings": [
+        "y ="
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "alg_05_lim_dne",
+      "label": "lim DNE abs(x)/x",
+      "expr": "lim(abs(x)/x,x,0)",
+      "expected_text_substrings": [
+        "DNE"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "series_01_converge",
+      "label": "sum 1/n^2 converges",
+      "expr": "sum(1/n^2,n,1,inf)",
+      "expected_text_substrings": [
+        "converges"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "series_02_diverge",
+      "label": "sum 1/n diverges",
+      "expr": "sum(1/n,n,1,inf)",
+      "expected_text_substrings": [
+        "diverges"
+      ],
+      "expected_crcs": [
+        "9E77D653"
+      ]
+    },
+    {
+      "id": "series_03_taylor",
+      "label": "taylor sin(x) order 5",
+      "expr": "taylor(sin(x),x,0,5)",
+      "expected_text_substrings": [
+        "x^5"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "matrix_01_det",
+      "label": "det[[1,2],[3,4]]=-2",
+      "expr": "det(mat(1,2;3,4))",
+      "expected_text_substrings": [
+        "-2"
+      ],
+      "expected_crcs": [
+        "518AA847"
+      ]
+    },
+    {
+      "id": "matrix_02_inv",
+      "label": "inv diag(2,4)",
+      "expr": "inv(mat(2,0;0,4))",
+      "expected_text_substrings": [
+        "0.5"
+      ],
+      "expected_crcs": [
+        "518AA847"
+      ]
+    },
+    {
+      "id": "matrix_03_rref",
+      "label": "rref identity result",
+      "expr": "rref(mat(1,2;3,4))",
+      "expected_text_substrings": [
+        "1"
+      ],
+      "expected_crcs": [
+        "518AA847"
+      ]
+    },
+    {
+      "id": "stats_01_mean",
+      "label": "mean(1..5)=3",
+      "expr": "mean(1,2,3,4,5)",
+      "expected_text_substrings": [
+        "3"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "stats_02_nCr",
+      "label": "nCr(10,3)=120",
+      "expr": "nCr(10,3)",
+      "expected_text_substrings": [
+        "120"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "stats_03_nPr",
+      "label": "nPr(10,3)=720",
+      "expr": "nPr(10,3)",
+      "expected_text_substrings": [
+        "720"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "stats_04_binompdf",
+      "label": "binompdf(5,.5,2)~.313",
+      "expr": "binompdf(5,0.5,2)",
+      "expected_text_substrings": [
+        "0.3125"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "mode_01_sin_90deg",
+      "label": "sin(90deg) ~ 1",
+      "expr": "sin(90*pi/180)",
+      "expected_text_substrings": [
+        "1"
+      ],
+      "expected_crcs": [
+        "8A84F6D5"
+      ]
+    },
+    {
+      "id": "mode_02_scientific",
+      "label": "10^6 scientific",
+      "expr": "10^6",
+      "expected_text_substrings": [
+        "1e+06"
+      ],
+      "expected_crcs": [
+        "25A9EBA9"
+      ]
+    },
+    {
+      "id": "mode_03_neg_base_pow",
+      "label": "(-2)^3 = -8",
+      "expr": "(-2)^3",
+      "expected_text_substrings": [
+        "-8"
+      ],
+      "expected_crcs": [
+        "8F0B9FD1"
+      ]
+    },
+    {
+      "id": "mode_04_cos_pi",
+      "label": "e^(pi*i) check",
+      "expr": "cos(pi)",
+      "expected_text_substrings": [
+        "-1"
+      ],
+      "expected_crcs": [
+        "93DE1092"
+      ]
+    }
+  ]
+}

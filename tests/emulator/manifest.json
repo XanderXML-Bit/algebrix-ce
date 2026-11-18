@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "name": "CalcEngine transfer manifest",
+  "version": "2.0.1",
+  "crc32_algorithm": "CRC32-IEEE-802.3",
+  "module_count": 35,
+  "runtime_dependency_count": 4,
+  "modules": [
+    {
+      "name": "CALCENG.8xp",
+      "size_bytes": 29826,
+      "crc32": "B05E8849"
+    },
+    {
+      "name": "CEALG.8xp",
+      "size_bytes": 12506,
+      "crc32": "9D13EE10"
+    },
+    {
+      "name": "CEALGEO.8xp",
+      "size_bytes": 35506,
+      "crc32": "FA7B8ADF"
+    },
+    {
+      "name": "CEALGF.8xp",
+      "size_bytes": 29416,
+      "crc32": "5241D296"
+    },
+    {
+      "name": "CEALGSY.8xp",
+      "size_bytes": 47320,
+      "crc32": "79E14C4B"
+    },
+    {
+      "name": "CEAPDV.8xp",
+      "size_bytes": 19536,
+      "crc32": "4031AA38"
+    },
+    {
+      "name": "CEASLA.8xp",
+      "size_bytes": 25231,
+      "crc32": "11155598"
+    },
+    {
+      "name": "CEASLV.8xp",
+      "size_bytes": 23437,
+      "crc32": "A600914D"
+    },
+    {
+      "name": "CEBASE.8xp",
+      "size_bytes": 47546,
+      "crc32": "AD723AC5"
+    },
+    {
+      "name": "CECALC.8xp",
+      "size_bytes": 50532,
+      "crc32": "F97C6304"
+    },
+    {
+      "name": "CECIAD.8xp",
+      "size_bytes": 13600,
+      "crc32": "6EA8DF57"
+    },
+    {
+      "name": "CECIDF.8xp",
+      "size_bytes": 51169,
+      "crc32": "2DD0128E"
+    },
+    {
+      "name": "CECINT.8xp",
+      "size_bytes": 12557,
+      "crc32": "43520C7B"
+    },
+    {
+      "name": "CECISM.8xp",
+      "size_bytes": 50137,
+      "crc32": "8BCDB7F3"
+    },
+    {
+      "name": "CECLIA.8xp",
+      "size_bytes": 46804,
+      "crc32": "FF3CD805"
+    },
+    {
+      "name": "CECLIC.8xp",
+      "size_bytes": 24825,
+      "crc32": "42721ABC"
+    },
+    {
+      "name": "CECLIM.8xp",
+      "size_bytes": 7526,
+      "crc32": "BA93C85C"
+    },
+    {
+      "name": "CECLIR.8xp",
+      "size_bytes": 21110,
+      "crc32": "C0BEA067"
+    },
+    {
+      "name": "CECLMB.8xp",
+      "size_bytes": 49963,
+      "crc32": "4E98FD1E"
+    },
+    {
+      "name": "CECODE.8xp",
+      "size_bytes": 46088,
+      "crc32": "72C60AB5"
+    },
+    {
+      "name": "CECPNM.8xp",
+      "size_bytes": 39869,
+      "crc32": "78C657C0"
+    },
+    {
+      "name": "CECPOL.8xp",
+      "size_bytes": 12415,
+      "crc32": "933A00E9"
+    },
+    {
+      "name": "CECSEQ.8xp",
+      "size_bytes": 50405,
+      "crc32": "BBCAF79E"
+    },
+    {
+      "name": "CECSER.8xp",
+      "size_bytes": 51169,
+      "crc32": "C3C31B56"
+    },
+    {
+      "name": "CEFIN.8xp",
+      "size_bytes": 38270,
+      "crc32": "F7C496C2"
+    },
+    {
+      "name": "CEGRPH.8xp",
+      "size_bytes": 9107,
+      "crc32": "AC565F11"
+    },
+    {
+      "name": "CEIPFR.8xp",
+      "size_bytes": 49633,
+      "crc32": "793B9158"
+    },
+    {
+      "name": "CEIPRT.8xp",
+      "size_bytes": 45170,
+      "crc32": "32ABB79B"
+    },
+    {
+      "name": "CEISTR.8xp",
+      "size_bytes": 16658,
+      "crc32": "1827B660"
+    },
+    {
+      "name": "CEITRG.8xp",
+      "size_bytes": 50059,
+      "crc32": "3B0F34E0"
+    },
+    {
+      "name": "CEIUSB.8xp",
+      "size_bytes": 32042,
+      "crc32": "56D02034"
+    },
+    {
+      "name": "CELIMS.8xp",
+      "size_bytes": 24642,
+      "crc32": "FE821EC0"
+    },
+    {
+      "name": "CELSCX.8xp",
+      "size_bytes": 23767,
+      "crc32": "07FAF24B"
+    },
+    {
+      "name": "CEMAT.8xp",
+      "size_bytes": 50264,
+      "crc32": "1D6E38A2"
+    },
+    {
+      "name": "CESTPRB.8xp",
+      "size_bytes": 27097,
+      "crc32": "8372D308"
+    }
+  ],
+  "runtime_dependencies": [
+    {
+      "name": "fileioc.8xv",
+      "size_bytes": 2703,
+      "crc32": "9811B3FC"
+    },
+    {
+      "name": "graphx.8xv",
+      "size_bytes": 11795,
+      "crc32": "C2D681FC"
+    },
+    {
+      "name": "keypadc.8xv",
+      "size_bytes": 177,
+      "crc32": "DAEA0C24"
+    },
+    {
+      "name": "libload.8xv",
+      "size_bytes": 1246,
+      "crc32": "8A80D5EC"
+    }
+  ],
+  "readme": {
+    "name": "README.md",
+    "crc32": "40FAAF06"
+  }
+}

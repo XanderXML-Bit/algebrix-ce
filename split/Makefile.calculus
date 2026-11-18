@@ -1,0 +1,46 @@
+NAME = CECALC
+DESCRIPTION = "CalcEngine Calculus Module"
+BINDIR = bin/calculus
+
+# d/dx, nderiv and tangent run here.  deriv.c simplifies its result through
+# simplify.c (CE_DERIV_USE_SIMPLIFY=1); without it the CE shows raw rule
+# output such as ((3*(X^(3-1)))+(2*1)).  SIMPLIFY_MAX_DEPTH=24 and
+# DIFF_MAX_DEPTH=36 bound the recursion on the 4 KB OS stack: without the diff
+# cap, a 61-term sum (fits in the 127-character input) hit the stack-limit NMI.
+# Deeper input gets "Cannot differentiate this expression".
+# tests/cemu/test_module_flag_parity.py builds this module's processor on the
+# desktop with these exact flags.
+# Steps use compact rule/input labels here (the final result is unchanged).
+# Explanatory strings are depth-bounded and explicitly marked when omitted;
+# other workers keep their full function formulas. Eval is numeric-only here.
+PROGRAM_CFLAGS = -DHW_BUILD_SPLIT \
+    -DCE_EVAL_RECORD_STEPS=0 -DCE_EVAL_ENABLE_NUMERIC_INT=0 -DCE_DERIV_COMPACT_STEPS=1 \
+    -DCE_AST_ENABLE_STAT_NAMES=0 \
+    -DCE_PROC_ALG=0 -DCE_PROC_ALG_BASIC=0 -DCE_PROC_ALG_EXPFAC=0 -DCE_PROC_ALG_SOLVE=0 -DCE_PROC_ALG_POLYDIV=0 \
+    -DCE_PROC_ALG_ADV=0 -DCE_PROC_ALG_ADV_SYM=0 -DCE_PROC_ALG_ADV_GEO=0 \
+    -DCE_PROC_CALC=0 -DCE_PROC_CALC_BASE=1 -DCE_PROC_CALC_DERIV=1 -DCE_PROC_CALC_TANGENT=1 -DCE_PROC_CALC_LIMIT=0 \
+    -DCE_PROC_CALC_INT=0 -DCE_PROC_CALC_INT_SYMBOLIC=0 -DCE_PROC_CALC_INT_POLAR=0 \
+    -DCE_PROC_CALC_SERIES=0 -DCE_PROC_CALC_SERIES_TF=0 -DCE_PROC_CALC_SERIES_SEQ=0 \
+    -DCE_PROC_STAT=0 -DCE_PROC_FIN=0 -DCE_PROC_MATRIX=0 -DCE_PROC_CMPLX=0 -DCE_PROC_GRAPH=0 \
+    -DCE_PROC_GENERIC=0 -DCE_PROC_USE_CLASSIFY=0 -DCE_PROC_PARSE_INPUT=0 \
+    -DCE_DERIV_USE_SIMPLIFY=1 -DCE_DERIV_USE_EVAL=0 \
+    -DSIMPLIFY_MAX_DEPTH=24 -DDIFF_MAX_DEPTH=36 \
+    -DCE_EVAL_ENABLE_NODE_STAT=0 \
+    -DCE_EVAL_ENABLE_NODE_LIST=0 \
+    -DCE_EVAL_ENABLE_ADV_POLAR=0 \
+    -DCE_EVAL_ENABLE_POLYDIV=0
+
+PROGRAM_SOURCES = \
+    src/split/module_main.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/split/processor.c \
+    src/memory.c \
+    src/ast.c \
+    src/eval.c \
+    src/deriv.c \
+    src/steps.c \
+    src/simplify.c
+
+include split/program.mk

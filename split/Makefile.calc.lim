@@ -1,0 +1,18 @@
+NAME = CECLIM
+DESCRIPTION = "CalcEngine Calculus Limits Module"
+BINDIR = bin/calc_lim
+COMPRESSED = YES
+
+PROGRAM_CFLAGS = -DHW_BUILD_SPLIT -DCE_DISABLE_STEP_RECORDING=1 -DCE_AST_ENABLE_STAT_NAMES=0
+
+PROGRAM_SOURCES = \
+    src/modules/calc_lim/main.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/memory.c \
+    src/ast.c
+
+PROGRAM_RUNTIME_SOURCES = src/split/module_forward.c
+
+include split/program.mk

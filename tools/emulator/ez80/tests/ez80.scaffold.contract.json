@@ -1,0 +1,72 @@
+{
+  "required_files": [
+    "tools/emulator/ez80/README.md",
+    "tools/emulator/ez80/include/ez80_emulator.h",
+    "tools/emulator/ez80/include/ez80_rom.h",
+    "tools/emulator/ez80/include/ez80_decode.h",
+    "tools/emulator/ez80/src/ez80_emulator_stub.c",
+    "tools/emulator/ez80/src/ez80_rom_stub.c",
+    "tools/emulator/ez80/src/ez80_decode_stub.c",
+    "tools/emulator/ez80/run-ez80-scaffold-cli.ps1",
+    "tools/emulator/tests/run-ez80-scaffold-runtime-tests.ps1",
+    "tools/emulator/ez80/tests/ez80_stub_runtime_tests.c"
+  ],
+  "required_symbols": [
+    {
+      "file": "tools/emulator/ez80/include/ez80_emulator.h",
+      "patterns": [
+        "typedef enum {",
+        "EZ80_ERR_NOT_IMPLEMENTED",
+        "typedef struct {",
+        "ez80_cpu_state_t",
+        "EZ80_FLASH_TOTAL_BYTES",
+        "ez80_memory_t",
+        "ez80_emulator_load_rom",
+        "ez80_emulator_step",
+        "ez80_emulator_run_cycles",
+        "ez80_memory_read8",
+        "ez80_memory_write8"
+      ]
+    },
+    {
+      "file": "tools/emulator/ez80/include/ez80_rom.h",
+      "patterns": [
+        "ez80_rom_metadata_t",
+        "ez80_rom_probe_header",
+        "ez80_rom_load_file_metadata"
+      ]
+    },
+    {
+      "file": "tools/emulator/ez80/include/ez80_decode.h",
+      "patterns": [
+        "ez80_decode_instruction"
+      ]
+    },
+    {
+      "file": "tools/emulator/ez80/src/ez80_emulator_stub.c",
+      "patterns": [
+        "ez80_memory_read8",
+        "ez80_memory_write8",
+        "ez80_status_string"
+      ]
+    },
+    {
+      "file": "tools/emulator/ez80/src/ez80_decode_stub.c",
+      "patterns": [
+        "case 0x00",
+        "case 0x76",
+        "case 0x3E",
+        "case 0xC3"
+      ]
+    },
+    {
+      "file": "tools/emulator/ez80/run-ez80-scaffold-cli.ps1",
+      "patterns": [
+        "function Get-Ez80Crc32Hex",
+        "function Invoke-Ez80ProbeRom",
+        "\"probe-rom\"",
+        "\"CRC32-IEEE-802.3\""
+      ]
+    }
+  ]
+}

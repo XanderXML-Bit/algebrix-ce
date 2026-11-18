@@ -1,0 +1,162 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'algebrix-ce-v*'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/release.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install CEdev v11.2 Linux
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --location --retry 6 --retry-delay 15 --retry-all-errors \
+            https://github.com/CE-Programming/toolchain/releases/download/v11.2/CEdev-Linux.tar.gz \
+            --output "$RUNNER_TEMP/CEdev-Linux.tar.gz"
+          echo '94688d7a6684a0a8521161ba2e9b0068262dcbe7b4db3867cd4b5d74af646a07  '"$RUNNER_TEMP/CEdev-Linux.tar.gz" | sha256sum -c -
+          mkdir -p "$RUNNER_TEMP/cedev"
+          tar -xzf "$RUNNER_TEMP/CEdev-Linux.tar.gz" -C "$RUNNER_TEMP/cedev"
+          echo "$RUNNER_TEMP/cedev/CEdev/bin" >> "$GITHUB_PATH"
+
+      - name: Check tag matches manifest version
+        if: startsWith(github.ref, 'refs/tags/algebrix-ce-v')
+        shell: bash
+        run: |
+          set -euo pipefail
+          TAG_VERSION="${GITHUB_REF_NAME#algebrix-ce-v}"
+          MANIFEST_VERSION="$(python3 -c "import json; print(json.load(open('tests/emulator/manifest.json'))['version'])")"
+          if [ "$TAG_VERSION" != "$MANIFEST_VERSION" ]; then
+            echo "Tag version $TAG_VERSION does not match tests/emulator/manifest.json version $MANIFEST_VERSION" >&2
+            exit 1
+          fi
+
+      - name: Build programs from source
+        shell: bash
+        run: |
+          set -euo pipefail
+          make clean && make all
+
+      - name: Validate and stage programs
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          import shutil
+
+          programs = sorted(Path('bin').glob('**/*.8xp'))
+          manifest = json.loads(Path('tests/emulator/manifest.json').read_text())
+          names = [path.name for path in programs]
+          expected = [row['name'] for row in manifest['modules']]
+          assert len(programs) == 35, f'Expected 35 programs, found {len(programs)}'
+          assert len(set(names)) == 35, 'Duplicate program NAMEs'
+          assert manifest['module_count'] == len(expected) == 35, 'Manifest count mismatch'
+          assert set(names) == set(expected), f'Program NAMEs differ: {set(names) ^ set(expected)}'
+          for path in programs:
+              assert 0 < path.stat().st_size <= 51_200, f'Invalid program size: {path}'
+          stage = Path('release-artifacts')
+          if stage.exists():
+              shutil.rmtree(stage)
+          stage.mkdir()
+          for path in programs:
+              shutil.copy2(path, stage / path.name)
+          print('Validated and staged 35 programs, each <= 51,200 B')
+          PY
+          cd release-artifacts
+          sha256sum *.8xp > SHA256SUMS
+          sha256sum -c SHA256SUMS
+
+      - name: Upload program artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: algebrix-ce-programs
+          path: release-artifacts/*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/algebrix-ce-v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download program artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: algebrix-ce-programs
+          path: release-artifacts
+
+      - name: Validate release artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+
+          stage = Path('release-artifacts')
+          programs = sorted(stage.glob('*.8xp'))
+          assert len(programs) == 35, f'Expected 35 programs, found {len(programs)}'
+          assert {p.name for p in stage.iterdir()} == {p.name for p in programs} | {'SHA256SUMS'}, 'Unexpected artifact files'
+          for path in programs:
+              assert path.is_file() and 0 < path.stat().st_size <= 51_200, f'Invalid program: {path}'
+          lines = (stage / 'SHA256SUMS').read_text().splitlines()
+          assert len(lines) == 35, 'Expected 35 checksum entries'
+          assert sorted(line.split('  ', 1)[1] for line in lines) == [p.name for p in programs], 'Checksum inventory mismatch'
+          print('Validated release artifact: 35 programs plus SHA256SUMS')
+          PY
+          cd release-artifacts
+          sha256sum -c SHA256SUMS
+
+      - name: Extract version from tag
+        id: version
+        shell: bash
+        run: echo "VERSION=${GITHUB_REF_NAME#algebrix-ce-v}" >> "$GITHUB_OUTPUT"
+
+      - name: Refuse to touch an existing release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          # action-gh-release updates an existing release in place (and keeps a
+          # published one published), so this job only ever creates new drafts.
+          existing="$(gh api "repos/${GITHUB_REPOSITORY}/releases?per_page=100" --paginate \
+            --jq '.[] | select(.tag_name == env.TAG) | .id')"
+          if [ -n "$existing" ]; then
+            echo "A release for $TAG already exists (id $existing); refusing to modify it." >&2
+            exit 1
+          fi
+
+      - name: Create draft prerelease
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Algebrix CE ${{ steps.version.outputs.VERSION }}
+          draft: true
+          prerelease: true
+          fail_on_unmatched_files: true
+          body: |
+            Pre-hardware confirmation. Physical calculator confirmation remains pending.
+            Download all 35 programs and SHA256SUMS together, then run `sha256sum -c SHA256SUMS`.
+            arTIfiCE is required on TI-84 Plus CE OS 5.5–5.8.4. Obtain arTIfiCE and the four runtime AppVars separately.
+          files: |
+            release-artifacts/*.8xp
+            release-artifacts/SHA256SUMS

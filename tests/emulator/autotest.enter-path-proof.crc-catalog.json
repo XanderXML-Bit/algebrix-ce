@@ -1,0 +1,600 @@
+{
+  "schema_version": 1,
+  "suite": "autotest.enter-path-proof",
+  "generated_at": "2026-04-13T20:17:56.870283-07:00",
+  "source_baselined_path": "C:\\src\\algebrix-ce\\tests\\emulator\\autotest.enter-path-proof.baselined.json",
+  "hash_count": 19,
+  "entries": [
+    {
+      "order": 1,
+      "hash_name": "ep00_boot_prompt",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: launcher prompt is visible after boot and initial clear",
+      "expected_crcs": [
+        "B76BC405"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 2,
+      "hash_name": "ep01_empty_enter_stays_on_prompt",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: pressing Enter on an empty prompt does not exit CalcEngine or crash the session",
+      "expected_crcs": [
+        "9F1FC020"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 3,
+      "hash_name": "ep02_add_result_5",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: 2+3 submitted through the canonical Enter path renders the result screen",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 4,
+      "hash_name": "ep03_result_enter_returns_prompt",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: pressing Enter on a result screen returns to an in-app prompt state instead of exiting",
+      "expected_crcs": [
+        "93BEC16E"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 5,
+      "hash_name": "ep04_mul_result_42_after_result_enter",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: a second expression evaluates successfully after returning from the prior result with Enter",
+      "expected_crcs": [
+        "BFE0B809"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 6,
+      "hash_name": "ep05_rapid_enter_burst_stays_in_app",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: a rapid burst of Enter presses after a result leaves CalcEngine alive and on-screen",
+      "expected_crcs": [
+        "0B324DDD"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 7,
+      "hash_name": "ep06_div_zero_error_after_rapid_enter",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: the app still routes through the normal error screen after the rapid Enter burst",
+      "expected_crcs": [
+        "32BFD188"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 8,
+      "hash_name": "ep07_prompt_after_error_clear",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: CLEAR recovers from the error screen back to the prompt without leaving CalcEngine",
+      "expected_crcs": [
+        "284B7FFE"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 9,
+      "hash_name": "ep08_error_recovery_10",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: a valid expression still evaluates after an error recovery cycle",
+      "expected_crcs": [
+        "05439989"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 10,
+      "hash_name": "ep09_long_expr_input",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: a long expression remains intact on the input line before submission",
+      "expected_crcs": [
+        "A7F92410"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 11,
+      "hash_name": "ep10_long_expr_result_16",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: the long expression still evaluates correctly through the Enter path",
+      "expected_crcs": [
+        "392DF11A"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 12,
+      "hash_name": "ep11_post_long_expr_enter_prompt",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: pressing Enter after the long-expression result returns to a prompt-ready in-app state",
+      "expected_crcs": [
+        "02A80E3E"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 13,
+      "hash_name": "ep12_large_mul_input",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: a very large multiplication input survives entry intact before submission",
+      "expected_crcs": [
+        "CBAE5596"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 14,
+      "hash_name": "ep13_large_mul_result",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: a very large multiplication still renders a deterministic result screen",
+      "expected_crcs": [
+        "A479ADEF"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 15,
+      "hash_name": "ep14_post_large_mul_enter_prompt",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: pressing Enter after the large-number result returns to an in-app prompt state",
+      "expected_crcs": [
+        "102C5FDB"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 16,
+      "hash_name": "ep15_third_chain_result_5",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: a third chained solve still succeeds after multiple result-enter cycles",
+      "expected_crcs": [
+        "1EEF38D7"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 17,
+      "hash_name": "ep16_post_third_chain_enter_prompt",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: the prompt remains stable after a third chained result-enter cycle",
+      "expected_crcs": [
+        "22919447"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 18,
+      "hash_name": "ep17_error_screen_before_quit",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: divide-by-zero still lands on the TI-OS error dialog after multiple chained Enter cycles",
+      "expected_crcs": [
+        "32BFD188"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 19,
+      "hash_name": "ep18_error_quit_to_tios_home",
+      "section": "UNSPECIFIED",
+      "description": "Enter proof: quitting the TI-OS error dialog with 2nd+MODE returns cleanly to the TI-OS homescreen",
+      "expected_crcs": [
+        "0ED201DD"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    }
+  ],
+  "module_inventory": {
+    "manifest_path": "tests/emulator/manifest.json",
+    "expected_module_count": 35,
+    "verified_module_count": 35,
+    "missing_modules": [],
+    "unexpected_modules": [],
+    "candidate_roots": [
+      "bin",
+      "."
+    ],
+    "modules": [
+      {
+        "order": 1,
+        "name": "CALCENG.8xp",
+        "manifest_size_bytes": 29826,
+        "manifest_crc32": "B05E8849",
+        "resolved_path": "deploy/hardware-ready/CALCENG.8xp",
+        "resolved_size_bytes": 29826,
+        "resolved_crc32": "B05E8849",
+        "status": "matched"
+      },
+      {
+        "order": 2,
+        "name": "CEALG.8xp",
+        "manifest_size_bytes": 12506,
+        "manifest_crc32": "9D13EE10",
+        "resolved_path": "deploy/hardware-ready/CEALG.8xp",
+        "resolved_size_bytes": 12506,
+        "resolved_crc32": "9D13EE10",
+        "status": "matched"
+      },
+      {
+        "order": 3,
+        "name": "CEALGEO.8xp",
+        "manifest_size_bytes": 35506,
+        "manifest_crc32": "FA7B8ADF",
+        "resolved_path": "deploy/hardware-ready/CEALGEO.8xp",
+        "resolved_size_bytes": 35506,
+        "resolved_crc32": "FA7B8ADF",
+        "status": "matched"
+      },
+      {
+        "order": 4,
+        "name": "CEALGF.8xp",
+        "manifest_size_bytes": 29416,
+        "manifest_crc32": "5241D296",
+        "resolved_path": "deploy/hardware-ready/CEALGF.8xp",
+        "resolved_size_bytes": 29416,
+        "resolved_crc32": "5241D296",
+        "status": "matched"
+      },
+      {
+        "order": 5,
+        "name": "CEALGSY.8xp",
+        "manifest_size_bytes": 47320,
+        "manifest_crc32": "79E14C4B",
+        "resolved_path": "deploy/hardware-ready/CEALGSY.8xp",
+        "resolved_size_bytes": 47320,
+        "resolved_crc32": "79E14C4B",
+        "status": "matched"
+      },
+      {
+        "order": 6,
+        "name": "CEAPDV.8xp",
+        "manifest_size_bytes": 19536,
+        "manifest_crc32": "4031AA38",
+        "resolved_path": "deploy/hardware-ready/CEAPDV.8xp",
+        "resolved_size_bytes": 19536,
+        "resolved_crc32": "4031AA38",
+        "status": "matched"
+      },
+      {
+        "order": 7,
+        "name": "CEASLA.8xp",
+        "manifest_size_bytes": 25231,
+        "manifest_crc32": "11155598",
+        "resolved_path": "deploy/hardware-ready/CEASLA.8xp",
+        "resolved_size_bytes": 25231,
+        "resolved_crc32": "11155598",
+        "status": "matched"
+      },
+      {
+        "order": 8,
+        "name": "CEASLV.8xp",
+        "manifest_size_bytes": 23437,
+        "manifest_crc32": "A600914D",
+        "resolved_path": "deploy/hardware-ready/CEASLV.8xp",
+        "resolved_size_bytes": 23437,
+        "resolved_crc32": "A600914D",
+        "status": "matched"
+      },
+      {
+        "order": 9,
+        "name": "CEBASE.8xp",
+        "manifest_size_bytes": 47546,
+        "manifest_crc32": "AD723AC5",
+        "resolved_path": "deploy/hardware-ready/CEBASE.8xp",
+        "resolved_size_bytes": 47546,
+        "resolved_crc32": "AD723AC5",
+        "status": "matched"
+      },
+      {
+        "order": 10,
+        "name": "CECALC.8xp",
+        "manifest_size_bytes": 50532,
+        "manifest_crc32": "F97C6304",
+        "resolved_path": "deploy/hardware-ready/CECALC.8xp",
+        "resolved_size_bytes": 50532,
+        "resolved_crc32": "F97C6304",
+        "status": "matched"
+      },
+      {
+        "order": 11,
+        "name": "CECIAD.8xp",
+        "manifest_size_bytes": 13600,
+        "manifest_crc32": "6EA8DF57",
+        "resolved_path": "deploy/hardware-ready/CECIAD.8xp",
+        "resolved_size_bytes": 13600,
+        "resolved_crc32": "6EA8DF57",
+        "status": "matched"
+      },
+      {
+        "order": 12,
+        "name": "CECIDF.8xp",
+        "manifest_size_bytes": 51169,
+        "manifest_crc32": "2DD0128E",
+        "resolved_path": "deploy/hardware-ready/CECIDF.8xp",
+        "resolved_size_bytes": 51169,
+        "resolved_crc32": "2DD0128E",
+        "status": "matched"
+      },
+      {
+        "order": 13,
+        "name": "CECINT.8xp",
+        "manifest_size_bytes": 12557,
+        "manifest_crc32": "43520C7B",
+        "resolved_path": "deploy/hardware-ready/CECINT.8xp",
+        "resolved_size_bytes": 12557,
+        "resolved_crc32": "43520C7B",
+        "status": "matched"
+      },
+      {
+        "order": 14,
+        "name": "CECISM.8xp",
+        "manifest_size_bytes": 50137,
+        "manifest_crc32": "8BCDB7F3",
+        "resolved_path": "deploy/hardware-ready/CECISM.8xp",
+        "resolved_size_bytes": 50137,
+        "resolved_crc32": "8BCDB7F3",
+        "status": "matched"
+      },
+      {
+        "order": 15,
+        "name": "CECLIA.8xp",
+        "manifest_size_bytes": 46804,
+        "manifest_crc32": "FF3CD805",
+        "resolved_path": "deploy/hardware-ready/CECLIA.8xp",
+        "resolved_size_bytes": 46804,
+        "resolved_crc32": "FF3CD805",
+        "status": "matched"
+      },
+      {
+        "order": 16,
+        "name": "CECLIC.8xp",
+        "manifest_size_bytes": 24825,
+        "manifest_crc32": "42721ABC",
+        "resolved_path": "deploy/hardware-ready/CECLIC.8xp",
+        "resolved_size_bytes": 24825,
+        "resolved_crc32": "42721ABC",
+        "status": "matched"
+      },
+      {
+        "order": 17,
+        "name": "CECLIM.8xp",
+        "manifest_size_bytes": 7526,
+        "manifest_crc32": "BA93C85C",
+        "resolved_path": "deploy/hardware-ready/CECLIM.8xp",
+        "resolved_size_bytes": 7526,
+        "resolved_crc32": "BA93C85C",
+        "status": "matched"
+      },
+      {
+        "order": 18,
+        "name": "CECLIR.8xp",
+        "manifest_size_bytes": 21110,
+        "manifest_crc32": "C0BEA067",
+        "resolved_path": "deploy/hardware-ready/CECLIR.8xp",
+        "resolved_size_bytes": 21110,
+        "resolved_crc32": "C0BEA067",
+        "status": "matched"
+      },
+      {
+        "order": 19,
+        "name": "CECLMB.8xp",
+        "manifest_size_bytes": 49963,
+        "manifest_crc32": "4E98FD1E",
+        "resolved_path": "deploy/hardware-ready/CECLMB.8xp",
+        "resolved_size_bytes": 49963,
+        "resolved_crc32": "4E98FD1E",
+        "status": "matched"
+      },
+      {
+        "order": 20,
+        "name": "CECODE.8xp",
+        "manifest_size_bytes": 46088,
+        "manifest_crc32": "72C60AB5",
+        "resolved_path": "deploy/hardware-ready/CECODE.8xp",
+        "resolved_size_bytes": 46088,
+        "resolved_crc32": "72C60AB5",
+        "status": "matched"
+      },
+      {
+        "order": 21,
+        "name": "CECPNM.8xp",
+        "manifest_size_bytes": 39869,
+        "manifest_crc32": "78C657C0",
+        "resolved_path": "deploy/hardware-ready/CECPNM.8xp",
+        "resolved_size_bytes": 39869,
+        "resolved_crc32": "78C657C0",
+        "status": "matched"
+      },
+      {
+        "order": 22,
+        "name": "CECPOL.8xp",
+        "manifest_size_bytes": 12415,
+        "manifest_crc32": "933A00E9",
+        "resolved_path": "deploy/hardware-ready/CECPOL.8xp",
+        "resolved_size_bytes": 12415,
+        "resolved_crc32": "933A00E9",
+        "status": "matched"
+      },
+      {
+        "order": 23,
+        "name": "CECSEQ.8xp",
+        "manifest_size_bytes": 50405,
+        "manifest_crc32": "BBCAF79E",
+        "resolved_path": "deploy/hardware-ready/CECSEQ.8xp",
+        "resolved_size_bytes": 50405,
+        "resolved_crc32": "BBCAF79E",
+        "status": "matched"
+      },
+      {
+        "order": 24,
+        "name": "CECSER.8xp",
+        "manifest_size_bytes": 51169,
+        "manifest_crc32": "C3C31B56",
+        "resolved_path": "deploy/hardware-ready/CECSER.8xp",
+        "resolved_size_bytes": 51169,
+        "resolved_crc32": "C3C31B56",
+        "status": "matched"
+      },
+      {
+        "order": 25,
+        "name": "CEFIN.8xp",
+        "manifest_size_bytes": 38270,
+        "manifest_crc32": "F7C496C2",
+        "resolved_path": "deploy/hardware-ready/CEFIN.8xp",
+        "resolved_size_bytes": 38270,
+        "resolved_crc32": "F7C496C2",
+        "status": "matched"
+      },
+      {
+        "order": 26,
+        "name": "CEGRPH.8xp",
+        "manifest_size_bytes": 9107,
+        "manifest_crc32": "AC565F11",
+        "resolved_path": "deploy/hardware-ready/CEGRPH.8xp",
+        "resolved_size_bytes": 9107,
+        "resolved_crc32": "AC565F11",
+        "status": "matched"
+      },
+      {
+        "order": 27,
+        "name": "CEIPFR.8xp",
+        "manifest_size_bytes": 49633,
+        "manifest_crc32": "793B9158",
+        "resolved_path": "deploy/hardware-ready/CEIPFR.8xp",
+        "resolved_size_bytes": 49633,
+        "resolved_crc32": "793B9158",
+        "status": "matched"
+      },
+      {
+        "order": 28,
+        "name": "CEIPRT.8xp",
+        "manifest_size_bytes": 45170,
+        "manifest_crc32": "32ABB79B",
+        "resolved_path": "deploy/hardware-ready/CEIPRT.8xp",
+        "resolved_size_bytes": 45170,
+        "resolved_crc32": "32ABB79B",
+        "status": "matched"
+      },
+      {
+        "order": 29,
+        "name": "CEISTR.8xp",
+        "manifest_size_bytes": 16658,
+        "manifest_crc32": "1827B660",
+        "resolved_path": "deploy/hardware-ready/CEISTR.8xp",
+        "resolved_size_bytes": 16658,
+        "resolved_crc32": "1827B660",
+        "status": "matched"
+      },
+      {
+        "order": 30,
+        "name": "CEITRG.8xp",
+        "manifest_size_bytes": 50059,
+        "manifest_crc32": "3B0F34E0",
+        "resolved_path": "deploy/hardware-ready/CEITRG.8xp",
+        "resolved_size_bytes": 50059,
+        "resolved_crc32": "3B0F34E0",
+        "status": "matched"
+      },
+      {
+        "order": 31,
+        "name": "CEIUSB.8xp",
+        "manifest_size_bytes": 32042,
+        "manifest_crc32": "56D02034",
+        "resolved_path": "deploy/hardware-ready/CEIUSB.8xp",
+        "resolved_size_bytes": 32042,
+        "resolved_crc32": "56D02034",
+        "status": "matched"
+      },
+      {
+        "order": 32,
+        "name": "CELIMS.8xp",
+        "manifest_size_bytes": 24642,
+        "manifest_crc32": "FE821EC0",
+        "resolved_path": "deploy/hardware-ready/CELIMS.8xp",
+        "resolved_size_bytes": 24642,
+        "resolved_crc32": "FE821EC0",
+        "status": "matched"
+      },
+      {
+        "order": 33,
+        "name": "CELSCX.8xp",
+        "manifest_size_bytes": 23767,
+        "manifest_crc32": "07FAF24B",
+        "resolved_path": "deploy/hardware-ready/CELSCX.8xp",
+        "resolved_size_bytes": 23767,
+        "resolved_crc32": "07FAF24B",
+        "status": "matched"
+      },
+      {
+        "order": 34,
+        "name": "CEMAT.8xp",
+        "manifest_size_bytes": 50264,
+        "manifest_crc32": "1D6E38A2",
+        "resolved_path": "deploy/hardware-ready/CEMAT.8xp",
+        "resolved_size_bytes": 50264,
+        "resolved_crc32": "1D6E38A2",
+        "status": "matched"
+      },
+      {
+        "order": 35,
+        "name": "CESTPRB.8xp",
+        "manifest_size_bytes": 27097,
+        "manifest_crc32": "8372D308",
+        "resolved_path": "deploy/hardware-ready/CESTPRB.8xp",
+        "resolved_size_bytes": 27097,
+        "resolved_crc32": "8372D308",
+        "status": "matched"
+      }
+    ]
+  }
+}

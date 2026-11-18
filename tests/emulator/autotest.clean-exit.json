@@ -1,0 +1,72 @@
+{
+    "rom": "__ROM_PATH_SET_BY_SCRIPT__",
+    "transfer_files": [
+        "__PROGRAM_PATH_SET_BY_SCRIPT__"
+    ],
+    "target": {
+        "name": "CALCENG",
+        "isASM": true
+    },
+    "delay_after_key": 250,
+    "delay_after_step": 600,
+    "sequence": [
+        "action|launch",
+        "delay|4000",
+        "key|enter",
+        "delay|400",
+        "hash|x00_app_boot_home",
+        "key|2",
+        "key|+",
+        "key|3",
+        "delay|200",
+        "key|enter",
+        "delay|2000",
+        "hash|x01_result_2_plus_3",
+        "key|2nd",
+        "key|mode",
+        "delay|600",
+        "hash|x02_result_quit_back_to_input",
+        "key|2nd",
+        "key|mode",
+        "delay|1500",
+        "hash|x03_tios_home_after_exit"
+    ],
+    "hashes": {
+        "x00_app_boot_home": {
+            "description": "Clean exit probe: CalcEngine homescreen immediately after launch",
+            "start": "vram_start",
+            "size": "vram_16_size",
+            "expected_CRCs": [
+                "00000000"
+            ],
+            "timeout": 8000
+        },
+        "x01_result_2_plus_3": {
+            "description": "Clean exit probe: 2+3 result before quit path",
+            "start": "vram_start",
+            "size": "vram_16_size",
+            "expected_CRCs": [
+                "00000000"
+            ],
+            "timeout": 8000
+        },
+        "x02_result_quit_back_to_input": {
+            "description": "Clean exit probe: first 2nd+MODE returns from result view to CalcEngine input state",
+            "start": "vram_start",
+            "size": "vram_16_size",
+            "expected_CRCs": [
+                "00000000"
+            ],
+            "timeout": 8000
+        },
+        "x03_tios_home_after_exit": {
+            "description": "Clean exit probe: second 2nd+MODE returns to the TI-OS homescreen",
+            "start": "vram_start",
+            "size": "vram_16_size",
+            "expected_CRCs": [
+                "00000000"
+            ],
+            "timeout": 8000
+        }
+    }
+}

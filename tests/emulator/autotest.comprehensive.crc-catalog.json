@@ -1,0 +1,2990 @@
+{
+  "schema_version": 1,
+  "suite": "autotest.comprehensive",
+  "generated_at": "2026-04-13T20:17:56.866627-07:00",
+  "source_baselined_path": "C:\\src\\algebrix-ce\\tests\\emulator\\autotest.comprehensive.baselined.json",
+  "hash_count": 211,
+  "entries": [
+    {
+      "order": 1,
+      "hash_name": "s00_boot_home",
+      "section": "S00",
+      "description": "Boot and clear - CalcEngine launcher home prompt visible, ready for input",
+      "expected_crcs": [
+        "128C50A4"
+      ],
+      "timeout_ms": 10000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 2,
+      "hash_name": "s01_add_2_3",
+      "section": "S01",
+      "description": "S01: 2+3 = 5 - result screen after Enter",
+      "expected_crcs": [
+        "03AF06DB"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 3,
+      "hash_name": "s01_mul_6_7",
+      "section": "S01",
+      "description": "S01: 6*7 = 42 - result screen after Enter",
+      "expected_crcs": [
+        "871BBE6A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 4,
+      "hash_name": "s01_neg5_plus10",
+      "section": "S01",
+      "description": "S01: (-5)+10 = 5 - result screen after Enter; multi-CRC: timing flap between result-visible and result-scrolled states",
+      "expected_crcs": [
+        "04304D6D",
+        "17AAE9FB"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 5,
+      "hash_name": "s01_decimal_6_28",
+      "section": "S01",
+      "description": "S01: 3.14*2 = 6.28 - decimal multiplication result; multi-CRC: timing flap between two stable render states",
+      "expected_crcs": [
+        "09235847",
+        "A66A701F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 6,
+      "hash_name": "s01_parens_27",
+      "section": "S01",
+      "description": "S01: (4+5)*3 = 27 - parenthesised expression result; multi-CRC: timing flap between two stable render states",
+      "expected_crcs": [
+        "96E8CE76",
+        "CA615FD9"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 7,
+      "hash_name": "s01_power_256",
+      "section": "S01",
+      "description": "S01: 2^8 = 256 - exponentiation result",
+      "expected_crcs": [
+        "98B4B360"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 8,
+      "hash_name": "s01_div_zero_err",
+      "section": "S01",
+      "description": "S01: 1/0 - divide-by-zero error screen",
+      "expected_crcs": [
+        "32BFD188"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 9,
+      "hash_name": "s02_chain_sub_40",
+      "section": "S02",
+      "description": "S02: 100-30-20-10 = 40 - chained subtraction result",
+      "expected_crcs": [
+        "6B33D2F2"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 10,
+      "hash_name": "s02_chain_mul_24",
+      "section": "S02",
+      "description": "S02: 2*3*4 = 24 - chained multiplication result",
+      "expected_crcs": [
+        "D6820FF4"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 11,
+      "hash_name": "s02_large_mul_56088",
+      "section": "S02",
+      "description": "S02: 123*456 = 56088 - large integer multiplication",
+      "expected_crcs": [
+        "F1BCB830"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 12,
+      "hash_name": "s02_div_1000_8",
+      "section": "S02",
+      "description": "S02: 1000/8 = 125 - integer division result",
+      "expected_crcs": [
+        "97AA09B0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 13,
+      "hash_name": "s02_neg_times_neg_12",
+      "section": "S02",
+      "description": "S02: (-3)*(-4) = 12 - product of two negatives",
+      "expected_crcs": [
+        "3FB95899"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 14,
+      "hash_name": "s02_decimal_chain_1_5",
+      "section": "S02",
+      "description": "S02: 0.5+0.5+0.5 = 1.5 - decimal addition chain",
+      "expected_crcs": [
+        "776E26D1"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 15,
+      "hash_name": "s02_power_1024",
+      "section": "S02",
+      "description": "S02: 2^10 = 1024 - power of two",
+      "expected_crcs": [
+        "7EF52A4A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 16,
+      "hash_name": "s03_prec_add_mul_14",
+      "section": "S03",
+      "description": "S03: 2+3*4 = 14 - multiply before add (not 20)",
+      "expected_crcs": [
+        "7480DAFF"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 17,
+      "hash_name": "s03_prec_sub_div_7",
+      "section": "S03",
+      "description": "S03: 10-6/2 = 7 - divide before subtract (not 2)",
+      "expected_crcs": [
+        "9913C1A3"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 18,
+      "hash_name": "s03_right_assoc_pow_512",
+      "section": "S03",
+      "description": "S03: 2^3^2 = 512 - right-associative exponentiation: 2^(3^2)=2^9=512",
+      "expected_crcs": [
+        "307E0B54"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 19,
+      "hash_name": "s03_nested_parens_15",
+      "section": "S03",
+      "description": "S03: (2+3)*(4-1) = 15 - nested parentheses with mixed ops",
+      "expected_crcs": [
+        "236D2848"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 20,
+      "hash_name": "s04_sin_0",
+      "section": "S04",
+      "description": "S04: sin(0) = 0 - sine at zero (radians)",
+      "expected_crcs": [
+        "B20BC5D3"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 21,
+      "hash_name": "s04_cos_0",
+      "section": "S04",
+      "description": "S04: cos(0) = 1 - cosine at zero (radians)",
+      "expected_crcs": [
+        "C750EC0F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 22,
+      "hash_name": "s04_tan_0",
+      "section": "S04",
+      "description": "S04: tan(0) = 0 - tangent at zero",
+      "expected_crcs": [
+        "52A178CC"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 23,
+      "hash_name": "s04_asin_1",
+      "section": "S04",
+      "description": "S04: asin(1) = pi/2 ~= 1.5708 - inverse sine via 2nd+SIN; multi-CRC: emulator timing can capture result screen or still-processing screen",
+      "expected_crcs": [
+        "0FBF5667"
+      ],
+      "timeout_ms": 6000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 24,
+      "hash_name": "s04_sin_pi_over_2",
+      "section": "S04",
+      "description": "S04: sin(pi/2) = 1 - SIN key then 2nd+. for pi constant",
+      "expected_crcs": [
+        "E5B90897"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 25,
+      "hash_name": "s05_log_100",
+      "section": "S05",
+      "description": "S05: log(100) = 2 - base-10 log via LOG key",
+      "expected_crcs": [
+        "360FD6B0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 26,
+      "hash_name": "s05_log_1",
+      "section": "S05",
+      "description": "S05: log(1) = 0 - log of one",
+      "expected_crcs": [
+        "03FF1EAC"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 27,
+      "hash_name": "s05_ln_1",
+      "section": "S05",
+      "description": "S05: ln(1) = 0 - natural log of one via LN key",
+      "expected_crcs": [
+        "9BE7779B"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 28,
+      "hash_name": "s05_sqrt_4",
+      "section": "S05",
+      "description": "S05: sqrt(4) = 2 - square root via 2nd+x^2 key",
+      "expected_crcs": [
+        "695407B4"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 29,
+      "hash_name": "s05_exp_e_1",
+      "section": "S05",
+      "description": "S05: e^(1) ~= 2.71828 - natural exponential via 2nd+LN key",
+      "expected_crcs": [
+        "327A86A8"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 30,
+      "hash_name": "s05_abs_neg5",
+      "section": "S05",
+      "description": "S05: abs(-5) = 5 - absolute value via 2nd+x^-1 key",
+      "expected_crcs": [
+        "EAC3FDAC"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 31,
+      "hash_name": "s06_3_times_pi",
+      "section": "S06",
+      "description": "S06: 3*pi ~= 9.42478 - pi constant via 2nd+decimal key",
+      "expected_crcs": [
+        "22335EF2"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 32,
+      "hash_name": "s06_5_squared_25",
+      "section": "S06",
+      "description": "S06: 5^2 = 25 - x-squared key inserts ^2 suffix",
+      "expected_crcs": [
+        "DC8152C0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 33,
+      "hash_name": "s06_4_recip_0_25",
+      "section": "S06",
+      "description": "S06: 4^(-1) = 0.25 - x-inverse key inserts ^(-1) suffix",
+      "expected_crcs": [
+        "AE6F7DD0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 34,
+      "hash_name": "s07_err_trailing_op",
+      "section": "S07",
+      "description": "S07 ERROR: 5* - trailing operator error screen",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 35,
+      "hash_name": "s07_err_missing_lparen",
+      "section": "S07",
+      "description": "S07 ERROR: 2+3) - mismatched-paren error screen",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 36,
+      "hash_name": "s07_err_recovery_10",
+      "section": "S07",
+      "description": "S07 RECOVERY: 9+1=10 - valid expression after clearing error",
+      "expected_crcs": [
+        "3C76A83C"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 37,
+      "hash_name": "s08_menu_open",
+      "section": "S08",
+      "description": "S08: MODE key opens settings/symbol menu - multi-CRC: menu can render in multiple stable states depending on emulator timing",
+      "expected_crcs": [
+        "4127EC6B",
+        "535C2DF3",
+        "5DFACB3A",
+        "C77284BA"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 38,
+      "hash_name": "s08_menu_closed",
+      "section": "S08",
+      "description": "S08: CLEAR from menu returns to home prompt",
+      "expected_crcs": [
+        "F5303521"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 39,
+      "hash_name": "s08_menu_nav_cleared",
+      "section": "S08",
+      "description": "S08: MODE, down*2, CLEAR - home after menu navigation",
+      "expected_crcs": [
+        "F5303521"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 40,
+      "hash_name": "s08_tab_recents_empty",
+      "section": "S08",
+      "description": "S08: 2nd+Right from Symbols opens the empty Recently Used tab; multi-CRC: menu render timing can land on two stable tabbed states",
+      "expected_crcs": [
+        "4127EC6B",
+        "C77284BA"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 41,
+      "hash_name": "s08_tab_settings_open",
+      "section": "S08",
+      "description": "S08: 2nd+Right again opens the Settings tab with default toggles rendered; multi-CRC: menu render timing can land on two stable tabbed states",
+      "expected_crcs": [
+        "4127EC6B",
+        "C77284BA"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 42,
+      "hash_name": "s08_show_work_off",
+      "section": "S08",
+      "description": "S08: ENTER on Show Work toggles the setting OFF inside the Settings tab; multi-CRC: two stable post-toggle render states observed",
+      "expected_crcs": [
+        "2232BB73",
+        "3EEF9C22"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 43,
+      "hash_name": "s08_show_work_off_persist",
+      "section": "S08",
+      "description": "S08: Show Work remains OFF after closing and reopening the menu; multi-CRC: reopen timing can land on three stable states",
+      "expected_crcs": [
+        "4127EC6B",
+        "535C2DF3",
+        "5DFACB3A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 44,
+      "hash_name": "s08_show_work_restored_on",
+      "section": "S08",
+      "description": "S08: ENTER on Show Work toggles the setting back ON for downstream regression stability; multi-CRC: three stable post-toggle render states observed",
+      "expected_crcs": [
+        "2232BB73",
+        "30497AEB",
+        "3EEF9C22"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 45,
+      "hash_name": "s08_solve_mode_step_by_step",
+      "section": "S08",
+      "description": "S08: ENTER on Solve Mode toggles from Full Auto to Step-by-Step inside the Settings tab",
+      "expected_crcs": [
+        "45E31D53",
+        "593E3A02"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 46,
+      "hash_name": "s08_solve_mode_step_by_step_persist",
+      "section": "S08",
+      "description": "S08: Solve Mode remains Step-by-Step after closing and reopening the menu",
+      "expected_crcs": [
+        "535C2DF3",
+        "5DFACB3A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 47,
+      "hash_name": "s08_solve_mode_full_auto_restored",
+      "section": "S08",
+      "description": "S08: ENTER on Solve Mode toggles back to Full Auto for downstream regression stability",
+      "expected_crcs": [
+        "45E31D53",
+        "4B45FB9A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 48,
+      "hash_name": "s08_angle_mode_degrees",
+      "section": "S08",
+      "description": "S08: ENTER on Angle Mode toggles from Radians to Degrees inside the Settings tab",
+      "expected_crcs": [
+        "03756D66",
+        "114DB441"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 49,
+      "hash_name": "s08_angle_mode_degrees_persist",
+      "section": "S08",
+      "description": "S08: Angle Mode remains Degrees after closing and reopening the menu",
+      "expected_crcs": [
+        "4164F4D4",
+        "535C2DF3"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 50,
+      "hash_name": "s08_angle_mode_radians_restored",
+      "section": "S08",
+      "description": "S08: ENTER on Angle Mode toggles back to Radians for downstream regression stability",
+      "expected_crcs": [
+        "03756D66",
+        "114DB441"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 51,
+      "hash_name": "s08_finance_pmt_begin",
+      "section": "S08",
+      "description": "S08: ENTER on Finance PMT toggles the setting from END to BEGIN inside the Settings tab",
+      "expected_crcs": [
+        "456837A7",
+        "5750EE80",
+        "D5C1FAE7"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 52,
+      "hash_name": "s08_finance_pmt_begin_persist",
+      "section": "S08",
+      "description": "S08: Finance PMT remains BEGIN after closing and reopening the menu",
+      "expected_crcs": [
+        "4164F4D4",
+        "535C2DF3",
+        "D1CD3994"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 53,
+      "hash_name": "s08_finance_pmt_end_restored",
+      "section": "S08",
+      "description": "S08: ENTER on Finance PMT toggles the setting back to END for downstream regression stability",
+      "expected_crcs": [
+        "5750EE80",
+        "D5C1FAE7",
+        "FED5D557"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 54,
+      "hash_name": "s08_symbol_insert_derivative",
+      "section": "S08",
+      "description": "S08: ENTER on the default Symbols row inserts d/dx( into the input line; multi-CRC: three stable input-render states observed",
+      "expected_crcs": [
+        "2232BB73",
+        "30497AEB",
+        "3EEF9C22",
+        "99CC413C",
+        "B2D86E8C"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 55,
+      "hash_name": "s08_recents_open_with_derivative",
+      "section": "S08",
+      "description": "S08: reopening MODE after symbol insertion defaults to the Recently Used tab with d/dx(; multi-CRC: reopen timing can land on two stable states",
+      "expected_crcs": [
+        "535C2DF3",
+        "5DFACB3A",
+        "D1CD3994",
+        "FAD91624"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 56,
+      "hash_name": "s08_2nd_ln_input",
+      "section": "S08",
+      "description": "S08: 2nd+ln inserts e^( directly on the input line",
+      "expected_crcs": [
+        "E28359A1"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 57,
+      "hash_name": "s08_2nd_ln_result",
+      "section": "S08",
+      "description": "S08: 2nd+ln followed by 1) evaluates the shifted e^( function",
+      "expected_crcs": [
+        "93B0310F"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 58,
+      "hash_name": "s08_settings_open_for_complex",
+      "section": "S08",
+      "description": "S08: MODE then 2nd+RIGHT twice reopens the Settings tab ahead of complex-mode verification",
+      "expected_crcs": [
+        "219B6130",
+        "AEEDE387",
+        "BC96221F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 59,
+      "hash_name": "s08_complex_rect_enabled",
+      "section": "S08",
+      "description": "S08: ENTER on the Complex setting cycles from OFF to RECT inside the Settings tab",
+      "expected_crcs": [
+        "21B901B1",
+        "3E2556F9",
+        "A32815D6"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 60,
+      "hash_name": "s09_7_times_8",
+      "section": "S09",
+      "description": "S09: 7*8 = 56 - result to be used as ANS; multi-CRC: two stable post-session result renders observed",
+      "expected_crcs": [
+        "140C6356",
+        "E9801913"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 61,
+      "hash_name": "s09_ans_56_plus_4",
+      "section": "S09",
+      "description": "S09: ANS+4 = 60 - previous answer recall: 'ans' typed via ALPHA mode (a=alpha+math, n=alpha+log, s=alpha+ln); multi-CRC: two stable ANS result renders observed",
+      "expected_crcs": [
+        "AFD0D240",
+        "B536A6C1"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 62,
+      "hash_name": "s10_stat_mean_3",
+      "section": "S10",
+      "description": "S10 STAT: mean(1,2,3,4,5) = 3 - sample mean routed through the statistics domain",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 63,
+      "hash_name": "s10_stat_stdev_sample",
+      "section": "S10",
+      "description": "S10 STAT: stdev(2,4,4,4,5,5,7,9) ~= 2.13809 - sample standard deviation routed through the statistics domain",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 64,
+      "hash_name": "s10_stat_var_sample",
+      "section": "S10",
+      "description": "S10 STAT: var(1,2,3,4,5) = 2.5 - sample variance routed through the statistics domain",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 65,
+      "hash_name": "s10_nderiv_x2_at1",
+      "section": "S10",
+      "description": "S10 CAS: nderiv(x^2,x,1) - derivative via ALPHA-spelled 'nderiv(' (n=alpha+log, d=alpha+-1, e=alpha+sin, r=alpha+*, i=alpha+^2, v=alpha+6)",
+      "expected_crcs": [
+        "32BFD188",
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 66,
+      "hash_name": "s10_deriv_x2",
+      "section": "S10",
+      "description": "S10 CAS: d/dx(x^2) = 2*x - symbolic derivative via d/dx notation (pass56: CalcEngine now stays alive, CECALC handles expression)",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 67,
+      "hash_name": "s10_int_x2",
+      "section": "S10",
+      "description": "S10 CAS: int(x^2,x) = x^3/3+C - indefinite integral typed via ALPHA mode (i=alpha+square, n=alpha+log, t=alpha+4)",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 68,
+      "hash_name": "s10_lim_sinx_over_x",
+      "section": "S10",
+      "description": "S10 CAS: lim(x^2,x,2) = 4 - polynomial limit via try_direct_sub; typed LIM(X^2,X,2) using alpha keys (L=key|), I=key|x2, M=key|log); key|div inside lim args triggers TI-OS evaluation crash so division-free expression used",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 69,
+      "hash_name": "s10_solve_x_plus2",
+      "section": "S10",
+      "description": "S10 CAS: solve(x+2,x) = x=-2 - equation solver via ALPHA-spelled 'solve(' (s=alpha+ln, o=alpha+7, l=alpha+), v=alpha+6, e=alpha+sin)",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 70,
+      "hash_name": "s10_expand_x1_sq",
+      "section": "S10",
+      "description": "S10 CAS: expand((x+1)^2) = x^2+2x+1 - polynomial expansion via ALPHA (e=alpha+sin, x=graphvar, p=alpha+8, a=alpha+math, n=alpha+log, d=alpha+recip); multi-CRC: timing flap between two observed stable result screens",
+      "expected_crcs": [
+        "0C99B93E",
+        "CB0E5202"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 71,
+      "hash_name": "s10_fin_pv_case1",
+      "section": "S10",
+      "description": "S10 FIN: pv(0.05,10,0,1000) - present value calculation routed through the finance domain",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 72,
+      "hash_name": "s10_fin_pv_case2_zero_rate",
+      "section": "S10",
+      "description": "S10 FIN: pv(0,5,-100,0) - zero-rate present value case",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 73,
+      "hash_name": "s10_fin_fv_case1",
+      "section": "S10",
+      "description": "S10 FIN: fv(0.05,10,100,0) - future value calculation routed through the finance domain",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 74,
+      "hash_name": "s10_fin_fv_case2_zero_rate",
+      "section": "S10",
+      "description": "S10 FIN: fv(0,5,0,-100) - zero-rate future value case",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 75,
+      "hash_name": "s10_fin_pmt_case1",
+      "section": "S10",
+      "description": "S10 FIN: pmt(0.05,10,1000,0) - payment calculation routed through the finance domain",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 76,
+      "hash_name": "s10_fin_pmt_case2_zero_rate",
+      "section": "S10",
+      "description": "S10 FIN: pmt(0,10,1000,0) - zero-rate payment case",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 77,
+      "hash_name": "s10_complex_add_1_plus_i_plus_2_plus_i",
+      "section": "S10",
+      "description": "S10 CMPLX: 1+i+2+i with Complex mode set to RECT - basic complex addition",
+      "expected_crcs": [
+        "1130C5A9"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 78,
+      "hash_name": "s10_complex_mul_i_times_i",
+      "section": "S10",
+      "description": "S10 CMPLX: i*i with Complex mode set to RECT - basic complex multiplication",
+      "expected_crcs": [
+        "DF97515D"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 79,
+      "hash_name": "s11_clear_reenter",
+      "section": "S11",
+      "description": "S11: 9+9, CLEAR mid-entry, then 3+4 = 7 - clear-and-reenter continuity",
+      "expected_crcs": [
+        "0FFCD992",
+        "9ECBC011"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 80,
+      "hash_name": "s11_double_clear",
+      "section": "S11",
+      "description": "S11: 5*5, CLEAR, CLEAR, then 6*6 = 36 - double-clear continuity",
+      "expected_crcs": [
+        "90E69901"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 81,
+      "hash_name": "s11_clear_midexpr_9_plus_9",
+      "section": "S11",
+      "description": "S11: 9+9 is visible on the input line before CLEAR is pressed",
+      "expected_crcs": [
+        "B3B975B9"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 82,
+      "hash_name": "s11_clear_midexpr_blank",
+      "section": "S11",
+      "description": "S11: CLEAR on 9+9 wipes the current input and returns to the blank prompt row without advancing",
+      "expected_crcs": [
+        "269ADB57"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 83,
+      "hash_name": "s11_long_expr_input",
+      "section": "S11",
+      "description": "S11: long repeated-addition expression remains visible on the input line before evaluation; multi-CRC: two stable wrapped-input renders observed",
+      "expected_crcs": [
+        "0316DC12",
+        "BFCF310A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 84,
+      "hash_name": "s11_cursor_left_mid_12345",
+      "section": "S11",
+      "description": "S11: LEFT arrow moves the input cursor left into the middle of 12345",
+      "expected_crcs": [
+        "C46473BA"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 85,
+      "hash_name": "s11_cursor_right_mid_12345",
+      "section": "S11",
+      "description": "S11: RIGHT arrow moves the input cursor right within 12345 after a prior left move",
+      "expected_crcs": [
+        "BBD7ED63"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 86,
+      "hash_name": "s11_del_backspace_mid_1235",
+      "section": "S11",
+      "description": "S11: DEL removes the character immediately left of the cursor, turning 12345 into 1235",
+      "expected_crcs": [
+        "BBD7ED63"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 87,
+      "hash_name": "s11_long_expr_result_16",
+      "section": "S11",
+      "description": "S11: long repeated-addition expression evaluates to 16 without breaking the Enter path; multi-CRC: two stable result renders observed",
+      "expected_crcs": [
+        "B9B5D5E0",
+        "F018E546"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 88,
+      "hash_name": "s12_neg_minus5_result",
+      "section": "S12",
+      "description": "S12: -5 entered as a standalone negative integer",
+      "expected_crcs": [
+        "0348F81F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 89,
+      "hash_name": "s12_neg_minus3_14_result",
+      "section": "S12",
+      "description": "S12: -3.14 entered as a standalone negative decimal",
+      "expected_crcs": [
+        "5F2E6897"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 90,
+      "hash_name": "s12_neg_grouped_input",
+      "section": "S12",
+      "description": "S12: grouped negative input -(2+3) visible before evaluation",
+      "expected_crcs": [
+        "A6483681"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 91,
+      "hash_name": "s12_neg_grouped_result",
+      "section": "S12",
+      "description": "S12: grouped negative expression -(2+3) evaluates correctly",
+      "expected_crcs": [
+        "4ECEE262"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 92,
+      "hash_name": "s12_precision_123456789_input",
+      "section": "S12",
+      "description": "S12: 123456789 remains intact on the input line before evaluation",
+      "expected_crcs": [
+        "0FD65BBE"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 93,
+      "hash_name": "s12_precision_123456789_result",
+      "section": "S12",
+      "description": "S12: 123456789 evaluates without truncation",
+      "expected_crcs": [
+        "114A045A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 94,
+      "hash_name": "s12_precision_micro_input",
+      "section": "S12",
+      "description": "S12: 0.000001 remains intact on the input line before evaluation",
+      "expected_crcs": [
+        "B2C61211"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 95,
+      "hash_name": "s12_precision_micro_result",
+      "section": "S12",
+      "description": "S12: 0.000001 evaluates without precision drift on entry",
+      "expected_crcs": [
+        "32AF8017"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 96,
+      "hash_name": "s12_precision_1_23456789_input",
+      "section": "S12",
+      "description": "S12: 1.23456789 remains intact on the input line before evaluation",
+      "expected_crcs": [
+        "B30ABC99"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 97,
+      "hash_name": "s12_precision_1_23456789_result",
+      "section": "S12",
+      "description": "S12: 1.23456789 evaluates without entry-side truncation",
+      "expected_crcs": [
+        "8D03C509"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 98,
+      "hash_name": "s13_nested_expr_result_input",
+      "section": "S13",
+      "description": "S13: ((2+3)*4)-(1/2) is visible before evaluation",
+      "expected_crcs": [
+        "7B471326"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 99,
+      "hash_name": "s13_nested_expr_result",
+      "section": "S13",
+      "description": "S13: ((2+3)*4)-(1/2) evaluates correctly",
+      "expected_crcs": [
+        "951E838C"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 100,
+      "hash_name": "s13_nested_pow_input",
+      "section": "S13",
+      "description": "S13: 2^(3+1) is visible before evaluation",
+      "expected_crcs": [
+        "85AC176D"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 101,
+      "hash_name": "s13_nested_pow_result",
+      "section": "S13",
+      "description": "S13: 2^(3+1) evaluates correctly",
+      "expected_crcs": [
+        "E5B05FA0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 102,
+      "hash_name": "s14_ans_seed_2_plus_3",
+      "section": "S14",
+      "description": "S14: ANS chaining seed result from 2+3",
+      "expected_crcs": [
+        "E64365B2"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 103,
+      "hash_name": "s14_ans_times2_input",
+      "section": "S14",
+      "description": "S14: ANS*2 input line after ALPHA-spelled ans recall",
+      "expected_crcs": [
+        "ECFD01B6"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 104,
+      "hash_name": "s14_ans_times2_result",
+      "section": "S14",
+      "description": "S14: ANS*2 evaluates correctly after prior result recall",
+      "expected_crcs": [
+        "C43260CC"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 105,
+      "hash_name": "s14_ans_plus1_input",
+      "section": "S14",
+      "description": "S14: ANS+1 input line after chained ANS recall",
+      "expected_crcs": [
+        "5DC8831A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 106,
+      "hash_name": "s14_ans_plus1_result",
+      "section": "S14",
+      "description": "S14: ANS+1 evaluates correctly after chained ANS recall",
+      "expected_crcs": [
+        "C826B15C"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 107,
+      "hash_name": "s15_overflow_9_pow_99_input",
+      "section": "S15",
+      "description": "S15: overflow probe input 9^99 visible before evaluation",
+      "expected_crcs": [
+        "8F776172"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 108,
+      "hash_name": "s15_overflow_9_pow_99_result",
+      "section": "S15",
+      "description": "S15: overflow probe result or error screen after evaluating 9^99",
+      "expected_crcs": [
+        "1377B94B"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 109,
+      "hash_name": "s15_clear_midexpr_7_plus_8_input",
+      "section": "S15",
+      "description": "S15: 7+8 visible before CLEAR in the edge-case clear-screen probe",
+      "expected_crcs": [
+        "37863EAB"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 110,
+      "hash_name": "s15_clear_midexpr_blank",
+      "section": "S15",
+      "description": "S15: CLEAR returns the edge-case probe to a blank prompt",
+      "expected_crcs": [
+        "FD904C0F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 111,
+      "hash_name": "s15_mode_open_from_prompt",
+      "section": "S15",
+      "description": "S15: MODE opens from the prompt in the edge-case control probe",
+      "expected_crcs": [
+        "2651D7D2",
+        "470E1690",
+        "5B90297E"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 112,
+      "hash_name": "s15_mode_closed_to_prompt",
+      "section": "S15",
+      "description": "S15: CLEAR exits MODE and returns to the prompt",
+      "expected_crcs": [
+        "FD904C0F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 113,
+      "hash_name": "s15_math_menu_open",
+      "section": "S15",
+      "description": "S15: MATH opens from the prompt",
+      "expected_crcs": [
+        "8C3C5304"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 114,
+      "hash_name": "s15_math_menu_closed",
+      "section": "S15",
+      "description": "S15: CLEAR exits the MATH menu and returns to the prompt",
+      "expected_crcs": [
+        "FD904C0F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 115,
+      "hash_name": "s15_apps_menu_open",
+      "section": "S15",
+      "description": "S15: APPS opens from the prompt",
+      "expected_crcs": [
+        "9E45F4B5"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 116,
+      "hash_name": "s15_apps_menu_closed",
+      "section": "S15",
+      "description": "S15: CLEAR exits the APPS menu and returns to the prompt",
+      "expected_crcs": [
+        "FD904C0F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 117,
+      "hash_name": "s16_store_x_input",
+      "section": "S16",
+      "description": "S16 VAR: 5->x is visible before ENTER using 2nd+ENTER for the store arrow and ALPHA+STO for x",
+      "expected_crcs": [
+        "FC91334F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 118,
+      "hash_name": "s16_recall_x_plus_2_input",
+      "section": "S16",
+      "description": "S16 VAR: x+2 is visible after storing 5 into x and recalling x with ALPHA+STO",
+      "expected_crcs": [
+        "2A0A74D6"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 119,
+      "hash_name": "s16_recall_x_plus_2_result",
+      "section": "S16",
+      "description": "S16 VAR: x+2 evaluates using the stored x value from the prior 5->x assignment",
+      "expected_crcs": [
+        "EBD3F4DD"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 120,
+      "hash_name": "s16_store_y_input",
+      "section": "S16",
+      "description": "S16 VAR: 3->y is visible before ENTER using 2nd+ENTER for the store arrow and ALPHA+1 for y",
+      "expected_crcs": [
+        "8953D4FD"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 121,
+      "hash_name": "s16_recall_x_plus_y_input",
+      "section": "S16",
+      "description": "S16 VAR: x+y is visible after storing 5 into x and 3 into y",
+      "expected_crcs": [
+        "09004CF1"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 122,
+      "hash_name": "s16_recall_x_plus_y_result",
+      "section": "S16",
+      "description": "S16 VAR: x+y evaluates using both stored variables from the prior assignments",
+      "expected_crcs": [
+        "E5B90897"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 123,
+      "hash_name": "s17_angle_mode_degrees_for_trig",
+      "section": "S17",
+      "description": "S17 TRIG: Angle mode is toggled to Degrees before evaluating the 30/60/45 trig regression trio",
+      "expected_crcs": [
+        "27D52DF8",
+        "B0048B1B",
+        "D15B4A59"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 124,
+      "hash_name": "s17_sin_30_result",
+      "section": "S17",
+      "description": "S17 TRIG: sin(30) evaluates in Degree mode",
+      "expected_crcs": [
+        "A0A13424"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 125,
+      "hash_name": "s17_cos_60_result",
+      "section": "S17",
+      "description": "S17 TRIG: cos(60) evaluates in Degree mode",
+      "expected_crcs": [
+        "1CB752B2"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 126,
+      "hash_name": "s17_tan_45_result",
+      "section": "S17",
+      "description": "S17 TRIG: tan(45) evaluates in Degree mode",
+      "expected_crcs": [
+        "196F252E"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 127,
+      "hash_name": "s17_angle_mode_radians_restored_after_trig",
+      "section": "S17",
+      "description": "S17 TRIG: Angle mode is toggled back to Radians after the Degree-mode trig regression trio",
+      "expected_crcs": [
+        "10EDE0E7",
+        "27D52DF8",
+        "71B221A5",
+        "B0048B1B"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 128,
+      "hash_name": "s18_log_1000_result",
+      "section": "S18",
+      "description": "S18 LOG: log(1000) evaluates through the LOG function key path",
+      "expected_crcs": [
+        "FB54E675"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 129,
+      "hash_name": "s18_ln_e_result",
+      "section": "S18",
+      "description": "S18 LOG: ln(e) evaluates using 2nd+(-) for the e constant",
+      "expected_crcs": [
+        "B88B77ED"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 130,
+      "hash_name": "s18_ln_10_result",
+      "section": "S18",
+      "description": "S18 LOG: ln(10) evaluates through the LN function key path",
+      "expected_crcs": [
+        "84E33D3C"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 131,
+      "hash_name": "s19_nlsolve_linear_pair_input",
+      "section": "S19",
+      "description": "S19 SYS: nlsolve(x+y-5,x-y-1,x,y) is visible before ENTER as a two-equation combined solve probe",
+      "expected_crcs": [
+        "03BC746E",
+        "9149B8ED",
+        "F7E2DDAD"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 132,
+      "hash_name": "s19_nlsolve_linear_pair_result",
+      "section": "S19",
+      "description": "S19 SYS: nlsolve(x+y-5,x-y-1,x,y) evaluates as a deterministic two-equation combined solve case",
+      "expected_crcs": [
+        "E5B90897"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 133,
+      "hash_name": "s20_complex_conjugate_product_input",
+      "section": "S20",
+      "description": "S20 CMPLX: (2+i)*(2-i) is visible before ENTER while Complex mode remains enabled",
+      "expected_crcs": [
+        "888D91CE",
+        "AA33DA8A",
+        "EAE21CC6"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 134,
+      "hash_name": "s20_complex_conjugate_product_result",
+      "section": "S20",
+      "description": "S20 CMPLX: (2+i)*(2-i) evaluates as a conjugate-product regression case",
+      "expected_crcs": [
+        "09EEEC2C",
+        "17670F5D",
+        "2FBDCD2E"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 135,
+      "hash_name": "s21_store_to_sin_input",
+      "section": "S21",
+      "description": "S21 ERR: invalid store target 5->sin( is visible before ENTER",
+      "expected_crcs": [
+        "2566E201",
+        "4CDA1790",
+        "96E77A46"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 136,
+      "hash_name": "s21_store_to_sin_syntax_err",
+      "section": "S21",
+      "description": "S21 ERR: invalid store target 5->sin( raises SYNTAX ERR",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 137,
+      "hash_name": "s22_dim_literal_input",
+      "section": "S22",
+      "description": "S22 LIST: dim({4,1,9,2}) is visible before ENTER using a literal list probe",
+      "expected_crcs": [
+        "5C446F47",
+        "B07D7A72",
+        "FD28973F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 138,
+      "hash_name": "s22_dim_literal_result",
+      "section": "S22",
+      "description": "S22 LIST: dim({4,1,9,2}) = 4 - literal-list dimension probe",
+      "expected_crcs": [
+        "B095D012",
+        "E1C853A4"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 139,
+      "hash_name": "s22_cumsum_literal_input",
+      "section": "S22",
+      "description": "S22 LIST: cumsum({1,2,3,4}) is visible before ENTER using a literal list probe",
+      "expected_crcs": [
+        "10996664",
+        "F814F03B"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 140,
+      "hash_name": "s22_cumsum_literal_result",
+      "section": "S22",
+      "description": "S22 LIST: cumsum({1,2,3,4}) returns the cumulative-sum list {1,3,6,10}",
+      "expected_crcs": [
+        "220E4BAE",
+        "37CD0E79"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 141,
+      "hash_name": "s22_deltalist_literal_input",
+      "section": "S22",
+      "description": "S22 LIST: deltalist({5,9,14,20}) is visible before ENTER using a literal list probe",
+      "expected_crcs": [
+        "13D76A04",
+        "F4B125F0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 142,
+      "hash_name": "s22_deltalist_literal_result",
+      "section": "S22",
+      "description": "S22 LIST: deltalist({5,9,14,20}) returns the difference list {4,5,6}",
+      "expected_crcs": [
+        "1F55EBA2",
+        "85115676"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 143,
+      "hash_name": "s22_sorta_literal_input",
+      "section": "S22",
+      "description": "S22 LIST: sorta({9,1,4,2}) is visible before ENTER using a literal list probe",
+      "expected_crcs": [
+        "852080B0",
+        "87CF7020"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 144,
+      "hash_name": "s22_sorta_literal_result",
+      "section": "S22",
+      "description": "S22 LIST: sorta({9,1,4,2}) returns the ascending list {1,2,4,9}",
+      "expected_crcs": [
+        "D5E93E40"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 145,
+      "hash_name": "s22_sortd_literal_input",
+      "section": "S22",
+      "description": "S22 LIST: sortd({9,1,4,2}) is visible before ENTER using a literal list probe",
+      "expected_crcs": [
+        "0582BE81"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 146,
+      "hash_name": "s22_sortd_literal_result",
+      "section": "S22",
+      "description": "S22 LIST: sortd({9,1,4,2}) returns the descending list {9,4,2,1}",
+      "expected_crcs": [
+        "E76929D5"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 147,
+      "hash_name": "s23_seq_square_input",
+      "section": "S23",
+      "description": "S23 LOOP: seq(x^2,x,1,4,1) is visible before ENTER as a deterministic sequence-generator probe",
+      "expected_crcs": [
+        "311899E0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 148,
+      "hash_name": "s23_seq_square_result",
+      "section": "S23",
+      "description": "S23 LOOP: seq(x^2,x,1,4,1) returns the squared list {1,4,9,16}",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 149,
+      "hash_name": "s23_seq_linear_input",
+      "section": "S23",
+      "description": "S23 LOOP: seq(2*x+1,x,0,3,1) is visible before ENTER as a linear sequence-generator probe",
+      "expected_crcs": [
+        "3B9DBC75"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 150,
+      "hash_name": "s23_seq_linear_result",
+      "section": "S23",
+      "description": "S23 LOOP: seq(2*x+1,x,0,3,1) returns the odd list {1,3,5,7}",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 151,
+      "hash_name": "s23_seq_even_input",
+      "section": "S23",
+      "description": "S23 LOOP: seq(2*x,x,2,8,2) is visible before ENTER as a stepped sequence-generator probe",
+      "expected_crcs": [
+        "DF3ECB2F"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 152,
+      "hash_name": "s23_seq_even_result",
+      "section": "S23",
+      "description": "S23 LOOP: seq(2*x,x,2,8,2) returns the stepped even list {4,8,12,16}",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 153,
+      "hash_name": "s24_mean_25_input",
+      "section": "S24",
+      "description": "S24 STAT: mean(10,20,30,40) is visible before ENTER as an arithmetic-mean probe",
+      "expected_crcs": [
+        "2631A813"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 154,
+      "hash_name": "s24_mean_25_result",
+      "section": "S24",
+      "description": "S24 STAT: mean(10,20,30,40) = 25 - deterministic arithmetic mean",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 155,
+      "hash_name": "s24_median_5_input",
+      "section": "S24",
+      "description": "S24 STAT: median(9,1,5,7,3) is visible before ENTER as a median probe",
+      "expected_crcs": [
+        "2264CFC8"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 156,
+      "hash_name": "s24_median_5_result",
+      "section": "S24",
+      "description": "S24 STAT: median(9,1,5,7,3) = 5 - deterministic median after sorting the sample",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 157,
+      "hash_name": "s24_stdev_sample_input",
+      "section": "S24",
+      "description": "S24 STAT: stdev(2,4,4,4,5,5,7,9) is visible before ENTER as a sample-standard-deviation probe",
+      "expected_crcs": [
+        "BC394FC0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 158,
+      "hash_name": "s24_stdev_sample_result",
+      "section": "S24",
+      "description": "S24 STAT: stdev(2,4,4,4,5,5,7,9) ~= 2.13809 - deterministic sample standard deviation",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 159,
+      "hash_name": "s24_variance_input",
+      "section": "S24",
+      "description": "S24 STAT: variance(1,2,3,4,5) is visible before ENTER as a variance probe",
+      "expected_crcs": [
+        "7F72C383"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 160,
+      "hash_name": "s24_variance_result",
+      "section": "S24",
+      "description": "S24 STAT: variance(1,2,3,4,5) = 2.5 - deterministic sample variance",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 161,
+      "hash_name": "s25_mean_single_input",
+      "section": "S25",
+      "description": "S25 STAT EDGE: mean(5) is visible before ENTER as a singleton-dataset mean probe",
+      "expected_crcs": [
+        "F83C6E81"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 162,
+      "hash_name": "s25_mean_single_result",
+      "section": "S25",
+      "description": "S25 STAT EDGE: mean(5) = 5 - singleton dataset collapses to its only value",
+      "expected_crcs": [
+        "E9A55C4F"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 163,
+      "hash_name": "s25_median_single_input",
+      "section": "S25",
+      "description": "S25 STAT EDGE: median(7) is visible before ENTER as a singleton-dataset median probe",
+      "expected_crcs": [
+        "42C963A9"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 164,
+      "hash_name": "s25_median_single_result",
+      "section": "S25",
+      "description": "S25 STAT EDGE: median(7) = 7 - singleton median remains stable",
+      "expected_crcs": [
+        "CBF6372B"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 165,
+      "hash_name": "s25_stdev_single_input",
+      "section": "S25",
+      "description": "S25 STAT EDGE: stdev(5) is visible before ENTER as a singleton standard-deviation probe",
+      "expected_crcs": [
+        "8F89FBF1"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 166,
+      "hash_name": "s25_stdev_single_result",
+      "section": "S25",
+      "description": "S25 STAT EDGE: stdev(5) = 0 - singleton sample standard deviation should clamp to zero",
+      "expected_crcs": [
+        "A7B3E96D"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 167,
+      "hash_name": "s25_var_single_input",
+      "section": "S25",
+      "description": "S25 STAT EDGE: var(5) is visible before ENTER as a singleton variance probe using the short alias",
+      "expected_crcs": [
+        "2BB197B9"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 168,
+      "hash_name": "s25_var_single_result",
+      "section": "S25",
+      "description": "S25 STAT EDGE: var(5) = 0 - singleton variance should clamp to zero",
+      "expected_crcs": [
+        "89BBF49C"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 169,
+      "hash_name": "s25_mean_decimal_input",
+      "section": "S25",
+      "description": "S25 STAT EDGE: mean(0.1,0.2,0.3) is visible before ENTER as a decimal-rounding probe",
+      "expected_crcs": [
+        "1DE55260",
+        "A2218A03"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 170,
+      "hash_name": "s25_mean_decimal_result",
+      "section": "S25",
+      "description": "S25 STAT EDGE: mean(0.1,0.2,0.3) = 0.2 - decimal mean should render stably across float-rounding boundaries",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 171,
+      "hash_name": "s25_var_decimal_input",
+      "section": "S25",
+      "description": "S25 STAT EDGE: var(0.1,0.2,0.3) is visible before ENTER as a decimal variance probe",
+      "expected_crcs": [
+        "FF474A51"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 172,
+      "hash_name": "s25_var_decimal_result",
+      "section": "S25",
+      "description": "S25 STAT EDGE: var(0.1,0.2,0.3) ~= 0.01 - decimal variance highlights float-rounding sensitivity",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 173,
+      "hash_name": "s26_dim_empty_input",
+      "section": "S26",
+      "description": "S26 LIST EDGE: dim({}) is visible before ENTER as an empty-literal dataset probe",
+      "expected_crcs": [
+        "560089F1"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 174,
+      "hash_name": "s26_dim_empty_result",
+      "section": "S26",
+      "description": "S26 LIST EDGE: dim({}) captures the engine's empty-literal handling path on hardware",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 175,
+      "hash_name": "s26_deltalist_single_input",
+      "section": "S26",
+      "description": "S26 LIST EDGE: deltalist({9}) is visible before ENTER as a single-item list-difference probe",
+      "expected_crcs": [
+        "06416DE9",
+        "163E1A20"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 176,
+      "hash_name": "s26_deltalist_single_result",
+      "section": "S26",
+      "description": "S26 LIST EDGE: deltalist({9}) captures the degenerate single-item delta-list result state",
+      "expected_crcs": [
+        "B9B5D5E0",
+        "C9BC9D50"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 177,
+      "hash_name": "s26_seq_single_input",
+      "section": "S26",
+      "description": "S26 LIST EDGE: seq(x,x,5,5,1) is visible before ENTER as a singleton sequence-generator probe",
+      "expected_crcs": [
+        "4546462C",
+        "5E6F34DD",
+        "862BC147"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 178,
+      "hash_name": "s26_seq_single_result",
+      "section": "S26",
+      "description": "S26 LIST EDGE: seq(x,x,5,5,1) returns the singleton list {5}",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 179,
+      "hash_name": "s26_seq_decimal_input",
+      "section": "S26",
+      "description": "S26 LIST EDGE: seq(0.1*x,x,1,5,1) is visible before ENTER as a decimal-step sequence probe",
+      "expected_crcs": [
+        "1100EDB7",
+        "8920F381",
+        "D02853F1"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 180,
+      "hash_name": "s26_seq_decimal_result",
+      "section": "S26",
+      "description": "S26 LIST EDGE: seq(0.1*x,x,1,5,1) returns the decimal-stepped list {0.1,0.2,0.3,0.4,0.5}",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 181,
+      "hash_name": "s27_piecewise_stats_input",
+      "section": "S27",
+      "description": "S27 NESTED: piecewise(mean(1,2,3),1,median(4,5,6)) is visible before ENTER as a nested conditional/statistical probe",
+      "expected_crcs": [
+        "90BB4488",
+        "9B8B78FD",
+        "BFFFDE8C"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 182,
+      "hash_name": "s27_piecewise_stats_result",
+      "section": "S27",
+      "description": "S27 NESTED: piecewise(mean(1,2,3),1,median(4,5,6)) = 2 - nested conditional/statistical dispatch remains deterministic",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 183,
+      "hash_name": "s28_pv_monthly_input",
+      "section": "S28",
+      "description": "S28 FIN EDGE: pv(12,0.005,-100,0) is visible before ENTER as a monthly-rate present-value probe",
+      "expected_crcs": [
+        "3DA4D739",
+        "52DDD237",
+        "82F64568"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 184,
+      "hash_name": "s28_pv_monthly_result",
+      "section": "S28",
+      "description": "S28 FIN EDGE: pv(12,0.005,-100,0) ~= 1161.89 - finance rendering should remain stable for small monthly rates",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 185,
+      "hash_name": "s28_eff_nominal_input",
+      "section": "S28",
+      "description": "S28 FIN EDGE: eff(0.12,12) is visible before ENTER as a nominal-to-effective conversion probe",
+      "expected_crcs": [
+        "2B9C8C02",
+        "2EFA9C21",
+        "39D6C015"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 186,
+      "hash_name": "s28_eff_nominal_result",
+      "section": "S28",
+      "description": "S28 FIN EDGE: eff(0.12,12) ~= 0.126825 - effective-rate conversion exposes precision-sensitive rendering",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 187,
+      "hash_name": "s28_nom_effective_input",
+      "section": "S28",
+      "description": "S28 FIN EDGE: nom(0.126825,12) is visible before ENTER as an effective-to-nominal conversion probe",
+      "expected_crcs": [
+        "27AA5039",
+        "CAAF0E25"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 188,
+      "hash_name": "s28_nom_effective_result",
+      "section": "S28",
+      "description": "S28 FIN EDGE: nom(0.126825,12) ~= 0.12 - reverse conversion should close the monthly compounding round-trip",
+      "expected_crcs": [
+        "B9B5D5E0"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 189,
+      "hash_name": "s30_home_prompt_fresh",
+      "section": "S30",
+      "description": "S30 LCD: blank homescreen prompt after clearing back to fresh input state",
+      "expected_crcs": [
+        "A32840C8"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 190,
+      "hash_name": "s29_shift_2nd_sin_input",
+      "section": "S29",
+      "description": "S29 KEY: 2nd+SIN inserts asin( on the input line as a shifted-function proof",
+      "expected_crcs": [
+        "407B4B08"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 191,
+      "hash_name": "s29_shift_2nd_sqrt_input",
+      "section": "S29",
+      "description": "S29 KEY: 2nd+x^2 inserts sqrt( on the input line as a shifted-function proof",
+      "expected_crcs": [
+        "22C34CB5"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 192,
+      "hash_name": "s29_shift_2nd_abs_input",
+      "section": "S29",
+      "description": "S29 KEY: 2nd+x^-1 inserts abs( on the input line as a shifted-function proof",
+      "expected_crcs": [
+        "E4A58031"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 193,
+      "hash_name": "s29_alpha_solve_input",
+      "section": "S29",
+      "description": "S29 KEY: ALPHA-spelled solve is visible as a free-text letter-entry proof",
+      "expected_crcs": [
+        "95976A1A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 194,
+      "hash_name": "s29_repeat_11111_input",
+      "section": "S29",
+      "description": "S29 KEY: five repeated presses of 1 render 11111 with no dropped or merged digits",
+      "expected_crcs": [
+        "735D3F1D"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 195,
+      "hash_name": "s30_multiline_expression_wrap",
+      "section": "S30",
+      "description": "S30 LCD: long homescreen expression wraps across the input area without corrupting layout",
+      "expected_crcs": [
+        "15B58686"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 196,
+      "hash_name": "s29_long_left_cursor",
+      "section": "S29",
+      "description": "S29 KEY: LEFT arrow repositions the cursor within a long wrapped expression",
+      "expected_crcs": [
+        "24AED6A6"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 197,
+      "hash_name": "s29_long_right_cursor",
+      "section": "S29",
+      "description": "S29 KEY: RIGHT arrow advances the cursor within a long wrapped expression after prior LEFT movement",
+      "expected_crcs": [
+        "4A95FD48"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 198,
+      "hash_name": "s29_fraction_cursor_anchor",
+      "section": "S29",
+      "description": "S29 KEY: cursor is anchored at the fraction boundary inside 1+2/3+4 ahead of MathPrint up/down navigation",
+      "expected_crcs": [
+        "4B6207A6"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 199,
+      "hash_name": "s29_down_to_denominator",
+      "section": "S29",
+      "description": "S29 KEY: DOWN moves the MathPrint cursor from the numerator side of 1+2/3+4 into the denominator",
+      "expected_crcs": [
+        "4B6207A6"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 200,
+      "hash_name": "s29_up_to_numerator",
+      "section": "S29",
+      "description": "S29 KEY: UP moves the MathPrint cursor back from the denominator side of 1+2/3+4 to the numerator boundary",
+      "expected_crcs": [
+        "D5745C02"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 201,
+      "hash_name": "s29_del_backspace_mid_24680",
+      "section": "S29",
+      "description": "S29 KEY: DEL performs backspace semantics inside 24680 after moving the cursor into the middle",
+      "expected_crcs": [
+        "D5745C02"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 202,
+      "hash_name": "s29_del_forward_mid_24680",
+      "section": "S29",
+      "description": "S29 KEY: 2nd+DEL performs forward-delete semantics inside 24680 after moving the cursor into the middle",
+      "expected_crcs": [
+        "D5745C02"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 203,
+      "hash_name": "s30_result_layout_2_plus_3",
+      "section": "S30",
+      "description": "S30 LCD: 2+3 result screen shows the rendered result in the normal post-expression layout",
+      "expected_crcs": [
+        "5A760441"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 204,
+      "hash_name": "s30_result_enter_reprocess",
+      "section": "S30",
+      "description": "S30 LCD: ENTER on a result reprocesses the current expression rather than returning directly to a blank prompt",
+      "expected_crcs": [
+        "00473F0C"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 205,
+      "hash_name": "s30_post_result_prompt_with_expression",
+      "section": "S30",
+      "description": "S30 LCD: first CLEAR from a result returns to the input prompt with the prior expression restored",
+      "expected_crcs": [
+        "A32840C8"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 206,
+      "hash_name": "s30_post_result_prompt_blank",
+      "section": "S30",
+      "description": "S30 LCD: second CLEAR from the restored prompt returns to a blank homescreen prompt with the cursor reset",
+      "expected_crcs": [
+        "A32840C8"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 207,
+      "hash_name": "s30_error_display_div_zero",
+      "section": "S30",
+      "description": "S30 LCD: divide-by-zero error screen renders with the expected message positioning and formatting",
+      "expected_crcs": [
+        "32BFD188"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 208,
+      "hash_name": "s30_menu_symbols_visual",
+      "section": "S30",
+      "description": "S30 LCD: MODE opens the late-session menu layout from the homescreen prompt; multi-CRC: repeated real-ROM runs land on two stable menu-open renders",
+      "expected_crcs": [
+        "1FE659FF",
+        "56434704"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 209,
+      "hash_name": "s30_menu_recents_visual",
+      "section": "S30",
+      "description": "S30 LCD: late-session MODE then 2nd+RIGHT menu flow lands on a stable alternate tab render; multi-CRC: repeated real-ROM runs accept both observed states",
+      "expected_crcs": [
+        "1FE659FF",
+        "CCCB0884"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 210,
+      "hash_name": "s30_menu_settings_visual",
+      "section": "S30",
+      "description": "S30 LCD: second 2nd+RIGHT in the late-session menu flow reaches the settings-family render; multi-CRC: repeated real-ROM runs accept both observed stable layouts",
+      "expected_crcs": [
+        "1FE659FF",
+        "03786611",
+        "CCCB0884"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 211,
+      "hash_name": "s15_2nd_quit_to_tios",
+      "section": "S15",
+      "description": "S15: 2nd+MODE exits CalcEngine back to the TI-OS homescreen",
+      "expected_crcs": [
+        "6BB23703",
+        "7F0F6A91",
+        "DABF3779"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    }
+  ],
+  "module_inventory": {
+    "manifest_path": "tests/emulator/manifest.json",
+    "expected_module_count": 35,
+    "verified_module_count": 35,
+    "missing_modules": [],
+    "unexpected_modules": [],
+    "candidate_roots": [
+      "bin",
+      "."
+    ],
+    "modules": [
+      {
+        "order": 1,
+        "name": "CALCENG.8xp",
+        "manifest_size_bytes": 29826,
+        "manifest_crc32": "B05E8849",
+        "resolved_path": "deploy/hardware-ready/CALCENG.8xp",
+        "resolved_size_bytes": 29826,
+        "resolved_crc32": "B05E8849",
+        "status": "matched"
+      },
+      {
+        "order": 2,
+        "name": "CEALG.8xp",
+        "manifest_size_bytes": 12506,
+        "manifest_crc32": "9D13EE10",
+        "resolved_path": "deploy/hardware-ready/CEALG.8xp",
+        "resolved_size_bytes": 12506,
+        "resolved_crc32": "9D13EE10",
+        "status": "matched"
+      },
+      {
+        "order": 3,
+        "name": "CEALGEO.8xp",
+        "manifest_size_bytes": 35506,
+        "manifest_crc32": "FA7B8ADF",
+        "resolved_path": "deploy/hardware-ready/CEALGEO.8xp",
+        "resolved_size_bytes": 35506,
+        "resolved_crc32": "FA7B8ADF",
+        "status": "matched"
+      },
+      {
+        "order": 4,
+        "name": "CEALGF.8xp",
+        "manifest_size_bytes": 29416,
+        "manifest_crc32": "5241D296",
+        "resolved_path": "deploy/hardware-ready/CEALGF.8xp",
+        "resolved_size_bytes": 29416,
+        "resolved_crc32": "5241D296",
+        "status": "matched"
+      },
+      {
+        "order": 5,
+        "name": "CEALGSY.8xp",
+        "manifest_size_bytes": 47320,
+        "manifest_crc32": "79E14C4B",
+        "resolved_path": "deploy/hardware-ready/CEALGSY.8xp",
+        "resolved_size_bytes": 47320,
+        "resolved_crc32": "79E14C4B",
+        "status": "matched"
+      },
+      {
+        "order": 6,
+        "name": "CEAPDV.8xp",
+        "manifest_size_bytes": 19536,
+        "manifest_crc32": "4031AA38",
+        "resolved_path": "deploy/hardware-ready/CEAPDV.8xp",
+        "resolved_size_bytes": 19536,
+        "resolved_crc32": "4031AA38",
+        "status": "matched"
+      },
+      {
+        "order": 7,
+        "name": "CEASLA.8xp",
+        "manifest_size_bytes": 25231,
+        "manifest_crc32": "11155598",
+        "resolved_path": "deploy/hardware-ready/CEASLA.8xp",
+        "resolved_size_bytes": 25231,
+        "resolved_crc32": "11155598",
+        "status": "matched"
+      },
+      {
+        "order": 8,
+        "name": "CEASLV.8xp",
+        "manifest_size_bytes": 23437,
+        "manifest_crc32": "A600914D",
+        "resolved_path": "deploy/hardware-ready/CEASLV.8xp",
+        "resolved_size_bytes": 23437,
+        "resolved_crc32": "A600914D",
+        "status": "matched"
+      },
+      {
+        "order": 9,
+        "name": "CEBASE.8xp",
+        "manifest_size_bytes": 47546,
+        "manifest_crc32": "AD723AC5",
+        "resolved_path": "deploy/hardware-ready/CEBASE.8xp",
+        "resolved_size_bytes": 47546,
+        "resolved_crc32": "AD723AC5",
+        "status": "matched"
+      },
+      {
+        "order": 10,
+        "name": "CECALC.8xp",
+        "manifest_size_bytes": 50532,
+        "manifest_crc32": "F97C6304",
+        "resolved_path": "deploy/hardware-ready/CECALC.8xp",
+        "resolved_size_bytes": 50532,
+        "resolved_crc32": "F97C6304",
+        "status": "matched"
+      },
+      {
+        "order": 11,
+        "name": "CECIAD.8xp",
+        "manifest_size_bytes": 13600,
+        "manifest_crc32": "6EA8DF57",
+        "resolved_path": "deploy/hardware-ready/CECIAD.8xp",
+        "resolved_size_bytes": 13600,
+        "resolved_crc32": "6EA8DF57",
+        "status": "matched"
+      },
+      {
+        "order": 12,
+        "name": "CECIDF.8xp",
+        "manifest_size_bytes": 51169,
+        "manifest_crc32": "2DD0128E",
+        "resolved_path": "deploy/hardware-ready/CECIDF.8xp",
+        "resolved_size_bytes": 51169,
+        "resolved_crc32": "2DD0128E",
+        "status": "matched"
+      },
+      {
+        "order": 13,
+        "name": "CECINT.8xp",
+        "manifest_size_bytes": 12557,
+        "manifest_crc32": "43520C7B",
+        "resolved_path": "deploy/hardware-ready/CECINT.8xp",
+        "resolved_size_bytes": 12557,
+        "resolved_crc32": "43520C7B",
+        "status": "matched"
+      },
+      {
+        "order": 14,
+        "name": "CECISM.8xp",
+        "manifest_size_bytes": 50137,
+        "manifest_crc32": "8BCDB7F3",
+        "resolved_path": "deploy/hardware-ready/CECISM.8xp",
+        "resolved_size_bytes": 50137,
+        "resolved_crc32": "8BCDB7F3",
+        "status": "matched"
+      },
+      {
+        "order": 15,
+        "name": "CECLIA.8xp",
+        "manifest_size_bytes": 46804,
+        "manifest_crc32": "FF3CD805",
+        "resolved_path": "deploy/hardware-ready/CECLIA.8xp",
+        "resolved_size_bytes": 46804,
+        "resolved_crc32": "FF3CD805",
+        "status": "matched"
+      },
+      {
+        "order": 16,
+        "name": "CECLIC.8xp",
+        "manifest_size_bytes": 24825,
+        "manifest_crc32": "42721ABC",
+        "resolved_path": "deploy/hardware-ready/CECLIC.8xp",
+        "resolved_size_bytes": 24825,
+        "resolved_crc32": "42721ABC",
+        "status": "matched"
+      },
+      {
+        "order": 17,
+        "name": "CECLIM.8xp",
+        "manifest_size_bytes": 7526,
+        "manifest_crc32": "BA93C85C",
+        "resolved_path": "deploy/hardware-ready/CECLIM.8xp",
+        "resolved_size_bytes": 7526,
+        "resolved_crc32": "BA93C85C",
+        "status": "matched"
+      },
+      {
+        "order": 18,
+        "name": "CECLIR.8xp",
+        "manifest_size_bytes": 21110,
+        "manifest_crc32": "C0BEA067",
+        "resolved_path": "deploy/hardware-ready/CECLIR.8xp",
+        "resolved_size_bytes": 21110,
+        "resolved_crc32": "C0BEA067",
+        "status": "matched"
+      },
+      {
+        "order": 19,
+        "name": "CECLMB.8xp",
+        "manifest_size_bytes": 49963,
+        "manifest_crc32": "4E98FD1E",
+        "resolved_path": "deploy/hardware-ready/CECLMB.8xp",
+        "resolved_size_bytes": 49963,
+        "resolved_crc32": "4E98FD1E",
+        "status": "matched"
+      },
+      {
+        "order": 20,
+        "name": "CECODE.8xp",
+        "manifest_size_bytes": 46088,
+        "manifest_crc32": "72C60AB5",
+        "resolved_path": "deploy/hardware-ready/CECODE.8xp",
+        "resolved_size_bytes": 46088,
+        "resolved_crc32": "72C60AB5",
+        "status": "matched"
+      },
+      {
+        "order": 21,
+        "name": "CECPNM.8xp",
+        "manifest_size_bytes": 39869,
+        "manifest_crc32": "78C657C0",
+        "resolved_path": "deploy/hardware-ready/CECPNM.8xp",
+        "resolved_size_bytes": 39869,
+        "resolved_crc32": "78C657C0",
+        "status": "matched"
+      },
+      {
+        "order": 22,
+        "name": "CECPOL.8xp",
+        "manifest_size_bytes": 12415,
+        "manifest_crc32": "933A00E9",
+        "resolved_path": "deploy/hardware-ready/CECPOL.8xp",
+        "resolved_size_bytes": 12415,
+        "resolved_crc32": "933A00E9",
+        "status": "matched"
+      },
+      {
+        "order": 23,
+        "name": "CECSEQ.8xp",
+        "manifest_size_bytes": 50405,
+        "manifest_crc32": "BBCAF79E",
+        "resolved_path": "deploy/hardware-ready/CECSEQ.8xp",
+        "resolved_size_bytes": 50405,
+        "resolved_crc32": "BBCAF79E",
+        "status": "matched"
+      },
+      {
+        "order": 24,
+        "name": "CECSER.8xp",
+        "manifest_size_bytes": 51169,
+        "manifest_crc32": "C3C31B56",
+        "resolved_path": "deploy/hardware-ready/CECSER.8xp",
+        "resolved_size_bytes": 51169,
+        "resolved_crc32": "C3C31B56",
+        "status": "matched"
+      },
+      {
+        "order": 25,
+        "name": "CEFIN.8xp",
+        "manifest_size_bytes": 38270,
+        "manifest_crc32": "F7C496C2",
+        "resolved_path": "deploy/hardware-ready/CEFIN.8xp",
+        "resolved_size_bytes": 38270,
+        "resolved_crc32": "F7C496C2",
+        "status": "matched"
+      },
+      {
+        "order": 26,
+        "name": "CEGRPH.8xp",
+        "manifest_size_bytes": 9107,
+        "manifest_crc32": "AC565F11",
+        "resolved_path": "deploy/hardware-ready/CEGRPH.8xp",
+        "resolved_size_bytes": 9107,
+        "resolved_crc32": "AC565F11",
+        "status": "matched"
+      },
+      {
+        "order": 27,
+        "name": "CEIPFR.8xp",
+        "manifest_size_bytes": 49633,
+        "manifest_crc32": "793B9158",
+        "resolved_path": "deploy/hardware-ready/CEIPFR.8xp",
+        "resolved_size_bytes": 49633,
+        "resolved_crc32": "793B9158",
+        "status": "matched"
+      },
+      {
+        "order": 28,
+        "name": "CEIPRT.8xp",
+        "manifest_size_bytes": 45170,
+        "manifest_crc32": "32ABB79B",
+        "resolved_path": "deploy/hardware-ready/CEIPRT.8xp",
+        "resolved_size_bytes": 45170,
+        "resolved_crc32": "32ABB79B",
+        "status": "matched"
+      },
+      {
+        "order": 29,
+        "name": "CEISTR.8xp",
+        "manifest_size_bytes": 16658,
+        "manifest_crc32": "1827B660",
+        "resolved_path": "deploy/hardware-ready/CEISTR.8xp",
+        "resolved_size_bytes": 16658,
+        "resolved_crc32": "1827B660",
+        "status": "matched"
+      },
+      {
+        "order": 30,
+        "name": "CEITRG.8xp",
+        "manifest_size_bytes": 50059,
+        "manifest_crc32": "3B0F34E0",
+        "resolved_path": "deploy/hardware-ready/CEITRG.8xp",
+        "resolved_size_bytes": 50059,
+        "resolved_crc32": "3B0F34E0",
+        "status": "matched"
+      },
+      {
+        "order": 31,
+        "name": "CEIUSB.8xp",
+        "manifest_size_bytes": 32042,
+        "manifest_crc32": "56D02034",
+        "resolved_path": "deploy/hardware-ready/CEIUSB.8xp",
+        "resolved_size_bytes": 32042,
+        "resolved_crc32": "56D02034",
+        "status": "matched"
+      },
+      {
+        "order": 32,
+        "name": "CELIMS.8xp",
+        "manifest_size_bytes": 24642,
+        "manifest_crc32": "FE821EC0",
+        "resolved_path": "deploy/hardware-ready/CELIMS.8xp",
+        "resolved_size_bytes": 24642,
+        "resolved_crc32": "FE821EC0",
+        "status": "matched"
+      },
+      {
+        "order": 33,
+        "name": "CELSCX.8xp",
+        "manifest_size_bytes": 23767,
+        "manifest_crc32": "07FAF24B",
+        "resolved_path": "deploy/hardware-ready/CELSCX.8xp",
+        "resolved_size_bytes": 23767,
+        "resolved_crc32": "07FAF24B",
+        "status": "matched"
+      },
+      {
+        "order": 34,
+        "name": "CEMAT.8xp",
+        "manifest_size_bytes": 50264,
+        "manifest_crc32": "1D6E38A2",
+        "resolved_path": "deploy/hardware-ready/CEMAT.8xp",
+        "resolved_size_bytes": 50264,
+        "resolved_crc32": "1D6E38A2",
+        "status": "matched"
+      },
+      {
+        "order": 35,
+        "name": "CESTPRB.8xp",
+        "manifest_size_bytes": 27097,
+        "manifest_crc32": "8372D308",
+        "resolved_path": "deploy/hardware-ready/CESTPRB.8xp",
+        "resolved_size_bytes": 27097,
+        "resolved_crc32": "8372D308",
+        "status": "matched"
+      }
+    ]
+  }
+}

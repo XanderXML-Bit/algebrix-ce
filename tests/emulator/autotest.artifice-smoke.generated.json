@@ -1,0 +1,404 @@
+{
+    "rom":  "C:\\Users\\user\\src\\algebrix-ce\\rom\\Rom.rom",
+    "transfer_files":  [
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\A.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CALCENG.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEALG.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEALGEO.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEALGF.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEALGSY.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEAPDV.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEASLA.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEASLV.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEBASE.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECALC.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECIAD.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECIDF.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECINT.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECISM.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECLIA.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECLIC.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECLIM.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECLIR.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECLMB.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECODE.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECPNM.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECPOL.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECSEQ.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CECSER.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEFIN.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEGRPH.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEIPFR.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEIPRT.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEISTR.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEITRG.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEIUSB.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CELIMS.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CELSCX.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CEMAT.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\CESTPRB.8xp",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\fileioc.8xv",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\graphx.8xv",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\keypadc.8xv",
+                           "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-artifice-smoke-1bf68a345f6f40f387c73263abb7e24a\\downloads\\libload.8xv"
+                       ],
+    "target":  {
+                   "name":  "A",
+                   "isASM":  false
+               },
+    "delay_after_key":  250,
+    "delay_after_step":  600,
+    "sequence":  [
+                     "action|launch",
+                     "delay|4000",
+                     "hash|artifice_shell_loaded",
+                     "key|clear",
+                     "delay|1200",
+                     "key|mode",
+                     "delay|1200",
+                     "hash|artifice_quit_transition",
+                     "key|prgm",
+                     "delay|1200",
+                     "hash|ti_os_program_menu_open",
+                     "key|alpha",
+                     "key|prgm",
+                     "key|alpha",
+                     "key|sin",
+                     "key|alpha",
+                     "key|4",
+                     "key|alpha",
+                     "key|5",
+                     "key|alpha",
+                     "key|tan",
+                     "key|alpha",
+                     "key|sin",
+                     "key|alpha",
+                     "key|5",
+                     "key|enter",
+                     "delay|4000",
+                     "hash|calcengine_launch_screen",
+                     "key|2",
+                     "key|+",
+                     "key|3",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_result_2plus3",
+                     "key|clear",
+                     "delay|800",
+                     "hash|calcengine_prompt_after_2plus3",
+                     "key|6",
+                     "key|*",
+                     "key|7",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_result_6times7",
+                     "key|clear",
+                     "delay|800",
+                     "key|(-)",
+                     "key|5",
+                     "key|+",
+                     "key|1",
+                     "key|0",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_result_neg5_plus10",
+                     "key|clear",
+                     "delay|800",
+                     "key|3",
+                     "key|.",
+                     "key|1",
+                     "key|4",
+                     "key|*",
+                     "key|2",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_result_decimal_6_28",
+                     "key|clear",
+                     "delay|800",
+                     "key|2",
+                     "key|+",
+                     "key|3",
+                     "key|*",
+                     "key|4",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_result_precedence_14",
+                     "key|clear",
+                     "delay|800",
+                     "key|(",
+                     "key|4",
+                     "key|+",
+                     "key|5",
+                     "key|)",
+                     "key|*",
+                     "key|3",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_result_parens_27",
+                     "key|clear",
+                     "delay|800",
+                     "key|2",
+                     "key|^",
+                     "key|8",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_result_power_256",
+                     "key|clear",
+                     "delay|800",
+                     "key|alpha",
+                     "key|/",
+                     "key|alpha",
+                     "key|sin",
+                     "key|alpha",
+                     "key|math",
+                     "key|alpha",
+                     "key|log",
+                     "key|(",
+                     "key|1",
+                     "key|,",
+                     "key|2",
+                     "key|,",
+                     "key|3",
+                     "key|,",
+                     "key|4",
+                     "key|,",
+                     "key|5",
+                     "key|)",
+                     "delay|200",
+                     "key|enter",
+                     "delay|3000",
+                     "hash|calcengine_stat_mean_3",
+                     "key|clear",
+                     "delay|800",
+                     "key|alpha",
+                     "key|log",
+                     "key|alpha",
+                     "key|-1",
+                     "key|alpha",
+                     "key|sin",
+                     "key|alpha",
+                     "key|*",
+                     "key|alpha",
+                     "key|^2",
+                     "key|alpha",
+                     "key|6",
+                     "key|(",
+                     "key|xton",
+                     "key|^",
+                     "key|2",
+                     "key|,",
+                     "key|xton",
+                     "key|,",
+                     "key|1",
+                     "key|)",
+                     "delay|200",
+                     "key|enter",
+                     "delay|3000",
+                     "hash|calcengine_nderiv_x2_at1",
+                     "key|clear",
+                     "delay|800",
+                     "key|1",
+                     "key|/",
+                     "key|0",
+                     "delay|200",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|calcengine_divide_by_zero_error",
+                     "key|clear",
+                     "delay|800",
+                     "key|mode",
+                     "delay|1200",
+                     "hash|calcengine_menu_open",
+                     "key|2nd",
+                     "key|right",
+                     "delay|700",
+                     "hash|calcengine_menu_recents",
+                     "key|2nd",
+                     "key|right",
+                     "delay|700",
+                     "hash|calcengine_menu_settings",
+                     "key|clear",
+                     "delay|800",
+                     "hash|calcengine_menu_closed"
+                 ],
+    "hashes":  {
+                   "artifice_shell_loaded":  {
+                                                 "description":  "arTIfiCE shell screen after launching prgmA",
+                                                 "start":  "vram_start",
+                                                 "size":  "vram_16_size",
+                                                 "expected_CRCs":  [
+                                                                       "EAC3FDAC"
+                                                                   ],
+                                                 "timeout":  8000
+                                             },
+                   "artifice_quit_transition":  {
+                                                    "description":  "Screen state after the verified CLEAR -\u003e MODE shell-exit choreography, before reopening PRGM",
+                                                    "start":  "vram_start",
+                                                    "size":  "vram_16_size",
+                                                    "expected_CRCs":  [
+                                                                          "28B88B56"
+                                                                      ],
+                                                    "timeout":  8000
+                                                },
+                   "ti_os_program_menu_open":  {
+                                                   "description":  "TI-OS PRGM menu after the verified CLEAR -\u003e MODE -\u003e PRGM arTIfiCE exit sequence",
+                                                   "start":  "vram_start",
+                                                   "size":  "vram_16_size",
+                                                   "expected_CRCs":  [
+                                                                         "C84EC5D0"
+                                                                     ],
+                                                   "timeout":  8000
+                                               },
+                   "calcengine_launch_screen":  {
+                                                    "description":  "CalcEngine landing screen after exiting arTIfiCE and launching CALCENG",
+                                                    "start":  "vram_start",
+                                                    "size":  "vram_16_size",
+                                                    "expected_CRCs":  [
+                                                                          "28B88B56"
+                                                                      ],
+                                                    "timeout":  8000
+                                                },
+                   "calcengine_result_2plus3":  {
+                                                    "description":  "CalcEngine result screen for 2+3 through the jailbroken path",
+                                                    "start":  "vram_start",
+                                                    "size":  "vram_16_size",
+                                                    "expected_CRCs":  [
+                                                                          "C23818C9"
+                                                                      ],
+                                                    "timeout":  8000
+                                                },
+                   "calcengine_prompt_after_2plus3":  {
+                                                          "description":  "Prompt restored after dismissing the 2+3 result",
+                                                          "start":  "vram_start",
+                                                          "size":  "vram_16_size",
+                                                          "expected_CRCs":  [
+                                                                                "A32840C8"
+                                                                            ],
+                                                          "timeout":  8000
+                                                      },
+                   "calcengine_result_6times7":  {
+                                                     "description":  "CalcEngine result screen for 6*7 through the jailbroken path",
+                                                     "start":  "vram_start",
+                                                     "size":  "vram_16_size",
+                                                     "expected_CRCs":  [
+                                                                           "46B2FD53"
+                                                                       ],
+                                                     "timeout":  8000
+                                                 },
+                   "calcengine_result_neg5_plus10":  {
+                                                         "description":  "CalcEngine result screen for -5+10 through the jailbroken path",
+                                                         "start":  "vram_start",
+                                                         "size":  "vram_16_size",
+                                                         "expected_CRCs":  [
+                                                                               "4D746D07"
+                                                                           ],
+                                                         "timeout":  8000
+                                                     },
+                   "calcengine_result_decimal_6_28":  {
+                                                          "description":  "CalcEngine result screen for 3.14*2 through the jailbroken path",
+                                                          "start":  "vram_start",
+                                                          "size":  "vram_16_size",
+                                                          "expected_CRCs":  [
+                                                                                "F9FE44E6"
+                                                                            ],
+                                                          "timeout":  8000
+                                                      },
+                   "calcengine_result_precedence_14":  {
+                                                           "description":  "CalcEngine result screen for 2+3*4 through the jailbroken path",
+                                                           "start":  "vram_start",
+                                                           "size":  "vram_16_size",
+                                                           "expected_CRCs":  [
+                                                                                 "93C9C32E"
+                                                                             ],
+                                                           "timeout":  8000
+                                                       },
+                   "calcengine_result_parens_27":  {
+                                                       "description":  "CalcEngine result screen for (4+5)*3 through the jailbroken path",
+                                                       "start":  "vram_start",
+                                                       "size":  "vram_16_size",
+                                                       "expected_CRCs":  [
+                                                                             "3956B827"
+                                                                         ],
+                                                       "timeout":  8000
+                                                   },
+                   "calcengine_result_power_256":  {
+                                                       "description":  "CalcEngine result screen for 2^8 through the jailbroken path",
+                                                       "start":  "vram_start",
+                                                       "size":  "vram_16_size",
+                                                       "expected_CRCs":  [
+                                                                             "C1B0FC3A"
+                                                                         ],
+                                                       "timeout":  8000
+                                                   },
+                   "calcengine_stat_mean_3":  {
+                                                  "description":  "CalcEngine result screen for mean(1,2,3,4,5) through the jailbroken path",
+                                                  "start":  "vram_start",
+                                                  "size":  "vram_16_size",
+                                                  "expected_CRCs":  [
+                                                                        "B9B5D5E0"
+                                                                    ],
+                                                  "timeout":  8000
+                                              },
+                   "calcengine_nderiv_x2_at1":  {
+                                                    "description":  "CalcEngine result screen for nderiv(x^2,x,1) through the jailbroken path",
+                                                    "start":  "vram_start",
+                                                    "size":  "vram_16_size",
+                                                    "expected_CRCs":  [
+                                                                          "B9B5D5E0"
+                                                                      ],
+                                                    "timeout":  8000
+                                                },
+                   "calcengine_divide_by_zero_error":  {
+                                                           "description":  "CalcEngine error screen for 1/0 through the jailbroken path",
+                                                           "start":  "vram_start",
+                                                           "size":  "vram_16_size",
+                                                           "expected_CRCs":  [
+                                                                                 "32BFD188"
+                                                                             ],
+                                                           "timeout":  8000
+                                                       },
+                   "calcengine_menu_open":  {
+                                                "description":  "CalcEngine menu screen after pressing MODE",
+                                                "start":  "vram_start",
+                                                "size":  "vram_16_size",
+                                                "expected_CRCs":  [
+                                                                      "151319C8"
+                                                                  ],
+                                                "timeout":  8000
+                                            },
+                   "calcengine_menu_recents":  {
+                                                   "description":  "CalcEngine Recently Used tab after MODE then 2nd+RIGHT",
+                                                   "start":  "vram_start",
+                                                   "size":  "vram_16_size",
+                                                   "expected_CRCs":  [
+                                                                         "76064ED0"
+                                                                     ],
+                                                   "timeout":  8000
+                                               },
+                   "calcengine_menu_settings":  {
+                                                    "description":  "CalcEngine Settings tab after MODE then 2nd+RIGHT twice",
+                                                    "start":  "vram_start",
+                                                    "size":  "vram_16_size",
+                                                    "expected_CRCs":  [
+                                                                          "76064ED0"
+                                                                      ],
+                                                    "timeout":  8000
+                                                },
+                   "calcengine_menu_closed":  {
+                                                  "description":  "CalcEngine prompt after closing the menu with CLEAR",
+                                                  "start":  "vram_start",
+                                                  "size":  "vram_16_size",
+                                                  "expected_CRCs":  [
+                                                                        "828489BA"
+                                                                    ],
+                                                  "timeout":  8000
+                                              }
+               }
+}

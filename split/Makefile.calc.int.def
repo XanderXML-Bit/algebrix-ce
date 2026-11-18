@@ -1,0 +1,54 @@
+NAME = CECIDF
+DESCRIPTION = "CalcEngine Definite Integral Worker"
+BINDIR = bin/calc_int_def
+
+# Step recording stays compiled out, and the antiderivative is neither
+# simplified nor folded, so the worker prints only the value. Measured with
+# integrate.c linked (internal review): steps on = 56,050-58,905 B, fold_lite on =
+# 52,160 B; the module limit is 51,200 B.
+#
+# CE_PROC_CALC_INT_POLAR_LOWER=1: CECINT also forwards improper() and
+# areabetween() here, answered through handle_integral() (internal review).
+# 51,004 B with it, vs 47,964 B on main 070f39a.
+
+PROGRAM_CFLAGS = -DHW_BUILD_SPLIT \
+    -DCE_DISABLE_STEP_RECORDING=1 \
+    -DCE_AST_ENABLE_STAT_NAMES=0 \
+    -DCE_PROC_ALG=0 -DCE_PROC_ALG_BASIC=0 -DCE_PROC_ALG_EXPFAC=0 -DCE_PROC_ALG_SOLVE=0 -DCE_PROC_ALG_POLYDIV=0 \
+    -DCE_PROC_ALG_ADV=0 -DCE_PROC_ALG_ADV_SYM=0 -DCE_PROC_ALG_ADV_GEO=0 \
+    -DCE_PROC_CALC=0 -DCE_PROC_CALC_BASE=0 -DCE_PROC_CALC_DERIV=0 -DCE_PROC_CALC_TANGENT=0 -DCE_PROC_CALC_LIMIT=0 \
+    -DCE_PROC_CALC_INT=1 -DCE_PROC_CALC_INT_SYMBOLIC=0 -DCE_PROC_CALC_INT_DEFINITE=1 -DCE_PROC_CALC_INT_DEFINITE_POLAR=0 -DCE_PROC_CALC_INT_POLAR_LOWER=1 -DCE_PROC_CALC_INT_POLAR=0 \
+    -DCE_PROC_CALC_SERIES=0 -DCE_PROC_CALC_SERIES_TF=0 -DCE_PROC_CALC_SERIES_SEQ=0 \
+    -DCE_PROC_STAT=0 -DCE_PROC_FIN=0 -DCE_PROC_MATRIX=0 -DCE_PROC_CMPLX=0 -DCE_PROC_GRAPH=0 \
+    -DCE_PROC_GENERIC=0 -DCE_PROC_USE_CLASSIFY=0 -DCE_PROC_PARSE_INPUT=0 \
+    -DCE_INTEG_USE_SIMPLIFY=0 \
+    -DCE_INTEG_ENABLE_STRATEGY_API=0 \
+    -DCE_INTEG_ENABLE_STRATEGY_REPORT=0 \
+    -DCE_INTEG_ENABLE_ODE=0 \
+    -DCE_INTEG_ENABLE_DEFINITE=1 \
+    -DCE_INTEG_ENABLE_NONLINEAR_USUB=0 \
+    -DCE_INTEG_ENABLE_TRIG_SUB=0 \
+    -DCE_INTEG_ENABLE_PARTIAL_FRAC=0 \
+    -DCE_INTEG_ENABLE_CYCLIC_PARTS=0 \
+    -DCE_INTEG_ENABLE_PARTS=0 \
+    -DCE_DERIV_USE_SIMPLIFY=0 -DCE_DERIV_USE_EVAL=0 \
+    -DCE_INTEG_IMPROPER_USE_LIMITS=0 \
+    -DCE_EVAL_ENABLE_NUMERIC_LIM_TAN=0 \
+    -DCE_EVAL_ENABLE_NODE_STAT=0 \
+    -DCE_EVAL_ENABLE_NODE_LIST=0 \
+    -DCE_EVAL_ENABLE_ADV_POLAR=0 \
+    -DCE_EVAL_ENABLE_POLYDIV=0
+
+PROGRAM_SOURCES = \
+    src/split/module_main.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/split/processor.c \
+    src/memory.c \
+    src/ast.c \
+    src/eval.c \
+    src/integrate.c \
+    src/deriv.c
+
+include split/program.mk

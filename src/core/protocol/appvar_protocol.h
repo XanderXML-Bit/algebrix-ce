@@ -1,0 +1,6 @@
+#ifndef CORE_PROTOCOL_APPVAR_PROTOCOL_H
+#define CORE_PROTOCOL_APPVAR_PROTOCOL_H
+
+#include "split/ipc.h"
+
+#endif /* CORE_PROTOCOL_APPVAR_PROTOCOL_H */

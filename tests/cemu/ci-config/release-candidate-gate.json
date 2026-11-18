@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "default_timeout_seconds": 60,
+  "attempt_count": 3,
+  "required_passing_attempts": 3,
+  "stop_on_first_failure": true,
+  "enforce_smoke_crc_stability": true,
+  "output_path": "../../emulator/outputs/cemu-release-candidate-confidence.json",
+  "evidence_dir": "../outputs/release-candidate-gate",
+  "arithmetic_battery_path": "../edge-cases/arithmetic-battery.json",
+  "module_battery_path": "../edge-cases/module-battery.json",
+  "visible_smoke_case_path": "../visible-smoke-cases.json",
+  "multiplication_case_name": "arith_mul_6_times_7",
+  "mode_switch_case_names": [
+    "module_base_hex_255",
+    "module_matrix_determinant"
+  ]
+}

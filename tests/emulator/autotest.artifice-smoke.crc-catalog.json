@@ -1,0 +1,237 @@
+{
+    "schema_version":  1,
+    "suite":  "autotest.artifice-smoke",
+    "generated_at":  "2026-04-19T05:16:42.0098546-07:00",
+    "source_baselined_path":  "C:\\Users\\user\\AppData\\Local\\Temp\\calcengine-wrapper-rebaseline-pass1\\tests\\emulator\\autotest.artifice-smoke.baselined.json",
+    "hash_count":  19,
+    "entries":  [
+                    {
+                        "order":  1,
+                        "hash_name":  "artifice_shell_loaded",
+                        "section":  "UNSPECIFIED",
+                        "description":  "arTIfiCE shell screen after launching prgmA",
+                        "expected_crcs":  [
+                                              "EAC3FDAC"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  2,
+                        "hash_name":  "artifice_quit_transition",
+                        "section":  "UNSPECIFIED",
+                        "description":  "Screen state after the verified CLEAR -\u003e MODE shell-exit choreography, before reopening PRGM",
+                        "expected_crcs":  [
+                                              "28B88B56"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  3,
+                        "hash_name":  "ti_os_program_menu_open",
+                        "section":  "UNSPECIFIED",
+                        "description":  "TI-OS PRGM menu after the verified CLEAR -\u003e MODE -\u003e PRGM arTIfiCE exit sequence",
+                        "expected_crcs":  [
+                                              "C84EC5D0"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  4,
+                        "hash_name":  "calcengine_launch_screen",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine landing screen after exiting arTIfiCE and launching CALCENG",
+                        "expected_crcs":  [
+                                              "28B88B56"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  5,
+                        "hash_name":  "calcengine_result_2plus3",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for 2+3 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "ED152D3E"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  6,
+                        "hash_name":  "calcengine_prompt_after_2plus3",
+                        "section":  "UNSPECIFIED",
+                        "description":  "Prompt restored after dismissing the 2+3 result",
+                        "expected_crcs":  [
+                                              "A32840C8"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  7,
+                        "hash_name":  "calcengine_result_6times7",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for 6*7 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "46B2FD53"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  8,
+                        "hash_name":  "calcengine_result_neg5_plus10",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for -5+10 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "4D746D07"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  9,
+                        "hash_name":  "calcengine_result_decimal_6_28",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for 3.14*2 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "F9FE44E6"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  10,
+                        "hash_name":  "calcengine_result_precedence_14",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for 2+3*4 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "93C9C32E"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  11,
+                        "hash_name":  "calcengine_result_parens_27",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for (4+5)*3 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "3956B827"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  12,
+                        "hash_name":  "calcengine_result_power_256",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for 2^8 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "C1B0FC3A"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  13,
+                        "hash_name":  "calcengine_stat_mean_3",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for mean(1,2,3,4,5) through the jailbroken path",
+                        "expected_crcs":  [
+                                              "B9B5D5E0"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  14,
+                        "hash_name":  "calcengine_nderiv_x2_at1",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine result screen for nderiv(x^2,x,1) through the jailbroken path",
+                        "expected_crcs":  [
+                                              "B9B5D5E0"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  15,
+                        "hash_name":  "calcengine_divide_by_zero_error",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine error screen for 1/0 through the jailbroken path",
+                        "expected_crcs":  [
+                                              "32BFD188"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  16,
+                        "hash_name":  "calcengine_menu_open",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine menu screen after pressing MODE",
+                        "expected_crcs":  [
+                                              "D12593CE"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  17,
+                        "hash_name":  "calcengine_menu_recents",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine Recently Used tab after MODE then 2nd+RIGHT",
+                        "expected_crcs":  [
+                                              "D12593CE"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  18,
+                        "hash_name":  "calcengine_menu_settings",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine Settings tab after MODE then 2nd+RIGHT twice",
+                        "expected_crcs":  [
+                                              "CDBBAC20"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    },
+                    {
+                        "order":  19,
+                        "hash_name":  "calcengine_menu_closed",
+                        "section":  "UNSPECIFIED",
+                        "description":  "CalcEngine prompt after closing the menu with CLEAR",
+                        "expected_crcs":  [
+                                              "828489BA"
+                                          ],
+                        "timeout_ms":  8000,
+                        "start":  "vram_start",
+                        "size":  "vram_16_size"
+                    }
+                ]
+}

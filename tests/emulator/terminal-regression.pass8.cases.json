@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "description": "Expanded strict CEmu Enter-path regression coverage. This suite is intentionally hash-asserted so the optional CEmu lane proves real interactive VRAM states instead of mock-only expectations.",
+  "cases": [
+    {
+      "name": "cemu enter-path basic addition hash",
+      "keys": "2,+,3,enter",
+      "expect": {
+        "result": "5",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "basic_addition",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    },
+    {
+      "name": "cemu enter-path multiplication hash",
+      "keys": "6,*,7,enter",
+      "expect": {
+        "result": "42",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "basic_multiplication",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    },
+    {
+      "name": "cemu enter-path negative arithmetic hash",
+      "keys": "neg,5,+,1,0,enter",
+      "expect": {
+        "result": "5",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "negative_arithmetic",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    },
+    {
+      "name": "cemu enter-path decimal arithmetic hash",
+      "keys": "3,.,1,4,*,2,enter",
+      "expect": {
+        "result": "6.28",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "decimal_arithmetic",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    },
+    {
+      "name": "cemu enter-path parentheses hash",
+      "keys": "(,4,+,5,),*,3,enter",
+      "expect": {
+        "result": "27",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "parentheses",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    },
+    {
+      "name": "cemu enter-path divide by zero hash",
+      "keys": "1,/,0,enter",
+      "expect": {
+        "result": "",
+        "status": "error",
+        "error": "Division by zero in expression.",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "divide_by_zero_error",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    }
+  ]
+}

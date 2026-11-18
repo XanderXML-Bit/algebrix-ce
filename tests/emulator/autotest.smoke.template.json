@@ -1,0 +1,30 @@
+{
+  "rom": "__ROM_PATH_SET_BY_SCRIPT__",
+  "transfer_files": [
+    "__PROGRAM_PATH_SET_BY_SCRIPT__"
+  ],
+  "target": {
+    "name": "CALCENG",
+    "isASM": true
+  },
+  "delay_after_key": 180,
+  "delay_after_step": 450,
+  "sequence": [
+    "action|launch",
+    "delay|2500",
+    "key|KEY_CLEAR",
+    "delay|300",
+    "hash|home_vram"
+  ],
+  "hashes": {
+    "home_vram": {
+      "description": "Home screen VRAM checksum after launch and clear",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "__REPLACE_WITH_BASELINE_CRC__"
+      ],
+      "timeout": 8000
+    }
+  }
+}

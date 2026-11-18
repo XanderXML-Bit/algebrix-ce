@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "default_timeout_seconds": 30,
+  "manifest_path": "../../emulator/manifest.json",
+  "downloads_dir": "../../../bin",
+  "accepted_prompt_crcs": ["349F4775", "A32840C8", "7C622B05", "7F0F6A91", "DAE8FE30", "B76BC405"],
+  "summary_path": "../outputs/cemu-pipeline-summary.json",
+  "snapshot_path": "../outputs/cemu-pipeline-snapshot.json",
+  "edge_case_baseline_path": "../edge-cases/real-edge-cases.json",
+  "visible_smoke_baseline_path": "../visible-smoke-cases.json",
+  "arithmetic_battery_path": "../edge-cases/arithmetic-battery.json",
+  "module_battery_path": "../edge-cases/module-battery.json",
+  "fake_case_baseline_path": "../edge-cases/fake-hardening-cases.json",
+  "exit_codes": {
+    "pass": 0,
+    "fail": 1,
+    "error": 2
+  }
+}

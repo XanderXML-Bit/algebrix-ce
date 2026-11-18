@@ -1,0 +1,43 @@
+NAME = CEITRG
+DESCRIPTION = "CalcEngine Trig Substitution Worker"
+BINDIR = bin/calc_int_trig
+
+# The finished antiderivative is folded by src/fold_lite.c
+# (CE_INTEG_USE_FOLD_LITE=1): without a simplifier the CE showed raw rule
+# output such as ((X^(2+1))/(2+1)), and simplify.c (about 11 KB) does not fit
+# under the 51,200 B module ceiling here.  tests/cemu/test_module_flag_parity.py
+# runs this module's code on the desktop with these exact flags.
+PROGRAM_CFLAGS = -DHW_BUILD_SPLIT \
+    -DCE_EVAL_RECORD_STEPS=0 -DCE_EVAL_ENABLE_NUMERIC_INT=0 \
+    -DCE_AST_ENABLE_STAT_NAMES=0 \
+    -DCE_INT_WORKER_KIND=2 \
+    -DCE_INTEG_USE_SIMPLIFY=0 -DCE_INTEG_USE_FOLD_LITE=1 \
+    -DCE_INTEG_ENABLE_STRATEGY_API=1 \
+    -DCE_INTEG_ENABLE_STRATEGY_REPORT=0 \
+    -DCE_INTEG_ENABLE_ODE=0 \
+    -DCE_INTEG_ENABLE_DEFINITE=0 \
+    -DCE_INTEG_ENABLE_NONLINEAR_USUB=0 \
+    -DCE_INTEG_ENABLE_TRIG_SUB=1 \
+    -DCE_INTEG_ENABLE_PARTIAL_FRAC=0 \
+    -DCE_INTEG_ENABLE_CYCLIC_PARTS=0 \
+    -DCE_INTEG_ENABLE_PARTS=0 \
+    -DCE_DERIV_USE_SIMPLIFY=0 -DCE_DERIV_USE_EVAL=0 \
+    -DCE_EVAL_ENABLE_NODE_STAT=0 \
+    -DCE_EVAL_ENABLE_NODE_LIST=0 \
+    -DCE_EVAL_ENABLE_ADV_POLAR=0 \
+    -DCE_EVAL_ENABLE_POLYDIV=0
+
+PROGRAM_SOURCES = \
+    src/modules/calc_int/strategy_main.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/memory.c \
+    src/ast.c \
+    src/steps.c \
+    src/eval.c \
+    src/integrate.c \
+    src/deriv.c \
+    src/fold_lite.c
+
+include split/program.mk

@@ -1,0 +1,37 @@
+NAME = CELIMS
+DESCRIPTION = "CalcEngine Limits and Series Module"
+BINDIR = bin/limits_series
+COMPRESSED = YES
+
+PROGRAM_CFLAGS = -DHW_BUILD_SPLIT \
+    -DCE_DISABLE_STEP_RECORDING=1 \
+    -DCE_AST_ENABLE_STAT_NAMES=0 \
+    -DCE_LIMITS_USE_SIMPLIFY=0 \
+    -DCE_LIMITS_ENABLE_SHIFTED_SPECIAL=0 \
+    -DCE_LIMITS_ENABLE_FACTOR_CANCEL=0 \
+    -DCE_LIMITS_ENABLE_RATIONALIZE=0 \
+    -DCE_LIMITS_ENABLE_LHOPITAL=1 \
+    -DCE_LIMITS_ENABLE_ZERO_TIMES_INF=1 \
+    -DCE_LIMITS_ENABLE_SPLIT_RULES=0 \
+    -DCE_DERIV_USE_SIMPLIFY=0 -DCE_DERIV_USE_EVAL=0 \
+    -DCE_EVAL_ENABLE_NODE_STAT=0 \
+    -DCE_EVAL_ENABLE_NODE_LIST=0 \
+    -DCE_EVAL_ENABLE_ADV_POLAR=0 \
+    -DCE_EVAL_ENABLE_POLYDIV=0
+
+PROGRAM_SOURCES = \
+    src/modules/limits_series/main.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/split/module_runtime.c \
+    src/memory.c \
+    src/ast.c \
+    src/eval.c \
+    src/limits.c \
+    src/deriv.c \
+    src/split/algebra_poly.c
+
+PROGRAM_RUNTIME_SOURCES = src/split/module_forward.c
+
+include split/program.mk

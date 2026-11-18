@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "description": "Pass 10 packaged-suite archive/load stress scaffold. Keeps the interactive assertions small while the runner exercises the manifest-backed packaged .8xp suite under repeated archive->RAM->archive churn and constrained archive-pressure configurations.",
+  "cases": [
+    {
+      "name": "package stress: addition",
+      "keys": "2,+,3,enter",
+      "expect": {
+        "result": "5",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": []
+      }
+    },
+    {
+      "name": "package stress: clear and re-enter",
+      "keys": "9,9,+,9,9,clear,6,*,7,enter",
+      "expect": {
+        "result": "42",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": []
+      }
+    },
+    {
+      "name": "package stress: divide by zero recovery surface",
+      "keys": "1,/,0,enter",
+      "expect": {
+        "result": "",
+        "status": "error",
+        "error": "Division by zero in expression.",
+        "ignored_keys": []
+      }
+    }
+  ]
+}

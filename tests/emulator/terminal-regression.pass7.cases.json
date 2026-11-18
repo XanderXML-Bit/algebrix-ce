@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "description": "Pass 7 edge-case suite: unary/exponent precedence, negative exponent flows, and overflow/malformed expression diagnostics.",
+  "cases": [
+    {
+      "name": "unary precedence: -2^2 = -4",
+      "keys": "neg,2,^,2,enter",
+      "expect": { "result": "-4", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "parenthesized base: (-2)^2 = 4",
+      "keys": "(,neg,2,),^,2,enter",
+      "expect": { "result": "4", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "negative exponent: 2^-3 = 0.125",
+      "keys": "2,^,neg,3,enter",
+      "expect": { "result": "0.125", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "right-associative with unary prefix: -2^3^2 = -512",
+      "keys": "neg,2,^,3,^,2,enter",
+      "expect": { "result": "-512", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "double unary negation: --3 = 3",
+      "keys": "neg,neg,3,enter",
+      "expect": { "result": "3", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "addition with unary negation: 2+-3 = -1",
+      "keys": "2,+,neg,3,enter",
+      "expect": { "result": "-1", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "multiplication with unary negation: 2*-3 = -6",
+      "keys": "2,*,neg,3,enter",
+      "expect": { "result": "-6", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "signed zero exponent: 2^-0 = 1",
+      "keys": "2,^,neg,0,enter",
+      "expect": { "result": "1", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "non-finite overflow: 9^9^9",
+      "keys": "9,^,9,^,9,enter",
+      "expect": { "result": "", "status": "error", "error": "Expression evaluated to a non-finite value.", "ignored_keys": [] }
+    },
+    {
+      "name": "malformed trailing unary token",
+      "keys": "2,+,neg,enter",
+      "expect": { "result": "", "status": "error", "error": "Expression is incomplete: operator '+' is missing operands.", "ignored_keys": [] }
+    },
+    {
+      "name": "mismatched close parenthesis",
+      "keys": "),2,+,3,enter",
+      "expect": { "result": "", "status": "error", "error": "Mismatched parenthesis: missing '(' in expression.", "ignored_keys": [] }
+    }
+  ]
+}

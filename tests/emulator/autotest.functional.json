@@ -1,0 +1,201 @@
+{
+  "rom": "__ROM_PATH_SET_BY_SCRIPT__",
+  "transfer_files": [
+    "__PROGRAM_PATH_SET_BY_SCRIPT__"
+  ],
+  "target": {
+    "name": "CALCENG",
+    "isASM": true
+  },
+  "delay_after_key": 200,
+  "delay_after_step": 500,
+  "sequence": [
+    "action|launch",
+    "delay|3000",
+    "key|clear",
+    "delay|500",
+    "hash|home_screen",
+    "key|2",
+    "key|+",
+    "key|3",
+    "delay|200",
+    "key|enter",
+    "delay|1000",
+    "hash|basic_addition",
+    "key|clear",
+    "delay|500",
+    "hash|home_after_addition",
+    "key|6",
+    "key|*",
+    "key|7",
+    "delay|200",
+    "key|enter",
+    "delay|1000",
+    "hash|basic_multiplication",
+    "key|clear",
+    "delay|300",
+    "key|(-)",
+    "key|5",
+    "key|+",
+    "key|1",
+    "key|0",
+    "delay|200",
+    "key|enter",
+    "delay|1000",
+    "hash|negative_arithmetic",
+    "key|clear",
+    "delay|300",
+    "key|3",
+    "key|.",
+    "key|1",
+    "key|4",
+    "key|*",
+    "key|2",
+    "delay|200",
+    "key|enter",
+    "delay|1000",
+    "hash|decimal_arithmetic",
+    "key|clear",
+    "delay|300",
+    "key|(",
+    "key|4",
+    "key|+",
+    "key|5",
+    "key|)",
+    "key|*",
+    "key|3",
+    "delay|200",
+    "key|enter",
+    "delay|1000",
+    "hash|parentheses",
+    "key|clear",
+    "delay|300",
+    "key|2",
+    "key|^",
+    "key|8",
+    "delay|200",
+    "key|enter",
+    "delay|1000",
+    "hash|exponent",
+    "key|clear",
+    "delay|300",
+    "key|1",
+    "key|/",
+    "key|0",
+    "delay|200",
+    "key|enter",
+    "delay|1000",
+    "hash|divide_by_zero_error",
+    "key|clear",
+    "delay|300",
+    "key|mode",
+    "delay|1000",
+    "hash|menu_screen",
+    "key|clear",
+    "delay|500",
+    "hash|home_after_menu",
+    "key|clear",
+    "delay|300"
+  ],
+  "hashes": {
+    "home_screen": {
+      "description": "Launcher prompt after boot and initial clear",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "128C50A4"
+      ],
+      "timeout": 8000
+    },
+    "basic_addition": {
+      "description": "Result of 2+3 submitted through the real Enter path",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "9AE2B32C"
+      ],
+      "timeout": 5000
+    },
+    "home_after_addition": {
+      "description": "Prompt returns after dismissing the addition result screen",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "349F4775"
+      ],
+      "timeout": 5000
+    },
+    "basic_multiplication": {
+      "description": "Result of 6*7 after re-entering from the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "46B2FD53"
+      ],
+      "timeout": 5000
+    },
+    "negative_arithmetic": {
+      "description": "Result of -5+10 through the interactive prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "E893F9A6"
+      ],
+      "timeout": 5000
+    },
+    "decimal_arithmetic": {
+      "description": "Result of 3.14*2 through the interactive prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "F9FE44E6"
+      ],
+      "timeout": 5000
+    },
+    "parentheses": {
+      "description": "Result of (4+5)*3 through the interactive prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "3956B827"
+      ],
+      "timeout": 5000
+    },
+    "exponent": {
+      "description": "Result of 2^8 through the interactive prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "9DF8F505"
+      ],
+      "timeout": 5000
+    },
+    "divide_by_zero_error": {
+      "description": "Divide-by-zero error screen after pressing Enter",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "32BFD188"
+      ],
+      "timeout": 5000
+    },
+    "menu_screen": {
+      "description": "Menu screen after pressing MODE from the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "D12593CE"
+      ],
+      "timeout": 5000
+    },
+    "home_after_menu": {
+      "description": "Prompt after exiting the menu with CLEAR",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "DAE8FE30"
+      ],
+      "timeout": 5000
+    }
+  }
+}

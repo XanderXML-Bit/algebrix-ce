@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "description": "Canonical terminal regression cases for emulator lane pass 3/4 strict CEmu hash verification. Use run-terminal-regression.ps1 -CaptureCEmuHashBaselines to replace __BASELINE_REQUIRED__ placeholders from real CEmu runs.",
+  "cases": [
+    {
+      "name": "cemu basic addition hash",
+      "keys": "2,+,3,enter",
+      "expect": {
+        "result": "5",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "basic_addition",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    },
+    {
+      "name": "cemu clear then multiply hash",
+      "keys": "2,+,3,clear,6,*,7,enter",
+      "expect": {
+        "result": "42",
+        "status": "ok",
+        "error": "",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "clear_then_multiply",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    },
+    {
+      "name": "cemu divide by zero hash",
+      "keys": "1,/,0,enter",
+      "expect": {
+        "result": "",
+        "status": "error",
+        "error": "Division by zero in expression.",
+        "ignored_keys": [],
+        "mode": "cemu",
+        "harness_success": true,
+        "cemu_hash": {
+          "name": "divide_by_zero_error",
+          "expected_crcs": [
+            "__BASELINE_REQUIRED__"
+          ],
+          "start": "vram_start",
+          "size": "vram_16_size",
+          "timeout_ms": 8000
+        }
+      }
+    }
+  ]
+}

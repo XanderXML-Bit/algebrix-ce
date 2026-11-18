@@ -1,0 +1,133 @@
+{
+  "rom": "__ROM_PATH_SET_BY_SCRIPT__",
+  "transfer_files": [
+    "__PROGRAM_PATH_SET_BY_SCRIPT__"
+  ],
+  "target": {
+    "name": "CALCENG",
+    "isASM": true
+  },
+  "delay_after_key": 250,
+  "delay_after_step": 500,
+  "sequence": [
+    "action|launch",
+    "delay|4000",
+    "key|clear",
+    "delay|500",
+    "hash|boot_home",
+    "key|2",
+    "key|+",
+    "key|3",
+    "delay|200",
+    "key|enter",
+    "delay|2000",
+    "hash|addition_result",
+    "key|clear",
+    "delay|500",
+    "hash|prompt_after_addition",
+    "key|6",
+    "key|*",
+    "key|7",
+    "delay|200",
+    "key|enter",
+    "delay|2000",
+    "hash|multiplication_result",
+    "key|clear",
+    "delay|300",
+    "key|(-)",
+    "key|5",
+    "key|+",
+    "key|1",
+    "key|0",
+    "delay|200",
+    "key|enter",
+    "delay|2000",
+    "hash|negative_result",
+    "key|clear",
+    "delay|300",
+    "key|3",
+    "key|.",
+    "key|1",
+    "key|4",
+    "key|*",
+    "key|2",
+    "delay|200",
+    "key|enter",
+    "delay|2000",
+    "hash|decimal_result",
+    "key|clear",
+    "delay|300",
+    "key|1",
+    "key|/",
+    "key|0",
+    "delay|200",
+    "key|enter",
+    "delay|2000",
+    "hash|divide_by_zero_error"
+  ],
+  "hashes": {
+    "boot_home": {
+      "description": "CalcEngine booted through AutoTester and reached the input prompt after launch",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "128C50A4"
+      ],
+      "timeout": 8000
+    },
+    "addition_result": {
+      "description": "CalcEngine returns the correct real-ROM screen for 2+3",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "9AE2B32C"
+      ],
+      "timeout": 8000
+    },
+    "prompt_after_addition": {
+      "description": "CalcEngine returns cleanly to the prompt after dismissing the addition result",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "349F4775"
+      ],
+      "timeout": 8000
+    },
+    "multiplication_result": {
+      "description": "CalcEngine returns the correct real-ROM screen for 6*7",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "46B2FD53"
+      ],
+      "timeout": 8000
+    },
+    "negative_result": {
+      "description": "CalcEngine returns the correct real-ROM screen for -5+10",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "E893F9A6"
+      ],
+      "timeout": 8000
+    },
+    "decimal_result": {
+      "description": "CalcEngine returns the correct real-ROM screen for 3.14*2",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "F9FE44E6"
+      ],
+      "timeout": 8000
+    },
+    "divide_by_zero_error": {
+      "description": "CalcEngine surfaces the real-ROM divide-by-zero error screen for 1/0",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "32BFD188"
+      ],
+      "timeout": 8000
+    }
+  }
+}

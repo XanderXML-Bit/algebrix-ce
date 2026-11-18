@@ -1,0 +1,700 @@
+{
+  "schema_version": 1,
+  "suite": "autotest.keypad-fidelity",
+  "generated_at": "2026-04-13T20:17:56.872789-07:00",
+  "source_baselined_path": "C:\\src\\algebrix-ce\\tests\\emulator\\autotest.keypad-fidelity.baselined.json",
+  "hash_count": 27,
+  "entries": [
+    {
+      "order": 1,
+      "hash_name": "kf00_boot_prompt",
+      "section": "UNSPECIFIED",
+      "description": "KF00: launcher prompt immediately after launch and ENTER",
+      "expected_crcs": [
+        "B76BC405"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 2,
+      "hash_name": "kf01_math_menu_open",
+      "section": "UNSPECIFIED",
+      "description": "KF01: MATH menu opens from the prompt",
+      "expected_crcs": [
+        "8C3C5304"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 3,
+      "hash_name": "kf02_math_menu_browse_down",
+      "section": "UNSPECIFIED",
+      "description": "KF02: DOWN browses within the MATH menu",
+      "expected_crcs": [
+        "58715C0B"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 4,
+      "hash_name": "kf03_math_menu_select_insert",
+      "section": "UNSPECIFIED",
+      "description": "KF03: ENTER selects the highlighted MATH item and inserts its token",
+      "expected_crcs": [
+        "D1B52764"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 5,
+      "hash_name": "kf04_prompt_after_math_clear",
+      "section": "UNSPECIFIED",
+      "description": "KF04: CLEAR exits the MATH selection state back to the prompt",
+      "expected_crcs": [
+        "128C50A4"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 6,
+      "hash_name": "kf05_2nd_sin_asin_input",
+      "section": "UNSPECIFIED",
+      "description": "KF05: 2nd+SIN inserts asin(",
+      "expected_crcs": [
+        "407B4B08"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 7,
+      "hash_name": "kf06_2nd_cos_acos_input",
+      "section": "UNSPECIFIED",
+      "description": "KF06: 2nd+COS inserts acos(",
+      "expected_crcs": [
+        "C5287417"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 8,
+      "hash_name": "kf07_2nd_tan_atan_input",
+      "section": "UNSPECIFIED",
+      "description": "KF07: 2nd+TAN inserts atan(",
+      "expected_crcs": [
+        "A5FC9505"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 9,
+      "hash_name": "kf08_2nd_sqrt_input",
+      "section": "UNSPECIFIED",
+      "description": "KF08: 2nd+x^2 inserts sqrt(",
+      "expected_crcs": [
+        "66086351"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 10,
+      "hash_name": "kf09_2nd_abs_input",
+      "section": "UNSPECIFIED",
+      "description": "KF09: 2nd+x^-1 inserts abs(",
+      "expected_crcs": [
+        "E4A58031"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 11,
+      "hash_name": "kf10_alpha_solve_input",
+      "section": "UNSPECIFIED",
+      "description": "KF10: ALPHA spelling renders solve on the input line",
+      "expected_crcs": [
+        "95976A1A"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 12,
+      "hash_name": "kf11_repeat_11111_input",
+      "section": "UNSPECIFIED",
+      "description": "KF11: five repeated presses of 1 render 11111 without dropping a key",
+      "expected_crcs": [
+        "851AF85D"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 13,
+      "hash_name": "kf12_arrow_anchor_12345",
+      "section": "UNSPECIFIED",
+      "description": "KF12: 12345 is visible before cursor movement",
+      "expected_crcs": [
+        "029FABB4"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 14,
+      "hash_name": "kf13_arrow_left_mid_12345",
+      "section": "UNSPECIFIED",
+      "description": "KF13: LEFT moves the cursor into the middle of 12345",
+      "expected_crcs": [
+        "029FABB4"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 15,
+      "hash_name": "kf14_arrow_right_mid_12345",
+      "section": "UNSPECIFIED",
+      "description": "KF14: RIGHT returns the cursor toward the end of 12345",
+      "expected_crcs": [
+        "029FABB4"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 16,
+      "hash_name": "kf15_del_backspace_mid_1235",
+      "section": "UNSPECIFIED",
+      "description": "KF15: DEL performs backspace semantics after cursor movement inside 12345",
+      "expected_crcs": [
+        "CFDD38DC"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 17,
+      "hash_name": "kf16_basic_low_digits_expr",
+      "section": "UNSPECIFIED",
+      "description": "KF16: 0+1-2*3/4 is visible before ENTER as a basic low-digit/operator proof",
+      "expected_crcs": [
+        "268D7BA4"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 18,
+      "hash_name": "kf17_basic_low_digits_result",
+      "section": "UNSPECIFIED",
+      "description": "KF17: ENTER evaluates 0+1-2*3/4 using 0,1,2,3,4,+,-,*,/ and ENTER",
+      "expected_crcs": [
+        "FB45519D"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 19,
+      "hash_name": "kf18_basic_high_digits_expr",
+      "section": "UNSPECIFIED",
+      "description": "KF18: (-)5.6+(7-8)/9 is visible before ENTER as a negation/decimal/parentheses proof",
+      "expected_crcs": [
+        "092D5464",
+        "50C9E53D"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 20,
+      "hash_name": "kf19_basic_high_digits_result",
+      "section": "UNSPECIFIED",
+      "description": "KF19: ENTER evaluates (-)5.6+(7-8)/9 using 5,6,7,8,9,(-),.,(,) and ENTER",
+      "expected_crcs": [
+        "B9B5D5E0",
+        "BC6E36DB"
+      ],
+      "timeout_ms": 8000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 21,
+      "hash_name": "kf20_prompt_after_basic_clear",
+      "section": "UNSPECIFIED",
+      "description": "KF20: CLEAR returns from the basic-key result path to the prompt",
+      "expected_crcs": [
+        "70643879",
+        "A32840C8"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 22,
+      "hash_name": "kf21_prgm_menu_open",
+      "section": "UNSPECIFIED",
+      "description": "KF21: PRGM opens from the prompt",
+      "expected_crcs": [
+        "C84EC5D0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 23,
+      "hash_name": "kf22_prgm_menu_browse_down",
+      "section": "UNSPECIFIED",
+      "description": "KF22: DOWN is sent while the PRGM menu is open as a browse proof",
+      "expected_crcs": [
+        "C84EC5D0"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 24,
+      "hash_name": "kf23_prompt_after_prgm_clear",
+      "section": "UNSPECIFIED",
+      "description": "KF23: CLEAR exits the PRGM menu back to the prompt",
+      "expected_crcs": [
+        "A32840C8",
+        "D583ACD8"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 25,
+      "hash_name": "kf24_long_expression_wrap",
+      "section": "UNSPECIFIED",
+      "description": "KF24: a long wrapped expression is visible before long-range cursor movement",
+      "expected_crcs": [
+        "15B58686"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 26,
+      "hash_name": "kf25_long_left_cursor",
+      "section": "UNSPECIFIED",
+      "description": "KF25: repeated LEFT presses move the cursor into a wrapped long expression",
+      "expected_crcs": [
+        "15B58686"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    },
+    {
+      "order": 27,
+      "hash_name": "kf26_long_right_cursor",
+      "section": "UNSPECIFIED",
+      "description": "KF26: repeated RIGHT presses move the cursor back across the wrapped long expression",
+      "expected_crcs": [
+        "15B58686"
+      ],
+      "timeout_ms": 5000,
+      "start": "vram_start",
+      "size": "vram_16_size"
+    }
+  ],
+  "module_inventory": {
+    "manifest_path": "tests/emulator/manifest.json",
+    "expected_module_count": 35,
+    "verified_module_count": 35,
+    "missing_modules": [],
+    "unexpected_modules": [],
+    "candidate_roots": [
+      "bin",
+      "."
+    ],
+    "modules": [
+      {
+        "order": 1,
+        "name": "CALCENG.8xp",
+        "manifest_size_bytes": 29826,
+        "manifest_crc32": "B05E8849",
+        "resolved_path": "deploy/hardware-ready/CALCENG.8xp",
+        "resolved_size_bytes": 29826,
+        "resolved_crc32": "B05E8849",
+        "status": "matched"
+      },
+      {
+        "order": 2,
+        "name": "CEALG.8xp",
+        "manifest_size_bytes": 12506,
+        "manifest_crc32": "9D13EE10",
+        "resolved_path": "deploy/hardware-ready/CEALG.8xp",
+        "resolved_size_bytes": 12506,
+        "resolved_crc32": "9D13EE10",
+        "status": "matched"
+      },
+      {
+        "order": 3,
+        "name": "CEALGEO.8xp",
+        "manifest_size_bytes": 35506,
+        "manifest_crc32": "FA7B8ADF",
+        "resolved_path": "deploy/hardware-ready/CEALGEO.8xp",
+        "resolved_size_bytes": 35506,
+        "resolved_crc32": "FA7B8ADF",
+        "status": "matched"
+      },
+      {
+        "order": 4,
+        "name": "CEALGF.8xp",
+        "manifest_size_bytes": 29416,
+        "manifest_crc32": "5241D296",
+        "resolved_path": "deploy/hardware-ready/CEALGF.8xp",
+        "resolved_size_bytes": 29416,
+        "resolved_crc32": "5241D296",
+        "status": "matched"
+      },
+      {
+        "order": 5,
+        "name": "CEALGSY.8xp",
+        "manifest_size_bytes": 47320,
+        "manifest_crc32": "79E14C4B",
+        "resolved_path": "deploy/hardware-ready/CEALGSY.8xp",
+        "resolved_size_bytes": 47320,
+        "resolved_crc32": "79E14C4B",
+        "status": "matched"
+      },
+      {
+        "order": 6,
+        "name": "CEAPDV.8xp",
+        "manifest_size_bytes": 19536,
+        "manifest_crc32": "4031AA38",
+        "resolved_path": "deploy/hardware-ready/CEAPDV.8xp",
+        "resolved_size_bytes": 19536,
+        "resolved_crc32": "4031AA38",
+        "status": "matched"
+      },
+      {
+        "order": 7,
+        "name": "CEASLA.8xp",
+        "manifest_size_bytes": 25231,
+        "manifest_crc32": "11155598",
+        "resolved_path": "deploy/hardware-ready/CEASLA.8xp",
+        "resolved_size_bytes": 25231,
+        "resolved_crc32": "11155598",
+        "status": "matched"
+      },
+      {
+        "order": 8,
+        "name": "CEASLV.8xp",
+        "manifest_size_bytes": 23437,
+        "manifest_crc32": "A600914D",
+        "resolved_path": "deploy/hardware-ready/CEASLV.8xp",
+        "resolved_size_bytes": 23437,
+        "resolved_crc32": "A600914D",
+        "status": "matched"
+      },
+      {
+        "order": 9,
+        "name": "CEBASE.8xp",
+        "manifest_size_bytes": 47546,
+        "manifest_crc32": "AD723AC5",
+        "resolved_path": "deploy/hardware-ready/CEBASE.8xp",
+        "resolved_size_bytes": 47546,
+        "resolved_crc32": "AD723AC5",
+        "status": "matched"
+      },
+      {
+        "order": 10,
+        "name": "CECALC.8xp",
+        "manifest_size_bytes": 50532,
+        "manifest_crc32": "F97C6304",
+        "resolved_path": "deploy/hardware-ready/CECALC.8xp",
+        "resolved_size_bytes": 50532,
+        "resolved_crc32": "F97C6304",
+        "status": "matched"
+      },
+      {
+        "order": 11,
+        "name": "CECIAD.8xp",
+        "manifest_size_bytes": 13600,
+        "manifest_crc32": "6EA8DF57",
+        "resolved_path": "deploy/hardware-ready/CECIAD.8xp",
+        "resolved_size_bytes": 13600,
+        "resolved_crc32": "6EA8DF57",
+        "status": "matched"
+      },
+      {
+        "order": 12,
+        "name": "CECIDF.8xp",
+        "manifest_size_bytes": 51169,
+        "manifest_crc32": "2DD0128E",
+        "resolved_path": "deploy/hardware-ready/CECIDF.8xp",
+        "resolved_size_bytes": 51169,
+        "resolved_crc32": "2DD0128E",
+        "status": "matched"
+      },
+      {
+        "order": 13,
+        "name": "CECINT.8xp",
+        "manifest_size_bytes": 12557,
+        "manifest_crc32": "43520C7B",
+        "resolved_path": "deploy/hardware-ready/CECINT.8xp",
+        "resolved_size_bytes": 12557,
+        "resolved_crc32": "43520C7B",
+        "status": "matched"
+      },
+      {
+        "order": 14,
+        "name": "CECISM.8xp",
+        "manifest_size_bytes": 50137,
+        "manifest_crc32": "8BCDB7F3",
+        "resolved_path": "deploy/hardware-ready/CECISM.8xp",
+        "resolved_size_bytes": 50137,
+        "resolved_crc32": "8BCDB7F3",
+        "status": "matched"
+      },
+      {
+        "order": 15,
+        "name": "CECLIA.8xp",
+        "manifest_size_bytes": 46804,
+        "manifest_crc32": "FF3CD805",
+        "resolved_path": "deploy/hardware-ready/CECLIA.8xp",
+        "resolved_size_bytes": 46804,
+        "resolved_crc32": "FF3CD805",
+        "status": "matched"
+      },
+      {
+        "order": 16,
+        "name": "CECLIC.8xp",
+        "manifest_size_bytes": 24825,
+        "manifest_crc32": "42721ABC",
+        "resolved_path": "deploy/hardware-ready/CECLIC.8xp",
+        "resolved_size_bytes": 24825,
+        "resolved_crc32": "42721ABC",
+        "status": "matched"
+      },
+      {
+        "order": 17,
+        "name": "CECLIM.8xp",
+        "manifest_size_bytes": 7526,
+        "manifest_crc32": "BA93C85C",
+        "resolved_path": "deploy/hardware-ready/CECLIM.8xp",
+        "resolved_size_bytes": 7526,
+        "resolved_crc32": "BA93C85C",
+        "status": "matched"
+      },
+      {
+        "order": 18,
+        "name": "CECLIR.8xp",
+        "manifest_size_bytes": 21110,
+        "manifest_crc32": "C0BEA067",
+        "resolved_path": "deploy/hardware-ready/CECLIR.8xp",
+        "resolved_size_bytes": 21110,
+        "resolved_crc32": "C0BEA067",
+        "status": "matched"
+      },
+      {
+        "order": 19,
+        "name": "CECLMB.8xp",
+        "manifest_size_bytes": 49963,
+        "manifest_crc32": "4E98FD1E",
+        "resolved_path": "deploy/hardware-ready/CECLMB.8xp",
+        "resolved_size_bytes": 49963,
+        "resolved_crc32": "4E98FD1E",
+        "status": "matched"
+      },
+      {
+        "order": 20,
+        "name": "CECODE.8xp",
+        "manifest_size_bytes": 46088,
+        "manifest_crc32": "72C60AB5",
+        "resolved_path": "deploy/hardware-ready/CECODE.8xp",
+        "resolved_size_bytes": 46088,
+        "resolved_crc32": "72C60AB5",
+        "status": "matched"
+      },
+      {
+        "order": 21,
+        "name": "CECPNM.8xp",
+        "manifest_size_bytes": 39869,
+        "manifest_crc32": "78C657C0",
+        "resolved_path": "deploy/hardware-ready/CECPNM.8xp",
+        "resolved_size_bytes": 39869,
+        "resolved_crc32": "78C657C0",
+        "status": "matched"
+      },
+      {
+        "order": 22,
+        "name": "CECPOL.8xp",
+        "manifest_size_bytes": 12415,
+        "manifest_crc32": "933A00E9",
+        "resolved_path": "deploy/hardware-ready/CECPOL.8xp",
+        "resolved_size_bytes": 12415,
+        "resolved_crc32": "933A00E9",
+        "status": "matched"
+      },
+      {
+        "order": 23,
+        "name": "CECSEQ.8xp",
+        "manifest_size_bytes": 50405,
+        "manifest_crc32": "BBCAF79E",
+        "resolved_path": "deploy/hardware-ready/CECSEQ.8xp",
+        "resolved_size_bytes": 50405,
+        "resolved_crc32": "BBCAF79E",
+        "status": "matched"
+      },
+      {
+        "order": 24,
+        "name": "CECSER.8xp",
+        "manifest_size_bytes": 51169,
+        "manifest_crc32": "C3C31B56",
+        "resolved_path": "deploy/hardware-ready/CECSER.8xp",
+        "resolved_size_bytes": 51169,
+        "resolved_crc32": "C3C31B56",
+        "status": "matched"
+      },
+      {
+        "order": 25,
+        "name": "CEFIN.8xp",
+        "manifest_size_bytes": 38270,
+        "manifest_crc32": "F7C496C2",
+        "resolved_path": "deploy/hardware-ready/CEFIN.8xp",
+        "resolved_size_bytes": 38270,
+        "resolved_crc32": "F7C496C2",
+        "status": "matched"
+      },
+      {
+        "order": 26,
+        "name": "CEGRPH.8xp",
+        "manifest_size_bytes": 9107,
+        "manifest_crc32": "AC565F11",
+        "resolved_path": "deploy/hardware-ready/CEGRPH.8xp",
+        "resolved_size_bytes": 9107,
+        "resolved_crc32": "AC565F11",
+        "status": "matched"
+      },
+      {
+        "order": 27,
+        "name": "CEIPFR.8xp",
+        "manifest_size_bytes": 49633,
+        "manifest_crc32": "793B9158",
+        "resolved_path": "deploy/hardware-ready/CEIPFR.8xp",
+        "resolved_size_bytes": 49633,
+        "resolved_crc32": "793B9158",
+        "status": "matched"
+      },
+      {
+        "order": 28,
+        "name": "CEIPRT.8xp",
+        "manifest_size_bytes": 45170,
+        "manifest_crc32": "32ABB79B",
+        "resolved_path": "deploy/hardware-ready/CEIPRT.8xp",
+        "resolved_size_bytes": 45170,
+        "resolved_crc32": "32ABB79B",
+        "status": "matched"
+      },
+      {
+        "order": 29,
+        "name": "CEISTR.8xp",
+        "manifest_size_bytes": 16658,
+        "manifest_crc32": "1827B660",
+        "resolved_path": "deploy/hardware-ready/CEISTR.8xp",
+        "resolved_size_bytes": 16658,
+        "resolved_crc32": "1827B660",
+        "status": "matched"
+      },
+      {
+        "order": 30,
+        "name": "CEITRG.8xp",
+        "manifest_size_bytes": 50059,
+        "manifest_crc32": "3B0F34E0",
+        "resolved_path": "deploy/hardware-ready/CEITRG.8xp",
+        "resolved_size_bytes": 50059,
+        "resolved_crc32": "3B0F34E0",
+        "status": "matched"
+      },
+      {
+        "order": 31,
+        "name": "CEIUSB.8xp",
+        "manifest_size_bytes": 32042,
+        "manifest_crc32": "56D02034",
+        "resolved_path": "deploy/hardware-ready/CEIUSB.8xp",
+        "resolved_size_bytes": 32042,
+        "resolved_crc32": "56D02034",
+        "status": "matched"
+      },
+      {
+        "order": 32,
+        "name": "CELIMS.8xp",
+        "manifest_size_bytes": 24642,
+        "manifest_crc32": "FE821EC0",
+        "resolved_path": "deploy/hardware-ready/CELIMS.8xp",
+        "resolved_size_bytes": 24642,
+        "resolved_crc32": "FE821EC0",
+        "status": "matched"
+      },
+      {
+        "order": 33,
+        "name": "CELSCX.8xp",
+        "manifest_size_bytes": 23767,
+        "manifest_crc32": "07FAF24B",
+        "resolved_path": "deploy/hardware-ready/CELSCX.8xp",
+        "resolved_size_bytes": 23767,
+        "resolved_crc32": "07FAF24B",
+        "status": "matched"
+      },
+      {
+        "order": 34,
+        "name": "CEMAT.8xp",
+        "manifest_size_bytes": 50264,
+        "manifest_crc32": "1D6E38A2",
+        "resolved_path": "deploy/hardware-ready/CEMAT.8xp",
+        "resolved_size_bytes": 50264,
+        "resolved_crc32": "1D6E38A2",
+        "status": "matched"
+      },
+      {
+        "order": 35,
+        "name": "CESTPRB.8xp",
+        "manifest_size_bytes": 27097,
+        "manifest_crc32": "8372D308",
+        "resolved_path": "deploy/hardware-ready/CESTPRB.8xp",
+        "resolved_size_bytes": 27097,
+        "resolved_crc32": "8372D308",
+        "status": "matched"
+      }
+    ]
+  }
+}

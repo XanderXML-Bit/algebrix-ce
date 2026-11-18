@@ -1,0 +1,488 @@
+{
+    "rom":  "C:\\Users\\user\\src\\algebrix-ce\\rom\\Rom.rom",
+    "transfer_files":  [
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CALCENG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGEO.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGF.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEALGSY.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEAPDV.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEASLA.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEASLV.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEBASE.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECALC.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECIAD.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECIDF.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECINT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECISM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIA.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIC.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLIR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECLMB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECODE.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECPNM.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECPOL.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECSEQ.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CECSER.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEFIN.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEGRPH.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIPFR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIPRT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEISTR.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEITRG.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEIUSB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CELIMS.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CELSCX.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CEMAT.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\CESTPRB.8xp",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\fileioc.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\graphx.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\keypadc.8xv",
+                           "C:\\Users\\user\\Downloads\\CalcEngine\\libload.8xv"
+                       ],
+    "target":  {
+                   "name":  "CALCENG",
+                   "isASM":  true
+               },
+    "delay_after_key":  225,
+    "delay_after_step":  600,
+    "sequence":  [
+                     "action|launch",
+                     "delay|4000",
+                     "key|enter",
+                     "delay|400",
+                     "hash|kf00_boot_prompt",
+                     "key|math",
+                     "delay|1200",
+                     "hash|kf01_math_menu_open",
+                     "key|down",
+                     "delay|400",
+                     "hash|kf02_math_menu_browse_down",
+                     "key|enter",
+                     "delay|400",
+                     "hash|kf03_math_menu_select_insert",
+                     "key|clear",
+                     "delay|400",
+                     "hash|kf04_prompt_after_math_clear",
+                     "key|clear",
+                     "delay|400",
+                     "key|2nd",
+                     "key|sin",
+                     "delay|400",
+                     "hash|kf05_2nd_sin_asin_input",
+                     "key|clear",
+                     "delay|400",
+                     "key|2nd",
+                     "key|cos",
+                     "delay|400",
+                     "hash|kf06_2nd_cos_acos_input",
+                     "key|clear",
+                     "delay|400",
+                     "key|2nd",
+                     "key|tan",
+                     "delay|400",
+                     "hash|kf07_2nd_tan_atan_input",
+                     "key|clear",
+                     "delay|400",
+                     "key|2nd",
+                     "key|^2",
+                     "delay|400",
+                     "hash|kf08_2nd_sqrt_input",
+                     "key|clear",
+                     "delay|400",
+                     "key|2nd",
+                     "key|-1",
+                     "delay|400",
+                     "hash|kf09_2nd_abs_input",
+                     "key|clear",
+                     "delay|400",
+                     "key|alpha",
+                     "key|ln",
+                     "key|alpha",
+                     "key|7",
+                     "key|alpha",
+                     "key|)",
+                     "key|alpha",
+                     "key|6",
+                     "key|alpha",
+                     "key|sin",
+                     "delay|400",
+                     "hash|kf10_alpha_solve_input",
+                     "key|clear",
+                     "delay|400",
+                     "key|1",
+                     "key|1",
+                     "key|1",
+                     "key|1",
+                     "key|1",
+                     "delay|300",
+                     "hash|kf11_repeat_11111_input",
+                     "key|clear",
+                     "delay|400",
+                     "key|1",
+                     "key|2",
+                     "key|3",
+                     "key|4",
+                     "key|5",
+                     "delay|200",
+                     "hash|kf12_arrow_anchor_12345",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|300",
+                     "hash|kf13_arrow_left_mid_12345",
+                     "key|right",
+                     "delay|300",
+                     "hash|kf14_arrow_right_mid_12345",
+                     "key|del",
+                     "delay|300",
+                     "hash|kf15_del_backspace_mid_1235",
+                     "key|clear",
+                     "delay|400",
+                     "key|0",
+                     "key|+",
+                     "key|1",
+                     "key|-",
+                     "key|2",
+                     "key|*",
+                     "key|3",
+                     "key|/",
+                     "key|4",
+                     "delay|300",
+                     "hash|kf16_basic_low_digits_expr",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|kf17_basic_low_digits_result",
+                     "key|clear",
+                     "delay|400",
+                     "key|(-)",
+                     "key|5",
+                     "key|.",
+                     "key|6",
+                     "key|+",
+                     "key|(",
+                     "key|7",
+                     "key|-",
+                     "key|8",
+                     "key|)",
+                     "key|/",
+                     "key|9",
+                     "delay|300",
+                     "hash|kf18_basic_high_digits_expr",
+                     "key|enter",
+                     "delay|2000",
+                     "hash|kf19_basic_high_digits_result",
+                     "key|clear",
+                     "delay|400",
+                     "hash|kf20_prompt_after_basic_clear",
+                     "key|prgm",
+                     "delay|1200",
+                     "hash|kf21_prgm_menu_open",
+                     "key|down",
+                     "delay|400",
+                     "hash|kf22_prgm_menu_browse_down",
+                     "key|clear",
+                     "delay|400",
+                     "hash|kf23_prompt_after_prgm_clear",
+                     "key|1",
+                     "key|2",
+                     "key|3",
+                     "key|4",
+                     "key|5",
+                     "key|6",
+                     "key|7",
+                     "key|8",
+                     "key|9",
+                     "key|0",
+                     "key|+",
+                     "key|2",
+                     "key|4",
+                     "key|6",
+                     "key|8",
+                     "key|0",
+                     "key|+",
+                     "key|1",
+                     "key|3",
+                     "key|5",
+                     "key|7",
+                     "key|9",
+                     "key|+",
+                     "key|8",
+                     "key|6",
+                     "key|4",
+                     "key|2",
+                     "key|0",
+                     "delay|300",
+                     "hash|kf24_long_expression_wrap",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|200",
+                     "key|left",
+                     "delay|300",
+                     "hash|kf25_long_left_cursor",
+                     "key|right",
+                     "delay|200",
+                     "key|right",
+                     "delay|200",
+                     "key|right",
+                     "delay|300",
+                     "hash|kf26_long_right_cursor"
+                 ],
+    "hashes":  {
+                   "kf00_boot_prompt":  {
+                                            "description":  "KF00: launcher prompt immediately after launch and ENTER",
+                                            "start":  "vram_start",
+                                            "size":  "vram_16_size",
+                                            "expected_CRCs":  [
+                                                                  "B76BC405"
+                                                              ],
+                                            "timeout":  5000
+                                        },
+                   "kf01_math_menu_open":  {
+                                               "description":  "KF01: MATH menu opens from the prompt",
+                                               "start":  "vram_start",
+                                               "size":  "vram_16_size",
+                                               "expected_CRCs":  [
+                                                                     "8C3C5304"
+                                                                 ],
+                                               "timeout":  5000
+                                           },
+                   "kf02_math_menu_browse_down":  {
+                                                      "description":  "KF02: DOWN browses within the MATH menu",
+                                                      "start":  "vram_start",
+                                                      "size":  "vram_16_size",
+                                                      "expected_CRCs":  [
+                                                                            "58715C0B"
+                                                                        ],
+                                                      "timeout":  5000
+                                                  },
+                   "kf03_math_menu_select_insert":  {
+                                                        "description":  "KF03: ENTER selects the highlighted MATH item and inserts its token",
+                                                        "start":  "vram_start",
+                                                        "size":  "vram_16_size",
+                                                        "expected_CRCs":  [
+                                                                              "D1B52764"
+                                                                          ],
+                                                        "timeout":  5000
+                                                    },
+                   "kf04_prompt_after_math_clear":  {
+                                                        "description":  "KF04: CLEAR exits the MATH selection state back to the prompt",
+                                                        "start":  "vram_start",
+                                                        "size":  "vram_16_size",
+                                                        "expected_CRCs":  [
+                                                                              "128C50A4"
+                                                                          ],
+                                                        "timeout":  5000
+                                                    },
+                   "kf05_2nd_sin_asin_input":  {
+                                                   "description":  "KF05: 2nd+SIN inserts asin(",
+                                                   "start":  "vram_start",
+                                                   "size":  "vram_16_size",
+                                                   "expected_CRCs":  [
+                                                                         "407B4B08"
+                                                                     ],
+                                                   "timeout":  5000
+                                               },
+                   "kf06_2nd_cos_acos_input":  {
+                                                   "description":  "KF06: 2nd+COS inserts acos(",
+                                                   "start":  "vram_start",
+                                                   "size":  "vram_16_size",
+                                                   "expected_CRCs":  [
+                                                                         "C5287417"
+                                                                     ],
+                                                   "timeout":  5000
+                                               },
+                   "kf07_2nd_tan_atan_input":  {
+                                                   "description":  "KF07: 2nd+TAN inserts atan(",
+                                                   "start":  "vram_start",
+                                                   "size":  "vram_16_size",
+                                                   "expected_CRCs":  [
+                                                                         "A5FC9505"
+                                                                     ],
+                                                   "timeout":  5000
+                                               },
+                   "kf08_2nd_sqrt_input":  {
+                                               "description":  "KF08: 2nd+x^2 inserts sqrt(",
+                                               "start":  "vram_start",
+                                               "size":  "vram_16_size",
+                                               "expected_CRCs":  [
+                                                                     "66086351"
+                                                                 ],
+                                               "timeout":  5000
+                                           },
+                   "kf09_2nd_abs_input":  {
+                                              "description":  "KF09: 2nd+x^-1 inserts abs(",
+                                              "start":  "vram_start",
+                                              "size":  "vram_16_size",
+                                              "expected_CRCs":  [
+                                                                    "E4A58031"
+                                                                ],
+                                              "timeout":  5000
+                                          },
+                   "kf10_alpha_solve_input":  {
+                                                  "description":  "KF10: ALPHA spelling renders solve on the input line",
+                                                  "start":  "vram_start",
+                                                  "size":  "vram_16_size",
+                                                  "expected_CRCs":  [
+                                                                        "95976A1A"
+                                                                    ],
+                                                  "timeout":  5000
+                                              },
+                   "kf11_repeat_11111_input":  {
+                                                   "description":  "KF11: five repeated presses of 1 render 11111 without dropping a key",
+                                                   "start":  "vram_start",
+                                                   "size":  "vram_16_size",
+                                                   "expected_CRCs":  [
+                                                                         "851AF85D"
+                                                                     ],
+                                                   "timeout":  5000
+                                               },
+                   "kf12_arrow_anchor_12345":  {
+                                                   "description":  "KF12: 12345 is visible before cursor movement",
+                                                   "start":  "vram_start",
+                                                   "size":  "vram_16_size",
+                                                   "expected_CRCs":  [
+                                                                         "029FABB4"
+                                                                     ],
+                                                   "timeout":  5000
+                                               },
+                   "kf13_arrow_left_mid_12345":  {
+                                                     "description":  "KF13: LEFT moves the cursor into the middle of 12345",
+                                                     "start":  "vram_start",
+                                                     "size":  "vram_16_size",
+                                                     "expected_CRCs":  [
+                                                                           "029FABB4"
+                                                                       ],
+                                                     "timeout":  5000
+                                                 },
+                   "kf14_arrow_right_mid_12345":  {
+                                                      "description":  "KF14: RIGHT returns the cursor toward the end of 12345",
+                                                      "start":  "vram_start",
+                                                      "size":  "vram_16_size",
+                                                      "expected_CRCs":  [
+                                                                            "029FABB4"
+                                                                        ],
+                                                      "timeout":  5000
+                                                  },
+                   "kf15_del_backspace_mid_1235":  {
+                                                       "description":  "KF15: DEL performs backspace semantics after cursor movement inside 12345",
+                                                       "start":  "vram_start",
+                                                       "size":  "vram_16_size",
+                                                       "expected_CRCs":  [
+                                                                             "CFDD38DC"
+                                                                         ],
+                                                       "timeout":  5000
+                                                   },
+                   "kf16_basic_low_digits_expr":  {
+                                                      "description":  "KF16: 0+1-2*3/4 is visible before ENTER as a basic low-digit/operator proof",
+                                                      "start":  "vram_start",
+                                                      "size":  "vram_16_size",
+                                                      "expected_CRCs":  [
+                                                                            "268D7BA4"
+                                                                        ],
+                                                      "timeout":  5000
+                                                  },
+                   "kf17_basic_low_digits_result":  {
+                                                        "description":  "KF17: ENTER evaluates 0+1-2*3/4 using 0,1,2,3,4,+,-,*,/ and ENTER",
+                                                        "start":  "vram_start",
+                                                        "size":  "vram_16_size",
+                                                        "expected_CRCs":  [
+                                                                              "FB45519D"
+                                                                          ],
+                                                        "timeout":  8000
+                                                    },
+                   "kf18_basic_high_digits_expr":  {
+                                                       "description":  "KF18: (-)5.6+(7-8)/9 is visible before ENTER as a negation/decimal/parentheses proof",
+                                                       "start":  "vram_start",
+                                                       "size":  "vram_16_size",
+                                                       "expected_CRCs":  [
+                                                                             "092D5464",
+                                                                             "50C9E53D"
+                                                                         ],
+                                                       "timeout":  5000
+                                                   },
+                   "kf19_basic_high_digits_result":  {
+                                                         "description":  "KF19: ENTER evaluates (-)5.6+(7-8)/9 using 5,6,7,8,9,(-),.,(,) and ENTER",
+                                                         "start":  "vram_start",
+                                                         "size":  "vram_16_size",
+                                                         "expected_CRCs":  [
+                                                                               "B9B5D5E0",
+                                                                               "BC6E36DB"
+                                                                           ],
+                                                         "timeout":  8000
+                                                     },
+                   "kf20_prompt_after_basic_clear":  {
+                                                         "description":  "KF20: CLEAR returns from the basic-key result path to the prompt",
+                                                         "start":  "vram_start",
+                                                         "size":  "vram_16_size",
+                                                         "expected_CRCs":  [
+                                                                               "70643879",
+                                                                               "A32840C8"
+                                                                           ],
+                                                         "timeout":  5000
+                                                     },
+                   "kf21_prgm_menu_open":  {
+                                               "description":  "KF21: PRGM opens from the prompt",
+                                               "start":  "vram_start",
+                                               "size":  "vram_16_size",
+                                               "expected_CRCs":  [
+                                                                     "C84EC5D0"
+                                                                 ],
+                                               "timeout":  5000
+                                           },
+                   "kf22_prgm_menu_browse_down":  {
+                                                      "description":  "KF22: DOWN is sent while the PRGM menu is open as a browse proof",
+                                                      "start":  "vram_start",
+                                                      "size":  "vram_16_size",
+                                                      "expected_CRCs":  [
+                                                                            "C84EC5D0"
+                                                                        ],
+                                                      "timeout":  5000
+                                                  },
+                   "kf23_prompt_after_prgm_clear":  {
+                                                        "description":  "KF23: CLEAR exits the PRGM menu back to the prompt",
+                                                        "start":  "vram_start",
+                                                        "size":  "vram_16_size",
+                                                        "expected_CRCs":  [
+                                                                              "A32840C8",
+                                                                              "D583ACD8"
+                                                                          ],
+                                                        "timeout":  5000
+                                                    },
+                   "kf24_long_expression_wrap":  {
+                                                     "description":  "KF24: a long wrapped expression is visible before long-range cursor movement",
+                                                     "start":  "vram_start",
+                                                     "size":  "vram_16_size",
+                                                     "expected_CRCs":  [
+                                                                           "15B58686"
+                                                                       ],
+                                                     "timeout":  5000
+                                                 },
+                   "kf25_long_left_cursor":  {
+                                                 "description":  "KF25: repeated LEFT presses move the cursor into a wrapped long expression",
+                                                 "start":  "vram_start",
+                                                 "size":  "vram_16_size",
+                                                 "expected_CRCs":  [
+                                                                       "15B58686"
+                                                                   ],
+                                                 "timeout":  5000
+                                             },
+                   "kf26_long_right_cursor":  {
+                                                  "description":  "KF26: repeated RIGHT presses move the cursor back across the wrapped long expression",
+                                                  "start":  "vram_start",
+                                                  "size":  "vram_16_size",
+                                                  "expected_CRCs":  [
+                                                                        "15B58686"
+                                                                    ],
+                                                  "timeout":  5000
+                                              }
+               }
+}

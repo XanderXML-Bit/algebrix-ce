@@ -1,0 +1,69 @@
+# CE Toolchain build artifacts
+bin/
+# Includes per-program obj/$(NAME) LTO and .su reports.
+obj/
+*.8xp
+!deploy/**/*.8xp
+
+# Desktop test build artifacts
+*.obj
+*.exe
+tests/test_runner
+tests/fmt_test
+tests/fmt_test_ce32
+tests/test_runner_ce_fmt
+tests/test_runner_asan
+tests/test_runner_ce_fmt_asan
+tests/*.exe
+tests/split_cebase_test
+tests/split_vars_cebase
+tests/split_vars_celscx
+tests/split_vars_state.bin
+tests/float_class_test
+tests/float_ops_test
+tests/float_ops_test.exe
+tests/float_tiny_ref
+tests/float_tiny_test
+tests/float_tiny_flush
+tests/float_tiny_bias
+tests/float_tiny_ref.bin
+tests/test_runner_new.exe
+tests/build_zig_err.txt
+tests/build_zig_out.txt
+tests/test_zig_out.txt
+tests/test_zig_err.txt
+
+# Emulator / reference pull artifacts
+docs/ti84-reference/downloads/
+docs/ti84-reference/manifest.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node / Vitest cache
+node_modules/
+
+# ROM dump (local only - do not commit)
+rom/
+
+# Local toolchain / debug artifacts
+.tools/
+*.pdb
+tests/cemu/outputs/release-candidate-gate/
+Microsoft/
+ROADMAP.md
+
+# CEmu native core clone (external dependency — clone manually per README)
+tools/emulator/cemu-headless/cemu-core/
+
+# cemu-headless CMake build directory
+tools/emulator/cemu-headless/build/

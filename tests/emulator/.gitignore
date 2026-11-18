@@ -1,0 +1,5 @@
+autotest.smoke.generated.json
+*.png
+*.bmp
+*.rom
+*.img

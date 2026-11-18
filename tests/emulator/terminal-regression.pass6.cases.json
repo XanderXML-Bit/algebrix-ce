@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "description": "Comprehensive mock-mode regression suite (pass 6). Covers all arithmetic operators, operator precedence, parentheses, unary operators, decimals, chained operations, error conditions, ignored keys, and edge cases.",
+  "cases": [
+    {
+      "name": "addition: 2+3",
+      "keys": "2,+,3,enter",
+      "expect": { "result": "5", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "subtraction: 9-4",
+      "keys": "9,-,4,enter",
+      "expect": { "result": "5", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "multiplication: 6*7",
+      "keys": "6,*,7,enter",
+      "expect": { "result": "42", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "division: 8/4",
+      "keys": "8,/,4,enter",
+      "expect": { "result": "2", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "exponentiation: 2^10",
+      "keys": "2,^,1,0,enter",
+      "expect": { "result": "1024", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "precedence: 2+3*4 = 14 (not 20)",
+      "keys": "2,+,3,*,4,enter",
+      "expect": { "result": "14", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "precedence: 10-6/3 = 8",
+      "keys": "1,0,-,6,/,3,enter",
+      "expect": { "result": "8", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "precedence: 2^3^2 = 512 (right-associative)",
+      "keys": "2,^,3,^,2,enter",
+      "expect": { "result": "512", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "parentheses: (2+3)*4 = 20",
+      "keys": "(,2,+,3,),*,4,enter",
+      "expect": { "result": "20", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "parentheses: 10/(2+3) = 2",
+      "keys": "1,0,/,(,2,+,3,),enter",
+      "expect": { "result": "2", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "nested parens: ((1+2)*(3+4)) = 21",
+      "keys": "(,(,1,+,2,),*,(,3,+,4,),),enter",
+      "expect": { "result": "21", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "decimal: 1.5+2.5 = 4",
+      "keys": "1,.,5,+,2,.,5,enter",
+      "expect": { "result": "4", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "decimal division: 7/2 = 3.5",
+      "keys": "7,/,2,enter",
+      "expect": { "result": "3.5", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "decimal precision: 1/3",
+      "keys": "1,/,3,enter",
+      "expect": { "result": "0.333333333333333", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "unary negative: neg 5 + 3 = -2",
+      "keys": "neg,5,+,3,enter",
+      "expect": { "result": "-2", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "unary negative in parens: (-8)/4 = -2",
+      "keys": "(,neg,8,),/,4,enter",
+      "expect": { "result": "-2", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "zero result: 5-5 = 0",
+      "keys": "5,-,5,enter",
+      "expect": { "result": "0", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "multiply by zero: 999*0 = 0",
+      "keys": "9,9,9,*,0,enter",
+      "expect": { "result": "0", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "power of zero: 5^0 = 1",
+      "keys": "5,^,0,enter",
+      "expect": { "result": "1", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "zero to power: 0^5 = 0",
+      "keys": "0,^,5,enter",
+      "expect": { "result": "0", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "identity: 1*42 = 42",
+      "keys": "1,*,4,2,enter",
+      "expect": { "result": "42", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "large number: 99999*99999",
+      "keys": "9,9,9,9,9,*,9,9,9,9,9,enter",
+      "expect": { "result": "9999800001", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "small decimal: 0.001*0.001 (scientific notation in mock)",
+      "keys": "0,.,0,0,1,*,0,.,0,0,1,enter",
+      "expect": { "result": "1E-06", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "chained: clear resets state",
+      "keys": "9,9,9,+,1,clear,2,+,2,enter",
+      "expect": { "result": "4", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "double clear: clear,clear,5+5",
+      "keys": "1,+,1,clear,clear,5,+,5,enter",
+      "expect": { "result": "10", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "error: division by zero",
+      "keys": "1,/,0,enter",
+      "expect": { "result": "", "status": "error", "error": "Division by zero in expression.", "ignored_keys": [] }
+    },
+    {
+      "name": "error: double operator ++ (malformed)",
+      "keys": "2,+,+,3,enter",
+      "expect": { "result": "5", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "error: mismatched paren (missing close)",
+      "keys": "(,2,+,3,enter",
+      "expect": { "result": "", "status": "error", "error": "Mismatched parenthesis: missing ')' in expression.", "ignored_keys": [] }
+    },
+    {
+      "name": "ignored keys: mode,2nd,alpha preserved in list",
+      "keys": "mode,2nd,alpha,5,+,5,enter",
+      "expect": { "result": "10", "status": "ok", "error": "", "ignored_keys": ["KEY_MODE", "KEY_2ND", "KEY_ALPHA"] }
+    },
+    {
+      "name": "ignored key: math key mid-expression",
+      "keys": "3,math,*,3,enter",
+      "expect": { "result": "9", "status": "ok", "error": "", "ignored_keys": ["KEY_MATH"] }
+    },
+    {
+      "name": "pending: no enter pressed",
+      "keys": "7,*,8",
+      "expect": { "result": "", "status": "pending", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "pending: clear returns to pending",
+      "keys": "2,+,3,enter,clear",
+      "expect": { "result": "", "status": "pending", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "single number evaluation: 42",
+      "keys": "4,2,enter",
+      "expect": { "result": "42", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "alias normalization: digit aliases work",
+      "keys": "digit1,plus,digit2,return",
+      "expect": { "result": "3", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "multi-digit: 123+456 = 579",
+      "keys": "1,2,3,+,4,5,6,enter",
+      "expect": { "result": "579", "status": "ok", "error": "", "ignored_keys": [] }
+    },
+    {
+      "name": "complex expression: (2+3)*(4-1)/(6/2) = 5",
+      "keys": "(,2,+,3,),*,(,4,-,1,),/,(,6,/,2,),enter",
+      "expect": { "result": "5", "status": "ok", "error": "", "ignored_keys": [] }
+    }
+  ]
+}

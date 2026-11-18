@@ -1,0 +1,71 @@
+diff --git a/core/mem.c b/core/mem.c
+index 1119d87..3198b2f 100644
+--- a/core/mem.c
++++ b/core/mem.c
+@@ -770,6 +770,13 @@ void mem_write_cpu(uint32_t addr, uint8_t value) {
+     if (addr == control.stackLimit) {
+         control.protectionStatus |= 1;
+         gui_console_err_printf("[CEmu] NMI reset caused by writing to the stack limit at address %#06x. Hint: Probably a stack overflow (aka too much recursion).\n", addr);
++        {
++            uint32_t sp = cpu.registers.SPL, i;
++            gui_console_err_printf("[STKDUMP] pc=%06X spl=%06X\n", (unsigned)cpu.registers.PC, (unsigned)sp);
++            gui_console_err_printf("[STKRAW] ");
++            for (i = sp; i < 0xD1A881; i++) gui_console_err_printf("%02X", mem_peek_byte(i));
++            gui_console_err_printf("\n");
++        }
+         cpu_nmi();
+     } /* writes to stack limit succeed */
+ 
+diff --git a/tests/autotester/headless_cli.cpp b/tests/autotester/headless_cli.cpp
+index fa2951e..64a9eb1 100644
+--- a/tests/autotester/headless_cli.cpp
++++ b/tests/autotester/headless_cli.cpp
+@@ -27,10 +27,17 @@ namespace cemucore
+     extern "C"
+     {
+         #include "../../core/usb/usb.h"
++        #include "../../core/mem.h"
++        #include "../../core/cpu.h"
+ 
+         void gui_console_clear() {}
+         void gui_debug_close(void) {}
+         void gui_debug_open(int reason, uint32_t data) {
++            if (reason == DBG_BREAKPOINT) {
++                char nm[9]; for (int i = 0; i < 8; i++) { uint8_t c = mem_peek_byte(0xD005F9 + i); nm[i] = (c >= 32 && c < 127) ? (char)c : 0; } nm[8] = 0;
++                std::fprintf(stderr, "[HOP] pc=%06X spl=%06X op1=%s\n", (unsigned)cpu.registers.PC, (unsigned)cpu.registers.SPL, nm);
++                return;
++            }
+             std::fprintf(stderr, "[CEmu debug open] reason=%d, data=0x%X\n", reason, data);
+         }
+         void gui_console_printf(const char *format, ...) {
+@@ -397,6 +404,30 @@ bool runCommand(const std::string& line)
+         }
+         return true;
+     }
++    if (command == "peek") {
++        unsigned long a = 0, n = 0; std::istringstream &in = input;
++        in >> std::hex >> a >> std::dec >> n;
++        std::string out = "OK peek ";
++        char b[4];
++        for (unsigned long i = 0; i < n; i++) { std::snprintf(b, sizeof b, "%02X", cemucore::mem_peek_byte((uint32_t)(a + i))); out += b; }
++        respond(out); return true;
++    }
++    if (command == "fill") {
++        unsigned long a = 0, n = 0, v = 0; std::istringstream &in = input;
++        in >> std::hex >> a >> std::dec >> n >> std::hex >> v;
++        for (unsigned long i = 0; i < n; i++) cemucore::mem_poke_byte((uint32_t)(a + i), (uint8_t)v);
++        respond("OK fill"); return true;
++    }
++    if (command == "bp") {
++        unsigned long a = 0; std::istringstream &in = input; in >> std::hex >> a;
++        cemucore::debug_watch((uint32_t)a, DBG_MASK_EXEC, true);
++        respond("OK bp"); return true;
++    }
++    if (command == "regs") {
++        char b[128];
++        std::snprintf(b, sizeof b, "OK regs pc=%06X spl=%06X sps=%04X", (unsigned)cemucore::cpu.registers.PC, (unsigned)cemucore::cpu.registers.SPL, (unsigned)cemucore::cpu.registers.SPS);
++        respond(b); return true;
++    }
+     if (command == "reset") {
+         cemucore::emu_reset();
+         respond("OK reset");

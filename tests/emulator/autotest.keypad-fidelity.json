@@ -1,0 +1,618 @@
+{
+  "rom": "__ROM_PATH_SET_BY_SCRIPT__",
+  "transfer_files": [
+    "__PROGRAM_PATH_SET_BY_SCRIPT__"
+  ],
+  "target": {
+    "name": "CALCENG",
+    "isASM": true
+  },
+  "delay_after_key": 225,
+  "delay_after_step": 600,
+  "sequence": [
+    "action|launch",
+    "delay|4000",
+    "key|enter",
+    "delay|400",
+    "hash|kf00_boot_prompt",
+    "key|math",
+    "delay|1200",
+    "hash|kf01_math_menu_open",
+    "key|down",
+    "delay|400",
+    "hash|kf02_math_menu_browse_down",
+    "key|enter",
+    "delay|400",
+    "hash|kf03_math_menu_select_insert",
+    "key|clear",
+    "delay|400",
+    "hash|kf04_prompt_after_math_clear",
+    "key|clear",
+    "delay|400",
+    "key|2nd",
+    "key|sin",
+    "delay|400",
+    "hash|kf05_2nd_sin_asin_input",
+    "key|clear",
+    "delay|400",
+    "key|2nd",
+    "key|cos",
+    "delay|400",
+    "hash|kf06_2nd_cos_acos_input",
+    "key|clear",
+    "delay|400",
+    "key|2nd",
+    "key|tan",
+    "delay|400",
+    "hash|kf07_2nd_tan_atan_input",
+    "key|clear",
+    "delay|400",
+    "key|2nd",
+    "key|^2",
+    "delay|400",
+    "hash|kf08_2nd_sqrt_input",
+    "key|clear",
+    "delay|400",
+    "key|2nd",
+    "key|-1",
+    "delay|400",
+    "hash|kf09_2nd_abs_input",
+    "key|clear",
+    "delay|400",
+    "key|alpha",
+    "key|ln",
+    "key|alpha",
+    "key|7",
+    "key|alpha",
+    "key|)",
+    "key|alpha",
+    "key|6",
+    "key|alpha",
+    "key|sin",
+    "delay|400",
+    "hash|kf10_alpha_solve_input",
+    "key|clear",
+    "delay|400",
+    "key|1",
+    "key|1",
+    "key|1",
+    "key|1",
+    "key|1",
+    "delay|300",
+    "hash|kf11_repeat_11111_input",
+    "key|clear",
+    "delay|400",
+    "key|1",
+    "key|2",
+    "key|3",
+    "key|4",
+    "key|5",
+    "delay|200",
+    "hash|kf12_arrow_anchor_12345",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|300",
+    "hash|kf13_arrow_left_mid_12345",
+    "key|right",
+    "delay|300",
+    "hash|kf14_arrow_right_mid_12345",
+    "key|del",
+    "delay|300",
+    "hash|kf15_del_backspace_mid_1235",
+    "key|clear",
+    "delay|400",
+    "key|0",
+    "key|+",
+    "key|1",
+    "key|-",
+    "key|2",
+    "key|*",
+    "key|3",
+    "key|/",
+    "key|4",
+    "delay|300",
+    "hash|kf16_basic_low_digits_expr",
+    "key|enter",
+    "delay|2000",
+    "hash|kf17_basic_low_digits_result",
+    "key|clear",
+    "delay|400",
+    "key|(-)",
+    "key|5",
+    "key|.",
+    "key|6",
+    "key|+",
+    "key|(",
+    "key|7",
+    "key|-",
+    "key|8",
+    "key|)",
+    "key|/",
+    "key|9",
+    "delay|300",
+    "hash|kf18_basic_high_digits_expr",
+    "key|enter",
+    "delay|2000",
+    "hash|kf19_basic_high_digits_result",
+    "key|clear",
+    "delay|400",
+    "hash|kf20_prompt_after_basic_clear",
+    "key|prgm",
+    "delay|1200",
+    "hash|kf21_prgm_menu_open",
+    "key|down",
+    "delay|400",
+    "hash|kf22_prgm_menu_browse_down",
+    "key|clear",
+    "delay|400",
+    "hash|kf23_prompt_after_prgm_clear",
+    "key|1",
+    "key|2",
+    "key|3",
+    "key|4",
+    "key|5",
+    "key|6",
+    "key|7",
+    "key|8",
+    "key|9",
+    "key|0",
+    "key|+",
+    "key|2",
+    "key|4",
+    "key|6",
+    "key|8",
+    "key|0",
+    "key|+",
+    "key|1",
+    "key|3",
+    "key|5",
+    "key|7",
+    "key|9",
+    "key|+",
+    "key|8",
+    "key|6",
+    "key|4",
+    "key|2",
+    "key|0",
+    "delay|300",
+    "hash|kf24_long_expression_wrap",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|200",
+    "key|left",
+    "delay|300",
+    "hash|kf25_long_left_cursor",
+    "key|right",
+    "delay|200",
+    "key|right",
+    "delay|200",
+    "key|right",
+    "delay|300",
+    "hash|kf26_long_right_cursor",
+    "key|clear",
+    "delay|400",
+    "key|mode",
+    "delay|1200",
+    "hash|kf27_mode_settings_open",
+    "key|clear",
+    "delay|400",
+    "hash|kf28_prompt_after_mode_clear",
+    "key|2nd",
+    "key|0",
+    "delay|1200",
+    "hash|kf29_catalog_menu_open",
+    "key|down",
+    "delay|400",
+    "hash|kf30_catalog_browse_down",
+    "key|clear",
+    "delay|400",
+    "hash|kf31_prompt_after_catalog_clear",
+    "key|2nd",
+    "key|enter",
+    "delay|400",
+    "hash|kf32_store_arrow_input",
+    "key|clear",
+    "delay|400",
+    "key|yequ",
+    "delay|400",
+    "hash|kf33_yequ_entry_state",
+    "key|alpha",
+    "key|sto",
+    "key|^2",
+    "delay|400",
+    "hash|kf34_graph_equation_input",
+    "key|graph",
+    "delay|3000",
+    "hash|kf35_graph_screen_drawn",
+    "key|trace",
+    "delay|400",
+    "hash|kf36_graph_trace_toggle",
+    "key|window",
+    "delay|400",
+    "hash|kf37_graph_window_editor_open",
+    "key|clear",
+    "delay|400",
+    "key|zoom",
+    "delay|400",
+    "hash|kf38_graph_zoom_menu_open",
+    "key|clear",
+    "delay|400",
+    "key|yequ",
+    "delay|400",
+    "hash|kf39_prompt_after_graph_exit"
+  ],
+  "hashes": {
+    "kf00_boot_prompt": {
+      "description": "KF00: launcher prompt immediately after launch and ENTER",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf01_math_menu_open": {
+      "description": "KF01: MATH menu opens from the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf02_math_menu_browse_down": {
+      "description": "KF02: DOWN browses within the MATH menu",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf03_math_menu_select_insert": {
+      "description": "KF03: ENTER selects the highlighted MATH item and inserts its token",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf04_prompt_after_math_clear": {
+      "description": "KF04: CLEAR exits the MATH selection state back to the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf05_2nd_sin_asin_input": {
+      "description": "KF05: 2nd+SIN inserts asin(",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf06_2nd_cos_acos_input": {
+      "description": "KF06: 2nd+COS inserts acos(",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf07_2nd_tan_atan_input": {
+      "description": "KF07: 2nd+TAN inserts atan(",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf08_2nd_sqrt_input": {
+      "description": "KF08: 2nd+x^2 inserts sqrt(",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf09_2nd_abs_input": {
+      "description": "KF09: 2nd+x^-1 inserts abs(",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf10_alpha_solve_input": {
+      "description": "KF10: ALPHA spelling renders solve on the input line",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf11_repeat_11111_input": {
+      "description": "KF11: five repeated presses of 1 render 11111 without dropping a key",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf12_arrow_anchor_12345": {
+      "description": "KF12: 12345 is visible before cursor movement",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf13_arrow_left_mid_12345": {
+      "description": "KF13: LEFT moves the cursor into the middle of 12345",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf14_arrow_right_mid_12345": {
+      "description": "KF14: RIGHT returns the cursor toward the end of 12345",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf15_del_backspace_mid_1235": {
+      "description": "KF15: DEL performs backspace semantics after cursor movement inside 12345",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf16_basic_low_digits_expr": {
+      "description": "KF16: 0+1-2*3/4 is visible before ENTER as a basic low-digit/operator proof",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf17_basic_low_digits_result": {
+      "description": "KF17: ENTER evaluates 0+1-2*3/4 using 0,1,2,3,4,+,-,*,/ and ENTER",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 8000
+    },
+    "kf18_basic_high_digits_expr": {
+      "description": "KF18: (-)5.6+(7-8)/9 is visible before ENTER as a negation/decimal/parentheses proof",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "092D5464",
+        "50C9E53D"
+      ],
+      "timeout": 5000
+    },
+    "kf19_basic_high_digits_result": {
+      "description": "KF19: ENTER evaluates (-)5.6+(7-8)/9 using 5,6,7,8,9,(-),.,(,) and ENTER",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "B9B5D5E0",
+        "BC6E36DB"
+      ],
+      "timeout": 8000
+    },
+    "kf20_prompt_after_basic_clear": {
+      "description": "KF20: CLEAR returns from the basic-key result path to the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "70643879",
+        "A32840C8"
+      ],
+      "timeout": 5000
+    },
+    "kf21_prgm_menu_open": {
+      "description": "KF21: PRGM opens from the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf22_prgm_menu_browse_down": {
+      "description": "KF22: DOWN is sent while the PRGM menu is open as a browse proof",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf23_prompt_after_prgm_clear": {
+      "description": "KF23: CLEAR exits the PRGM menu back to the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "A32840C8",
+        "D583ACD8"
+      ],
+      "timeout": 5000
+    },
+    "kf24_long_expression_wrap": {
+      "description": "KF24: a long wrapped expression is visible before long-range cursor movement",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf25_long_left_cursor": {
+      "description": "KF25: repeated LEFT presses move the cursor into a wrapped long expression",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf26_long_right_cursor": {
+      "description": "KF26: repeated RIGHT presses move the cursor back across the wrapped long expression",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf27_mode_settings_open": {
+      "description": "KF27: MODE opens the settings screen from the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf28_prompt_after_mode_clear": {
+      "description": "KF28: CLEAR exits the MODE/settings screen back to the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf29_catalog_menu_open": {
+      "description": "KF29: the physical CATALOG combo (2nd then 0) opens the function catalog/menu",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf30_catalog_browse_down": {
+      "description": "KF30: DOWN browses within the catalog/menu opened by 2nd+0",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf31_prompt_after_catalog_clear": {
+      "description": "KF31: CLEAR exits the catalog/menu opened by 2nd+0 back to the prompt",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf32_store_arrow_input": {
+      "description": "KF32: 2nd+ENTER inserts the TI-style store arrow token on the input line",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf33_yequ_entry_state": {
+      "description": "KF33: Y= switches the emulator into graph-equation entry state",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf34_graph_equation_input": {
+      "description": "KF34: ALPHA+STO followed by x^2 enters x^2 as the graph equation",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf35_graph_screen_drawn": {
+      "description": "KF35: GRAPH draws the plotted graph screen from the keyed x^2 equation",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 8000
+    },
+    "kf36_graph_trace_toggle": {
+      "description": "KF36: TRACE toggles graph trace mode after the graph is drawn",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf37_graph_window_editor_open": {
+      "description": "KF37: WINDOW opens the graph window editor from graph mode",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf38_graph_zoom_menu_open": {
+      "description": "KF38: ZOOM opens the graph zoom-preset menu from the graph workflow",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    },
+    "kf39_prompt_after_graph_exit": {
+      "description": "KF39: Y= from graph mode returns to equation-entry/prompt-side graph editing",
+      "start": "vram_start",
+      "size": "vram_16_size",
+      "expected_CRCs": [
+        "00000000"
+      ],
+      "timeout": 5000
+    }
+  }
+}

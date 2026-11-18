@@ -1,0 +1,39 @@
+# Makefile.launcher.diag — Diagnostic CALCENG build.
+# Instruments src/core/launcher/main.c with L01-L25 stage markers.
+# Produces: CALCENG.8xp (same name as production — replaces it in CalcEngine-Debug/)
+#
+# Build from repo root:
+#   make -f tools/hardware-test/diag-calceng/Makefile.launcher.diag clean
+#   make -f tools/hardware-test/diag-calceng/Makefile.launcher.diag
+#   cp tools/hardware-test/diag-calceng/bin/launcher/CALCENG.8xp \
+#      "C:/Users/user/Downloads/CalcEngine-Debug/"
+
+NAME        = CALCENG
+DESCRIPTION = "CalcEngine Diag Launcher"
+BINDIR      = tools/hardware-test/diag-calceng/bin/launcher
+
+PROGRAM_CFLAGS = \
+    -DHW_BUILD_SPLIT \
+    -DCE_AST_ENABLE_STAT_NAMES=0 \
+    -DCE_LAUNCHER_TINY_ERRORS=1
+
+PROGRAM_SOURCES = \
+    tools/hardware-test/diag-calceng/launcher_diag.c \
+    tools/hardware-test/diag-calceng/diag_helpers.c \
+    src/split/runtime_globals.c \
+    src/split/ipc.c \
+    src/split/astwire.c \
+    src/split/classify.c \
+    src/memory.c \
+    src/token.c \
+    src/ast.c \
+    src/parser.c
+
+# module_runtime_launcher_diag.c replaces production module_runtime.c.
+# It is identical except ce_module_runtime_recover_child_failure is
+# instrumented with L08a-L08e sub-stage markers to pinpoint the iter-2
+# stack-overflow crash site.  The launcher never calls
+# ce_module_runtime_finish so no conflict with the CEBASE build.
+PROGRAM_RUNTIME_SOURCES = tools/hardware-test/diag-calceng/module_runtime_launcher_diag.c
+
+include tools/hardware-test/diag-calceng/program_diag.mk

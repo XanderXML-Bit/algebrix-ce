@@ -1,0 +1,23 @@
+{
+  "name": "calcengine",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build:desktop": "node ./scripts/run-powershell-script.mjs tests/helpers/build-desktop.ps1",
+    "build:ez80": "node ./scripts/run-powershell-script.mjs tools/emulator/ez80/build_tests.ps1",
+    "build": "npm run build:desktop && npm run build:ez80",
+    "test:cemu": "node --experimental-strip-types scripts/run-cemu-tests.ts",
+    "test:cemu:python": "python -m pytest tests/cemu -q",
+    "test:cemu:ts": "node --experimental-strip-types scripts/run-cemu-tests.ts",
+    "test:vitest": "vitest run",
+    "test:powershell-harness": "node ./scripts/run-powershell-script.mjs tools/emulator/tests/run-harness-suite.ps1",
+    "test": "npm run --silent test:vitest"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.60.1"
+  }
+}

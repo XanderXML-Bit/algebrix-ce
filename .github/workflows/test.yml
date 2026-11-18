@@ -1,0 +1,237 @@
+name: CI - Build & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      run_cemu_headless:
+        description: "Run the opt-in self-hosted CEmu headless lane"
+        required: false
+        type: boolean
+        default: false
+      run_release_candidate_gate:
+        description: "Run the opt-in self-hosted real-ROM release-candidate gate"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  test:
+    name: Desktop Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install GCC and build dependencies
+        run: sudo apt-get update && sudo apt-get install -y gcc make
+
+      - name: Build test runner
+        working-directory: tests
+        run: make
+
+      - name: Run test suite
+        working-directory: tests
+        run: make run
+
+      - name: Run test suite through the CE formatter (src/ce_fmt.c)
+        working-directory: tests
+        run: make run-ce-fmt
+
+      - name: Report binary size
+        run: |
+          echo "=== Binary Size Report ==="
+          ls -la tests/test_runner
+          SIZE=$(stat -c%s tests/test_runner 2>/dev/null || stat -f%z tests/test_runner)
+          echo "Test binary: $SIZE bytes ($(( SIZE / 1024 )) KB)"
+          echo ""
+          echo "=== Source Code Size ==="
+          echo "Source files (src/*.c):"
+          wc -l src/*.c | tail -1
+          echo "Header files (src/*.h):"
+          wc -l src/*.h | tail -1
+          echo "Test files:"
+          wc -l tests/test_main.c
+          echo ""
+          echo "Note: TI-84 CE .8xp binary is typically 60-80% smaller"
+          echo "than desktop test binary due to -Oz optimization and"
+          echo "stripped debug info. 4MB Flash limit = 4,194,304 bytes."
+
+  desktop-asan:
+    name: Desktop Tests (ASan + UBSan)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install GCC and build dependencies
+        run: sudo apt-get update && sudo apt-get install -y gcc make
+
+      - name: Run desktop and CE-formatter suites under ASan + UBSan
+        working-directory: tests
+        # Any sanitizer report aborts the run (halt_on_error=1).
+        run: make run-asan
+
+  node-tests:
+    name: Node Unit Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Run Vitest suite
+        run: npm test
+
+  cemu-python:
+    name: CEmu Python Hardening
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Python test dependencies
+        run: python -m pip install --upgrade pip pytest pytest-timeout pyyaml
+
+      - name: Run CEmu Python hardening suite
+        run: python -m pytest tests/cemu -q --timeout=120
+
+  cemu-headless:
+    name: CEmu Headless
+    if: ${{ vars.CEMU_HEADLESS_ENABLED == 'true' || github.event.inputs.run_cemu_headless == 'true' }}
+    needs:
+      - test
+      - node-tests
+      - cemu-python
+    runs-on: [self-hosted, windows, cemu]
+    env:
+      CALCENGINE_ALLOW_REAL_CEMU_IN_CI: "true"
+    timeout-minutes: 45
+    concurrency:
+      group: cemu-headless-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install npm dependencies
+        run: npm ci
+
+      - name: Install pytest
+        run: python -m pip install --upgrade pip pytest pytest-timeout
+
+      - name: Prepare CEmu artifact directory
+        shell: pwsh
+        run: |
+          $cemuRoot = Join-Path $env:RUNNER_TEMP 'calcengine-cemu'
+          $smokeRoot = Join-Path $cemuRoot 'ts-smoke'
+          $summaryPath = Join-Path $cemuRoot 'ts-smoke-summary.json'
+          New-Item -ItemType Directory -Force -Path $cemuRoot | Out-Null
+          @(
+            "CEMU_CI_ROOT=$cemuRoot"
+            "CALCENGINE_CEMU_OUTPUT_ROOT=$smokeRoot"
+            "CALCENGINE_CEMU_SUMMARY_PATH=$summaryPath"
+          ) | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Run CEmu Python suite
+        shell: pwsh
+        run: python -m pytest tests/cemu -q --timeout=120
+
+      - name: Run CEmu validation wrapper
+        shell: pwsh
+        run: .\scripts\cemu-validate.ps1 -Mode full -Output "$env:CEMU_CI_ROOT\cemu-pipeline-summary.json" -Snapshot "$env:CEMU_CI_ROOT\cemu-pipeline-snapshot.json"
+
+      - name: Run TypeScript CEmu smoke suite
+        shell: pwsh
+        run: node --experimental-strip-types scripts/run-cemu-tests.ts --json --output "$env:CALCENGINE_CEMU_SUMMARY_PATH" --evidence-dir "$env:CALCENGINE_CEMU_OUTPUT_ROOT"
+
+      - name: Upload CEmu artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cemu-headless-artifacts
+          path: ${{ env.CEMU_CI_ROOT }}
+
+  cemu-release-candidate:
+    name: CEmu Release Candidate Gate
+    if: ${{ vars.CEMU_RELEASE_CANDIDATE_GATE_ENABLED == 'true' || github.event.inputs.run_release_candidate_gate == 'true' }}
+    needs:
+      - test
+      - node-tests
+      - cemu-python
+    runs-on: [self-hosted, windows, cemu]
+    env:
+      CALCENGINE_ALLOW_REAL_CEMU_IN_CI: "true"
+    timeout-minutes: 45
+    concurrency:
+      group: cemu-release-candidate-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Prepare release candidate artifact directory
+        shell: pwsh
+        run: |
+          $releaseCandidateRoot = Join-Path $env:RUNNER_TEMP 'calcengine-cemu-release-candidate'
+          $confidencePath = Join-Path $releaseCandidateRoot 'release-candidate-confidence.json'
+          $evidencePath = Join-Path $releaseCandidateRoot 'release-candidate-gate'
+          New-Item -ItemType Directory -Force -Path $releaseCandidateRoot | Out-Null
+          @(
+            "CALCENGINE_CEMU_RELEASE_CANDIDATE_ROOT=$releaseCandidateRoot"
+            "CALCENGINE_CEMU_RELEASE_CANDIDATE_CONFIDENCE_PATH=$confidencePath"
+            "CALCENGINE_CEMU_RELEASE_CANDIDATE_EVIDENCE_DIR=$evidencePath"
+          ) | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Run release candidate confidence gate
+        shell: pwsh
+        run: python .\scripts\cemu\release_candidate_gate.py --output "$env:CALCENGINE_CEMU_RELEASE_CANDIDATE_CONFIDENCE_PATH" --evidence-dir "$env:CALCENGINE_CEMU_RELEASE_CANDIDATE_EVIDENCE_DIR"
+
+      - name: Upload release candidate artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cemu-release-candidate-artifacts
+          path: ${{ env.CALCENGINE_CEMU_RELEASE_CANDIDATE_ROOT }}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "suite": "cemu_hardening_fake",
+  "cases": [
+    {
+      "name": "fake_memory_sto_rcl_roundtrip",
+      "suite": "edge_cases",
+      "category": "memory",
+      "backend": "fake",
+      "description": "The fake backend accepts STO/RCL sequences and returns the scripted memory roundtrip screen.",
+      "expected_display": "7",
+      "expected_crcs": ["7A0F9C11"],
+      "events": [
+        {"kind": "key", "key": "5"},
+        {"kind": "pause", "duration_ms": 250},
+        {"kind": "key", "key": "sto>"},
+        {"kind": "pause", "duration_ms": 250},
+        {"kind": "key", "key": "A"},
+        {"kind": "pause", "duration_ms": 250},
+        {"kind": "key", "key": "rcl"},
+        {"kind": "pause", "duration_ms": 250},
+        {"kind": "key", "key": "A"},
+        {"kind": "pause", "duration_ms": 250},
+        {"kind": "key", "key": "+"},
+        {"kind": "pause", "duration_ms": 250},
+        {"kind": "key", "key": "2"},
+        {"kind": "pause", "duration_ms": 250},
+        {"kind": "key", "key": "enter"},
+        {"kind": "pause", "duration_ms": 500}
+      ],
+      "auto_enter": false,
+      "timeout_ms": 30000,
+      "expected_output_excerpt_contains": ["STO/RCL OK"],
+      "notes": "Wrapper mode does not currently expose real STO/RCL keys, so this remains a fake-backend orchestration lock."
+    },
+    {
+      "name": "fake_out_of_memory_recovery",
+      "suite": "recovery",
+      "category": "memory",
+      "backend": "fake",
+      "description": "The hardening harness recovers after a scripted out-of-memory state.",
+      "expected_display": "Prompt restored",
+      "expected_crcs": ["A32840C8"],
+      "events": [
+        {"kind": "key", "key": "__OOM__"},
+        {"kind": "pause", "duration_ms": 300},
+        {"kind": "key", "key": "clear"},
+        {"kind": "pause", "duration_ms": 300},
+        {"kind": "key", "key": "clear"},
+        {"kind": "pause", "duration_ms": 500}
+      ],
+      "auto_enter": false,
+      "timeout_ms": 30000,
+      "expected_output_excerpt_contains": ["PROMPT RECOVERED"],
+      "notes": "Synthetic fake-backend OOM coverage for harness recovery logic."
+    }
+  ]
+}
