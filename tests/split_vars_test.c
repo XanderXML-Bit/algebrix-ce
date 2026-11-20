@@ -1,6 +1,6 @@
 /*
  * split_vars_test.c — desktop check of stored variables (`5->X`, then
- * `X^2`) through the real worker entry points, an internal review.
+ * `X^2`) through the real worker entry points.
  *
  * Built twice by tests/Makefile, each time with the PROGRAM_CFLAGS read
  * from the module's own makefile:
@@ -19,9 +19,9 @@
  *   --load FILE  start with CE_STATE read from FILE (a state another
  *                module wrote, so the cross-module hand-off is real)
  *
- * Before an internal review, `5->X` showed "= 5" (CELSCX bound X only inside its
- * own eval context) and the next entry `X` showed "X has no value": no
- * module kept scalar values.
+ * Before modules shared scalar values, `5->X` showed "= 5" (CELSCX bound X
+ * only inside its own eval context) and the next entry `X` showed
+ * "X has no value": no module kept scalar values.
  */
 #undef main
 #include "calcengine.h"
@@ -230,7 +230,7 @@ static void own_module_checks(void)
     check(lines_ok && lines == 5, "5 hint lines of <= 26 cols", "X^2", resp.error);
 
 #if CE_SAFE_FLOAT_TINY
-    /* an internal review: a scalar store of a plain real value runs here (CEBASE),
+    /* A scalar store of a plain real value runs here (CEBASE),
      * so #140's tiny refusal covers it.  A refused store keeps X unset;
      * CELSCX used to store the flushed 0. */
     expect_err("1E-30*1E-30->X", "Tiny value unsupported");
@@ -286,7 +286,7 @@ static void own_module_checks(void)
         check(load_state(&before), "CE_STATE loads", "tiny preload", "");
         expect_err("T", "Tiny value unsupported");
         expect_err("T+1", "Tiny value unsupported");
-        /* Conservative, by design (internal review): a construct that rebinds
+        /* Conservative, by design: a construct that rebinds
          * T locally still reads the stored value to save it, and that read
          * refuses. It never gives a wrong number. */
         expect_err("sum(T,T,1,3)+0", "Tiny value unsupported");
@@ -316,7 +316,7 @@ static void own_module_checks(void)
         check(ce_state_save(&cl), "CE_STATE saves", "cleanup", "");
     }
     expect_err("X", "X has no value");
-    /* Reviews of an internal review.  A store is only ever the root: parser_parse
+    /* A store is only ever the root: parser_parse
      * accepts "->" after the whole expression, so no store runs inside a
      * sampler or as an operand.  eval_expr's NODE_STORE case relies on it. */
     {

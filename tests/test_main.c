@@ -6070,7 +6070,7 @@ static void test_base_conversions(void)
     /* ── The desktop action menu (ok=2) for an expression with a free
      * variable carries a valid IPC header and keeps Ans. It once left
      * magic/version zero and Ans 0, and the CE launcher showed "Module
-     * CEBASE returned invalid IPC data" (internal review). The split modules
+     * CEBASE returned invalid IPC data". The split modules
      * answer "<var> has no value" instead (tests/split_cebase_test.c). ── */
 #if CE_PROC_DISAMBIG_MENU
     {
@@ -7263,7 +7263,7 @@ static void test_stat_tests(void)
 /*              INTEGRATION EDGE CASES (~15 tests)              */
 /* ═══════════════════════════════════════════════════════════ */
 
-/* an internal review: integrate.c recursion bound.  On the CE, int() and diffeq() of
+/* Recursion bound in integrate.c.  On the CE, int() and diffeq() of
  * a long sum overflowed the 4 KB OS stack (stack-limit NMI, "RAM Cleared").
  * integ() now fails cleanly once INTEG_MAX_DEPTH (64) calls are open, and
  * ast_contains_var() walks a left-leaning chain in a loop. */
@@ -8276,7 +8276,7 @@ static void test_stats_edge_cases(void)
         ASSERT_EQ_FLOAT(val, 120.0f, 0.1f, "nCr(10,3) = 120");
 
         /* NODE_LIST_OP stdev (list ref and list literal): one value is
-         * refused, two values answer (internal review). */
+         * refused, two values answer. */
         {
             ce_float_t one[] = {42}, two[] = {5, 7};
             eval_ctx_t lctx;
@@ -8327,7 +8327,7 @@ static void test_stats_edge_cases(void)
         }
 
         /* Sample stdev/variance of a single value is undefined (n-1 = 0):
-         * a domain error, not 0 (internal review). */
+         * a domain error, not 0. */
         val = eval_str("stdev(5)", &err);
         ASSERT_TRUE(err == CE_ERR_DOMAIN, "stdev(5) is a domain error");
         val = eval_str("variance(5)", &err);
@@ -9546,7 +9546,7 @@ static void test_definite_integrals_v2(void)
     ASSERT_EQ_FLOAT(val, 0.25f, 0.01f, "def_v2: int(x^3,0,1)=0.25");
     ast_free(expr);
 
-    /* 13. Long sums through the rounding-error walk (internal review): the walk
+    /* 13. Long sums through the rounding-error walk: the walk
      * over the antiderivative is iterative, so depth changes nothing but the
      * stack. 20, 30 and 45 terms give n/2; the antiderivative of 45 terms is
      * 47 levels deep, just inside the desktop CE_EVAL_MAX_DEPTH of 50. */
@@ -27048,7 +27048,7 @@ static void test_round31_factoring_fallback(void)
     mem_free_all();
 }
 
-/* an internal review: annihilating simplifier rules need an exact zero.  The
+/* Annihilating simplifier rules need an exact zero.  The
  * tolerant is_num(n, 0) (|n| < 1e-10) used to turn 1e-30*x into 1e-30 and
  * -(1e-30) into +1e-30, which removed a linear ODE's integrating factor. */
 static void test_simplify_tiny_nonzero_operands(void)
@@ -27098,7 +27098,7 @@ static void test_simplify_tiny_nonzero_operands(void)
     ASSERT_TRUE(r && r->type == NODE_NUMBER && r->d.number == 0, "tiny: -0*x -> 0");
     ast_free(r);
 
-    /* an internal review: the additive identity is exact too, so 1e-30+x keeps
+    /* The additive identity is exact too, so 1e-30+x keeps
      * the typed constant (it used to simplify to x). */
     r = ast_simplify(ast_binop(OP_ADD, ast_number(1e-30f), ast_variable('x')));
     ASSERT_TRUE(r && r->type == NODE_BINOP && r->d.binop.op == OP_ADD,
@@ -27140,7 +27140,7 @@ static ce_float_t tiny_deriv_at(const char *input, ce_float_t at,
     return v;
 }
 
-/* an internal review: the ADD/SUB identities used the tolerant is_num(n, 0)
+/* The old ADD/SUB identities used the tolerant is_num(n, 0)
  * (|n| < 1e-10) and dropped typed constants such as 5e-11, so
  * d/dx(ln(x+5e-11)) became 1/x: 2x too large at x = 5e-11 and undefined
  * at x = 0, where the function is defined.  They now need an exact zero. */
@@ -35056,7 +35056,7 @@ static void test_split_domain_classification(void)
         ast_free(node);
     }
 
-    /* an internal review: a scalar store of a plain real value is CORE (CEBASE,
+    /* A scalar store of a plain real value is CORE (CEBASE,
      * whose checked arithmetic refuses tiny values); list stores and values
      * with a list or complex part stay CMPLX (CELSCX). */
     {
@@ -40622,8 +40622,8 @@ static void test_ipc_module_runtime_reentry_contract(void)
 }
 
 
-/* Display printer (ast_to_display_str / ast_to_display_term, card
- * an internal review): minimal parentheses and implicit products on result lines.
+/* Display printer (ast_to_display_str / ast_to_display_term): minimal
+ * parentheses and implicit products on result lines.
  * The canonical ast_to_str format must not change, every display string must
  * re-parse with parser.c (no macro expansion, as the CE processor does), and
  * the re-parsed tree must have the same value. */
@@ -40979,8 +40979,7 @@ static void test_ast_display_print(void)
     }
 }
 
-/* CALCENG home-screen transcript wrap (src/core/launcher/home_layout.h,
- * an internal review). */
+/* CALCENG home-screen transcript wrap (src/core/launcher/home_layout.h). */
 static void test_launcher_home_layout(void)
 {
     char rows[HL_ROWS][RV_COLS + 1];
@@ -41122,9 +41121,9 @@ static void test_launcher_home_layout(void)
         "hl: line 1 cut on the home row");
 }
 
-/* CALCENG full-text result viewer (src/core/launcher/result_view.h, card
- * an internal review): 26-column wrap, paging and the home-screen hint.  The
- * launcher wiring itself is checked by tests/harness/launcher_view_harness.c. */
+/* CALCENG full-text result viewer (src/core/launcher/result_view.h): 26-column
+ * wrap, paging and the home-screen hint. The launcher wiring itself is checked
+ * by tests/harness/launcher_view_harness.c. */
 static int rv_test_lines(const char *text, char out[][RV_COLS + 1], int max)
 {
     rv_doc_t doc;
@@ -41296,7 +41295,7 @@ static void test_launcher_result_view(void)
 
 /* CEISTR (intstrategy) on hardware: os_RunPrgm never returns, so CEISTR is
  * reloaded with zeroed statics after every strategy child and must rebuild
- * its ranking from the CEISTRS scratch AppVar (internal review). This drives
+ * its ranking from the CEISTRS scratch AppVar. This drives
  * the same save -> child -> reload -> record cycle CEISTR's main() runs on
  * each re-entry, for intstrategy(x*sin(x),x): PFRAC/TRIG/USUB fail, PARTS
  * matches. */
@@ -41411,7 +41410,7 @@ static void test_ceistr_strategy_rank_reentry(void)
         }
     }
 
-    /* Reasons are clipped at a word with "..." (an internal review: the old
+    /* Reasons are clipped at a word with "..." (the old
      * plain 96-byte cut showed "sqrt(x^2-a^2), or recipro" and "derivative
      * is a factor of the in" in the CE result viewer). */
     {
@@ -42653,15 +42652,14 @@ static void test_step_quality_stats_and_finance(void)
     ASSERT_TRUE(!resp.show_steps, "sq-stat: variance show_steps=false");
     mem_free_all(); steps_clear();
 
-    /* Sample stdev of one value is undefined: refuse, never "stdev = 0"
-     * (internal review). */
+    /* Sample stdev of one value is undefined: refuse, never "stdev = 0". */
     (void)processor_run_expr("stdev(5)", &resp, &domain, &program);
     ASSERT_TRUE(!resp.ok, "sq-stat: stdev(5) refused");
     ASSERT_STR_CONTAINS(resp.error, "2+ values", "sq-stat: stdev(5) says why");
     mem_free_all(); steps_clear();
 
     /* polydiv(...) answers quotient and remainder through the processor
-     * (CEAPDV builds with CE_PROC_ALG_SOLVE=0; an internal review. */
+     * (CEAPDV builds with CE_PROC_ALG_SOLVE=0). */
     ASSERT_TRUE(processor_run_expr("polydiv(x^3-1,x-1,x)", &resp, &domain, &program),
                 "sq-alg: polydiv run");
     ASSERT_TRUE(resp.ok, "sq-alg: polydiv ok");
@@ -51001,7 +50999,7 @@ static void test_pass57_deriv_ti_token_roundtrip(void)
  * Pass 73: Improper integrals (auto-detect), areabetween(), correctness fixes
  * ═══════════════════════════════════════════════════════════════════════════ */
 
-/* ── an internal review  definite int(): value on the first result line, and a pole
+/* ── Definite int(): value on the first result line, and a pole
  *    strictly inside [a,b] is split there instead of F(b)-F(a) across it ── */
 static void test_definite_integral_first_line_and_interior_pole(void)
 {
@@ -51308,7 +51306,7 @@ static void test_definite_integral_first_line_and_interior_pole(void)
     mem_free_all(); steps_clear();
 }
 
-/* ── an internal review  Poles between the old probe points; limits at infinity ── */
+/* ── Poles between the old probe points; limits at infinity ── */
 static void test_definite_integral_poles_between_probes(void)
 {
     ce_response_t resp;
@@ -53247,7 +53245,7 @@ static void test_pass75_processor_dsolve2(void)
     mem_free_all(); steps_clear();
 }
 
-/* an internal review: an operator typed without its variable uses the variable the
+/* An operator typed without its variable uses the variable the
  * input contains.  The CE keypad types upper-case letters, so a fixed
  * lower-case default made int(X^2) integrate X^2 as a constant in x and
  * show "((X^2)*x) + C". */
@@ -53551,7 +53549,7 @@ static void test_finite_sum_is_partial_sum(void)
     mem_free_all(); steps_clear();
 }
 
-/* ── an internal review: an eval refusal or failed sample is never shown as math ── */
+/* ── An eval refusal or failed sample is never shown as math ── */
 static void sum_of_x(char *buf, int terms, const char *prefix, const char *suffix)
 {
     char *p = buf + strlen(strcpy(buf, prefix));
@@ -54371,10 +54369,10 @@ int main(void)
     RUN_TEST(test_fourier_pole_scan);
     RUN_TEST(test_eval_refusals_never_become_values);
 
-    printf("=== Default variable follows the input's case (internal review) ===\n");
+    printf("=== Default variable follows the input's case ===\n");
     RUN_TEST(test_default_variable_follows_input_case);
 
-    printf("=== Finite sum(f,n,a,b) is a partial sum (internal review) ===\n");
+    printf("=== Finite sum(f,n,a,b) is a partial sum ===\n");
     RUN_TEST(test_finite_sum_is_partial_sum);
     RUN_TEST(test_sum_classification_first_error);
 

@@ -7,7 +7,7 @@
  * covered.
  *
  * It also models CEdev v11.2's libc _isinff (lib/libc/isinff.src) bit for
- * bit, to pin down the bug the helpers replace (internal review). With a
+ * bit, to pin down the bug the helpers replace. With a
  * non-zero mantissa that routine tests mantissa bits 7..14 instead of the
  * exponent, so it reports finite values such as 16777215 as infinite.
  */

@@ -4,7 +4,7 @@ The shipped build never reaches the backstop on 127-char input: its depth
 caps stop eval first (tests/cemu/test_realrom_cebase_stack.py). So this test
 builds diagnostic CEBASE and CECSER copies with effective caps of 200 and
 CE_EVAL_STACK_RESERVE raised to 2,400 B. That makes the
-backstop the first limit to trip, and it shows (internal review):
+backstop the first limit to trip. The test checks that:
 
 * the refusal comes from the backstop, not the cap, at the reserve's edge,
   with no NMI or reset, and with the "Eval recursion limit" text;
@@ -13,7 +13,7 @@ backstop the first limit to trip, and it shows (internal review):
 * a refusal inside fourier() cannot report success. Its Simpson helper
   used to return 0 on any eval error ("Fourier_2 = 0"); it now fails on a
   refused sample, and the g_eval_refused check in ce_response_from_runtime
-  backs up any caller that still swallows one (internal review).
+  backs up any caller that still swallows one.
 
 Requires ALGEBRIX_ROM (owned ROM), debug CEMU_HEADLESS, the CEdev toolchain on
 PATH (cedev-config) and a fresh make all. Never commit ROMs or state files.

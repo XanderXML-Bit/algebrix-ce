@@ -90,7 +90,7 @@ split_cebase_test: FORCE split_cebase_test.c $(CEBASE_SRC) ../src/ce_fmt.c
 	    -include ../src/ce_fmt.h $(CEBASE_CFLAGS) -o $@ split_cebase_test.c $(CEBASE_SRC) ../src/ce_fmt.c \
 	    $(CEBASE_MOCK_SRC) $(LDFLAGS)
 
-# Stored variables (internal review): the real CEBASE and CELSCX main()s, each
+# Cross-module stored variables: the real CEBASE and CELSCX main()s, each
 # with its own module flags.  CELSCX stores 5->X and dumps CE_STATE; CEBASE
 # loads that state and must answer X^2 = 25 (and the reverse direction).
 SPLIT_FMT_FLAGS = -Wall -Wextra -Wno-unused-function -g -O0 $(TEST_INCLUDE_FLAGS) -std=c99 \

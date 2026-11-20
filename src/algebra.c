@@ -227,7 +227,7 @@ static bool ast_to_poly_inner(const ast_node_t *e, char var, poly_t *p, int dept
             n = (int)e->d.binop.right->d.number;
             if (n < 0 || n > MAX_POLY_DEG) return false;
             /* x^1.5 is not a polynomial term; (int) would truncate it to
-             * x^1 and polydiv(x^1.5,x,x) answered Q = 1 (internal review). */
+             * x^1, which previously made polydiv(x^1.5,x,x) return Q = 1. */
             if ((ce_float_t)n != e->d.binop.right->d.number) return false;
             if (!ast_to_poly_inner(e->d.binop.left, var, &a, depth + 1)) return false;
             return poly_power(&a, n, p);

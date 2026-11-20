@@ -1,4 +1,4 @@
-"""Opt-in real-ROM regression for eigenval()/eigenvec() in CEMAT (internal review).
+"""Opt-in real-ROM regression for eigenval()/eigenvec() in CEMAT.
 
 Skips unless all of these exist (never in hosted CI; the ROM is never committed):
   ALGEBRIX_ROM       owned TI-84 Plus CE ROM (OS 5.8.x for bundled arTIfiCE 2.1)

@@ -16,10 +16,10 @@
  *   - ENTRY recall: 2nd+ENTER copies last expression into input buffer.
  *   - MODE: stub mode menu ("Mode menu v1.2 coming"). 2nd+MODE = quit.
  *   - Plain UP/DOWN do not mutate the input line.
- *   - Transcript wrap (internal review): expressions and results continue on
+ *   - Transcript wrap: expressions and results continue on
  *     the next rows, at most 3 each; a cut field ends in the TI ellipsis
  *     (home_layout.h).  The input line marks scrolled-off text the same way.
- *   - Result viewer (internal review): UP (or ENTER on an empty input line)
+ *   - Result viewer: UP (or ENTER on an empty input line)
  *     opens the newest result in full, wrapped at 26 columns, with its
  *     steps when the worker sent any (result_view.h).  A hint row
  *     "UP=full result (N ln)" appears under the newest result whenever
@@ -380,8 +380,8 @@ static void home_draw(void)
     os_ClrHome();
 
     /* ── History pairs ────────────────────────────────────────── */
-    /* Expressions and results wrap over several rows (home_layout.h,
-     * an internal review); rows 0..HL_ROWS-1 sit above the input row. */
+    /* Expressions and results wrap over several rows (see home_layout.h).
+     * Rows 0..HL_ROWS-1 sit above the input row. */
     {
         static char rows[HL_ROWS][RV_COLS + 1];
         hl_entry_t  ent[HIST_DISPLAY];
@@ -460,7 +460,7 @@ static void home_draw(void)
         }
         ibuf[pos] = '\0';
 
-        /* Mark hidden parts of a long input line (internal review): the TI
+        /* Mark hidden parts of a long input line: the TI
          * ellipsis replaces the prompt's space when the start has scrolled
          * off, and the last column when text runs past the right edge
          * (unless the cursor sits there). */
@@ -477,7 +477,7 @@ static void home_draw(void)
     /* ── Transient message (parse error) under the input line ─── */
     /* os_PutStrLine, not home_print_row: on OS 5.8 a 26-column
      * os_PutStrFull on row 8 wraps the cursor onto row 9 and scrolls the
-     * whole home screen up one row (seen on the real ROM, an internal review).
+     * whole home screen up one row. This was observed on the real ROM.
      * os_ClrHome above already blanked the row. */
     if (s_status[0]) {
         os_SetCursorPos(STATUS_ROW, 0);
@@ -568,7 +568,7 @@ static const char *route_polar_program(polar_op_t op)
     case POLOP_USUB:
     case POLOP_INTSTRATEGY:
     /* CECINT forwards these two to CECIDF, the definite-integral worker.
-     * CEBASE has no integrator and printed "Polar/advanced op" (internal review). */
+     * CEBASE has no integrator and previously printed "Polar/advanced op". */
     case POLOP_IMPROPER:
     case POLOP_AREABETWEEN:
         return CE_PRGM_CALCIN;
@@ -781,7 +781,7 @@ static void state_store_last_result(const char *result, bool ok)
         buf[len++] = *p++;
     }
     /* A first line longer than 63 bytes ends in the TI ellipsis, so the
-     * stored row never reads as complete after a relaunch (internal review). */
+     * stored row still shows that the result was clipped after a relaunch. */
     if (*p && *p != '\n') buf[62] = HL_MORE;
     buf[len] = '\0';
 
@@ -823,7 +823,7 @@ static bool is_launcher_error(const char *s)
            (strncmp(s, "Module ", 7) == 0 && strstr(s, " returned ") != NULL);
 }
 
-/* A launcher-side failure of the newest submission (internal review): bind its
+/* When the newest submission fails in the launcher, bind its
  * readable error to that entry's own history slot, so it survives later
  * submissions and relaunches, and mark g_response stale, because ring
  * indices alone cannot tell a full wrap from the answer it held.  The
@@ -860,7 +860,7 @@ static void clear_failed_dispatch(void)
  *
  * UP/DOWN move the cursor between items 0-5.
  * LEFT/RIGHT change the selected item's value; on "Stored vars" they
- * toggle between the count and CLR (clear every stored value, an internal review).
+ * toggle between the count and CLR (clear every stored value).
  * ENTER saves settings into g_shared.settings + g_settings + CE_STATE, and
  * clears the stored values when CLR is shown.
  * CLEAR or 2nd+MODE exits without saving.
@@ -1055,7 +1055,7 @@ static void home_clear_all(void)
     ce_state_save(&g_shared);
 }
 
-/* ── Result viewer (internal review) ─────────────────────────────────── */
+/* ── Result viewer ───────────────────────────────────────────────────── */
 /*
  * Full-screen view of the newest result, wrapped at 26 columns:
  *   Row 0     "Result 1-8/12" (or "Error ...")
@@ -1286,7 +1286,7 @@ static int8_t process_key(sk_key_t key, bool mod_2nd, bool mod_alpha)
     case sk_Comma:   input_insert_char(','); return 0;
     /* Matrix row separator, mat(1,2;3,4).  The keycaps have no ';', so APPS
      * types it, as in the desktop keymap (src/ui.c).  Without it no matrix
-     * literal could be typed on the CE (internal review). */
+     * literal could be typed on the CE. */
     case sk_Apps:    input_insert_char(';'); return 0;
 
     /* Variable */
@@ -1495,7 +1495,7 @@ static bool dispatch_to_program(const char *program,
 
     /* Each failure below records its error in the entry just pushed
      * before clear_failed_dispatch() saves CE_STATE, so the launcher exits
-     * with the error persisted beside its expression (internal review). */
+     * with the error saved beside its expression. */
     ce_response_delete();
     if (!ce_request_write(req)) {
         record_local_error(LE_IPC_WRITE);

@@ -10,7 +10,7 @@
  * all ones. For those values it tests the wrong byte and returns 1. Examples
  * are 65791, 131071, 1048575, 16777215 and 0.99999237. That is 65,280 of
  * the integers 0..2^24 and about 0.39% of all finite floats. On the real
- * OS 5.8 ROM a plain "16777215" displayed "= inf" (internal review).
+ * OS 5.8 ROM, entering "16777215" displayed "= inf".
  * _isnanf and _isfinitef read the exponent correctly, but every caller goes
  * through the helpers below so there is one rule to follow.
  *

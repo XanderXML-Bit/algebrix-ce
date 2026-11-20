@@ -4,12 +4,12 @@ The launcher routes list stores, stores of a value with a list or complex
 part, top-level list ops, polar( and rect( to CELSCX, so anything typed
 before such a ->A is evaluated there. Its eval_node frame carried a 201 B
 list_t (277 B of locals), stacked once per nested sum/prod/int/lim level, and
-on main 2df0aca nested sums met the eval stack backstop with only 350 B left
-(internal review). The fix moves the list case out of line (eval_node 104 B) and
+on main 2df0aca nested sums met the eval stack backstop with only 350 B left.
+The fix moves the list case out of line (eval_node 104 B) and
 gives CELSCX a 960 B backstop reserve; the worst alignment the sweep found
 then is a nested int.
 
-Since an internal review a scalar store of a plain real value (`2+2->A`, `sin(0)->A`)
+A scalar store of a plain real value (`2+2->A`, `sin(0)->A`)
 goes to CEBASE instead, whose checked arithmetic refuses tiny values (#140).
 Those inputs stay here as CEBASE cases (same margin bar, CEBASE's depth cap
 16), and the int sweep keeps a CELSCX twin that ends in `+dim(L1)` (a list
@@ -107,7 +107,7 @@ def cases() -> list[tuple[str, str, str, int, str]]:
     # On the CE every one is refused by the eval stack backstop or the cap
     # (the desktop, which has no backstop, says "no convergence" for some).
     # The CEBASE store margins equal those of the same nest without the
-    # store, because eval_expr evaluates a store's value (internal review).
+    # store, because eval_expr evaluates a store's value.
     for chain in range(0, 9):
         prog = X if chain == 0 else B
         out.append((nest("int", 9, "x", ",x,0,1)", chain), "error",

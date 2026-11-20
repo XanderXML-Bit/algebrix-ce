@@ -1,4 +1,4 @@
-"""Opt-in real-ROM check of the CALCENG full-text result viewer (internal review).
+"""Opt-in real-ROM check of the CALCENG full-text result viewer.
 
 Skips unless all of these exist (never in hosted CI; the ROM is never committed):
   ALGEBRIX_ROM       owned TI-84 Plus CE ROM (OS 5.8.x for bundled arTIfiCE 2.1)
@@ -10,11 +10,11 @@ viewer state from RAM (addresses from bin/launcher/CALCENG.map), checks that
 the wrapped line count matches a Python port of the wrap rule in
 src/core/launcher/result_view.h applied to the CE_RESP text, and checks that
 UP and DOWN change the screen and CLEAR restores the identical home frame.
-It also checks a parse error after an answer (internal review): the typed
+It also checks a parse error after an answer: the typed
 invalid input stays editable, s_status holds a readable error, the viewer
 opens the new error rather than the earlier answer, and history persists
 the failed submission without changing Ans.
-Last, with CEBASE left off the calculator (internal review), "Module missing"
+Last, with CEBASE left off the calculator, "Module missing"
 is saved in the failed entry's own history slot before CALCENG exits, so it
 survives a relaunch and a following answer, with Ans and settings unchanged.
 Screen hashes prove only that frames differ or match; inspect the pixels
@@ -192,7 +192,7 @@ def test_parse_error_keeps_input_on_real_rom(launched_state: str, expr: str, mes
 
 @pytest.fixture(scope="module")
 def no_cebase_state(tmp_path_factory) -> str:
-    """Launched state with every built module except CEBASE (internal review)."""
+    """Launched state with every built module except CEBASE."""
     import subprocess
     tree = tmp_path_factory.mktemp("no_cebase_tree")
     for m in MODULES:

@@ -97,7 +97,7 @@ ce_float_t integrate_definite(const ast_node_t *expr, char var,
 /* Endpoint limits of a finite-bound (Type 2) improper integral.
  * 1 = symbolic compute_limit() (links limits.c). 0 = no limits.c: finite
  * bounds return IMPROP_FAILED, so callers say they cannot decide. The
- * definite-only worker CECIDF uses 0 to fit 51,200 B (internal review). */
+ * definite-only worker CECIDF uses 0 to fit within its 51,200 B limit. */
 #ifndef CE_INTEG_IMPROPER_USE_LIMITS
 #define CE_INTEG_IMPROPER_USE_LIMITS 1
 #endif

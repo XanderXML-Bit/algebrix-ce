@@ -328,7 +328,7 @@ static void test_exp_hyp(void)
  * literal, without relying on atof() for out-of-range ones, except that a
  * literal with a nonzero digit whose float would be 0 or tiny (exponent
  * field 0) is refused with CE_ERR_PRECISION at its first character
- * (internal review); the CE's atof() read 1.3E-38 as 0). lit() returns
+ * (the CE's atof() read 1.3E-38 as 0). lit() returns
  * -2 for that refusal and -1 for any other failure. */
 static float lit(const char *s)
 {

@@ -1,7 +1,7 @@
 /*
  * test_ce_float_tiny.c - the tiny-arithmetic refusal contract of the
  * CE-safe float helpers (src/ce_float_ops.h, CE_SAFE_FLOAT_TINY=1, built by
- * CEBASE; an internal review.
+ * CEBASE).
  *
  * The supported range is +-0 and |x| >= FLT_MIN. With the flag the helpers
  *   1. refuse (return 0, set g_ce_fops_tiny) a tiny operand: exponent field
@@ -41,7 +41,7 @@
 
 #ifdef TINY_CE_FLUSH
 /* The CE flushes an underflowed product, quotient or OS powf/expf result
- * to +0 (internal review). Model that for every native call. */
+ * to +0. Model that for every native call. */
 static float flush_(float v)
 {
     uint32_t u;
@@ -248,7 +248,7 @@ static void test_arith(void)
            g_answered, g_refused, g_edge);
 }
 
-/* The measured CE rows (internal review) REPORT.md) and the zero rules. */
+/* Measured CE cases and the zero rules. */
 static void test_fixed_rows(void)
 {
     static const struct { uint32_t a, b; int op; uint32_t want; int refuse; } rows[] = {

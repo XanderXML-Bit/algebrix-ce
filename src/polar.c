@@ -31,7 +31,7 @@ static ast_node_t *ast_simplify(ast_node_t *expr)
  * (domain, pole, recursion limit). The NaN polar_eval() returns then is no
  * marker on the CE: its float routines turn NaN and inf operands into finite
  * values (src/ce_float_ops.h), so each caller reports the failure from this
- * flag instead (internal review). */
+ * flag rather than testing the returned value. */
 static bool s_polar_failed;
 #define POLAR_STATUS (s_polar_failed ? CE_ERR_DOMAIN : CE_OK)
 

@@ -4,7 +4,7 @@ NOT hardware verification. Requires ALGEBRIX_ROM (owned ROM), debug
 CEMU_HEADLESS and a fresh make all (the launched fixture refuses stale
 binaries). Never commit ROMs or emulator state files.
 
-Before an internal review the 50-level eval cap ("Eval recursion limit") reached
+Previously, the 50-level eval cap ("Eval recursion limit") reached
 callers that turned the error into a value: fourier() of a 55-term sum
 answered "Fourier_2 = 0", nlsolve() listed its Newton starts as roots,
 recseq() called its last good term s(k), and the volume workers printed

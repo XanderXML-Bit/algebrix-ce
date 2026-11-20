@@ -251,7 +251,7 @@ def cecalc(tmp_path_factory: pytest.TempPathFactory) -> Path:
 
 # Expected strings are what the full-feature desktop CLI prints
 # (bin/calcengine --solve '<expr>').
-# Result lines use the display printer (ast_to_display_str, an internal review):
+# Result lines use the display printer (ast_to_display_str):
 # minimal parentheses and implicit products after a numeric literal.
 CECALC_CASES = [
     ("d/dx(x^3+2x)", "d/dx = 3x^2+2"),
@@ -542,7 +542,7 @@ def test_cecism_shared_step_buffer_preserves_rule_text(
     assert "u-sub: int(sin(u)) = -cos(u)/a, a=7" in rows[1][1].split("|STEP|")
 
 
-# an internal review: the CE keypad types upper-case letters.  With no variable
+# The CE keypad types upper-case letters.  With no variable
 # argument the parser defaulted to lower-case x, so int(X^2) integrated X^2
 # as a constant and the CE showed "((X^2)*x) + C".  The default now follows
 # the input's case, so each input must match its explicit-variable form.
@@ -979,7 +979,7 @@ def test_fold_lite_recursion_is_only_the_depth_capped_walk() -> None:
         assert calls == 1, f"fold_lite.c: {fn} calls itself"
 
 
-# --- CEMAT: eigenval / eigenvec (internal review) ---------------------------
+# --- CEMAT: eigenval / eigenvec ---------------------------
 #
 # classify.c put eigenval()/eigenvec() in CE_DOMAIN_MATRIX, but the launcher's
 # route_polar_program() sent them to CEBASE, and the only handler in
@@ -1315,7 +1315,7 @@ def test_launcher_routes_eigen_to_cemat(tmp_path: Path) -> None:
     assert _route_rows(exe, exprs) == [["CEMAT", "CEMAT"]] * len(exprs)
 
 
-# an internal review: a scalar store of a plain real value goes to CEBASE, whose
+# A scalar store of a plain real value goes to CEBASE, whose
 # checked arithmetic (#140) refuses a tiny value before it is stored. CELSCX
 # has no such check: `1E-30*1E-30->X` stored 0 there. List stores, and values
 # with a list or complex part, stay in CELSCX (known limitation: CELSCX's
@@ -1358,7 +1358,7 @@ def test_launcher_routes_scalar_real_store_to_cebase(tmp_path: Path) -> None:
         assert row[0] == want, (expr, row)
 
 
-# ── Integration recursion bound (internal review) ─────────────────────────────
+# ── Integration recursion bound ─────────────────────────────
 # On main these inputs reset the CE (stack-limit NMI at 0xD19881, "RAM
 # Cleared"): integ() recursed once per term of a sum with an 113 B frame.
 # The linear rules now recurse through a small frame and integ() fails
@@ -1578,7 +1578,7 @@ def cecseq(tmp_path_factory: pytest.TempPathFactory) -> Path:
                                 tmp_path_factory.mktemp("cecseq"))
 
 
-# an internal review: CECSEQ answers sum(f,n,a,b).  Only an inf upper bound is a
+# CECSEQ answers sum(f,n,a,b).  Only an inf upper bound is a
 # series; on main every upper bound ran the convergence test, so
 # sum(n,n,1,10) printed "Convergence: diverges (nth-term)" and
 # sum(1/n^2,n,1,10) printed the infinite sum.  The CE types upper case.
@@ -1621,7 +1621,7 @@ def test_cecseq_finite_sum_is_the_partial_sum(cecseq: Path) -> None:
         assert leaked in (0, None) and dfree in (0, None), (expr, leaked, dfree)
 
 
-# ── Definite-integral stack bound (internal review) ───────────────────────────
+# ── Definite-integral stack bound ───────────────────────────
 # CECIDF (#99) evaluates the antiderivative at both bounds and walks it for
 # the FTC rounding guard, integ_err_scale().  That walk recursed once per
 # node, about 125 B of CE stack per level, so int(x+x+...,x,0,1) with 20

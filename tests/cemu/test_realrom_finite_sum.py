@@ -3,7 +3,7 @@
 Requires ALGEBRIX_ROM, debug CEMU_HEADLESS, and all 35 freshly built modules.
 The launcher map must come from that same build. No ROM or state is committed.
 
-CECSEQ answers sum(f,n,a,b). Before an internal review it ran the infinite-series
+CECSEQ answers sum(f,n,a,b). It used to run the infinite-series
 convergence test for every upper bound, so SUM(N,N,1,10) showed
 "Convergence: diverges (nth-term)" and SUM(1/N^2,N,1,10) showed the infinite
 sum 1.63993. Only an inf upper bound is a series now.

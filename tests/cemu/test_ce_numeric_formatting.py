@@ -42,7 +42,7 @@ def test_limits_series_worker_uses_ce_safe_decimal_formatter() -> None:
 
 
 # --------------------------------------------------------------------------
-# All of src/: CE-safe formatting (internal review).
+# All of src/: CE-safe formatting.
 #
 # The CEdev v11.2 libc printf prints %g/%e/%f literally, so on the calculator
 # every number came out as "%.6g". The CE build now force-includes

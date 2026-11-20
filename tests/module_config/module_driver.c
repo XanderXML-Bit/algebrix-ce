@@ -6,7 +6,7 @@
  * and that makefile's exact PROGRAM_CFLAGS, plus -DDESKTOP_BUILD. The full
  * desktop runner (tests/test_main.c) builds every processor feature at once,
  * so it cannot see a worker whose own feature flags compile its job out
- * (an internal review: CECIDF answered "Feature is routed to another module").
+ * (for example, CECIDF answered "Feature is routed to another module").
  *
  * "--deg" and "--rad" arguments switch the angle mode for the expressions
  * after them. After "--ans", each line also ends "|ANS=<g>": the Ans the

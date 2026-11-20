@@ -1,6 +1,6 @@
 """Opt-in OS 5.8 CEmu stack regressions for plain CEBASE input, NOT hardware.
 
-Regression (internal review): "2^2^...^2^1" (31 levels, 63 chars) reset the
+CEBASE stack regression: "2^2^...^2^1" (31 levels, 63 chars) reset the
 calculator with the stack-limit NMI in CEBASE's evaluator. Worse, a 32-term
 sum ran eval frames ~630 B below 0xD19881 WITHOUT the NMI: the OS only traps
 a write to that one byte, and a frame can step over it. So the margin here is
@@ -43,7 +43,7 @@ pytestmark = pytest.mark.skipif(
 MIN_MARGIN = 600
 FUNCS = {
     "CALCENG": ("bin/launcher/CALCENG.map", ["parse_expr", "encode_node"]),
-    # eval_expr_inner is the pre-an internal review name of eval_node; a map may
+    # eval_expr_inner is the former name of eval_node; a map may
     # lack either, so this test also measures (and fails) an old build.
     "CEBASE": ("bin/base/CEBASE.map", ["eval_expr", "eval_node", "eval_expr_inner",
                                        "ast_print", "decode_node"]),

@@ -2,8 +2,7 @@
  * launcher_view_harness.c — runs the real CALCENG launcher main()
  * (src/core/launcher/main.c) on the desktop against a recorded 10x26 home
  * screen and a scripted keypad, to check the full-text result viewer
- * (internal review) and the kept input plus "Syntax error" message after a
- * parse error (internal review).
+ * and the kept input plus "Syntax error" message after a parse error.
  *
  * The os_RunPrgm mock plays the worker the way the TI-84 Plus CE does: it
  * writes CE_RESP and CE_STATE (ce_module_runtime_finish), then calls the
@@ -49,10 +48,10 @@ static char g_scr[SCR_ROWS][SCR_COLS + 1];
 static uint8_t g_row, g_col;
 static int g_scrolls;
 /* os_PutStrFull on OS 5.8 printed one character and stopped on the last
- * row (seen on the real ROM, an internal review); nothing may use it there. */
+ * row (seen on the real ROM); nothing may use it there. */
 static int g_full_on_last_row;
 /* On OS 5.8 an os_PutStrFull that wraps from row 8 onto row 9 scrolled the
- * whole home screen up one row (real ROM, an internal review); flag every write that
+ * whole home screen up one row (real ROM); flag every write that
  * wraps onto the last row. */
 static int g_full_wrap_to_last_row;
 
@@ -207,8 +206,7 @@ static bool g_forward_resumed;
  * and settings it holds, then launches CECLMB.  CECLMB evaluates, sets a new
  * Ans and settings (a->clobber), and leaves an unreadable CE_RESP.  CECLIM is
  * re-entered, recovers through the real ce_module_runtime_recover_child_
- * failure(), and answers CALCENG with a valid error built from g_last_answer
- * (review round 2 P2, an internal review). */
+ * failure(), and answers CALCENG with a valid error built from g_last_answer. */
 static int run_forward_bad(const answer_t *a, os_runprgm_callback_t cb)
 {
     static ce_request_t req;
@@ -403,7 +401,7 @@ static bool settings_seeded(const ce_shared_state_t *st)
     return st->settings.precision == 4 && st->settings.angle_mode == ANGLE_DEGREES;
 }
 
-/* Launcher-side failures (internal review), in the order scenario 29 runs them. */
+/* Launcher-side failures, in the order scenario 29 runs them. */
 enum { FK_IPC_WRITE, FK_STATE_SAVE, FK_MISSING, FK_LAUNCH_FAIL, FK_SILENT, FK_BAD,
        FK_STATE_ZERO, FK_STATE_SHORT, FK_STATE_RENAME, FK_STATE_COMMIT, FK_COUNT };
 static const char *const k_fk_tag[FK_COUNT] = {
@@ -515,7 +513,7 @@ int main(void)
     }
 
     /* 2. A single long line (the int by-parts form): the home screen wraps
-     * it over two rows (internal review), so nothing is hidden and no hint shows;
+     * it over two rows, so nothing is hidden and no hint shows;
      * ENTER on an empty line still opens the viewer and ENTER closes it. */
     {
         static const uint8_t keys[] = {
@@ -577,7 +575,7 @@ int main(void)
     }
 
     /* 6. A parse error after an answer. The input stays editable and the
-     * failed submission gets its own history/result pair (internal review).
+     * failed submission gets its own history/result pair.
      * The viewer must show that error, never the previous full answer. */
     {
         static const uint8_t keys[] = {
@@ -634,7 +632,7 @@ int main(void)
     }
 
     /* 6c. APPS types the matrix row separator ';' (the keycaps have none),
-     * while ALPHA+APPS stays 'B' (internal review). */
+     * while ALPHA+APPS stays 'B'. */
     {
         static const uint8_t keys[] = {
             sk_1, sk_Comma, sk_2, sk_Apps, sk_3, sk_Comma, sk_4, S,  /* 0 */
@@ -682,8 +680,8 @@ int main(void)
     }
 
     /* 6f. A nonzero literal that would read as 0 or a tiny value stops in
-     * the launcher's tokenizer (internal review); on the ROM, 1.3E-38
-     * read as 0): "Tiny value unsupported", cursor on the literal, its own
+     * the launcher's tokenizer (on the ROM, 1.3E-38 read as 0):
+     * "Tiny value unsupported", cursor on the literal, its own
      * history pair, nothing launched. A normal small literal still routes
      * to CEBASE. (Host atof is IEEE, so 1.3E-38 itself is checked on the
      * ROM, tests/cemu/test_realrom_tiny.py.) */
@@ -911,8 +909,8 @@ int main(void)
         if (g_failures) { int s; for (s = 0; s < g_snap_count; s++) { printf("  snap %d\n", s); dump(s); } }
     }
 
-    /* 17. an internal review: the 39-character derivative from the card wraps onto
-     * the next row; nothing is cut, so no hint. */
+    /* 17. The 39-character derivative wraps onto the next row;
+     * nothing is cut, so no hint. */
     {
         static const uint8_t keys[] = { sk_1, sk_Enter, S };
         static const answer_t ans[] = { { true,
@@ -1083,8 +1081,8 @@ int main(void)
         if (g_failures) { int s2; for (s2 = 0; s2 < g_snap_count; s2++) { printf("  snap %d\n", s2); dump(s2); } }
     }
 
-    /* 25. TRACE opens the same viewer as UP: the answer, then its steps
-     * (internal review).  ASCII '[' is printed as the TI-font bracket
+    /* 25. TRACE opens the same viewer as UP: the answer, then its steps.
+     * ASCII '[' is printed as the TI-font bracket
      * 0xC1, because the TI large font draws 0x5B as theta. */
     {
         static const uint8_t keys[] = { sk_1, sk_Enter, S, sk_Trace, S, sk_Clear, S };
@@ -1122,7 +1120,7 @@ int main(void)
 
     /* 27. The reported D(X^3,X) submission is a local parse failure, not
      * a worker request. Keep it editable, but persist its readable error
-     * beside it in history (internal review), including after a fresh launch. */
+     * beside it in history, including after a fresh launch. */
     {
         static const uint8_t keys[] = {
             sk_1, sk_Enter,
@@ -1195,7 +1193,7 @@ int main(void)
         if (g_failures) { int s; for (s = 0; s < g_snap_count; s++) { printf("  snap %d\n", s); dump(s); } }
     }
 
-    /* 29. Launcher-side dispatch and recovery failures (internal review): IPC
+    /* 29. Launcher-side dispatch and recovery failures: IPC
      * write and state-save failures, Module missing, a launch failure, a
      * child that returns without a response, and one that leaves an
      * invalid response.  Each failure's readable error belongs to its own
@@ -1631,7 +1629,7 @@ int main(void)
         if (g_failures) { int s; for (s = 0; s < g_snap_count; s++) { printf("  snap %d\n", s); dump(s); } }
     }
 
-    /* 35. Stored variables (internal review).  The launcher and a module built
+    /* 35. Stored variables.  The launcher and a module built
      * without CE_EVAL_USER_VARS (this worker mock) carry the table in
      * CE_STATE through unchanged; it survives a relaunch.  MODE shows the
      * count on "Stored vars"; RIGHT shows CLR; ENTER clears the table,

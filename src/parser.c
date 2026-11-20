@@ -85,7 +85,7 @@ static ast_node_t *parse_expr(parser_t *p, int min_prec);
 static ast_node_t *parse_prefix(parser_t *p);
 
 /* Variable for an operator typed without one, such as int(x^2), deriv(f),
- * lim(f) or sum(f) (internal review).  The CE keypad types upper-case letters,
+ * lim(f) or sum(f). The CE keypad types upper-case letters,
  * so the fixed lower-case default made int(X^2) integrate X^2 as a
  * constant with respect to x: "((X^2)*x) + C".  Variable names are
  * case-sensitive everywhere else, so take the default letter in the case

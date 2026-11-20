@@ -269,7 +269,7 @@ static void rv_render(const rv_doc_t *doc, const char *title, uint16_t total,
            total > RV_BODY_ROWS ? "UP/DN L/R=page CLEAR=back" : "CLEAR=back");
 }
 
-/* Not used by CALCENG since an internal review: the wrapped home row uses
+/* CALCENG's wrapped home row instead uses
  * hl_hidden_is_only_echo (home_layout.h).  Kept for tests/test_main.c.
  * True when the home row already shows everything in text except a single
  * trailing "Parsed: ..." echo line (the worker repeats the parsed input

@@ -3,7 +3,7 @@
 The main desktop runner (tests/test_main.c) compiles processor.c with every
 feature on, so it cannot see a worker whose PROGRAM_CFLAGS compile its job out.
 That is how CECIDF (the definite-integral worker) shipped answering
-"Feature is routed to another module" for every int(f,x,a,b) (internal review).
+"Feature is routed to another module" for every int(f,x,a,b).
 
 This test reads PROGRAM_CFLAGS and PROGRAM_SOURCES from
 split/Makefile.calc.int.def, swaps the CE entry point for
@@ -263,7 +263,7 @@ def test_cecidf_convergent_singular_endpoint_is_never_called_divergent(
 @pytest.mark.parametrize(
     "expr",
     [
-        # an internal review: a pole strictly inside the interval that none of the
+        # A pole strictly inside the interval that none of the
         # eight old probes lo + k(hi-lo)/8 landed on. FTC printed a value
         # (int(1/x^2,x,-1,2) = -1.5, int(tan(x),x,0,3) = 0.0100579).
         "int(1/(x-1)^2,x,0,3)",
@@ -396,7 +396,7 @@ def test_cecidf_interior_pole_scan_keeps_ordinary_integrals(
 
 
 def test_cecidf_deep_inputs_answer_or_refuse(cecidf_driver: Path) -> None:
-    # an internal review with #125/#127: the pole scan adds walks over the
+    # With the eval guards from #125/#127, the pole scan adds walks over the
     # integrand, but long sums still answer (20 and 45 terms), inputs past
     # the eval cap refuse with a reason, and so does an antiderivative
     # deeper than the cap (review round 2). Real-ROM stack use is pinned by
@@ -544,16 +544,16 @@ def test_cecidf_degree_mode(cecidf_driver: Path) -> None:
         # Round 16: every sample sits on the constant baseline (the peak
         # underflows to 0 at all 647 points); flat samples are refused.
         ("int(1+100*e^(-10000000000*(x-0.123456)^2),x,0,1)", 1.0017725),
-        # Known limitation (out of scope, carded on an internal review): a feature
+        # Known fixed-grid limitation: a feature
         # narrower than every grid on a *varying* baseline is unseen, as in
         # any fixed-grid quadrature (TI-84 fnInt included). Pinned strict
         # xfail so a fix shows up.
         pytest.param("int(x+100*e^(-10000000000*(x-0.123456)^2),x,0,1)", 0.50177245,
                      marks=pytest.mark.xfail(strict=True, raises=AssertionError,
-                                            reason="sub-grid feature on a varying baseline (internal review)")),
+                                            reason="sub-grid feature on a varying baseline")),
         pytest.param("int(1+x+100*e^(-10000000000*(x-0.123456)^2),x,0,1)", 1.50177245,
                      marks=pytest.mark.xfail(strict=True, raises=AssertionError,
-                                            reason="sub-grid feature on a varying baseline (internal review)")),
+                                            reason="sub-grid feature on a varying baseline")),
     ],
 )
 def test_cecidf_numeric_fallback_refused_or_right(
@@ -686,7 +686,7 @@ def test_cecidf_indefinite_integral_is_not_its_job(cecidf_driver: Path) -> None:
     assert line.startswith("ERR|"), line
 
 
-# ── improper() and areabetween() (internal review) ─────────────────────────────
+# ── improper() and areabetween() ─────────────────────────────
 # The launcher used to send both polar ops to CEBASE, which has no
 # integrator and printed "Polar/advanced op (use at top level)" on the real
 # OS 5.8 ROM. Now CALCENG routes them to CECINT, CECINT forwards them to
@@ -851,7 +851,7 @@ def test_cecidf_polar_ops_name_the_eval_depth_cap(cecidf_driver: Path, op: str) 
 )
 def test_cecidf_areabetween_failed_sample_is_an_error(cecidf_driver: Path, expr: str) -> None:
     # A sample of f-g that fails to evaluate is an error, never a skipped
-    # sample (an internal review review: the desktop area_between_curves skipped
+    # sample (the desktop area_between_curves skipped
     # it, so areabetween(ln(x),0,x,-2,-1) could report 0). The sampling
     # loop itself refuses, before any piece reaches int(): with failed
     # samples skipped, these end in int()'s "Could not decide integral".
@@ -881,8 +881,8 @@ def test_cecidf_areabetween_sets_ans(cecidf_driver: Path) -> None:
         # Review round 1 (P1): an even pole between samples, masked by
         # a constant baseline, passed the 25% trapezoid check and printed
         # "Area = 9995.24"; the area diverges. Every piece goes through
-        # handle_integral(), so #134's structural interior-pole scan
-        # (internal review) refuses it, and improper() inherits the same scan.
+        # handle_integral(), so #134's structural interior-pole scan refuses it.
+        # improper() inherits the same scan.
         "areabetween(10000+(x-0.3)^(-2),0,x,0,1)",
         "improper((x-0.3)^(-2),x,0,1)",
         "improper(10000+(x-0.3)^(-2),x,0,1)",

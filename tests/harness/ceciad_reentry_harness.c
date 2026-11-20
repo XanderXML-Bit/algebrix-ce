@@ -19,7 +19,7 @@
  * after the child instead, like the desktop module mock: that drives the
  * in-process loop in ce_forward_integral_sequence().
  *
- * an internal review: when every strategy refused int(int(x)), the CE showed
+ * Previously, when every strategy refused int(int(x)), the CE showed
  * the last worker's reason, "Integration by parts requires a product-like
  * integrand", while the desktop CLI says "Cannot find symbolic
  * antiderivative".

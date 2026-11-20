@@ -154,14 +154,14 @@ extern ce_float_t g_last_answer;
  * desktop processor clears it at request entry (one request per run on the
  * CE, many per desktop test process). ce_response_from_runtime() never
  * reports success while it is set, because some callers map eval errors to
- * values (an internal review, an internal review).
+ * values that could otherwise be reported as successful results.
  * Only code that never turns an eval error into a value may restore the
  * value it saved on entry. Those sites:
  *   - limits.c compute_limit() and limits_continuity(). Each of the file's
  *     evaluations treats an error as "this method does not apply" (direct
  *     substitution, the 0/0 test, L'Hopital's numeric fallback...), so the
  *     result is a value from successful evaluations, "could not evaluate"
- *     or "could not determine" (audited, an internal review).
+ *     or "could not determine".
  * Any other refused evaluation fails the request, including probes that
  * would have recovered (the 12-level algsolve workers' Newton starts, for
  * one); a desktop corpus of every worker config found no correct answer
@@ -169,7 +169,7 @@ extern ce_float_t g_last_answer;
 extern bool g_eval_refused;
 extern ce_float_t g_eval_refused_ans;   /* Ans when it was first set */
 
-/* ── Stored scalar variables (internal review) ─────────────────── */
+/* ── Stored scalar variables ──────────────────────────────────── */
 /*
  * Values kept by `expr->X` for the letters A..Z, persisted in CE_STATE so
  * they survive the worker hand-off and a relaunch of CALCENG.  Letter

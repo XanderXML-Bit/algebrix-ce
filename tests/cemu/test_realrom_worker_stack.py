@@ -204,7 +204,7 @@ def test_worker_high_water_and_fresh_responses(launched):
 
 
 def definite_cases():
-    """int(f,x,a,b) through CECIDF (internal review). Each value is checked against
+    """int(f,x,a,b) through CECIDF. Each value is checked against
     a Simpson oracle; a too-deep input must refuse, never reset or misanswer."""
     def fit(build):
         n = 1
@@ -225,8 +225,8 @@ def definite_cases():
         (terms("x", 13), "= 6.5"), (terms("x", 14), "= 7"),
     ]
     # 15/20/25/30 terms, then the longest chains that fit the input line.
-    # Since #125 main refuses these (the recursive walk tripped the eval
-    # backstop); answering them is what an internal review restores.
+    # The old recursive walk tripped the eval backstop added in #125.
+    # These inputs must now return the definite integral.
     for n in (15, 20, 25, 30):
         result.append((terms("x", n), "= %g" % (n / 2)))
     for t, op in (("x", "+"), ("x", "-"), ("x", "*"), ("x^2", "+"), ("sin(x)", "+")):
@@ -264,7 +264,7 @@ def _simpson(expr):
 def test_definite_int_high_water(launched):
     """CECIDF evaluates the antiderivative and walks it for the FTC rounding
     guard (#99). Long sums reset the calculator there, and after #125's eval
-    backstop they refused (internal review); every 127-character family must keep
+    backstop they refused; every 127-character family must keep
     >= 600 B and answer correctly or refuse."""
     address = realrom.map_symbol(ROOT / "bin/launcher/CALCENG.map", "_g_response")
     ans_address = realrom.map_symbol(ROOT / "bin/launcher/CALCENG.map", "_g_last_answer")

@@ -1,6 +1,6 @@
 """Opt-in OS 5.8 CEmu regression for tiny CE arithmetic, NOT hardware proof.
 
-On main 1dbddef the owned ROM showed (internal review):
+On main 1dbddef the owned ROM showed:
 
 * ``2.9843E-38-2.0235E-38`` stored the non-IEEE 00513E68 and printed 0;
 * its ``^0.5`` stored the normal 1FE771A2 (9.8e-20) but printed 0, while
@@ -10,7 +10,7 @@ On main 1dbddef the owned ROM showed (internal review):
 * the literal ``1.3E-38`` (a normal float) read as 0;
 * small normal answers such as 1E-30 printed 0.
 
-CEBASE (CE_SAFE_FLOAT_TINY, an internal review now answers "Tiny value
+CEBASE (with CE_SAFE_FLOAT_TINY) now answers "Tiny value
 unsupported" for a nonzero value below FLT_MIN, the launcher refuses such a
 literal before anything runs, exact cancellation and both zeros still work,
 and a nonzero answer below 1e-6 prints in scientific form. Every row reads

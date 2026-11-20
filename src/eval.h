@@ -50,7 +50,7 @@ ce_float_t eval_at(const ast_node_t *expr, char var,
 ce_error_t  eval_error(const eval_ctx_t *ctx);
 const char *eval_error_msg(const eval_ctx_t *ctx);
 
-/* Stored variables (internal review).  With CE_EVAL_USER_VARS=1 a NODE_VARIABLE
+/* Stored variables: with CE_EVAL_USER_VARS=1 a NODE_VARIABLE
  * read that has no local binding falls back to g_user_vars, and a variable
  * store (`expr->X`) also writes it.  Local bindings (d/dx, sum, int, ...)
  * always win.  The module runtime copies g_user_vars from and to CE_STATE.

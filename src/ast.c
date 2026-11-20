@@ -435,8 +435,8 @@ ast_node_t *ast_clone(const ast_node_t *n)
 
 /* Walks the left operand of a binop, and the single child of a unop, func
  * or deriv node, in a loop: a 60-term chain such as x*2*2*...*2 parses
- * left-leaning, and recursing down it took ~30 B of CE stack per term
- * (internal review).  Right operands still recurse; the parser bounds how deep
+ * left-leaning, and recursing down it took ~30 B of CE stack per term.
+ * Right operands still recurse; the parser bounds how deep
  * those nest. */
 bool ast_contains_var(const ast_node_t *n, char var)
 {

@@ -12,7 +12,7 @@
 
 ## Directed first-try diagnostic capture
 
-This section is the minimum real-device diagnostic pass. The same items are already covered by the pre-hardware emulator/tester lane; use the hardware pass to capture real calculator evidence and confirm whether the staged package now behaves like the emulator. Do **not** treat this checklist as release certification until the physical pass succeeds and `HARDWARE-READY-CERTIFICATION.md` is updated.
+This section is the minimum real-device diagnostic pass. The pre-hardware emulator/tester lane covers the same items, but it does not certify a build on physical hardware. Record which build you tested and whether it matched the emulator. Do **not** treat this checklist as release certification. See the [historical v2.0.0 failure](V2_HARDWARE_BUGS.md) and the [current status](../README.md#current-status).
 
 - [ ] `CALCENG` launches from `[prgm]` without `ERR: INVALID` or `ERR: MEMORY`.
 - [ ] The first prompt shows `CalcEngine` and `Expr (MODE exits):`.

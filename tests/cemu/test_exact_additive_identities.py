@@ -1,6 +1,6 @@
 """Typed tiny constants must survive the simplifier's ADD/SUB identities.
 
-Before an internal review the identities c + x -> x, x + c -> x, x - c -> x and
+The old identities c + x -> x, x + c -> x, x - c -> x and
 c - x -> -x used ast_is_num(n, 0), which accepts |c| < 1e-10.  The threshold
 is absolute, so it dropped a constant the user typed whenever x is
 comparable to it: CECALC answered d/dx(ln(x+5e-11)) with 1/x, which is 2x
@@ -253,7 +253,7 @@ def test_cecode_exact_zero_and_accepted_controls(cecode):
     rows = _run_stats(cecode, [
         "ode_linear(y/(x+0),x,y)", "ode_linear(y+x+0,x,y)",
         "ode_linear(y/(x+1),x,y)",
-        # x^tiny -> 1 stays an accepted approximation (internal review): the
+        # x^tiny -> 1 stays an accepted approximation: the
         # factor is float-exact, so this still solves.
         "ode_linear(y+x^1e-30,x,y)",
     ])
@@ -266,7 +266,7 @@ def test_cecode_exact_zero_and_accepted_controls(cecode):
 
 
 def test_cecode_cubic_tiny_coefficient_refuses_honestly(cecode):
-    """an internal review thread nit: this cubic tiny-coefficient ODE has no
+    """This cubic tiny-coefficient ODE has no
     finite symbolic mu*Q antiderivative within the engine; it must refuse,
     not answer with a dropped coefficient.  The diffeq form is recorded
     too."""

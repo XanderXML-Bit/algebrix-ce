@@ -1,6 +1,6 @@
 # Operator dispatch parity audit
 
-an internal review, base `main` at `d4ab104`. All results come from host builds. No calculator, emulator run, or real ROM was used, so nothing here is hardware-tested.
+The audit used `d4ab104` as its `main` baseline. All results come from host builds; no emulator or physical calculator was used.
 
 ## Result
 

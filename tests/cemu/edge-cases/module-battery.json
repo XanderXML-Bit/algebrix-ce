@@ -96,7 +96,7 @@
       "input_expression": "polydiv(x^3-1,x-1,x)",
       "timeout_ms": 30000,
       "result_delay_ms": 7000,
-      "notes": "Real-ROM baseline for CEAPDV; pixels inspected (home row shows Q = X^2+X+1 / \"UP=full result (2 ln)\"; the UP viewer shows Q = X^2+X+1, R = 0). Fixed and recaptured in an internal review."
+      "notes": "Real-ROM baseline for CEAPDV; pixels inspected (home row shows Q = X^2+X+1 / \"UP=full result (2 ln)\"; the UP viewer shows Q = X^2+X+1, R = 0). Recaptured after CEAPDV began returning both quotient and remainder."
     },
     {
       "name": "module_solve_linear",
@@ -206,9 +206,9 @@
       "input_expression": "relrate(x^2+y^2)",
       "timeout_ms": 30000,
       "result_delay_ms": 7000,
-      "notes": "Known failure on the real-ROM lane (internal review); no CRC is baselined until the screen is correct.",
+      "notes": "Related rates fails to find the variables on the real-ROM lane; no CRC is baselined until the screen is correct.",
       "known_failure": {
-        "card": "an internal review",
+        "card": "module_limit_related_rates",
         "observed_display": "No variables found",
         "reason": "x and y are present",
         "observed_crc": "7379CFC0"
@@ -306,9 +306,9 @@
       "input_expression": "taylor(sin(x),x,0,5)",
       "timeout_ms": 30000,
       "result_delay_ms": 7000,
-      "notes": "Known failure on the real-ROM lane (internal review); no CRC is baselined until the screen is correct.",
+      "notes": "The Taylor x^5 coefficient rounds incorrectly on the real-ROM lane; no CRC is baselined until the screen is correct.",
       "known_failure": {
-        "card": "an internal review",
+        "card": "module_series_taylor_sin",
         "observed_display": "T_5 = X+(-0.166667X^3)+0.00833334X^5",
         "reason": "x^5 coefficient shows 0.00833334; 1/120 = 0.00833333 to 6 significant digits",
         "observed_crc": "CBC1C708"
@@ -360,7 +360,7 @@
       "input_expression": "stdev(5)",
       "timeout_ms": 30000,
       "result_delay_ms": 7000,
-      "notes": "Real-ROM baseline for CESTPRB; pixels inspected. Sample SD of one value is undefined, so it is refused (was \"stdev = 0\"). Fixed and recaptured in an internal review."
+      "notes": "Real-ROM baseline for CESTPRB; pixels inspected. Recaptured after CESTPRB began refusing sample SD for a single value (previously \"stdev = 0\")."
     },
     {
       "name": "module_probability_normalcdf",
@@ -408,7 +408,7 @@
       "input_expression": "det(mat(1,2;3,4))",
       "timeout_ms": 30000,
       "result_delay_ms": 7000,
-      "notes": "Real-ROM baseline for CEMAT; pixels inspected. Typed with APPS as the \";\" row separator (launcher key added in an internal review)."
+      "notes": "Real-ROM baseline for CEMAT; pixels inspected. Typed with APPS as the \";\" row separator."
     },
     {
       "name": "module_matrix_inverse_identity",
@@ -424,7 +424,7 @@
       "input_expression": "inv(mat(1,0;0,1))",
       "timeout_ms": 30000,
       "result_delay_ms": 7000,
-      "notes": "Real-ROM baseline for CEMAT; pixels inspected (home row [1 0] / \"UP=full result (2 ln)\"; UP viewer shows [1 0] and [0 1]). Typed with APPS as \";\" (internal review)."
+      "notes": "Real-ROM baseline for CEMAT; pixels inspected (home row [1 0] / \"UP=full result (2 ln)\"; UP viewer shows [1 0] and [0 1]). Typed with APPS as \";\"."
     },
     {
       "name": "module_complex_real_part",
@@ -469,7 +469,7 @@
     "captured": "2026-11-13",
     "pixel_inspected": true,
     "hardware_verified": false,
-    "note": "Earlier CRCs (B9B5D5E0 'Module baseline' etc.) came from the autotester-wrapper lane, which on OS 5.5+ never launches CALCENG and hashed the TI-OS home screen (internal review). They were retired. Cases with known_failure keep expected_crcs empty: a wrong screen is never baselined.",
+    "note": "Earlier CRCs (B9B5D5E0 'Module baseline' etc.) came from the autotester-wrapper lane, which on OS 5.5+ never launches CALCENG and hashed the TI-OS home screen. They were retired. Cases with known_failure keep expected_crcs empty: a wrong screen is never baselined.",
     "recaptured": {
       "cases": [
         "module_alg_polydiv_cubic",
@@ -477,7 +477,7 @@
         "module_matrix_determinant",
         "module_matrix_inverse_identity"
       ],
-      "source": "main c289c29 + an internal review fix (polydiv in CEAPDV, sample stdev/variance n<2 refusal, launcher APPS -> \";\")",
+      "source": "main c289c29 with fixes (polydiv in CEAPDV, sample stdev/variance n<2 refusal, launcher APPS -> \";\")",
       "captured": "2026-11-13",
       "note": "All 22 earlier baselines reproduced byte-identical on the same build."
     }

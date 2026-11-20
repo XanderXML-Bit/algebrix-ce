@@ -1,6 +1,6 @@
 """Static guards for CE float behaviour the desktop suite cannot see.
 
-On the real OS 5.8 ROM (internal review):
+On the real OS 5.8 ROM:
 
 * CEdev v11.2's exp2f computes expf(x * log2(e)) instead of expf(x * ln 2), so
   exp2f(1) is 4.23. clang turns powf(2.0f, x) into exp2f(x), which made

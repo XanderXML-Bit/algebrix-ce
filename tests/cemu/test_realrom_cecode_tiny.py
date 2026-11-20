@@ -1,7 +1,7 @@
 """Opt-in owned-ROM tiny-coefficient ODE responses, never hardware proof.
 
 The CE answer must keep the tiny coefficient's sign and x in the
-integrating factor (internal review).  The displayed text is checked with the
+integrating factor.  The displayed text is checked with the
 same exact Decimal residual oracle as the host regression.
 """
 import json

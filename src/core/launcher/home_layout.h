@@ -4,7 +4,7 @@
  * The home screen used to give every expression and every result exactly
  * one row, clipped at column 26 with no marker, so a 39-character derivative
  * such as d/dX = ((cos(X)*(X^2))+(sin(X)*(2*X))) stopped at "...+(si" and a
- * long typed expression lost its tail (internal review).
+ * long typed expression lost its tail without any sign of truncation.
  *
  * This header has no TI dependencies.  It lays out the transcript area
  * (rows 0 .. HL_ROWS-1, above the input row) into a plain char grid that

@@ -5,8 +5,8 @@
 #include "steps.h"
 
 #define CE_IPC_MAGIC 0xCE84u
-/* 6: CE_STATE gained user_vars (stored A..Z values, an internal review). Every
- * module and the launcher must come from the same build. */
+/* Version 6 adds user_vars to CE_STATE to persist values for A..Z.
+ * Every module and the launcher must come from the same build. */
 #define CE_IPC_VERSION 6u
 
 #define CE_APPVAR_REQ   "CE_REQ"
@@ -114,7 +114,7 @@ typedef struct {
      * Allows every history entry to show its own result on the home screen,
      * not just the most-recent entry. */
     char history_results[CE_HISTORY_SIZE][64];
-    /* Values stored with `expr->X` (an internal review; calcengine.h).  Modules
+    /* Values stored with `expr->X` (see calcengine.h). Modules
      * built with CE_EVAL_USER_VARS=1 (CEBASE, CELSCX) read and write it;
      * every other module and the launcher save it back unchanged.  The
      * launcher's MODE menu can clear it. */

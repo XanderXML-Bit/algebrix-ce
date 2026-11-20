@@ -51,8 +51,8 @@ def float_state(tmp_path_factory):
     ("3^15", True, "= 14348907"),
     ("(-1)^8388609", True, "= -1"),
     # Underflow and tiny operands are refused, not shown as 0 or as a
-    # same-value ratio of a non-IEEE difference (internal review);
-    # tests/cemu/test_realrom_tiny.py has the full set).
+    # same-value ratio of a non-IEEE difference;
+    # tests/cemu/test_realrom_tiny.py has the full set.
     ("10^(-40)", False, "Tiny value unsupported"),
     ("10^(-44)", False, "Tiny value unsupported"),
     ("(2.9843E-38-2.0235E-38)/(2.9843E-38-2.0235E-38)", False, "Tiny value unsupported"),

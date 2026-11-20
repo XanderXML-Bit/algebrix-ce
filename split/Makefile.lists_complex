@@ -25,7 +25,7 @@ PROGRAM_CFLAGS = -DCE_EVAL_SUM_DIRECT_DISPATCH=1 -DCE_EVAL_SUM_COMPENSATED=1 -DH
 # backstop. Below the last eval level that passes it, CELSCX spends about
 # 307 B (eval_node + eval_numeric_integral + the refused call); measured on
 # the OS 5.8 ROM at 21 B steps, 832 B left 525 B, so possibly under 512 B
-# between steps. 960 B leaves at least 600 B (internal review).
+# between steps. A 960 B backstop leaves at least 600 B.
 
 PROGRAM_SOURCES = \
     src/modules/lists_complex/main.c \
