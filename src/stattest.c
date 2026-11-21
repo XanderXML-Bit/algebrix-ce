@@ -68,7 +68,7 @@ ce_float_t prob_chi2_pdf(ce_float_t x, ce_float_t df)
     if (x <= 0) return 0;
     /* 2^k2 as expf(k2*ln 2): clang turns powf(2.0f, x) into exp2f(x), and
      * CEdev v11.2 exp2f computes expf(x*log2(e)) instead of expf(x*ln 2),
-     * so exp2f(1) = 4.23 on the CE (internal review). */
+     * so exp2f(1) gives about 4.23 instead of 2 on the CE. */
     return (1.0f / (expf(k2 * 0.693147182f) * prob_gamma_half_int(k2))) *
            powf(x, k2 - 1.0f) * expf(-x / 2.0f);
 }

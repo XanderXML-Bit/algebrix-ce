@@ -84,7 +84,7 @@
 #define CE_PROC_CALC_INT_DEFINITE_POLAR CE_PROC_CALC_INT_DEFINITE
 #endif
 
-/* areabetween()/improper() answered through handle_integral() (internal review).
+/* areabetween() and improper() share the checks in handle_integral().
  * The launcher routes both ops to CECINT, which forwards them to CECIDF.
  * Before, they fell through to CEBASE, which printed "Polar/advanced op".
  * improper(f,x,a,b) is int(f,x,a,b), with the same checks and refusals.
@@ -160,7 +160,7 @@
  * split core (src/split/core_main.c) read ok=2; the desktop UI has its own
  * split/disambig.c dialog. The CE launcher (src/core/launcher/main.c) has
  * no menu for it, so the split modules answer with a "has no value" error
- * instead (internal review). */
+ * instead of requesting a dialog. */
 #ifndef CE_PROC_DISAMBIG_MENU
 #ifdef HW_BUILD_SPLIT
 #define CE_PROC_DISAMBIG_MENU 0

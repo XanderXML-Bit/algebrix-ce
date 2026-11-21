@@ -5,7 +5,7 @@ included), driven through the launcher's AST wire format. This is not CE
 stack or formatting evidence: tests/cemu/test_realrom_eval_refusals.py runs
 the same kind of inputs on the owned OS 5.8 ROM.
 
-Before an internal review, an eval error that reached these callers became math:
+These callers used to turn eval errors into numeric results:
 fourier() of a 55-term sum (deeper than the 50-level cap) answered
 "Fourier_2 = 0", fourier(1/x) and fourier(ln(x)) answered 0, recseq() stopped at the term
 before a failed one and called it s(k), nlsolve() listed

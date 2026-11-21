@@ -615,7 +615,7 @@ static ce_float_t lookup_var(eval_ctx_t *ctx, char name)
             return ctx->vars[i].value;
     }
 #if CE_EVAL_USER_VARS
-    /* No local binding: use the value stored by `expr->X` (internal review). */
+    /* With no local binding, look up the value stored by `expr->X`. */
     i = user_var_slot(name);
     if (i >= 0 && (g_user_vars.mask[i >> 3] & (uint8_t)(1u << (i & 7)))) {
 #if CE_SAFE_FLOAT_TINY
@@ -666,8 +666,8 @@ static ce_float_t factorial(ce_float_t n)
 /* ── Core evaluator ──────────────────────────────────────── */
 
 /*
- * Recursion cost (internal review). eval_expr() is the only frame repeated once
- * per AST level, so it evaluates the operands of the recursive shapes
+ * Only the eval_expr() frame repeats at each AST level. To limit stack use,
+ * it evaluates the operands of the recursive shapes
  * (BINOP, UNOP, FUNC) itself with a small frame and hands them to the
  * noinline eval_node() switch, which runs after the operands return and
  * therefore never stacks per level. On the real OS 5.8 ROM the previous
@@ -678,7 +678,7 @@ static __attribute__((noinline))
 ce_float_t eval_node(eval_ctx_t *ctx, const ast_node_t *node,
                      ce_float_t l, ce_float_t r);
 #if CE_EVAL_ENABLE_NODE_LIST
-/* List ops are dispatched by eval_expr() itself (internal review), so a nested
+/* eval_expr() dispatches list ops directly, so a nested
  * list level never holds an eval_node frame as well. */
 static __attribute__((noinline))
 ce_float_t eval_list_op(eval_ctx_t *ctx, const ast_node_t *node);
@@ -1056,7 +1056,7 @@ ce_float_t eval_expr(eval_ctx_t *ctx, const ast_node_t *node)
 #if CE_EVAL_ENABLE_NODE_LIST
     /* A list op evaluates its own elements. Calling eval_list_op() here,
      * not through eval_node(), keeps a nested list level at eval_expr +
-     * eval_list_op (internal review). Every check above has run, and
+     * eval_list_op on the stack. Every check above has run, and
      * ctx->error is clear. Written as an early return because folding it
      * into the operand switch below grew this frame from 9 to 12-15 B. */
     if (node->type == NODE_LIST_OP) {
@@ -1084,9 +1084,9 @@ ce_float_t eval_expr(eval_ctx_t *ctx, const ast_node_t *node)
         case NODE_STORE:
             /* A variable store's value is evaluated here too, so eval_node's
              * frame (about 100 B) is not held under the whole value: on the
-             * CE a store of a deep int( nest reached 147 B closer to the
-             * stack limit than the same nest without the store
-             * (internal review). */
+             * CE, storing the result of a deeply nested int() reached
+             * 147 B closer to the stack limit than evaluating the same
+             * nest without a store. */
             if (node->d.store.list_idx >= 128)
                 l = eval_expr(ctx, node->d.store.expr);
             break;
@@ -1326,10 +1326,10 @@ static ce_float_t eval_numeric_integral(eval_ctx_t *ctx, const ast_node_t *node)
 #endif /* CE_EVAL_ENABLE_NUMERIC_INT */
 
 #if CE_EVAL_ENABLE_NODE_LIST
-/* List operations that return scalars. Out of line, and never inlined
- * (internal review): the 201 B tmp_list would otherwise sit in every eval_node
- * frame. eval_node runs once per nested sum/int/lim/nderiv level and once
- * below the deepest eval_expr, so in CELSCX (the only module with lists) it
+/* Scalar-returning list operations stay out of line so the 201 B tmp_list
+ * does not sit in every eval_node frame. eval_node runs once per nested
+ * sum/int/lim/nderiv level and once below the deepest eval_expr, so in
+ * CELSCX (the only module with lists) it
  * cost 277 B of locals, about 322 B per nesting level on the OS 5.8 ROM. */
 #if defined(__GNUC__) || defined(__clang__)
 __attribute__((noinline))
@@ -1386,7 +1386,7 @@ static ce_float_t eval_list_op(eval_ctx_t *ctx, const ast_node_t *node)
 
 #if CE_EVAL_ENABLE_POLYDIV
 /* polydiv(p, q, var): polynomial long division with steps. Out of line for
- * the same reason as eval_list_op (internal review): its two 120 B text buffers
+ * the same stack-saving reason as eval_list_op: its two 120 B text buffers
  * made eval_node 302 B in CEAPDV, the only module that enables it. */
 #if defined(__GNUC__) || defined(__clang__)
 __attribute__((noinline))
@@ -2273,7 +2273,7 @@ static ce_float_t eval_node(eval_ctx_t *ctx, const ast_node_t *node,
 #if CE_EVAL_ENABLE_BASIC_STATS
             /* Sample statistics (n-1 denominator): undefined for one value.
              * stat_stdev() returns 0 for n<=1; refuse here instead, as the
-             * TI-84 does (internal review). */
+             * TI-84 does. */
             if (count < 2) {
                 set_err(ctx, CE_ERR_DOMAIN, "Sample stdev needs 2+ values");
                 return 0;
@@ -2652,7 +2652,7 @@ static ce_float_t eval_node(eval_ctx_t *ctx, const ast_node_t *node,
             }
 #if CE_EVAL_USER_VARS
             {
-                /* Keep the value for later entries (internal review). */
+                /* Store the scalar so later entries can read it. */
                 int slot = user_var_slot(vname);
                 if (slot >= 0) {
                     g_user_vars.value[slot] = val;

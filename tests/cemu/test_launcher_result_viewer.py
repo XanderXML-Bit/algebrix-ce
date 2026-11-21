@@ -3,10 +3,10 @@
 The harness runs the real CALCENG launcher main() (src/core/launcher/main.c)
 against a recorded 10x26 home screen and a scripted keypad. Its os_RunPrgm
 mock plays the worker the CE way (CE_RESP + CE_STATE, then the launcher's
-re-entry callback), and it checks the full-text result viewer (card
-an internal review): the home hint, the wrapped viewer page, scrolling and paging,
-errors, steps, a parse error after an answer (an internal review: the typed
-input stays, "Syntax error" shows under it until the next key, the cursor
+re-entry callback). The harness checks the full-text result viewer: the home
+hint, the wrapped viewer page, scrolling and paging, errors, steps, and a parse
+error after an answer (the typed input stays, "Syntax error" shows under it until
+the next key, the cursor
 goes to the unknown character or word, and a persisted history/error pair
 records the failed submission without changing Ans),
 the newest of two answers,
@@ -14,7 +14,7 @@ the desktop synchronous path, an empty and a cleared history, the
 "Parsed:" echo, a launch failure, a silent child, Module missing, a
 relaunch with saved history and the 16-slot history ring wrap.
 
-Launcher-side dispatch and recovery failures (an internal review: IPC write and
+Launcher-side dispatch and recovery failures (IPC write and
 state-save failures via fileioc_mock_fail_writes, Module missing, a launch
 failure, a silent child and an invalid response) must each persist their
 readable error in their own history slot before the launcher exits, survive a

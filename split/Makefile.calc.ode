@@ -7,7 +7,7 @@ BINDIR = bin/calc_ode
 # bounds the simplifier's recursion on the 4 KB OS stack, as in CECALC.
 # DIFF_MAX_DEPTH=36 does the same for diff(), which the linear-ODE split
 # runs on the whole right-hand side: at the default 50, diffeq(y+x+x+...)
-# with 57 terms left only 510 B of stack (internal review).  INTEG_MAX_DEPTH=48
+# with 57 terms left only 510 B of stack. INTEG_MAX_DEPTH=48
 # (default 64): the answer is printed under the processor's 256 B result
 # buffer, and an integral at the default cap left 449 B.  ODE sums past ~54
 # terms run out of pool nodes anyway.

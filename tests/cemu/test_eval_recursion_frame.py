@@ -1,4 +1,4 @@
-"""Build-artifact guard for the evaluator's per-level stack cost (internal review).
+"""Build-artifact guard for the evaluator's per-level stack cost.
 
 eval_expr() is the only evaluator frame repeated once per AST level. When it
 was an eval_expr -> eval_expr_inner pair, the real OS 5.8 ROM measured 131 B
@@ -25,7 +25,7 @@ COMMON_INPUTS = [ROOT / "src/eval.c", ROOT / "src/eval.h", ROOT / "src/calcengin
 MAX_EVAL_EXPR_LOCALS = 16
 # eval_node runs once below the deepest eval_expr, so the 832 B stack
 # backstop in src/eval.c must cover it plus its libm/steps callees, and it
-# is stacked once per nested sum/prod/int/lim/nderiv level. an internal review moved
+# is stacked once per nested sum/prod/int/lim/nderiv level. The frame split moved
 # the list-op case (a 201 B list_t) into the noinline eval_list_op: CELSCX's
 # eval_node fell from 277 B to 104 B, and its backstop-edge margin on the OS
 # 5.8 ROM rose from 350 B. Largest now: 104 B (CELSCX), 102 B (CEBASE).
@@ -141,7 +141,7 @@ def test_complex_evaluator_is_not_linked_into_any_module():
     the stack backstop of eval_expr. CELSCX lists complex.c, but nothing in
     a CE build calls ceval_expr, so the linker drops it (a CELSCX build
     without complex.c is the same size). Any module that starts calling it
-    must first get the same treatment (internal review)."""
+    must first get the same treatment."""
     # Source references first, so desktop CI (no maps) still checks them:
     # calls, function pointers or macros anywhere outside complex.[ch].
     refs = sorted(
@@ -153,7 +153,7 @@ def test_complex_evaluator_is_not_linked_into_any_module():
     if not maps:
         pytest.skip("no CE link maps; run make all")
     # A CEdev map lists every linked label: a mutant CELSCX that calls
-    # ceval_expr shows "_ceval_expr = D1E5D9" (an internal review control).
+    # ceval_expr shows "_ceval_expr = D1E5D9" in the linked map.
     linked = sorted(mp.stem for mp in maps
                     if re.search(r"^_ceval_(expr|inner)\b", mp.read_text(errors="replace"), re.M))
     assert not linked, f"complex.c's unguarded ceval_expr is linked into {linked}"

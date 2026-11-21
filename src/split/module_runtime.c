@@ -286,7 +286,7 @@ bool ce_module_runtime_recover_child_failure(const char *self_program,
      * CE_STATE: ce_module_runtime_finish() saves them even when its CE_RESP
      * write fails.  A failure must not change them, so go back to what this
      * caller sent in its request.  The globals feed the caller's error
-     * response too (forwarders), not only the saved state (internal review). */
+     * response in forwarding modules as well as the saved state. */
     state->settings = req->settings;
     state->last_answer = req->last_answer;
     ce_runtime_sync_globals(state);
@@ -315,7 +315,7 @@ void ce_module_runtime_finish(const ce_request_t *req,
     state->settings = g_settings;
     state->last_answer = g_last_answer;
 #if CE_EVAL_USER_VARS
-    /* A store (`5->X`) in this run is kept for later entries (internal review).
+    /* Save stored variables such as `5->X` for later entries.
      * Only finish() writes the table: the forwarding paths above belong to
      * router modules, which are built without CE_EVAL_USER_VARS and carry
      * the loaded table back unchanged. Failed evaluations and unreadable

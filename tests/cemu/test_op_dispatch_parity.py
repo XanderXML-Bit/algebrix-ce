@@ -10,7 +10,7 @@ enable.  Code inside ``#ifndef HW_BUILD_SPLIT`` is in no CE module at all.
 So an operator can parse, classify, and route, and still reach a module
 without its handler.  The module then answers with a generic refusal such as
 "Polar/advanced op (use at top level)".  That happened to eigenval() and
-eigenvec() (internal review): classify.c returns CE_DOMAIN_MATRIX (CEMAT),
+eigenvec(): classify.c returns CE_DOMAIN_MATRIX (CEMAT),
 the launcher sends them to CEBASE, and their handler sits in processor.c's
 ``#ifndef HW_BUILD_SPLIT`` block, which neither module compiles.
 
@@ -151,13 +151,13 @@ NODE_SAMPLES: dict[str, str] = {
     "NODE_LIST_LITERAL": "{1,2,3}",
 }
 
-# Known gaps outside the scope of an internal review, which found them.  Each
-# needs its own fix.  Keys are (path, op key).  path "launcher" is the
+# These known dispatch gaps each need their own fix. Keys are (path, op key).
+# Path "launcher" is the
 # program CALCENG really dispatches to, and path "classify" is the set of
 # modules built with the CE_PROC_* flags of classify.c's domain.  The tests
 # run these as strict xfail: when a fix lands, the test fails until its
-# entry is removed.  Never list eigenval/eigenvec here: an internal review
-# fixes them, and this test must fail until it does.
+# entry is removed. Do not list eigenval/eigenvec here: they must route to
+# CEMAT and pass without an xfail.
 _CEBASE_EVAL_ADV = ("CEBASE builds with CE_EVAL_ENABLE_ADV_POLAR=0, so "
                     "eval.c refuses; no module has the handler")
 _SPLIT_EXCLUDED = ("handler only in processor.c #ifndef HW_BUILD_SPLIT, "

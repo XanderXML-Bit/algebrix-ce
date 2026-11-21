@@ -6,8 +6,7 @@
  * route_polar_program(); src/split/classify.c only supplies the fallback
  * domain.  The two disagreed for eigenval()/eigenvec(): classify.c said
  * CE_DOMAIN_MATRIX, but route_polar_program() sent them to CEBASE, whose
- * evaluator answers "Polar/advanced op (use at top level)" (card
- * an internal review).
+ * evaluator answers "Polar/advanced op (use at top level)".
  *
  * This file includes main.c so the static routing functions can be called
  * directly.  For each argv input it prints one line:

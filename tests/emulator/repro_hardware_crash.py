@@ -59,7 +59,7 @@ Reports:
 
 KNOWN CRCs
 ----------
-  9F1FC020  CalcEngine prompt screen (from HARDWARE-READY-CERTIFICATION.md p00_prompt)
+  9F1FC020  CalcEngine prompt screen (historical p00_prompt capture)
   B9B5D5E0  Generic CalcEngine result screen (canonical 2+3=5, all s10 CAS tests)
   128C50A4  CalcEngine boot/home in comprehensive autotest (s00_boot_home)
   03AF06DB  2+3=5 result in comprehensive autotest (s01_add_2_3)

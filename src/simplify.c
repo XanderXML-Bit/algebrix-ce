@@ -33,9 +33,9 @@
 
 /* is_num(n, 0) accepts |n| < 1e-10.  Rules that drop or return an
  * operand require an exact zero instead: an annihilating rule would turn
- * 1e-30*x into 1e-30 (internal review), and an additive identity would drop a
+ * 1e-30*x into 1e-30, and an additive identity would drop a
  * typed constant that is not negligible next to x, so ln(x+5e-11)' became
- * 1/x (internal review).  Of the is_num(n, 0) zero tests, only x^c -> 1 keeps
+ * 1/x. Of the is_num(n, 0) zero tests, only x^c -> 1 keeps
  * the tolerance: for |c| < 1e-10, x^c rounds to exactly 1.0f for every
  * positive finite float x.  (Like-term collection below has its own
  * |a+b| < 1e-10 threshold; that is a separate rule.) */

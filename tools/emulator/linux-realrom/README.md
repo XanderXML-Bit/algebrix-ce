@@ -85,7 +85,7 @@ opens the launcher's result viewer (result, then steps). Inspect the pixels: a p
 exit code or a matching hash proves nothing about what the screen shows.
 `result STATE PREFIX EXPR...` reads multi-line results the home screen cannot
 show on its one result row. On the device, UP opens the launcher's result
-viewer (internal review); `result` reads the same whole CE_RESP from the
+viewer; `result` reads the same whole CE_RESP from the
 launcher's static `g_response` without pressing keys. `result` resolves `_g_response` from
 `--map` (default `bin/launcher/CALCENG.map`, which must match the deployed
 CALCENG), clears its magic before each expression, and prints the text only
@@ -123,4 +123,4 @@ assertions also fail when neither a CRC nor nonempty text expectations are
 available. The gate currently selects the untypeable matrix case, so it is
 blocked until that case is fixed. Do not switch it to an unrelated green case
 or restore a TI-OS CRC to make it pass. The other arithmetic/edge/visible-smoke
-catalogs remain untrusted wrapper captures (internal review).
+catalogs remain untrusted because the wrapper captured the TI-OS home screen.

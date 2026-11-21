@@ -3,7 +3,7 @@
 CEdev v11.2's libc _isinff tests the wrong byte whenever the mantissa is
 non-zero, so it reports finite values such as 16777215, 1048575, 65791 and
 0.99999237 as infinite. On the real OS 5.8 ROM a plain "16777215" displayed
-"= inf" (internal review). Desktop glibc is correct, so desktop tests
+"= inf". Desktop glibc is correct, so desktop tests
 cannot catch a regression, which is why this check is static.
 
 Every file under src/ is compiled into a .8xp module, so every file must use

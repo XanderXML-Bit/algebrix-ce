@@ -41,8 +41,8 @@ EVAL_HELPER_ONLY = set(STEP_WORKERS)
 
 
 def test_definite_worker_keeps_steps_out_for_size() -> None:
-    """CECIDF links integrate.c + deriv.c for exact F(b) - F(a) values
-    (internal review). With step recording on it measured 56,050-60,307 B against
+    """CECIDF links integrate.c + deriv.c for exact F(b) - F(a) values.
+    With step recording on it measured 56,050-60,307 B against
     the 51,200 B module limit, so it stays a value-only worker. Lift this when
     it fits; the desktop build still records the Simpson steps."""
     text = _mk("calc.int.def")

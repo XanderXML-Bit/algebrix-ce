@@ -13,7 +13,7 @@ Revalidate current screen baselines on the self-hosted real-ROM lane.
 
 > This file preserves the 2026-04-14 validation/certification record as historical evidence only.
 > Current main should be treated as **release-candidate / pre-hardware-confirmation** work until a newer real-device certification supersedes this snapshot.
-> For current posture, see `README.md` and `HARDWARE-READY-CERTIFICATION.md`.
+> For current posture, see the [README status](../README.md#current-status). The [v2.0.0 physical test report](V2_HARDWARE_BUGS.md) records that build's failure.
 
 ---
 

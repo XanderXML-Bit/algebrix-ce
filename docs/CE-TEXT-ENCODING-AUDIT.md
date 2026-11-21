@@ -44,9 +44,8 @@ not explicit escaped bytes (which require separate semantic review).
   harness passed 337 checks.
 - Owned OS 5.8 ROM, fresh build and arTIfiCE launch: `eigenval(mat(2))` and
   `eigenvec(mat(2))` both return the pre-existing unsupported-operation error
-  (`Polar/advanced op (use at top level)`), without a reset. Follow-up
-  `an internal review` owns the missing CE eigen handler. (Since resolved:
-  the launcher routes both to CEMAT, which runs `handle_eigen`.)
+  (`Polar/advanced op (use at top level)`), without a reset. The launcher now
+  routes both to CEMAT, which runs `handle_eigen`.
 - **Renderer-only pixel fixture:** after a real `2+3` evaluation, emulator
   debug writes replaced the launcher's result buffer with representative
   ASCII lambda text, then the unmodified TRACE viewer rendered it. Inspected

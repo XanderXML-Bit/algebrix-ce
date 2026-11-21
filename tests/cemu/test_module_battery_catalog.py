@@ -20,7 +20,7 @@ BATTERY = ROOT / "tests/cemu/edge-cases/module-battery.json"
 LAUNCHER = ROOT / "src/core/launcher/main.c"
 
 # CRCs from the autotester-wrapper lane, which on OS 5.5+ never launches CALCENG and
-# hashed the TI-OS home screen (proved by pixel inspection, an internal review). Never again.
+# hashed the TI-OS home screen (proved by pixel inspection).
 RETIRED_TIOS_SCREEN_CRCS = {
     "B9B5D5E0", "96FD4303", "BB355886", "AF5B6E7B", "E5B90897",
     "EC70402F", "E0B3E73F", "9FBBCE5B", "22CEF46C", "31BE412A", "C43CFBBB",
@@ -77,8 +77,8 @@ def test_every_typeable_case_types_with_the_launcher_key_map() -> None:
 
 
 def test_semicolon_types_with_the_launcher_apps_key() -> None:
-    # Matrix literals need ';'. The launcher types it from unmodified APPS
-    # (internal review); realrom.py must press the same key.
+    # Matrix literals need ';'. The launcher types it from unmodified APPS;
+    # realrom.py must press the same key.
     src = LAUNCHER.read_text(encoding="utf-8")
     normal = src[src.index("/* ── Normal (no modifier)"):]
     assert "case sk_Apps:    input_insert_char(';'); return 0;" in normal

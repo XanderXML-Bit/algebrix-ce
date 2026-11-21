@@ -10,16 +10,16 @@
  * then ce_processor_run_preparsed(), as src/split/module_main.c does.
  *
  * Regression: hex(255) printed "= 255" on the CE because no
- * base-conversion display existed (internal review).
+ * base-conversion display existed.
  * Regression: "16777215" printed "= inf" on the CE because CEdev's isinf()
  * misfires; the build defines CE_FLOAT_CLASS_REDIRECT so the CE-safe
- * ce_isnan/ce_isinf/ce_isfinite run here too (internal review).
+ * ce_isnan/ce_isinf/ce_isfinite run here too.
  * Regression: "x^2*sin(x)+x" showed "Module CEBASE returned invalid IPC
  * data" on the CE. The generic processor answered any expression with a
  * free variable with an ok=2 action menu whose magic/version were zero, so
  * the launcher's ce_response_read() rejected it, and the CE launcher has no
  * menu for it anyway. Every response must now pass ce_response_read(), and
- * the split modules answer with "<var> has no value" (internal review).
+ * the split modules answer with "<var> has no value".
  */
 #include "calcengine.h"
 #include "memory.h"
@@ -184,7 +184,7 @@ static void expect_parser_refusal(const char *in)
 }
 
 /*
- * Tiny arithmetic (internal review), an internal review). On the OS 5.8 ROM,
+ * Tiny arithmetic regression. On the OS 5.8 ROM,
  * "2.9843E-38-2.0235E-38" stored the non-IEEE 00513E68 and showed 0, its
  * ^0.5 stored the normal 1FE771A2 (9.8e-20) but printed 0, sqrt() and ^1
  * of it stored 0, and 10^(-40), 2^(-127)*2^127 and 1E20^(-2) gave 0.
@@ -512,7 +512,7 @@ static void tiny_cases(void)
 }
 
 /*
- * Regression (internal review): deep but legal input reset the CE. On the real
+ * Stack regression: deep but legal input reset the CE. On the real
  * OS 5.8 ROM, "2^2^...^2^1" (31 levels, 63 chars) hit the stack-limit NMI
  * in CEBASE's evaluator, and 32-term sums already ran eval frames past the
  * stack limit without tripping it. Every operator at the 127-char maximum
@@ -597,7 +597,7 @@ int main(void)
         { "hex(3*5)",       "= 0xF" },
         { "2+3",            "= 5" },
         /* CEdev v11.2 isinf() was true for these (mantissa bits 7..14 all
-         * ones); a plain 16777215 showed "= inf" on the CE (internal review). */
+         * ones); a plain 16777215 showed "= inf" on the CE. */
         { "16777215",       "= 16777215" },
         { "-16777215",      "= -16777215" },
         { "16777214",       "= 16777214" },
@@ -613,7 +613,7 @@ int main(void)
         { "12345678",       "= 12345678" },
         { "2^20",           "= 1048576" },
         { "0.99999237",     "= 0.999992" },
-        /* CE float ops (internal review): exact integer results that CE
+        /* CE float ops: exact integer results that CE
          * __fsub and TI-OS powf got wrong. */
         { "16777216-1",     "= 16777215" },
         { "2^24-1",         "= 16777215" },
@@ -643,7 +643,7 @@ int main(void)
         { "bin(16777215)",  "bin() result too wide" },
         { "exp(89)",        "exp overflow" },
         { "sinh(90)",       "sinh overflow" },
-        /* Overflows the CE used to show as 0 or nan (internal review). */
+        /* Overflows the CE used to show as 0 or nan. */
         { "1E38*10",        "Overflow" },
         { "3E38*2",         "Overflow" },
         { "3E38+3E38",      "Overflow" },
@@ -775,7 +775,7 @@ int main(void)
 
     /* An eval refusal (depth cap or eZ80 stack backstop) marks the run. No
      * answer of that run may succeed, and Ans keeps its value from before
-     * the refusal (an internal review, an internal review). The desktop processor clears
+     * the refusal. The desktop processor clears
      * the flag at request entry, so set it by hand and build the response
      * the way a worker does after a caller swallowed the error. End to end
      * (a real swallowed refusal): sum/recseq/nlsolve in

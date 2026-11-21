@@ -1,5 +1,5 @@
 """Opt-in owned-ROM check that typed tiny constants survive ADD/SUB
-identities (internal review).  Emulator evidence, never hardware proof.
+identities.  Emulator evidence, never hardware proof.
 
 The displayed answers are checked with the same exact Decimal oracle as the
 host regression, at points where x is comparable to the constant.

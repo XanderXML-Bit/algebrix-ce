@@ -536,7 +536,7 @@ static bool int_has_angle(const ast_node_t *n)
            n->type != NODE_CONSTANT;
 }
 
-/* Structural endpoint-pole test (an internal review review rounds 5-6). A float
+/* Structural test for poles at an integration endpoint. A float
  * bound such as 2*pi or 5*pi/2 can sit a few ulps from a pole, where the
  * integrand is still finite and FTC prints a number for a divergent
  * integral. Testing the whole integrand cannot see this once it is scaled or
@@ -593,7 +593,7 @@ static bool int_pole_near(const ast_node_t *n, char var, ce_float_t b, ce_float_
     return small ? (vi > 10.0f * vb) : (vb > 1.0f && vb > 10.0f * vi);
 }
 
-/* ── Interior-pole scan (internal review) ─────────────────────────
+/* ── Interior-pole scan ──────────────────────────────────────────
  * Eight fixed probes saw a pole only when one landed on it, so FTC ran
  * across int(1/(x-1)^2,x,0,3) and printed -1.5. Every pole source of the
  * integrand is found structurally, as int_pole_near does: a denominator,
@@ -1554,7 +1554,7 @@ static INT_BODY_ATTR bool handle_integral_body(ast_node_t *root, proc_state_t *s
                 /* Infinite bounds need limits at infinity. Sampling F there
                  * is fooled both ways (int(1e-9/x,x,1,inf) "converged" to 0,
                  * int(e^(-x/1000),x,0,inf) looked divergent), and this
-                 * build has no limits.c: refuse (internal review). */
+                 * build has no limits.c, so it cannot decide the integral. */
                 proc_failf(st, "Could not decide integral");
 #endif
                 ast_free(root);
@@ -1567,7 +1567,7 @@ static INT_BODY_ATTR bool handle_integral_body(ast_node_t *root, proc_state_t *s
              * endpoint: FTC across it cannot be trusted, so such integrals
              * are refused below unless an endpoint limit proves divergence.
              * Poles inside (lo, hi) are found by int_scan_poles(); eight
-             * fixed probes missed int(1/(x-1)^2,x,0,3) (internal review). */
+             * fixed probes missed the pole in int(1/(x-1)^2,x,0,3). */
             {
                 int k;
                 for (k = 0; k < 2; k++) {
@@ -1811,7 +1811,7 @@ static INT_BODY_ATTR bool handle_integral_body(ast_node_t *root, proc_state_t *s
 #endif
 
 #if CE_PROC_CALC_INT && CE_PROC_CALC_INT_DEFINITE && CE_PROC_CALC_INT_POLAR_LOWER
-/* improper() and areabetween() on the CE (an internal review; see processor.h).
+/* CE handlers for improper() and areabetween() (see processor.h).
  * Both reuse handle_integral(), so every check int(f,x,a,b) makes (bounds,
  * angle mode, poles at and between the bounds, FTC precision, the checked
  * numeric fallback) applies to them as well. */
@@ -1889,7 +1889,7 @@ static void __attribute__((noinline)) handle_int_polar(ast_node_t *root, proc_st
         goto out;
     }
     if (!ce_isfinite(a) || !ce_isfinite(b)) {
-        /* As int() in this build (no limits.c, an internal review). */
+        /* Like int(), reject infinite bounds in this build without limits.c. */
         proc_failf(st, "Could not decide integral");
         goto out;
     }
@@ -2868,8 +2868,8 @@ static bool ce_processor_run_root(const char *input,
         /* polydiv(p, q, var) is routed to CEAPDV, which builds with
          * CE_PROC_ALG_SOLVE=0.  The OP_DIV detection further down lives
          * inside the SOLVE block, so before this branch every polydiv()
-         * on the CE answered "Feature is routed to another module" (real
-         * OS 5.8 ROM, an internal review. */
+         * on the CE answered "Feature is routed to another module", as
+         * observed on the OS 5.8 ROM. */
         if (pop == POLOP_POLYDIV) {
             static char pd_quot[MAX_RESULT_LEN / 2];
             static char pd_rem[MAX_RESULT_LEN / 2];
@@ -3999,8 +3999,8 @@ static bool ce_processor_run_root(const char *input,
             if (pos > 4) {
                 /* Stamp magic/version/settings like every other response;
                  * this path once left them zero, and ce_response_read()
-                 * rejected it ("Module CEBASE returned invalid IPC data"
-                 * on the CE, an internal review). Ans is kept, not reset to 0. */
+                 * rejected it with "Module CEBASE returned invalid IPC data"
+                 * on the CE. Keep the previous Ans. */
                 ce_response_from_runtime(resp, false, false, dbuf, "",
                                          g_last_answer);
                 resp->ok = 2;   /* signal: disambiguation needed */
@@ -4024,7 +4024,7 @@ static bool ce_processor_run_root(const char *input,
             if (eval_error(&s_eval) == CE_ERR_UNDEFINED && uv) {
                 /* The variable has no local binding and no stored value
                  * (`expr->X` stores one in modules built with
-                 * CE_EVAL_USER_VARS, an internal review). Name the variable on
+                 * CE_EVAL_USER_VARS). Name the variable on
                  * line 1 (the home row) and list what can be done with the
                  * expression; each line fits 26 columns. */
 #if CE_EVAL_USER_VARS

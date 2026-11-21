@@ -6,11 +6,10 @@ on a successful launch, zeroes CEISTR's statics before the callback re-enters
 main(), and returns non-zero on a launch failure. It covers the normal path, a
 child with no response, a launch failure, a missing strategy program, a stale
 CEISTRS scratch AppVar, an unexpected child, a re-entry with nothing pending,
-a re-entry after CE_STATE was lost, a definite integral (an internal review,
-PR #97 reviews), and children whose failure messages are long: the trig-sub
-and u-sub workers' real messages must arrive whole, and 127-char errors must
-be clipped at a word with "..." while the ranking still fits CE_RESP (card
-an internal review).
+a re-entry after CE_STATE was lost, a definite integral (PR #97 reviews), and
+children whose failure messages are long: the trig-sub and u-sub workers'
+real messages must arrive whole, and 127-char errors must
+be clipped at a word with "..." while the ranking still fits CE_RESP.
 """
 from __future__ import annotations
 

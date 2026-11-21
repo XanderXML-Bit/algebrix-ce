@@ -269,7 +269,7 @@ static void test_special_values(void)
 #endif
     ce_snprintf(got, sizeof(got), "[%e|%+g|% g]", 0.0, 0.0, 1e-30);
     check_str("zero and tiny", got, "[0.000000e+00|+0| 1e-30]");
-    /* Odd whole numbers at >= 2^23 must not round up (internal review): in a
+    /* Odd whole numbers at >= 2^23 must not round up: in a
      * 32-bit float, 16777215 + 0.5 rounds to 16777216. */
     ce_snprintf(got, sizeof(got), "[%.8g|%.7g|%.8g|%.8g]",
                 (double)16777215.0f, (double)8388609.0f, (double)-16777215.0f, (double)16777213.0f);

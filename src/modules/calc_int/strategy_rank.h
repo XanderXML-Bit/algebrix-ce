@@ -6,8 +6,8 @@
  * program returns, the CEdev runprgm stub reloads CEISTR from its variable
  * (all statics zeroed) and re-enters main() through the forward callback.
  * An in-process loop over the four strategy children therefore reached only
- * the first child on hardware, and the ranking was never built (PR #94
- * review, an internal review). CEISTR now keeps its progress in the scratch
+ * the first child on hardware and never built a ranking.
+ * CEISTR now keeps its progress in the scratch
  * AppVar CEISTRS: which strategy is pending, plus each finished strategy's
  * matched flag and reason. The IPC schema (CE_REQ/CE_RESP/CE_STATE) is
  * unchanged, so CE_IPC_VERSION stays as it is.
@@ -37,7 +37,7 @@
 
 #define CE_ISTR_SCRATCH_APPVAR  "CEISTRS"
 #define CE_ISTR_SCRATCH_MAGIC   0x5253u /* "SR" */
-/* Version 2: reason[] grew from 96 to 128 bytes (internal review). A v1
+/* Version 2 expands reason[] from 96 to 128 bytes. A v1
  * CEISTRS left by a run interrupted across the upgrade is smaller than the
  * new struct, so ce_istr_scratch_load() rejects it: a re-entry then answers
  * "Strategy report lost its progress" once, and a fresh dispatch overwrites
@@ -50,8 +50,8 @@
  * into ce_response_t.result (MAX_RESULT_LEN, 512 bytes), and four 127-char
  * reasons plus their line prefixes would not. ce_istr_format() therefore
  * shares the room left after the fixed text between the reasons and clips
- * only the ones that do not fit, at a word, with "..." (an internal review; the
- * old plain 96-byte cut showed "or recipro" on the CE). */
+ * only the ones that do not fit, at a word boundary, with "...". The old
+ * 96-byte cut could split a word, as in "or recipro" on the CE. */
 #define CE_ISTR_REASON_LEN      128u
 #define CE_ISTR_ELLIPSIS        "..."
 #define CE_ISTR_ELLIPSIS_LEN    3u

@@ -2,7 +2,7 @@
 
 > **Public source note:** the staged `deploy/hardware-ready/` transfer package is not part of this repository. Build the modules from source with CEdev as described in the [README](../README.md).
 
-> **Historical note (2026-04-16):** this file preserves the first failed v2.0.0 real-hardware report captured on 2026-04-14. It is intentionally kept as a historical post-mortem. Some items may have been partially addressed in later passes on `main`; use `HARDWARE-READY-CERTIFICATION.md`, `TODO-comprehensive.md`, and `PASS-CONTEXT.md` for the current release posture.
+> **Historical note (2026-04-16):** this file preserves the first failed v2.0.0 real-hardware report captured on 2026-04-14. Later changes may have addressed some of these issues. See the [current status](../README.md#current-status); no current build is certified on physical hardware.
 
 **Hardware test date:** 2026-04-14
 **Tester:** Xander
@@ -485,12 +485,11 @@ With on-target steps (#101), `int(3x^2-3x^2-...)` with 24 terms left only 63 B o
 - **Scope and residuals.** The stack-safety measurements below cover indefinite `int()`,
   strategy workers and `diffeq()`, not every definite-integral path. Fresh reviewer-requested
   126-character definite sums and constant-factor chains both return "Could not decide integral"
-  without an NMI, but leave only 25 B on this candidate. an internal review owns that separate
-  CECIDF investigation; no main-only comparison was run for those inputs. A long constant-one
-  base `(2-1+0+...)^x` also returns a suspicious, truncated `a^x/ln(a)` answer; full-result
-  semantics and main comparison are separately tracked by an internal review, not claimed fixed here.
+  without an NMI, but leave only 25 B on this candidate. These CECIDF inputs were not compared
+  against `main`. A long constant-one base `(2-1+0+...)^x` also returns a suspicious, truncated
+  `a^x/ln(a)` answer. This pass did not verify the full result or compare it against `main`.
 - **Stack high-water.** It was measured with the probe that paints the free stack, on 63 inputs
-  that can be typed on the CE. The results are in `an internal review`'s evidence.
+  that can be typed on the CE. The measured headroom is summarized below.
   - The 14 worst cases from §8.9 keep at least 804 B. On main, three of them hit the NMI, and
     `int(x*x*...*x,x)` keeps 486 B.
   - The other long sums and chains keep at least 704 B.

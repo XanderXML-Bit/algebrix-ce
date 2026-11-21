@@ -177,8 +177,8 @@ static void set_integrate_fail_reason(const char *msg)
  *    reach it, e.g. 48 signs in front of a 35-term sum.  The cap also
  *    bounds the depth of the antiderivative that the processor prints.
  * tests/cemu/test_module_flag_parity.py checks the cap with the module
- * flags; the real-ROM margin is measured with the stack high-water probe
- * (internal review). */
+ * flags. The stack high-water probe measures how much stack remains
+ * on the real ROM. */
 #ifndef INTEG_MAX_DEPTH
 #define INTEG_MAX_DEPTH 64
 #endif
@@ -232,7 +232,7 @@ static const char *integ_text(const ast_node_t *n, int size)
      * left-assoc chains and unary-minus runs at the left grow it.  A chain
      * inside a right operand (x+x*x*...*x) is not counted and still prints
      * in full, as on main; with the 127-character line it is at most ~60
-     * deep and left >= 740 B on the real ROM (internal review).  A full bounded
+     * deep and left at least 740 B of stack on the real ROM. A full bounded
      * walk did not fit in CECISM. */
     /* Leaves (number, variable, constant) end the walk.  Any other node
      * kind on the leftmost path (an integral, derivative, limit, ...) is
@@ -2321,7 +2321,7 @@ static ast_node_t *integ_rules(const ast_node_t *expr, char var, int depth)
  * Every other rule is a leaf (or a strategy capped by depth > 8) and runs
  * in integ_rules(), whose frame is large because LTO inlines the rule
  * helpers into it; it is kept out of line so a chain such as x*2*2*...*2
- * or -(-(-x)) costs only this frame per level (internal review). */
+ * or -(-(-x)) uses only the integ_node() frame at each level. */
 static ast_node_t *integ_node(const ast_node_t *expr, char var, int depth)
 {
     const ast_node_t *L, *R;
@@ -2902,7 +2902,7 @@ bool ode_solve_separable(const ast_node_t *rhs, char x_var, char y_var,
 
     /* The answer is printed straight into result_buf: per-part 120 B
      * buffers here sat under the deepest integration frames on the CE
-     * stack (internal review).  ast_to_display_str() returns at most size-1. */
+     * stack. ast_to_display_str() returns at most size-1. */
     pos = ast_to_display_str(lhs_int, result_buf, buf_size);
     pos += snprintf(result_buf + pos, buf_size - pos, " = ");
     if (pos < buf_size) {
@@ -3316,7 +3316,7 @@ bool integrate_eval_at(const ast_node_t *F, char var, ce_float_t x,
  * slope. Returns a negative value when n cannot be evaluated or the
  * estimate overflows; callers then refuse.
  *
- * Stack (internal review): the estimate used to recurse once per node, about
+ * Stack use: the estimate used to recurse once per node, about
  * 125 B of CE stack per level, so the antiderivative of a 20-term sum hit
  * the stack-limit NMI (with #125's eval backstop, it refused instead).
  * integ_err_node() is that per-node rule, with the estimates of the node's
@@ -3519,8 +3519,8 @@ static ce_float_t integ_err_scale(const ast_node_t *n, char var, ce_float_t x)
     }
 }
 
-/* integ_err_scale for the pole scan (processor.c) and eval_limit_inf
- * (internal review). */
+/* Exposes integ_err_scale() for the pole scan in processor.c and for
+ * eval_limit_inf(). */
 ce_float_t integrate_err_scale(const ast_node_t *n, char var, ce_float_t x)
 {
     return integ_err_scale(n, var, x);
@@ -3533,9 +3533,9 @@ ce_float_t integrate_err_scale(const ast_node_t *n, char var, ce_float_t x)
  * when the samples cannot support a six-digit value (refuse).
  *
  * F(1e4) alone is the limit only to about F's tail: -1/x is still -1e-4
- * there, so int(1/x^2,x,1,inf) printed 0.9999 (internal review). A tail c x^-p
- * shrinks by r = 10^-p per decade, so the rest after 1e6 is d4 r/(1-r),
- * d4 = F(1e6) - F(1e5), once the tail is geometric.
+ * there, so using that sample alone gave 0.9999 for int(1/x^2,x,1,inf).
+ * A tail c x^-p shrinks by r = 10^-p per decade, so the rest after 1e6 is
+ * d4 r/(1-r), where d4 = F(1e6) - F(1e5), once the tail is geometric.
  *
  * A sum of tails with different rates is never geometric, and five samples
  * cannot always tell (review round 2: 1/x^2 + 0.000001/x passed a ratio
@@ -4682,9 +4682,9 @@ static CE_INTEG_NOINLINE bool eval_diverges_inf(const ast_node_t *F, char var, i
 #if CE_INTEG_IMPROPER_USE_LIMITS
 /* One-sided limit of the antiderivative F at a finite endpoint where F
  * itself could not be evaluated, via symbolic compute_limit(). Builds
- * without limits.c (CECIDF) have no Case 4 at all: three review rounds
- * showed that sampling F or f cannot decide a singular endpoint, because
- * sums of terms cancel (internal review). Restoring it there is an internal review. */
+ * without limits.c (CECIDF) omit Case 4. Sampling F or f cannot decide a
+ * singular endpoint because terms in a sum can cancel. Supporting Case 4
+ * in those builds would require a reliable endpoint-limit method. */
 static lim_status_t eval_endpoint_limit(const ast_node_t *F, char var,
                                         ce_float_t point, int8_t direction,
                                         ce_float_t *out)

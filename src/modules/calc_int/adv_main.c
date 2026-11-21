@@ -41,8 +41,8 @@ static bool ce_is_sequence_request(const ast_node_t *root)
  * Each strategy worker refuses with the reason its own rule failed, and the
  * last one tried is integration by parts. Handing that reason up told the
  * user "Integration by parts requires a product-like integrand" for
- * int(int(x)), int(sum(...),n) or sin(x^2), which says nothing true about
- * the input (internal review). When the last worker answers one of its two
+ * int(int(x)), int(sum(...),n) or sin(x^2), as though the by-parts rule
+ * applied to the whole request. When the last worker answers one of its two
  * by-parts no-match reasons, all four have refused, no rule found an
  * antiderivative, and the answer becomes what the desktop processor prints
  * when integrate() fails: INTEG_NO_ANTIDERIV_MSG.
@@ -182,9 +182,9 @@ int main(void)
                 }
             }
             if (next == CE_SEQUENCE_LEN && ce_sequence_refusal(&resp)) {
-                /* The last strategy refused a try-each-strategy request:
-                 * every strategy has now refused (internal review). Write
-                 * the rewritten answer, then hand it up exactly as below.
+                /* This request tried every strategy and none matched.
+                 * Write the rewritten answer to CE_RESP, then hand it up
+                 * exactly as below.
                  * If the write fails, resume_forward cannot read CE_RESP
                  * and the child-failure path below reports it. */
                 (void)ce_response_write(&resp);

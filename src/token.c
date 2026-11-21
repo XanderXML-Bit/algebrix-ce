@@ -65,7 +65,7 @@ static bool emit(tokenizer_t *t, token_type_t type, const char *text,
  * Value of a scanned number literal (digits, optional '.', optional
  * exponent). On the CE, CEdev's atof() wraps out-of-range literals instead
  * of giving inf: on the OS 5.8 ROM 1E39 read as 2.35e-38, 1E99 as 2.35e22
- * and 3.5E38 as NaN (internal review). So the range is decided from the
+ * and 3.5E38 as NaN. The tokenizer checks the range from the
  * digits first: a literal at or above FLT_MAX + 1/2 ulp is +inf (what an
  * IEEE host's float conversion gives), one below 1e-46 is 0, and atof()
  * only sees literals it converts correctly.
@@ -130,7 +130,7 @@ static bool number_nonzero(const char *buf, bool cut_nz)
 /*
  * True when a literal with a nonzero digit reads as +-0 or as a value
  * whose exponent field is 0. CE atof() returns 0 for 1.3E-38, although
- * that is a normal float (internal review), and a literal below FLT_MIN
+ * that is a normal float. A literal below FLT_MIN
  * would be a tiny value the CE's arithmetic cannot use (ce_float_ops.h).
  * Such a literal is refused (CE_ERR_PRECISION), never read as 0. True
  * zero is told by its digits, not by a float compare.
@@ -436,7 +436,7 @@ static bool scan_word(tokenizer_t *t)
         isalpha((unsigned char)buf[1])) {
         char dvar[3];
         dvar[0] = 'd';
-        /* Keep the variable's case: the CE types DX for dX (internal review). */
+        /* Keep the variable's case when converting the CE's DX to dX. */
         dvar[1] = buf[1];
         dvar[2] = '\0';
         return emit(t, TOK_DIFFVAR, dvar, 0, dvar[1]);

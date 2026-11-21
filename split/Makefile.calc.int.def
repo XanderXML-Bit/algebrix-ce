@@ -4,11 +4,11 @@ BINDIR = bin/calc_int_def
 
 # Step recording stays compiled out, and the antiderivative is neither
 # simplified nor folded, so the worker prints only the value. Measured with
-# integrate.c linked (internal review): steps on = 56,050-58,905 B, fold_lite on =
-# 52,160 B; the module limit is 51,200 B.
+# integrate.c linked: 56,050-58,905 B with steps enabled and 52,160 B with
+# fold_lite enabled; the module limit is 51,200 B.
 #
 # CE_PROC_CALC_INT_POLAR_LOWER=1: CECINT also forwards improper() and
-# areabetween() here, answered through handle_integral() (internal review).
+# areabetween() here; both use the checks in handle_integral().
 # 51,004 B with it, vs 47,964 B on main 070f39a.
 
 PROGRAM_CFLAGS = -DHW_BUILD_SPLIT \

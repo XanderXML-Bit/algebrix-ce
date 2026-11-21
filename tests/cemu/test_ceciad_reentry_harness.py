@@ -1,5 +1,5 @@
 """CECIAD, the advanced-integral forwarder, under CE-style re-entry, and the
-CE int() chain answer compared with the desktop CLI (internal review).
+CE int() chain answer compared with the desktop CLI.
 
 On the CE, int() goes CECINT -> CECISM; what CECISM's basic rules cannot
 solve it forwards (CEIADVREQ) to CECIAD, which tries the strategy workers

@@ -1,6 +1,6 @@
 """CELSCX (lists/complex worker) evaluator with the module's own flags, desktop.
 
-an internal review moved eval_node's list-op case into the noinline eval_list_op():
+The stack fix moved eval_node's list-op case into the noinline eval_list_op():
 its 201 B list_t sat in every eval_node frame, which on the OS 5.8 ROM cost
 CELSCX about 322 B per nested sum/prod/int/lim level and left only 350 B
 below the eval stack backstop. These tests build CELSCX's processor from
@@ -148,7 +148,7 @@ def test_parser_never_builds_the_scalar_list_ops() -> None:
     the ones below (median(...) etc. parse as statistics nodes), so the
     deepest list call below eval's stack backstop is eval_expr on an
     element. If this changes, measure the new path at the backstop edge on
-    the real ROM (test_realrom_celscx_stack.py, an internal review)."""
+    the real ROM (test_realrom_celscx_stack.py)."""
     import re
     src = (parity.ROOT / "src/parser.c").read_text(encoding="utf-8")
     built = set(re.findall(r"\b(?:fn\s*=|list_op\.fn\s*=)\s*(LIST_[A-Z]+)", src))

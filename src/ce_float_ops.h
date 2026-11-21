@@ -2,8 +2,8 @@
  * ce_float_ops.h - Range-checked float arithmetic that does not trust the
  * TI-84 Plus CE's float routines at the edges of the float range.
  *
- * Measured on the real OS 5.8 ROM under CEmu (internal review); evidence in
- * the maintainer's measurement notes):
+ * The following behavior was measured in CEmu running the OS 5.8 ROM.
+ * These are the cases the helpers below check:
  *
  *  - The boot-code __fmul/__fdiv (CEdev lib/crt/os.src -> 0x288/0x278) round
  *    correctly in range. On overflow they return a NaN pattern (7FFFFFFF,
@@ -60,11 +60,11 @@
 
 /*
  * CE_SAFE_FLOAT_TINY (only with CE_SAFE_FLOAT; default 0, CEBASE sets 1)
- * refuses tiny arithmetic instead of letting the CE lose it
- * (internal review) measured on the OS 5.8 ROM: __fadd/__fsub discard an
+ * refuses tiny arithmetic rather than letting the CE lose precision.
+ * On the OS 5.8 ROM, __fadd/__fsub discard an
  * exponent-zero operand and emit a non-IEEE value for a difference below
  * FLT_MIN, __fmul/__fdiv/sqrtf flush, OS powf flushes, and OS logf/powf
- * read exponent-zero bytes with a hidden bit). The supported range is
+ * read exponent-zero bytes with a hidden bit. The supported range is
  * +-0 and |x| >= FLT_MIN (2^-126). With the flag:
  *  - an operand whose exponent field is 0 and mantissa is not (a
  *    "tiny" value) is refused;

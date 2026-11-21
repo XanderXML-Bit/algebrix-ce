@@ -32,7 +32,7 @@ static const char *ce_integral_program_for(const ast_node_t *root)
             return CE_PRGM_ODE;
         case POLOP_IMPROPER:
         case POLOP_AREABETWEEN:
-            /* Answered with handle_integral()'s checks (internal review). */
+            /* The definite-integral worker applies handle_integral()'s checks. */
             return CE_PRGM_INT_DEF;
         default:
             break;

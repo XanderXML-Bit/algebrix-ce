@@ -94,7 +94,7 @@ Notes:
 3. On OS `5.5` through `5.8`, run `arTIfiCE` before `CALCENG`.
 4. Run `CALCENG`.
 5. If the staged package boots, expect a text prompt that starts with `CalcEngine` and then `Expr (MODE exits):`.
-6. Enter `2+2` and press `[enter]`, but treat the result as diagnostic evidence, not a release signoff: the latest physical attempt (v2.0.0, 2026-04-14) in `HARDWARE-READY-CERTIFICATION.md` failed and must be revalidated on v2.0.1.
+6. Enter `2+2` and press `[enter]`. The [v2.0.0 physical test on 2026-04-14](V2_HARDWARE_BUGS.md) failed. Record the result for the build you are testing as diagnostic evidence, not release signoff; no current build is certified on physical hardware.
 7. Record the exact screen/result, any literal format strings, crashes, extra keypresses, or prompt-return behavior before changing the package.
 
 Normal usage expectations after hardware fixes are verified:

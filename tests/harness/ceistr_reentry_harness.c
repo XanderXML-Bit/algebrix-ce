@@ -51,7 +51,7 @@ typedef enum {
 
 /* The strategy workers' real failure messages (src/integrate.c). They are
  * longer than the old 96-byte reason slot: the CE result viewer showed them
- * cut mid-word as "or recipro" and "of the in" (internal review). */
+ * cut mid-word as "or recipro" and "of the in". */
 static const char k_trig_reason[] =
     "Trig substitution pattern not detected (sqrt(a^2-x^2), "
     "sqrt(x^2+a^2), sqrt(x^2-a^2), or reciprocal forms)";
