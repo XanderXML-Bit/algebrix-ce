@@ -5,8 +5,8 @@
  * evaluator, differentiation, integration, limits, series, algebra,
  * simplifier, and step recording.
  *
- * Compile: use tests/Makefile or tests/build_msvc.ps1 (includes src modules
- *          plus desktop mock sources under tests/mock/).
+ * Build with tests/Makefile or scripts/windows/build_msvc.ps1. Both include
+ * the engine sources and desktop mocks under tests/mock/.
  */
 #include <stdio.h>
 #include <stdlib.h>

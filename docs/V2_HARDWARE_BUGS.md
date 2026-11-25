@@ -5,7 +5,6 @@
 > **Historical note (2026-04-16):** this file preserves the first failed v2.0.0 real-hardware report captured on 2026-04-14. Later changes may have addressed some of these issues. See the [current status](../README.md#current-status); no current build is certified on physical hardware.
 
 **Hardware test date:** 2026-04-14
-**Tester:** Xander
 **Platform:** TI-84 Plus CE, OS 5.8, arTIfiCE jailbreak
 **Build:** v2.0.0 — CALCENG.8xp 28,373 B (zx0 compressed), CE_IPC_VERSION 5
 
@@ -215,8 +214,7 @@ contain actual numeric output.
 
 ## Bug #7 — MODE Settings Menu Works
 
-**Not a bug.** Xander confirmed MODE correctly opens the settings menu. Phase 3 is
-functionally correct on hardware.
+MODE opened the settings menu during the hardware test. This verifies Phase 3 on that build.
 
 ---
 

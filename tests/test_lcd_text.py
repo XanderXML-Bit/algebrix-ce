@@ -246,7 +246,7 @@ def main():
         BINARY = _find_binary()
     if BINARY is None or not os.path.isfile(BINARY):
         print(f"ERROR: calcengine.exe not found (tried bin/calcengine.exe)")
-        print("       Run tests/build_msvc.ps1 first, or pass --bin <path>")
+        print("       Run scripts/windows/build_msvc.ps1 first, or pass --bin <path>")
         sys.exit(1)
 
     print(f"\ncalcengine LCD text assertion suite")

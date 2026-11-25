@@ -232,9 +232,9 @@ Runner outputs:
 - Archive-swap diagnostics under `summary.options.archive_ram_*` and `summary.cases[*].actual.archive_ram_swap.*`.
 - Non-zero exit on any failed case.
 
-## Pre-hardware Validation Gate (Xander Directive)
+## Pre-hardware validation gate
 
-Run the additive pre-hardware gate lane:
+Run the full gate before testing on hardware:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-prehardware-validation-gate.ps1 `
@@ -299,7 +299,7 @@ The arTIfiCE-aware real-ROM runners now support an explicit bootstrap assist for
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-artifice-e2e-verification.ps1 `
   -RomPath "rom\Rom.rom" `
   -AutotesterPath "$env:CEMU_AUTOTESTER_PATH" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine" `
+  -DownloadsDir "<transfer-directory>" `
   -BootstrapArtificeAsset
 ```
 

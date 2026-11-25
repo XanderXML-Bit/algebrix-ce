@@ -2,12 +2,24 @@
 
 A computer algebra system for the TI-84 Plus CE graphing calculator, written in C99.
 
-Algebrix CE was first developed as CalcEngine. The on-calculator program is still named `CALCENG`, and many source files, scripts and documents still use the old name.
-
+[![Build and test](https://github.com/XanderXML-Bit/algebrix-ce/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/XanderXML-Bit/algebrix-ce/actions/workflows/test.yml)
 ![Language](https://img.shields.io/badge/language-C99-informational)
 ![Platform](https://img.shields.io/badge/platform-TI--84%20Plus%20CE-orange)
-![Status](https://img.shields.io/badge/status-pre--release-yellow)
-![License](https://img.shields.io/badge/license-all%20rights%20reserved-lightgrey)
+
+The recorded CEmu demo shows derivatives, integrals, and their solution steps. [Algebrix CE project page](https://zendren.net/projects/algebrix-ce)
+
+Algebrix CE was first developed as CalcEngine. The on-calculator program is still named `CALCENG`, and many source files, scripts and documents still use the old name.
+
+## Try the desktop solver
+
+Use GCC or Clang and GNU Make. On Debian or Ubuntu, install them with `sudo apt install build-essential`.
+
+From the repository root, build the solver and try a derivative.
+
+```bash
+make -C tests
+./bin/calcengine --solve 'd/dx(x^3)' --show-steps
+```
 
 ## What it is
 
@@ -56,33 +68,36 @@ Some older documents in `docs/` describe an earlier emulator lane that drove the
 | `tests/` | the desktop C harness (`test_main.c`), focused unit harnesses, mocks of the TI libraries, Vitest suites and the Python CEmu tests |
 | `tools/emulator/` | emulator automation, including the headless CEmu wrapper and the real-ROM runner |
 | `tools/desktop/` | a desktop command-line solver |
-| `scripts/` | test runners and emulator helpers |
-| `docs/` | design notes, audits, the user manual and the toolchain guide |
+| `scripts/` | test runners, emulator helpers, and [standalone Windows desktop builds](scripts/windows/) |
+| `docs/` | usage guides, architecture, and validation records |
 | `examples/` | small examples of the memory pool and simplifier patterns |
 
 ## Run the tests
 
-You need GCC (or Clang), GNU Make and the C maths library. On Debian or Ubuntu, `sudo apt install build-essential` is enough.
-
 ```bash
-cd tests
-make run
+make -C tests run
 ```
 
 `make run` builds and runs the main harness and the focused harnesses for formatting, floating-point classification, tiny values and the split modules. Each prints a pass and fail count, and the command exits non-zero on any failure.
 
-An AddressSanitizer build is also available:
+On Linux, use the sanitizer build to check for memory errors and undefined behavior.
 
 ```bash
-cd tests
-make run-asan
+make -C tests run-asan
 ```
 
-The Vitest suites (`npm ci`, then `npm test`) need Node.js 22. The Python CEmu tests need Python 3 with `pip install pytest pytest-timeout pyyaml`, then `python -m pytest tests/cemu -q`. Most CEmu tests skip themselves unless you supply an emulator binary, a ROM and built modules, as described below.
+Run the Vitest suites with Node.js 22 and PowerShell on x86-64 Linux. The lockfile includes a required Linux x86-64 Rollup binary.
+
+```bash
+npm ci
+npm test
+```
+
+The Python CEmu tests use Python 3.13 in CI. Install `pytest`, `pytest-timeout`, and `pyyaml` in a virtual environment, then run `python -m pytest tests/cemu -q`. Tests that exercise the calculator build also need CEmu, an owned ROM, and built modules.
 
 ## Build for the calculator
 
-Install the [CE C/C++ Toolchain](https://ce-programming.github.io/toolchain/) (CEdev). `docs/TOOLCHAIN.md` walks through the setup.
+Install [CE C/C++ Toolchain v11.2](https://github.com/CE-Programming/toolchain/releases/tag/v11.2) (CEdev), the version used by the release workflow. See the [toolchain setup guide](docs/TOOLCHAIN.md).
 
 ```bash
 make
@@ -94,9 +109,9 @@ To run the program you also need the CE C libraries (LibLoad, GRAPHX, FILEIOC an
 
 ## Test on the emulator
 
-The emulator lanes need a TI-84 Plus CE ROM image. TI's ROM is copyrighted, so no ROM is included. `docs/ROM-ACQUISITION.md` explains how to dump the ROM from a calculator you own.
+The CEmu lanes need a TI-84 Plus CE ROM image. Follow the [ROM acquisition guide](docs/ROM-ACQUISITION.md) to dump the ROM from a calculator you own.
 
-`tools/emulator/linux-realrom/README.md` describes the current real-ROM runner. Several older PowerShell scripts in `tools/emulator/` assume a Windows host and take their paths as parameters.
+See the [real-ROM runner guide](tools/emulator/linux-realrom/README.md) for build and test commands. The older PowerShell scripts in `tools/emulator/` target Windows and accept paths as parameters.
 
 ## Design notes
 
@@ -107,17 +122,7 @@ The emulator lanes need a TI-84 Plus CE ROM image. TI's ROM is copyrighted, so n
 
 ## Documentation
 
-| Document | Topic |
-|---|---|
-| [`docs/USER-MANUAL.md`](docs/USER-MANUAL.md) | using the program on the calculator |
-| [`docs/QUICK-REFERENCE.md`](docs/QUICK-REFERENCE.md) | keys and input notation |
-| [`docs/TOOLCHAIN.md`](docs/TOOLCHAIN.md) | setting up CEdev |
-| [`docs/MULTI-PROGRAM-ARCH.md`](docs/MULTI-PROGRAM-ARCH.md) | the launcher and worker modules |
-| [`docs/CE-WORKER-STACK-BOUNDS.md`](docs/CE-WORKER-STACK-BOUNDS.md) | stack measurements |
-| [`docs/FINITE-SUM-ACCURACY.md`](docs/FINITE-SUM-ACCURACY.md) | accuracy of finite sums |
-| [`docs/V2_HARDWARE_BUGS.md`](docs/V2_HARDWARE_BUGS.md) | hardware and emulator defects found so far |
-| [`docs/ROM-ACQUISITION.md`](docs/ROM-ACQUISITION.md) | dumping a ROM for emulator use |
-| [`CHANGELOG.md`](CHANGELOG.md) | change history |
+Find installation, keypad, architecture, and test guides in the [documentation index](docs/README.md). See the [changelog](CHANGELOG.md) for release history.
 
 ## Third-party code
 
