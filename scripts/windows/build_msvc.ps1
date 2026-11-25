@@ -40,7 +40,7 @@ function Import-VcVarsEnvironment {
 }
 
 Import-VcVarsEnvironment -VcVarsPath (Resolve-VcVarsPath)
-Set-Location "C:\Users\user\src\algebrix-ce\tests"
+Set-Location -LiteralPath (Join-Path $PSScriptRoot '..\..\tests')
 $defines = @(
     "/D_CRT_SECURE_NO_WARNINGS",
     "/DDESKTOP_BUILD",

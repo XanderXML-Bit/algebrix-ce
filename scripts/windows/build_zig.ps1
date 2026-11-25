@@ -1,7 +1,6 @@
-$zig = 'C:\Users\user\src\algebrix-ce\.tools\zig152\zig-x86_64-windows-0.15.2\zig.exe'
-# Use the script's own directory so this works from main or worktree
-$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
-Set-Location $scriptDir
+$repoRoot = Join-Path $PSScriptRoot '..\..'
+$zig = Join-Path $repoRoot '.tools\zig152\zig-x86_64-windows-0.15.2\zig.exe'
+Set-Location -LiteralPath (Join-Path $repoRoot 'tests')
 
 $sources = @(
   'test_main.c',
