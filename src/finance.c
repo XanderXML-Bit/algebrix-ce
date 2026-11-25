@@ -53,11 +53,35 @@ ce_float_t finance_fv(const ce_float_t *args, int n, eval_ctx_t *ctx)
     if (n < 4) { fin_err(ctx, "fv needs 4 args"); return 0; }
     nper = args[0]; rate = args[1]; pv_val = args[2]; pmt = args[3];
 
-    if (fabsf(rate) < 1e-10f) {
+    if (rate == 0.0f) {
         return -(pv_val + pmt * nper);
     }
+    if (fabsf(rate) <= 0.001f) {
+        ce_float_t nr = nper * rate;
+
+        if (fabsf(nr) <= 0.01f) {
+            /* Binomial series for ((1+r)^n - 1)/r = n * (1 + correction).
+             * The first omitted term relative to n is below 3e-10 here.
+             * Keep the corrections apart from the zero-rate sum so they
+             * survive when the present value and payments cancel. */
+            ce_float_t correction = ((nper - 1.0f) * rate) *
+                (0.5f + ((nper - 2.0f) * rate) *
+                (1.0f / 6.0f + ((nper - 3.0f) * rate) / 24.0f));
+            ce_float_t payments = pmt * nper;
+            ce_float_t interest = (pv_val * nr) * (1.0f + correction) +
+                                  payments * correction;
+            if (g_settings.pmt_at_begin) {
+                interest += (payments * rate) * (1.0f + correction);
+            }
+            return -(pv_val + payments + interest);
+        }
+        /* The accumulated rate is large enough to subtract 1 from the
+         * growth factor. Expand log(1+r) to preserve r in the exponent. */
+        factor = expf(nr * (1.0f - rate * (0.5f - rate / 3.0f)));
+    } else {
+        factor = powf(1.0f + rate, nper);
+    }
     k = pmt_mode_factor(rate);
-    factor = powf(1.0f + rate, nper);
     return -(pv_val * factor + pmt * k * (factor - 1.0f) / rate);
 }
 

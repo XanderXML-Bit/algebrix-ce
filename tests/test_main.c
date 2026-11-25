@@ -6172,6 +6172,28 @@ static void test_finance(void)
         ASSERT_EQ_FLOAT(v, 500.0f, 1.0f, "fv zero rate ~ 500");
     }
 
+    {
+        ce_float_t v = eval_str("fv(10,0,-100,-1)", &err);
+        ASSERT_TRUE(err == CE_OK, "fv with payments and zero rate evaluates");
+        ASSERT_TRUE(v == 110.0f, "fv with payments and zero rate is exactly 110");
+    }
+    {
+        ce_float_t v = eval_str("fv(10,0.00000001,-100,-1)", &err);
+        /* Float spacing near 110 is 2^-17. Allow one step from the
+         * rounded reference to account for intermediate rounding. */
+        ASSERT_TRUE(err == CE_OK, "fv with a near-zero rate evaluates");
+        ASSERT_TRUE(fabsf(v - 110.00001045f) <= 0x1p-17f,
+                    "fv near zero keeps the payment term");
+    }
+    {
+        ce_float_t v = eval_str("fv(10,0.00000001,-100,10)", &err);
+        /* The cash flows cancel at zero rate. The remaining value is
+         * 0.00000550000033, so a zero-rate shortcut fails this check. */
+        ASSERT_TRUE(err == CE_OK, "fv with offsetting cash flows evaluates");
+        ASSERT_EQ_FLOAT(v, 0.00000550000033f, 1e-11f,
+                        "fv retains growth when the zero-rate terms cancel");
+    }
+
     /* ── pv: present value ─────────────────────────────── */
     /* PV of $1000 in 10 years at 5%: PV = -1000 / 1.05^10 ~ -613.91 */
     {

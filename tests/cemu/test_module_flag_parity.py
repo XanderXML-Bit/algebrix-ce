@@ -49,6 +49,7 @@ _HOST_EXCLUDED_SOURCES = {
     "src/split/module_main.c",
     "src/modules/calc_int/simple_main.c",
     "src/modules/matrix/main.c",
+    "src/modules/finance/main.c",
 }
 # Added on the host:
 # - module_runtime.c and ce_fmt.c, which split/program.mk links into every
@@ -241,6 +242,22 @@ def _run_stats(exe: Path, exprs: list[str]
 
 def _run(exe: Path, exprs: list[str]) -> list[tuple[bool, str]]:
     return [(ok, text) for ok, text, _, _ in _run_stats(exe, exprs)]
+
+
+@pytest.fixture(scope="module")
+def finance(tmp_path_factory: pytest.TempPathFactory) -> Path:
+    return _build_module_driver(SPLIT / "Makefile.finance",
+                                tmp_path_factory.mktemp("cefin"))
+
+
+@pytest.mark.parametrize(("expression", "expected"), [
+    ("fv(10,0,-100,-1)", "fv = 110"),
+    ("fv(10,0.00000001,-100,-1)", "fv = 110"),
+    ("fv(10,0.00000002,-100,10)", "fv = 0.000011"),
+    ("fv(10000000,-0.00000001,-100,0)", "fv = 90.4837"),
+])
+def test_finance_fv_through_worker(finance: Path, expression: str, expected: str) -> None:
+    assert _run(finance, [expression]) == [(True, expected)]
 
 
 @pytest.fixture(scope="module")
