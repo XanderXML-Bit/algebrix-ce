@@ -6,7 +6,11 @@ A computer algebra system for the TI-84 Plus CE graphing calculator, written in 
 ![Language](https://img.shields.io/badge/language-C99-informational)
 ![Platform](https://img.shields.io/badge/platform-TI--84%20Plus%20CE-orange)
 
-The recorded CEmu demo shows derivatives, integrals, and their solution steps. [Algebrix CE project page](https://zendren.net/projects/algebrix-ce)
+![Algebrix CE in CEmu showing d/dx(x^3+2x) = 3x^2+2 and int(x^2,x) = x^3/3 + C, each with its step view](docs/images/cemu-derivative-integral.png)
+
+Screenshot from the CEmu emulator using an owned TI-84 Plus CE OS 5.8 ROM.
+
+Watch the recorded CEmu demo on the [Algebrix CE project page at zendren.net](https://zendren.net/projects/algebrix-ce).
 
 Algebrix CE was first developed as CalcEngine. The on-calculator program is still named `CALCENG`, and many source files, scripts and documents still use the old name.
 
@@ -86,7 +90,7 @@ On Linux, use the sanitizer build to check for memory errors and undefined behav
 make -C tests run-asan
 ```
 
-Run the Vitest suites with Node.js 22 and PowerShell on x86-64 Linux. The lockfile includes a required Linux x86-64 Rollup binary.
+Run the Vitest suites with Node.js 22 on x86-64 Linux. The lockfile includes a required Linux x86-64 Rollup binary.
 
 ```bash
 npm ci
