@@ -15,7 +15,7 @@
 v2.0.0 is **not functional on hardware**. Of the 7 issues reported below, 3 are regressions
 that pre-date v2.0.0 (meaning Phase 1's claimed fixes did not actually work on hardware), and
 4 are new issues introduced in v2.0.0. None of these were caught by the 185-test automated
-suite. See [Section 8 — Emulator Validation Gap](#8-emulator-validation-gap) for a full
+suite. See [Section 8 — Emulator Validation Gap](#8-emulator-validation-gap--post-mortem) for a full
 post-mortem on why.
 
 ---
