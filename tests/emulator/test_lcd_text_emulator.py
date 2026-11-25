@@ -131,7 +131,7 @@ _ROM_MISSING_REASON = (
 )
 _BUNDLE_MISSING_REASON = (
     "CalcEngine .8xp bundle directory not found. Checked "
-    "CALCENGINE_BUNDLE_DIR, C:/Users/user/Downloads/CalcEngine, and "
+    "CALCENGINE_BUNDLE_DIR, deploy/hardware-ready, and "
     "bin/core/. Build the TI target (make) and copy outputs to Downloads, "
     "or set CALCENGINE_BUNDLE_DIR.\n"
     f"Resolved paths:\n{explain_resolved_paths()}"

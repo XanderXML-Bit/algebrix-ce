@@ -228,12 +228,14 @@ try {
         $fakeRunnerPath = Join-Path $tempDir "fake-comprehensive.ps1"
         $observationPath = Join-Path $tempDir "observation.json"
         $romPath = Join-Path $tempDir "Rom.rom"
+        $autotesterPath = Join-Path $tempDir "autotester.exe"
         $programName = "CALCENG.8xp"
         $appVarName = "libload.8xv"
         $missingArtificePath = Join-Path $tempDir "missing-artifice.8xp"
 
         [void](New-Item -ItemType Directory -Path $downloadsDir -Force)
         New-BinaryFile -Path $romPath -SizeBytes 4194304
+        New-BinaryFile -Path $autotesterPath -SizeBytes 1
         New-BinaryFile -Path (Join-Path $downloadsDir $programName) -SizeBytes 8192
         New-BinaryFile -Path (Join-Path $downloadsDir $appVarName) -SizeBytes 512
         Set-Content -LiteralPath (Join-Path $downloadsDir "README.md") -Value "readme" -Encoding UTF8
@@ -242,7 +244,7 @@ try {
 
         $run = Invoke-Runner -Arguments @(
             "-RomPath", $romPath,
-            "-AutotesterPath", "C:\Users\user\Tools\CEmu\v2.0\autotester.exe",
+            "-AutotesterPath", $autotesterPath,
             "-DownloadsDir", $downloadsDir,
             "-ArtificeProgramPath", $missingArtificePath,
             "-ManifestPath", $manifestPath,
@@ -263,12 +265,14 @@ try {
         $fakeRunnerPath = Join-Path $tempDir "fake-comprehensive.ps1"
         $observationPath = Join-Path $tempDir "observation.json"
         $romPath = Join-Path $tempDir "Rom.rom"
+        $autotesterPath = Join-Path $tempDir "autotester.exe"
         $programName = "CALCENG.8xp"
         $appVarName = "libload.8xv"
         $artificePath = Join-Path $tempDir "arTIfiCE_v2.1.8xp"
 
         [void](New-Item -ItemType Directory -Path $downloadsDir -Force)
         New-BinaryFile -Path $romPath -SizeBytes 4194304
+        New-BinaryFile -Path $autotesterPath -SizeBytes 1
         New-BinaryFile -Path (Join-Path $downloadsDir $programName) -SizeBytes 8192
         New-BinaryFile -Path (Join-Path $downloadsDir $appVarName) -SizeBytes 512
         New-BinaryFile -Path $artificePath -SizeBytes 978
@@ -278,7 +282,7 @@ try {
 
         $run = Invoke-Runner -Arguments @(
             "-RomPath", $romPath,
-            "-AutotesterPath", "C:\Users\user\Tools\CEmu\v2.0\autotester.exe",
+            "-AutotesterPath", $autotesterPath,
             "-EmulatorBackend", "Auto",
             "-DownloadsDir", $downloadsDir,
             "-ArtificeProgramPath", $artificePath,
@@ -320,11 +324,13 @@ try {
         $bootstrapScriptPath = Join-Path $tempDir "fake-bootstrap.ps1"
         $preferredAssetPath = Join-Path $tempDir "assets\artifice-v2.8xp"
         $romPath = Join-Path $tempDir "Rom.rom"
+        $autotesterPath = Join-Path $tempDir "autotester.exe"
         $programName = "CALCENG.8xp"
         $appVarName = "libload.8xv"
 
         [void](New-Item -ItemType Directory -Path $downloadsDir -Force)
         New-BinaryFile -Path $romPath -SizeBytes 4194304
+        New-BinaryFile -Path $autotesterPath -SizeBytes 1
         New-BinaryFile -Path (Join-Path $downloadsDir $programName) -SizeBytes 8192
         New-BinaryFile -Path (Join-Path $downloadsDir $appVarName) -SizeBytes 512
         Set-Content -LiteralPath (Join-Path $downloadsDir "README.md") -Value "readme" -Encoding UTF8
@@ -334,7 +340,7 @@ try {
 
         $run = Invoke-Runner -Arguments @(
             "-RomPath", $romPath,
-            "-AutotesterPath", "C:\Users\user\Tools\CEmu\v2.0\autotester.exe",
+            "-AutotesterPath", $autotesterPath,
             "-DownloadsDir", $downloadsDir,
             "-PreferredAssetPath", $preferredAssetPath,
             "-BootstrapArtificeAsset",

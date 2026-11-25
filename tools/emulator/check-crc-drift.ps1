@@ -8,7 +8,7 @@ param(
     [string]$AutotesterPath = $env:CEMU_AUTOTESTER_PATH,
 
     [Parameter(Mandatory = $false)]
-    [string]$DownloadsDir = "C:\Users\user\Downloads\CalcEngine",
+    [string]$DownloadsDir = "deploy/hardware-ready",
 
     [Parameter(Mandatory = $false)]
     [AllowEmptyString()]

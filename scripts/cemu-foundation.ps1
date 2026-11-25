@@ -21,7 +21,7 @@ param(
     [string]$CEmuHeadlessPath = $env:CEMU_HEADLESS_PATH,
 
     [Parameter(Mandatory = $false)]
-    [string]$DownloadsDir = "C:\Users\user\Downloads\CalcEngine",
+    [string]$DownloadsDir = "deploy/hardware-ready",
 
     [Parameter(Mandatory = $false)]
     [AllowEmptyString()]

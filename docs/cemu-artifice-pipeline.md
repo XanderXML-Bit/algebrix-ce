@@ -100,8 +100,7 @@ On the live wrapper, those keys are still recorded and unit-tested, but the real
   - default probe: `tools/emulator/cemu-headless/build/Release/cemu-headless.exe`
   - override: `CEMU_HEADLESS_PATH`
 - AutoTester CLI:
-  - default probe: `C:\Users\user\Tools\CEmu\v2.0\autotester.exe`
-  - override: `CEMU_AUTOTESTER_PATH`
+  - Set `CEMU_AUTOTESTER_PATH` to your built `autotester.exe`.
 - Real TI-84 Plus CE ROM:
   - default path: `rom/Rom.rom`
   - override: `CALCENGINE_ROM_PATH`

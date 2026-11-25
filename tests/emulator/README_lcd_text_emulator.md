@@ -137,8 +137,7 @@ The whole point of this suite. Walk the following tree:
 1. Inspect recent `src/` changes affecting the processor that owns the
    expression (e.g. `deriv.c` for derivative cases, `integrate.c` for
    integration cases, `limits.c` for limits, etc.).
-2. Rebuild the `.8xp` bundle and re-deploy to
-   `C:/Users/user/Downloads/CalcEngine`.
+2. Rebuild the `.8xp` bundle and stage it in `deploy/hardware-ready`. Set `CALCENGINE_BUNDLE_DIR` for a different staging directory.
 3. Rerun the suite. If the CRC now matches, a recent change broke the
    hardware path and has been fixed.
 4. If the new CRC is provably correct (e.g. you deliberately changed a

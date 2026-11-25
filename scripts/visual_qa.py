@@ -20,6 +20,9 @@ Output:
 
 Usage:
   python scripts/visual_qa.py [--rom ROM] [--autotester PATH] [--downloads DIR]
+
+Defaults resolve from the repository root. Set CEMU_AUTOTESTER_PATH or
+CALCENGINE_BUNDLE_DIR to use an external executable or transfer package.
 """
 
 from __future__ import annotations
@@ -38,10 +41,10 @@ from pathlib import Path
 
 # ── Paths ───────────────────────────────────────────────────────────────────────
 REPO_ROOT      = Path(__file__).resolve().parents[1]
-DOWNLOADS_DIR  = Path(r"C:\Users\user\Downloads\CalcEngine")
-ROM_PATH       = REPO_ROOT.parent.parent.parent / "rom" / "Rom.rom"  # main repo
-AUTOTESTER     = Path(r"C:\Users\user\Tools\CEmu\v2.0\autotester.exe")
-CEMU_HEADLESS  = REPO_ROOT.parent.parent.parent / "tools" / "emulator" / "cemu-headless" / "build" / "Release" / "cemu-headless.exe"
+DOWNLOADS_DIR = Path(os.environ.get("CALCENGINE_BUNDLE_DIR") or REPO_ROOT / "deploy" / "hardware-ready").expanduser()
+ROM_PATH = REPO_ROOT / "rom" / "Rom.rom"
+AUTOTESTER = Path(os.environ.get("CEMU_AUTOTESTER_PATH") or REPO_ROOT / "tools" / "CEmu" / "autotester.exe").expanduser()
+CEMU_HEADLESS = REPO_ROOT / "tools" / "emulator" / "cemu-headless" / "build" / "Release" / "cemu-headless.exe"
 SCREENSHOTS    = REPO_ROOT / "docs" / "visual-qa-screenshots"
 REPORT_PATH    = REPO_ROOT / "docs" / "VISUAL-QA-REPORT.md"
 
@@ -106,7 +109,7 @@ SCREEN_CATEGORIES = {
 # ── autotester helpers ───────────────────────────────────────────────────────────
 
 def collect_transfer_files(downloads_dir: Path) -> list[str]:
-    """Return ALL .8xp + .8xv from Downloads/CalcEngine/ in sorted order.
+    """Return ALL .8xp + .8xv from the transfer package in sorted order.
     Matches the original comprehensive autotest order (sorted glob, mixed).
     No arTIfiCE needed — autotester uses CE_KEY_ASM bypass (isASM:true)."""
     files: list[str] = []

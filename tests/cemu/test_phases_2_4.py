@@ -59,24 +59,20 @@ _NATIVE_BINARY_SEARCH = [
 ]
 _ROM_SEARCH = [
     REPO_ROOT / "rom" / "Rom.rom",
-    Path("C:/Users/user/src/algebrix-ce/rom/Rom.rom"),
 ]
 _ARTIFICE_SEARCH = [
     REPO_ROOT / "tools" / "emulator" / "assets" / "arTIfiCE.8xp",
     REPO_ROOT / "tools" / "emulator" / "assets" / "arTIfiCE" / "arTIfiCE.8xp",
-    Path("C:/Users/user/Downloads/arTIfiCE.8xp"),
 ]
 _CALCENG_SEARCH = [
     REPO_ROOT / "deploy" / "hardware-ready" / "CALCENG.8xp",
+    REPO_ROOT / "bin" / "launcher" / "CALCENG.8xp",
     REPO_ROOT / "bin" / "CALCENG.8xp",
-    Path("C:/Users/user/Downloads/CalcEngine/CALCENG.8xp"),
-    Path("C:/Users/user/Downloads/CalcEngine-Ready/CALCENG.8xp"),
 ]
 _CEALG_SEARCH = [
     REPO_ROOT / "deploy" / "hardware-ready" / "CEALG.8xp",
+    REPO_ROOT / "bin" / "algebra" / "CEALG.8xp",
     REPO_ROOT / "bin" / "CEALG.8xp",
-    Path("C:/Users/user/Downloads/CalcEngine/CEALG.8xp"),
-    Path("C:/Users/user/Downloads/CalcEngine-Ready/CEALG.8xp"),
 ]
 
 

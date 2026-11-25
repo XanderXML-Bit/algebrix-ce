@@ -95,12 +95,10 @@ def _resolve_resources(args: argparse.Namespace) -> dict[str, Path]:
     ])
     rom = args.rom or _find([
         REPO_ROOT / "rom" / "Rom.rom",
-        Path("C:/Users/user/src/algebrix-ce/rom/Rom.rom"),
     ])
     artifice = args.artifice or _find([
         REPO_ROOT / "tools" / "emulator" / "assets" / "arTIfiCE.8xp",
         REPO_ROOT / "tools" / "emulator" / "assets" / "arTIfiCE" / "arTIfiCE.8xp",
-        Path("C:/Users/user/Downloads/arTIfiCE.8xp"),
     ])
     modules_dir = args.modules_dir or _find([
         REPO_ROOT / "deploy" / "hardware-ready",

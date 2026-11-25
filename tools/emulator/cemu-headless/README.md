@@ -72,17 +72,19 @@ Each input line is a JSON object with a `"cmd"` field. Each response is a one-li
 
 ### Commands
 
+Run these examples from the repository root. Replace `tools/CEmu/autotester.exe` with your AutoTester path if you installed it elsewhere.
+
 `load_rom`
 
 ```json
-{"cmd":"load_rom","path":"rom/Rom.rom","autotester_path":"C:/Users/user/Tools/CEmu/v2.0/autotester.exe"}
+{"cmd":"load_rom","path":"rom/Rom.rom","autotester_path":"tools/CEmu/autotester.exe"}
 ```
 
 `load_app`
 
 ```json
-{"cmd":"load_app","path":"C:/Users/user/Downloads/CalcEngine/CALCENG.8xp"}
-{"cmd":"load_app","path":"C:/Users/user/Downloads/CalcEngine"}
+{"cmd":"load_app","path":"deploy/hardware-ready/CALCENG.8xp"}
+{"cmd":"load_app","path":"deploy/hardware-ready"}
 ```
 
 `inject_key`

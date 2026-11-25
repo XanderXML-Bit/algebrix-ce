@@ -61,18 +61,14 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 _NATIVE_BINARY_PATHS = [
     REPO_ROOT / "tools" / "emulator" / "cemu-headless" / "cemu-headless.exe",
     REPO_ROOT / "tools" / "emulator" / "cemu-headless" / "build_native" / "cemu-headless.exe",
-    Path("C:/Users/user/src/algebrix-ce/tools/emulator/cemu-headless/cemu-headless.exe"),
-    Path("C:/Users/user/src/algebrix-ce/tools/emulator/cemu-headless/build_native/cemu-headless.exe"),
 ]
 _ROM_PATHS = [
     REPO_ROOT / "rom" / "Rom.rom",
-    Path("C:/Users/user/src/algebrix-ce/rom/Rom.rom"),
 ]
 _APP_PATHS = [
+    REPO_ROOT / "bin" / "launcher" / "CALCENG.8xp",
     REPO_ROOT / "bin" / "CALCENG.8xp",
     REPO_ROOT / "deploy" / "hardware-ready" / "CALCENG.8xp",
-    Path("C:/Users/user/Downloads/CalcEngine/CALCENG.8xp"),
-    Path("C:/Users/user/src/algebrix-ce/deploy/hardware-ready/CALCENG.8xp"),
 ]
 
 

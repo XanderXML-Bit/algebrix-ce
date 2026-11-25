@@ -38,7 +38,7 @@ The pipeline does not modify calculator source, ROM contents, or other test dire
 Dependency resolution still uses the existing manifest-driven search path:
 
 1. Explicit CLI or environment override
-2. `C:\Users\user\Downloads\CalcEngine`
+2. `Downloads/CalcEngine` in your home directory
 3. Repo build outputs under `bin\`
 4. A local copy of the CE C library sources under `_research_tmp\toolchain\src\`, if you keep one (not included)
 
@@ -129,24 +129,21 @@ Run the CI wrapper:
 .\scripts\cemu-validate.ps1
 ```
 
-Run the release-candidate confidence gate from a **Windows PowerShell / Windows Python** context so `autotester.exe` resolves correctly on this workstation:
+Run the release-candidate confidence gate from the repository root in Windows PowerShell. Use Windows Python and set `CEMU_AUTOTESTER_PATH` to your built `autotester.exe`.
 
 ```powershell
-Set-Location 'C:\Users\user\src\algebrix-ce'
 python .\scripts\cemu\release_candidate_gate.py
 ```
 
 Override the repeated-attempt policy when you need a narrower local probe:
 
 ```powershell
-Set-Location 'C:\Users\user\src\algebrix-ce'
 python .\scripts\cemu\release_candidate_gate.py --attempts 1 --required-passing-attempts 1
 ```
 
 For ad-hoc local validation without dirtying the tracked `tests/emulator/outputs/` evidence files, send the report and evidence tree to a temp directory:
 
 ```powershell
-Set-Location 'C:\Users\user\src\algebrix-ce'
 $stamp = Get-Date -Format 'yyyyMMdd-HHmmss'
 $root = Join-Path $env:TEMP ("calcengine-dev-worker\release-candidate-$stamp")
 python .\scripts\cemu\release_candidate_gate.py `
@@ -154,7 +151,7 @@ python .\scripts\cemu\release_candidate_gate.py `
   --evidence-dir (Join-Path $root 'release-candidate-gate')
 ```
 
-> Note: invoking `scripts/cemu/release_candidate_gate.py` directly from WSL/Linux Python can false-fail the availability stage on this machine with `autotester.exe is unavailable` even though the Windows toolchain is installed. The gate should be treated as a Windows-side real-ROM lane.
+Run this gate on Windows. WSL or Linux Python may report `autotester.exe is unavailable` even when AutoTester is installed on Windows.
 
 ## CI Usage
 

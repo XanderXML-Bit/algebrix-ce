@@ -41,7 +41,7 @@
 
 .PARAMETER DownloadsDir
     Directory containing the CalcEngine transfer package (.8xp + .8xv files).
-    Default: C:\Users\user\Downloads\CalcEngine
+    Default: deploy/hardware-ready
 
 .PARAMETER OutputDir
     Directory for generated JSON files. Default: tests\emulator\ in repo root.
@@ -83,7 +83,7 @@ param(
     [string]$Mode = "Run",
 
     [Parameter(Mandatory = $false)]
-    [string]$DownloadsDir = "C:\Users\user\Downloads\CalcEngine",
+    [string]$DownloadsDir = "deploy/hardware-ready",
 
     [Parameter(Mandatory = $false)]
     [string]$OutputDir = "",

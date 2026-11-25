@@ -80,12 +80,9 @@ powershell -ExecutionPolicy Bypass -File tools/emulator/run-cemu-autotest.ps1 `
 On Windows, the official CEmu release currently ships `CEmu.exe` but not a standalone `autotester.exe`. Build `tests/autotester/autotester_cli.cpp` from the matching upstream CEmu tag and point `-AutotesterPath` at that built binary.
 By default the wrapper resolves `bin/launcher/CALCENG.8xp`, discovers the current manifest-backed package, and writes all `39` transfer files (`35` `.8xp` modules plus `4` runtime `.8xv` dependencies) into the generated AutoTester config.
 
-Current verified workstation path:
-
-- `C:\Users\user\Tools\CEmu\v2.0\CEmu.exe`
-- `C:\Users\user\Tools\CEmu\v2.0\autotester.exe`
-- `rom/Rom.rom`
-- `C:\Users\user\Downloads\CalcEngine`
+Run the examples below from the repository root. Set `CEMU_AUTOTESTER_PATH` to your built `autotester.exe`.
+Place the ROM at `rom/Rom.rom` and stage the manifest-matched package in `deploy/hardware-ready`.
+Pass `-DownloadsDir` if you staged the package elsewhere.
 
 3. Replace `__REPLACE_WITH_BASELINE_CRC__` in `autotest.smoke.template.json`
 with the known-good CRC reported by AutoTester.
@@ -107,8 +104,8 @@ Run the official arTIfiCE smoke runner:
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-artifice-smoke.ps1 `
   -RomPath "rom\Rom.rom" `
-  -AutotesterPath "C:\Users\user\Tools\CEmu\v2.0\autotester.exe" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine" `
+  -AutotesterPath $env:CEMU_AUTOTESTER_PATH `
+  -DownloadsDir "deploy/hardware-ready" `
   -EmulatorBackend Auto `
   -Mode Verify
 ```
@@ -120,8 +117,8 @@ If the workstation does not already have `tools/emulator/assets/artifice-v2.8xp`
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-artifice-smoke.ps1 `
   -RomPath "rom\Rom.rom" `
-  -AutotesterPath "C:\Users\user\Tools\CEmu\v2.0\autotester.exe" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine" `
+  -AutotesterPath $env:CEMU_AUTOTESTER_PATH `
+  -DownloadsDir "deploy/hardware-ready" `
   -EmulatorBackend Auto `
   -Mode Verify `
   -BootstrapArtificeAsset
@@ -132,8 +129,8 @@ Run the dedicated Enter-path proof:
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-enter-path-proof.ps1 `
   -RomPath "rom\Rom.rom" `
-  -AutotesterPath "C:\Users\user\Tools\CEmu\v2.0\autotester.exe" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine" `
+  -AutotesterPath $env:CEMU_AUTOTESTER_PATH `
+  -DownloadsDir "deploy/hardware-ready" `
   -Mode Verify
 ```
 
@@ -142,8 +139,8 @@ Run the multi-module smoke wrapper:
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-multi-module-smoke.ps1 `
   -RomPath "rom\Rom.rom" `
-  -AutotesterPath "C:\Users\user\Tools\CEmu\v2.0\autotester.exe" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine"
+  -AutotesterPath $env:CEMU_AUTOTESTER_PATH `
+  -DownloadsDir "deploy/hardware-ready"
 ```
 
 That wrapper also forwards `-BootstrapArtificeAsset` into the delegated arTIfiCE smoke stage.
@@ -153,8 +150,8 @@ Run the full CEmu pipeline checklist:
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-cemu-pipeline-checklist.ps1 `
   -RomPath "rom\Rom.rom" `
-  -AutotesterPath "C:\Users\user\Tools\CEmu\v2.0\autotester.exe" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine" `
+  -AutotesterPath $env:CEMU_AUTOTESTER_PATH `
+  -DownloadsDir "deploy/hardware-ready" `
   -OutputPath "tests/emulator/outputs/cemu-pipeline-checklist.summary.json"
 ```
 
@@ -425,7 +422,7 @@ powershell -ExecutionPolicy Bypass -File tools/emulator/run-comprehensive-enviro
 ```
 
 What it verifies:
-- the top-level `C:\Users\user\Downloads\CalcEngine\` package matches the expected `35` `.8xp` + `4` `.8xv` + `README.md` manifest
+- the top-level `deploy/hardware-ready` package matches the expected `35` `.8xp` + `4` `.8xv` + `README.md` manifest
 - `rom/Rom.rom` contains the OS `5.8.0` certificate bytes and the matching header signature
 - the comprehensive CEmu suite still passes with the full `39`-file transfer set against the real ROM
 - every `.8xp` program can be loaded archived and launch/finish cleanly through the eZ80 scaffold's TI-OS dispatch model under simulated OS `5.8` + arTIfiCE bypass
@@ -473,7 +470,7 @@ Bootstrap the external arTIfiCE prerequisite during the same run:
 powershell -ExecutionPolicy Bypass -File tools/emulator/run-artifice-e2e-verification.ps1 `
   -RomPath "$env:CEMU_ROM_PATH" `
   -AutotesterPath "$env:CEMU_AUTOTESTER_PATH" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine" `
+  -DownloadsDir "deploy/hardware-ready" `
   -BootstrapArtificeAsset `
   -OutputPath "tests/emulator/outputs/artifice-e2e.summary.json"
 ```

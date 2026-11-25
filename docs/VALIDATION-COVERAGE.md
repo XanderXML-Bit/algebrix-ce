@@ -377,13 +377,13 @@ already certified hardware-ready.
 ```powershell
 # Required for all steps
 git clone https://github.com/XanderXML-Bit/algebrix-ce
-cd CalcEngine
+cd algebrix-ce
 npm install
 
 # Required for real-hardware steps
 # - tools/emulator/cemu-headless/cemu-headless.exe (built from tools/emulator/cemu-headless/build.ps1)
 # - rom/Rom.rom (or $env:CALCENGINE_ROM_PATH pointing to it)
-# - C:\Users\user\Tools\CEmu\v2.0\autotester.exe (or $env:CEMU_AUTOTESTER_PATH)
+# - Set $env:CEMU_AUTOTESTER_PATH to the path to your built autotester.exe.
 ```
 
 ### 8.2 Vitest unit + integration tests
@@ -404,7 +404,6 @@ python -m pytest tests/cemu -q
 
 ```powershell
 # Requires: autotester.exe, Rom.rom, deploy/hardware-ready/ bundle
-$env:CEMU_AUTOTESTER_PATH = "C:\Users\user\Tools\CEmu\v2.0\autotester.exe"
 powershell tools/emulator/run-comprehensive-autotest.ps1 `
     -RomPath rom/Rom.rom `
     -AutotesterPath $env:CEMU_AUTOTESTER_PATH `

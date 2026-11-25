@@ -118,7 +118,7 @@ def main(argv: list[str]) -> int:
     if bundle is None:
         print(
             "\nERROR: CalcEngine .8xp bundle directory not found. Build the "
-            "TI target and copy outputs to C:/Users/user/Downloads/CalcEngine, "
+            "TI target and stage outputs in deploy/hardware-ready, "
             "or set CALCENGINE_BUNDLE_DIR.",
             file=sys.stderr,
         )

@@ -109,47 +109,48 @@ CALCENGINE_KNOWN_CRCS: set[str] = {
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
+
+def _env_path(name: str) -> Path | None:
+    value = os.environ.get(name)
+    return Path(value).expanduser() if value else None
+
+
 _ROM_CANDIDATES = [
     REPO_ROOT / "rom" / "Rom.rom",
-    Path("C:/Users/user/src/algebrix-ce/rom/Rom.rom"),
-    Path(os.environ.get("CALCENGINE_ROM_PATH", "rom/Rom.rom")),
+    _env_path("CALCENGINE_ROM_PATH"),
 ]
 
 _AUTOTESTER_CANDIDATES = [
-    Path(os.environ.get("CEMU_AUTOTESTER_PATH", "")),
-    Path("C:/Users/user/Tools/CEmu/v2.0/autotester.exe"),
-    Path("C:/Users/user/AppData/Local/Temp/CEmu-upstream-20260311-1/tests/autotester/autotester.exe"),
+    _env_path("CEMU_AUTOTESTER_PATH"),
+    REPO_ROOT / "tools" / "CEmu" / "autotester.exe",
 ]
 
 _HEADLESS_CANDIDATES = [
     REPO_ROOT / "tools" / "emulator" / "cemu-headless" / "build" / "Release" / "cemu-headless.exe",
     REPO_ROOT / "tools" / "emulator" / "cemu-headless" / "cemu-headless.exe",
-    Path(os.environ.get("CEMU_HEADLESS_PATH", "")),
+    _env_path("CEMU_HEADLESS_PATH"),
 ]
 
 _BUNDLE_CANDIDATES = [
     REPO_ROOT / "deploy" / "hardware-ready",
-    Path("C:/Users/user/Downloads/CalcEngine-Debug"),   # diagnostic build (preferred)
-    Path("C:/Users/user/Downloads/CalcEngine-Ready"),
-    Path("C:/Users/user/Downloads/CalcEngine"),
-    Path(os.environ.get("CALCENGINE_BUNDLE_DIR", "")),
+    _env_path("CALCENGINE_BUNDLE_DIR"),
 ]
 
 
-def _find_first(candidates: list[Path]) -> Path | None:
+def _find_first(candidates: list[Path | None]) -> Path | None:
     for p in candidates:
         try:
-            if p and str(p) and p.exists() and p.stat().st_size > 0:
+            if p is not None and p.is_file() and p.stat().st_size > 0:
                 return p
         except (OSError, ValueError):
             pass
     return None
 
 
-def _find_first_dir(candidates: list[Path]) -> Path | None:
+def _find_first_dir(candidates: list[Path | None]) -> Path | None:
     for p in candidates:
         try:
-            if p and str(p) and p.is_dir():
+            if p is not None and p.is_dir():
                 return p
         except (OSError, ValueError):
             pass
@@ -543,7 +544,7 @@ def main() -> int:
             use_headless = True
         else:
             print("ERROR: Neither autotester.exe nor cemu-headless.exe found.")
-            print("       Install autotester.exe at C:/Users/user/Tools/CEmu/v2.0/")
+            print("       Set CEMU_AUTOTESTER_PATH to your built autotester.exe.")
             print("       or set CEMU_AUTOTESTER_PATH / CEMU_HEADLESS_PATH")
             return 2
 
