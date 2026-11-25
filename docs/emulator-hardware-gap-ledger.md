@@ -250,7 +250,7 @@ All failing CAS real-ROM cases use the raw division key (`key|/`, which emits TI
 
 Pass 67 completed the missing emulator-side pipeline pieces around the current official arTIfiCE path. The tooling is now split into three explicit stages:
 
-- `tools/emulator/check-artifice-asset.ps1` scans `C:\Users\user\Downloads`, `C:\Users\user\Desktop`, and the current directory for a user-downloaded arTIfiCE `.8xp`, then stages it into `tools/emulator/assets/artifice-v2.8xp`
+- `tools/emulator/check-artifice-asset.ps1` searches `Downloads` and `Desktop` under `$HOME`, plus the working directory. It stages the arTIfiCE `.8xp` at `tools/emulator/assets/artifice-v2.8xp`.
 - `tools/emulator/record-artifice-baseline.ps1` runs the arTIfiCE launch sequence on the real ROM and records the four-screen baseline into `tools/emulator/baselines/artifice-e2e-baseline.json`
 - `tools/emulator/run-artifice-e2e-verification.ps1` reruns the same capture path and reports `PASS`, `FAIL`, or `BASELINE_MISSING` for each checkpoint hash
 
@@ -277,7 +277,7 @@ The four automated checkpoints are:
 
 Important distinction: the older Cabri Jr based arTIfiCE v1 flow is no longer the canonical path. The current local CalcEngine docs still mention the legacy v1 sequence in places, but the new emulator runner targets the official v2 TI-Basic launcher path.
 
-Gap: the local `C:\Users\user\Downloads\CalcEngine\` package still contains **zero** arTIfiCE payload files, and the repo intentionally does not bundle the upstream jailbreak binary. That means the new helper can only stage a user-supplied asset; it cannot conjure one. Until that `.8xp` is actually present and `tools/emulator/record-artifice-baseline.ps1` records a real baseline, the verifier correctly reports `BASELINE_MISSING` or a hard asset blocker instead of claiming proof.
+The transfer package needs a user-supplied arTIfiCE `.8xp`. Stage the package in `deploy/hardware-ready` or pass `-DownloadsDir` to use another directory. The verifier reports a missing asset or `BASELINE_MISSING` until the asset and a recorded baseline are available.
 
 The following items are **not proven** by any emulator test and require physical hardware transfer and execution:
 

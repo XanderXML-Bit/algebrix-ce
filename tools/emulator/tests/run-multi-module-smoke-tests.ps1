@@ -122,6 +122,7 @@ $observationWrite
         }
     }
 }
+[void](New-Item -ItemType Directory -Path (Split-Path -Parent `$OutputPath) -Force)
 `$summary | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath `$OutputPath -Encoding UTF8
 Write-Host 'fake artifice smoke ok'
 exit 0
@@ -162,6 +163,7 @@ param(
         program_count = 35
     }
 }
+[void](New-Item -ItemType Directory -Path (Split-Path -Parent `$OutputPath) -Force)
 `$summary | ConvertTo-Json -Depth 12 | Set-Content -LiteralPath `$OutputPath -Encoding UTF8
 if ($successLiteral) {
     Write-Host 'fake environment verification ok'
@@ -198,8 +200,8 @@ try {
 
         $run = Invoke-Runner -Arguments @(
             "-RomPath", "rom\Rom.rom",
-            "-AutotesterPath", "C:\Users\user\Tools\CEmu\v2.0\autotester.exe",
-            "-DownloadsDir", "C:\Users\user\Downloads\CalcEngine",
+            "-AutotesterPath", "tools/CEmu/autotester.exe",
+            "-DownloadsDir", "deploy/hardware-ready",
             "-ArtificeSmokeRunnerPath", $artificeRunnerPath,
             "-EnvironmentRunnerPath", $environmentRunnerPath,
             "-OutputPath", $summaryPath
@@ -229,8 +231,8 @@ try {
 
         $run = Invoke-Runner -Arguments @(
             "-RomPath", "rom\Rom.rom",
-            "-AutotesterPath", "C:\Users\user\Tools\CEmu\v2.0\autotester.exe",
-            "-DownloadsDir", "C:\Users\user\Downloads\CalcEngine",
+            "-AutotesterPath", "tools/CEmu/autotester.exe",
+            "-DownloadsDir", "deploy/hardware-ready",
             "-ArtificeSmokeRunnerPath", $artificeRunnerPath,
             "-EnvironmentRunnerPath", $environmentRunnerPath,
             "-OutputPath", $summaryPath
@@ -257,8 +259,8 @@ try {
 
         $run = Invoke-Runner -Arguments @(
             "-RomPath", "rom\Rom.rom",
-            "-AutotesterPath", "C:\Users\user\Tools\CEmu\v2.0\autotester.exe",
-            "-DownloadsDir", "C:\Users\user\Downloads\CalcEngine",
+            "-AutotesterPath", "tools/CEmu/autotester.exe",
+            "-DownloadsDir", "deploy/hardware-ready",
             "-BootstrapArtificeAsset",
             "-ArtificeBootstrapScriptPath", $bootstrapScriptPath,
             "-ArtificeSmokeRunnerPath", $artificeRunnerPath,

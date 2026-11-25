@@ -15,13 +15,13 @@ The proof is intentionally narrower than overall emulator parity. It does not cl
 
 ## Canonical Runner
 
-Run the dedicated proof with:
+From the repository root, run the proof with the AutoTester path set in `CEMU_AUTOTESTER_PATH`.
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File tools/emulator/run-enter-path-proof.ps1 `
   -RomPath rom\Rom.rom `
-  -AutotesterPath "C:\Users\user\Tools\CEmu\v2.0\autotester.exe" `
-  -DownloadsDir "C:\Users\user\Downloads\CalcEngine" `
+  -AutotesterPath $env:CEMU_AUTOTESTER_PATH `
+  -DownloadsDir "deploy/hardware-ready" `
   -Mode Verify
 ```
 

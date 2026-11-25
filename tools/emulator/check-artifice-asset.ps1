@@ -30,8 +30,8 @@ $effectiveSearchRoots = if (@($SearchRoots).Count -gt 0) {
 }
 else {
     @(
-        "C:\Users\user\Downloads",
-        "C:\Users\user\Desktop",
+        (Join-Path $HOME "Downloads"),
+        (Join-Path $HOME "Desktop"),
         (Get-Location).Path
     )
 }

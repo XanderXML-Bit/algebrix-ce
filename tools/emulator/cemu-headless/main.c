@@ -2619,7 +2619,7 @@ static void print_usage(const char *argv0) {
             "Supported commands:\n"
             "  load_rom   {\"cmd\":\"load_rom\",\"path\":\"rom/Rom.rom\",\"autotester_path\":\"C:/.../autotester.exe\"}\n"
             "  load_app   {\"cmd\":\"load_app\",\"path\":\"C:/.../CALCENG.8xp\"}\n"
-            "  load_app   {\"cmd\":\"load_app\",\"path\":\"C:/Users/user/Downloads/CalcEngine\"}\n"
+            "  load_app   {\"cmd\":\"load_app\",\"path\":\"deploy/hardware-ready\"}\n"
             "  step       {\"cmd\":\"step\",\"cycles\":480000}\n"
             "  inject_key {\"cmd\":\"inject_key\",\"key\":\"2\"}\n"
             "  get_screen {\"cmd\":\"get_screen\",\"format\":\"crc\"}\n"

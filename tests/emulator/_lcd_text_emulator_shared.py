@@ -43,7 +43,7 @@ Structure of a validation run
 1. Launch tools/emulator/cemu-headless/cemu-headless.exe (absolute path).
 2. load_rom against rom/Rom.rom (or $CALCENGINE_ROM_PATH).
 3. load_app against the CalcEngine deployment directory
-   (C:/Users/user/Downloads/CalcEngine by convention, else bin/core/).
+   (deploy/hardware-ready by convention, else bin/core/).
 4. Step until the boot screen is up.
 5. Press clear, then PRGM -> navigate to CALCENG -> enter -> wait for the
    CalcEngine prompt to render.
@@ -110,12 +110,11 @@ HEADLESS_CANDIDATES: tuple[Path, ...] = (HEADLESS_PRIMARY, HEADLESS_FALLBACK_NAT
 ROM_CANDIDATES: tuple[Path, ...] = (
     Path(os.environ.get("CALCENGINE_ROM_PATH", "")) if os.environ.get("CALCENGINE_ROM_PATH") else Path(""),
     REPO_ROOT / "rom" / "Rom.rom",
-    Path("C:/Users/user/src/algebrix-ce/rom/Rom.rom"),
 )
 
 BUNDLE_CANDIDATES: tuple[Path, ...] = (
     Path(os.environ.get("CALCENGINE_BUNDLE_DIR", "")) if os.environ.get("CALCENGINE_BUNDLE_DIR") else Path(""),
-    Path("C:/Users/user/Downloads/CalcEngine"),
+    REPO_ROOT / "deploy" / "hardware-ready",
     REPO_ROOT / "bin" / "core",
 )
 

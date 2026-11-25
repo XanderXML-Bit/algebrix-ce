@@ -13,17 +13,15 @@ The short version:
 - The foundation entrypoint is now `scripts/cemu-foundation.ps1`.
 - The actual bar is **not** "the emulator is pretty good"; it is "we have covered enough of the real shipped artifact/ROM/jailbreak/input/output behavior that the first hardware attempt should be confirmation, not debugging."
 
-## Current Workstation Status
+## Configure the Windows runner
 
-Resolved locally on 2026-03-27:
+Run the examples from the repository root.
 
-- ROM: `rom/Rom.rom`
-- CEmu GUI: `C:\Users\user\Tools\CEmu\v2.0\CEmu.exe`
-- AutoTester CLI: `C:\Users\user\Tools\CEmu\v2.0\autotester.exe`
-- Repo headless wrapper: `tools/emulator/cemu-headless/build/Release/cemu-headless.exe`
-- Staged transfer package: `C:\Users\user\Downloads\CalcEngine`
-
-This means the real-ROM path is available now. The pipeline does not need to stop at scaffolding on this machine.
+- Place your ROM at `rom/Rom.rom`.
+- Set `CEMU_GUI_PATH` to your installed `CEmu.exe` if you use the GUI.
+- Set `CEMU_AUTOTESTER_PATH` to your built `autotester.exe`.
+- Build the headless wrapper at `tools/emulator/cemu-headless/build/Release/cemu-headless.exe`.
+- Stage the manifest-matched package in `deploy/hardware-ready`. Pass `-DownloadsDir` if you staged it elsewhere.
 
 ## Existing Integration Already In The Repo
 
@@ -416,7 +414,7 @@ Required:
 - standalone `autotester.exe` built from the matching upstream CEmu tag
 - repo `cemu-headless.exe`
 - Python for `scripts/cemu_pipeline.py` and `tests/cemu/run_cemu_validation.py`
-- staged transfer package at `C:\Users\user\Downloads\CalcEngine`
+- staged transfer package at `deploy/hardware-ready`
 
 Required package contents:
 

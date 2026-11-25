@@ -780,7 +780,7 @@ function Invoke-CalcEmuArtificeHashCapture {
         [string]$AutotesterPath = "",
 
         [Parameter(Mandatory = $false)]
-        [string]$DownloadsDir = "C:\Users\user\Downloads\CalcEngine",
+        [string]$DownloadsDir = "deploy/hardware-ready",
 
         [Parameter(Mandatory = $false)]
         [AllowEmptyString()]

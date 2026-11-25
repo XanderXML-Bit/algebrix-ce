@@ -16,7 +16,7 @@ param(
     [string]$CEmuHeadlessPath = $env:CEMU_HEADLESS_PATH,
 
     [Parameter(Mandatory = $false)]
-    [string]$DownloadsDir = "C:\Users\user\Downloads\CalcEngine",
+    [string]$DownloadsDir = "deploy/hardware-ready",
 
     [Parameter(Mandatory = $false)]
     [AllowEmptyString()]
@@ -77,13 +77,13 @@ $pipelineSupportModulePath = Join-Path $PSScriptRoot "CalcEmuPipelineSupport.psm
 if (-not (Test-Path -LiteralPath $pipelineSupportModulePath -PathType Leaf)) {
     throw "Pipeline support module not found at '$pipelineSupportModulePath'."
 }
-Import-Module -Name $pipelineSupportModulePath -Force
 
 $artificeModulePath = Join-Path $PSScriptRoot "CalcEmuArtificePipeline.psm1"
 if (-not (Test-Path -LiteralPath $artificeModulePath -PathType Leaf)) {
     throw "arTIfiCE pipeline module not found at '$artificeModulePath'."
 }
 Import-Module -Name $artificeModulePath -Force
+Import-Module -Name $pipelineSupportModulePath
 
 function Resolve-LocalRepoRoot {
     return (Resolve-Path (Join-Path $PSScriptRoot "..\..")).ProviderPath
@@ -142,32 +142,6 @@ function Resolve-LocalRomPath {
     }
 
     return (Resolve-Path -LiteralPath $effectivePath).ProviderPath
-}
-
-function Resolve-LocalAutotesterPath {
-    param([string]$PathValue)
-
-    $candidates = New-Object System.Collections.Generic.List[string]
-    if (-not [string]::IsNullOrWhiteSpace($PathValue)) {
-        $candidates.Add((Resolve-LocalPath -PathValue $PathValue))
-    }
-    if (-not [string]::IsNullOrWhiteSpace($env:CEMU_AUTOTESTER_PATH)) {
-        $candidates.Add([System.IO.Path]::GetFullPath($env:CEMU_AUTOTESTER_PATH))
-    }
-    $command = Get-Command -Name "autotester.exe" -ErrorAction SilentlyContinue | Select-Object -First 1
-    if ($null -ne $command -and -not [string]::IsNullOrWhiteSpace([string]$command.Source)) {
-        $candidates.Add([string]$command.Source)
-    }
-    $candidates.Add("C:\Users\user\Tools\CEmu\v2.0\autotester.exe")
-    $candidates.Add("C:\Tools\CEmu\autotester.exe")
-
-    foreach ($candidate in @($candidates | Select-Object -Unique)) {
-        if (-not [string]::IsNullOrWhiteSpace($candidate) -and (Test-Path -LiteralPath $candidate -PathType Leaf)) {
-            return (Resolve-Path -LiteralPath $candidate).ProviderPath
-        }
-    }
-
-    throw "autotester.exe could not be resolved."
 }
 
 function Test-LocalTransferManifest {
@@ -339,7 +313,7 @@ try {
     }
 
     $resolvedRom = Resolve-LocalRomPath -PathValue $RomPath
-    $resolvedAutotester = Resolve-LocalAutotesterPath -PathValue $AutotesterPath
+    $resolvedAutotester = [string](Resolve-CalcEmuAutotesterPath -AutotesterPath $AutotesterPath).path
     $resolvedDownloadsDir = Resolve-LocalPath -PathValue $DownloadsDir
     if (-not (Test-Path -LiteralPath $resolvedDownloadsDir -PathType Container)) {
         throw "DownloadsDir '$resolvedDownloadsDir' does not exist."
