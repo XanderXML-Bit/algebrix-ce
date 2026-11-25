@@ -41,7 +41,7 @@
 
 .PARAMETER DownloadsDir
     Directory containing the CalcEngine transfer package (.8xp + .8xv files).
-    Default: deploy/hardware-ready
+    Defaults to deploy/hardware-ready under the repository root.
 
 .PARAMETER OutputDir
     Directory for generated JSON files. Default: tests\emulator\ in repo root.
@@ -83,7 +83,7 @@ param(
     [string]$Mode = "Run",
 
     [Parameter(Mandatory = $false)]
-    [string]$DownloadsDir = "deploy/hardware-ready",
+    [string]$DownloadsDir = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot "../../deploy/hardware-ready")),
 
     [Parameter(Mandatory = $false)]
     [string]$OutputDir = "",
